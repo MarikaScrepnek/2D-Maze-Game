@@ -1,6 +1,7 @@
 package com.sfuparkingmayhem.game;
 
-import javax.swing.JFrame;
+//import java swing
+import javax.swing.*;
 
 /**
  *
