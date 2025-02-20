@@ -1,9 +1,9 @@
 package com.sfuparkingmayhem.game;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 /**
- * Hello world!
+ *
  *
  */
 public class App 
@@ -11,8 +11,12 @@ public class App
     public static void main( String[] args )
     {
         //create a window in which the game will run
-        Jframe window = new JFrame("Game Window");
-        //set the dimensions of the window to be compatible with both 1920x1080 and 1280x720 screens
-        window.setSize = (640,360);
+        JFrame window = new JFrame("Game Window");
+        //make sure the program shuts down when the window is closed
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //set the dimensions of the window to be 1280x720 (standard)
+        window.setSize(1280,720);
+        //make the window visible to the user
+        window.setVisible(true);
     }
 }
