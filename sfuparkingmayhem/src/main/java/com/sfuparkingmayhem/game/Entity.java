@@ -1,5 +1,7 @@
 package com.sfuparkingmayhem.game;
 import javax.imageio.ImageIO; //for getting the image for the specific entity
+import java.awt.Graphics; //used for drawing images/sprites on game board
+import java.awt.image.ImageObserver;
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
@@ -17,5 +19,6 @@ public abstract class Entity {
 
     //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
+
 
 }
