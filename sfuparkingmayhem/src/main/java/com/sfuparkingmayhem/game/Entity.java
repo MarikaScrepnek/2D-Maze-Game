@@ -2,6 +2,7 @@ package com.sfuparkingmayhem.game;
 import javax.imageio.ImageIO; //for getting the image for the specific entity
 import java.awt.Graphics; //used for drawing images/sprites on game board
 import java.awt.image.ImageObserver;
+import java.awt.image.BufferedImage; //used for getting an image
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
@@ -10,6 +11,7 @@ public abstract class Entity {
     //the attributes of an entity on the game board
     protected int x_coordinate;
     protected int y_coordinate;
+    private BufferedImage theImage;
 
     //constructor for an Entity
     protected Entity(int x_coordinate, int y_coordinate) {
