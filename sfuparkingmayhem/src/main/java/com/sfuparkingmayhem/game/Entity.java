@@ -1,4 +1,5 @@
 package com.sfuparkingmayhem.game;
+import javax.imageio.ImageIO; //for getting the image for the specific entity
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
@@ -14,5 +15,7 @@ public abstract class Entity {
         this.y_coordinate = y_coordinate;
     }
 
+    //get the sprite image of this entity. Subclasses to override
+    abstract protected void getImage();
 
 }
