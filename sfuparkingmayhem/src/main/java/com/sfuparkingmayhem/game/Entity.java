@@ -23,6 +23,7 @@ public abstract class Entity {
     abstract protected void getImage();
 
     //draws the image on the gameboard
+    //might not even need ImageObserver because ImageIO.read will be used to read the images. Remove later.
     protected void drawTheImage(Graphics graphics, ImageObserver io) {
         graphics.drawImage(theImage, x_coordinate, y_coordinate, io);
     }
