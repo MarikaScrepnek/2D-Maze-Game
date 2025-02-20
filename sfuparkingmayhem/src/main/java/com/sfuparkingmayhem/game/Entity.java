@@ -8,5 +8,11 @@ public abstract class Entity {
     protected int x_coordinate;
     protected int y_coordinate;
 
+    //constructor for an Entity
+    protected Entity(int x_coordinate, int y_coordinate) {
+        this.x_coordinate = x_coordinate;
+        this.y_coordinate = y_coordinate;
+    }
+
 
 }
