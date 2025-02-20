@@ -22,5 +22,9 @@ public abstract class Entity {
     //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
 
+    //draws the image on the gameboard
+    protected void drawTheImage(Graphics graphics, ImageObserver io) {
+        graphics.drawImage(theImage, x_coordinate, y_coordinate, io);
+    }
 
 }
