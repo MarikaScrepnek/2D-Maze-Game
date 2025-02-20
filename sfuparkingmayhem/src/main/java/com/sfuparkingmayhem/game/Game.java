@@ -7,9 +7,9 @@ import javax.swing.JFrame;
  *
  *
  */
-public class App 
+public class Game 
 {
-    public static void main( String[] args )
+    public void initWindow()
     {
         //create a window in which the game will run
         JFrame window = new JFrame("Game Window");
