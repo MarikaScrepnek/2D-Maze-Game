@@ -13,10 +13,26 @@ public class Game
     {
         //create a window in which the game will run
         JFrame window = new JFrame("SFU Parking Mayhem");
+        //set the size of the created window
+        window.SetSize(1280, 720);
         //make sure the program shuts down when the window is closed
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //set the dimensions of the window to be 1280x720 (standard)
-        window.setSize(1280,720);
+
+        //create a new board for the game
+        Board board = new Board();
+
+        //add the board panel to the window (instead of board it could be different screens)
+        window.add(board);
+        //make board panel able to read keyboard inputs
+        window.addKeyListener(board);
+
+        //dont allow user to resize the window
+        window.setResizable(false);
+        //fit the window size around panels, avoids issues on some platforms
+        window.pack();
+        //open the window in the center of the screen
+        window.setLocationRelativeTo(null);
+
         //make the window visible to the user, keep this at the bottom to make sure user only sees the ready window
         window.setVisible(true);
     }
