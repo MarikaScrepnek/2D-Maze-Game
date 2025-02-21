@@ -9,6 +9,10 @@ import javax.swing.JFrame;
  */
 public class Game 
 {
+    public Game() {
+        initWindow();
+    }
+
     public void initWindow()
     {
         //create a window in which the game will run
