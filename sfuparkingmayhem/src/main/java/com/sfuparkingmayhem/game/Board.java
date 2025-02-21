@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-public class Board extends JPanel {
+public class Board extends JPanel{
 
     public Board() {
         //set game board size to be the same as the window size

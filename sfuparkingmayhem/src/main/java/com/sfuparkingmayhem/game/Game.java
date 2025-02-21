@@ -1,6 +1,8 @@
 package com.sfuparkingmayhem.game;
 
 //import java swing
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 /**
@@ -10,7 +12,6 @@ import javax.swing.JFrame;
 public class Game 
 {
     public Game() {
-        initWindow();
     }
 
     public void initWindow()
@@ -18,7 +19,7 @@ public class Game
         //create a window in which the game will run
         JFrame window = new JFrame("SFU Parking Mayhem");
         //set the size of the created window
-        window.SetSize(1280, 720);
+        window.setPreferredSize(new Dimension(1280, 720));
         //make sure the program shuts down when the window is closed
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -27,8 +28,8 @@ public class Game
 
         //add the board panel to the window (instead of board it could be different screens)
         window.add(board);
-        //make board panel able to read keyboard inputs
-        window.addKeyListener(board);
+        //make board panel able to read keyboard inputs (uncomment when moving is implemented)
+        //window.addKeyListener(board);
 
         //dont allow user to resize the window
         window.setResizable(false);
