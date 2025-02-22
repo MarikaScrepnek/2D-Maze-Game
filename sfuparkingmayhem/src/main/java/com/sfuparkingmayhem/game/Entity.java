@@ -11,13 +11,12 @@ public abstract class Entity {
     //the attributes of an entity on the game board
     protected int x_coordinate;
     protected int y_coordinate;
-    private BufferedImage theImage;
+    protected BufferedImage theImage;
 
     //constructor for an Entity
-    protected Entity(int x_coordinate, int y_coordinate, BufferedImage image) {
+    protected Entity(int x_coordinate, int y_coordinate) {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
-        this.theImage = image;
     }
 
     //get the sprite image of this entity. Subclasses to override
