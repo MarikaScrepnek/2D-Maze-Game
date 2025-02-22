@@ -1,10 +1,9 @@
 package com.sfuparkingmayhem.game;
 
-public class MainCharacter extends MovingEntity {
+public abstract class MainCharacter extends MovingEntity {
 
     //constructor for the MainCharcter
-    MainCharacter() {
-        super();
+    MainCharacter(int x_coordinate, int y_coordinate) {
+        super( x_coordinate, y_coordinate);
     }
-
 }
