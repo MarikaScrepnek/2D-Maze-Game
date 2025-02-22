@@ -3,6 +3,7 @@ package com.sfuparkingmayhem.game;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.awt.event.KeyEvent;
 
 public abstract class MainCharacter extends MovingEntity {
 
@@ -20,6 +21,35 @@ public abstract class MainCharacter extends MovingEntity {
         catch(IOException e){
             System.out.println(e.getMessage());
         }
+    }
+
+    private void keyMoves (KeyEvent event){
+
+        //get key code for the specific key that was pressed on keyboard
+        int keyCode = event.getKeyCode();
+
+        //moving up with W key
+        if(keyCode == KeyEvent.VK_W){
+            y_coordinate = y_coordinate + 1;
+        }
+
+        //moving left with A key
+        else if (keyCode == KeyEvent.VK_A){
+            x_coordinate = x_coordinate - 1;
+        }
+
+        //moving down with S key
+        else if (keyCode == KeyEvent.VK_S){
+            y_coordinate = y_coordinate - 1;
+        }
+
+        //moving right with D key
+        else if (keyCode == KeyEvent.VK_D){
+            x_coordinate = x_coordinate + 1;
+        }
 
     }
+
+    //potentially add a tick method (name it something else though)
+
 }
