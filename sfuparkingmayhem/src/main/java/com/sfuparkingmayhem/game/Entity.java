@@ -14,9 +14,10 @@ public abstract class Entity {
     private BufferedImage theImage;
 
     //constructor for an Entity
-    protected Entity(int x_coordinate, int y_coordinate) {
+    protected Entity(int x_coordinate, int y_coordinate, BufferedImage image) {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
+        this.theImage = image;
     }
 
     //get the sprite image of this entity. Subclasses to override
