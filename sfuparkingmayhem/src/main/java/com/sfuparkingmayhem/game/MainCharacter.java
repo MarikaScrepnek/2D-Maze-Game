@@ -23,7 +23,7 @@ public abstract class MainCharacter extends MovingEntity {
         }
     }
 
-    private void keyMoves (KeyEvent event){
+    private void move (KeyEvent event){
 
         //get key code for the specific key that was pressed on keyboard
         int keyCode = event.getKeyCode();
