@@ -42,7 +42,7 @@ public abstract class Entity {
     //draws the image on the gameboard
     //might not even need ImageObserver because ImageIO.read will be used to read the images. Remove later.
     protected void drawTheImage(Graphics graphics, ImageObserver io) {
-        graphics.drawImage(theImage, x_coordinate, y_coordinate, io);
+        graphics.drawImage(theImage, this.x_coordinate*Board.cell_size, this.y_coordinate*Board.cell_size, io);
     }
 
     /**
