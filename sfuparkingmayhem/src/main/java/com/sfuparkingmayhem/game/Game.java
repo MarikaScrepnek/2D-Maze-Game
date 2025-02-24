@@ -1,8 +1,6 @@
 package com.sfuparkingmayhem.game;
 
 //import java swing
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
 /**
@@ -18,8 +16,7 @@ public class Game
     {
         //create a window in which the game will run
         JFrame window = new JFrame("SFU Parking Mayhem");
-        //set the size of the created window
-        window.setPreferredSize(new Dimension(1280, 720));
+        
         //make sure the program shuts down when the window is closed
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
