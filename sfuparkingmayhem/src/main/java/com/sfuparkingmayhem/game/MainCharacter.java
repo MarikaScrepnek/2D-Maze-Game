@@ -73,6 +73,21 @@ public class MainCharacter extends MovingEntity {
     }
 
     //potentially add a tick method (name it something else though)
-    
+    protected void tickCharacter() {
+        // prevents the player from moving off the board horizontally
+        if (x_coordinate < 0) {
+            x_coordinate = 0;
+        }
+        else if (x_coordinate >= Board.columns) {
+            x_coordinate = Board.columns - 1;
+        }
+        // prevents the player from moving off the board vertically
+        if (y_coordinate < 0) {
+            y_coordinate = 0;
+        }
+        else if (y_coordinate >= Board.rows) {
+            y_coordinate = Board.rows - 1;
+        }
+    }
 
 }
