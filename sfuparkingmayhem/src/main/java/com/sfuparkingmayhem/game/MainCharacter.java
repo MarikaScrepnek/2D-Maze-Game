@@ -1,11 +1,10 @@
 package com.sfuparkingmayhem.game;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.ImageObserver;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.awt.event.KeyEvent;
+
+import javax.imageio.ImageIO;
 
 public class MainCharacter extends MovingEntity {
 
