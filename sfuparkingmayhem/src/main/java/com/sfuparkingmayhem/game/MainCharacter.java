@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.KeyEvent;
 
-public abstract class MainCharacter extends MovingEntity {
+public class MainCharacter extends MovingEntity {
 
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
