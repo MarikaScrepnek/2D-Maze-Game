@@ -9,11 +9,11 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 public class Board extends JPanel implements KeyListener{
-    protected static final int rows = 15;
-    protected static final int columns = 15;
-    protected static final int cell_size = 50;
-    protected static final int[][] board = new int[rows][columns];
-    protected static final int num_coins = 10;
+    protected static final int ROWS = 15;
+    protected static final int COLUMNS = 15;
+    protected static final int CELL_SIZE = 50;
+    protected static final int[][] BOARD = new int[ROWS][COLUMNS];
+    protected static final int NUM_COINS = 10;
 
     private final MainCharacter main_character;
     //private final Coin[] coins = new Coin[num_coins];
@@ -24,11 +24,11 @@ public class Board extends JPanel implements KeyListener{
 
     public Board() {
         //set game board size
-        setPreferredSize(new Dimension(cell_size*columns,cell_size*rows));
+        setPreferredSize(new Dimension(CELL_SIZE*COLUMNS,CELL_SIZE*ROWS));
         //set the background color to a concrete grey
         setBackground(new Color(153, 153, 153));
         //intialize player
-        main_character = new MainCharacter(1, 1);
+        main_character = new MainCharacter(0, 1);
     }
 
     @Override
@@ -44,31 +44,31 @@ public class Board extends JPanel implements KeyListener{
     private void drawBoard(Graphics g) {
         //draw checkered cells
         g.setColor(new Color(214, 214, 214));
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
                 //only color every other tile
                 if ((row + col) % 2 == 1) {
                     //draw a tile
                     g.fillRect(
-                        col * cell_size, 
-                        row * cell_size, 
-                        cell_size, 
-                        cell_size
+                        col * CELL_SIZE, 
+                        row * CELL_SIZE, 
+                        CELL_SIZE, 
+                        CELL_SIZE
                     );
                 }
             }
         }
         //draw borders
         g.setColor(new Color(0, 128, 0));
-        g.fillRect(0, 0, columns * cell_size, cell_size); // Top border
-        g.fillRect(0, (rows - 1) * cell_size, columns * cell_size, cell_size); // Bottom border
-        g.fillRect(0, 0, cell_size, rows * cell_size); // Left border
-        g.fillRect((columns - 1) * cell_size, 0, cell_size, rows * cell_size); // Right border
+        g.fillRect(0, 0, COLUMNS * CELL_SIZE, CELL_SIZE); // Top border
+        g.fillRect(0, (ROWS - 1) * CELL_SIZE, COLUMNS * CELL_SIZE, CELL_SIZE); // Bottom border
+        g.fillRect(0, 0, CELL_SIZE, ROWS * CELL_SIZE); // Left border
+        g.fillRect((COLUMNS - 1) * CELL_SIZE, 0, CELL_SIZE, ROWS * CELL_SIZE); // Right border
 
-        //draw entrance and exit red
-        g.setColor(new Color(255, 0, 0));
-        g.fillRect(0, cell_size, cell_size, cell_size);
-        g.fillRect((columns - 1) * cell_size, (rows - 2) * cell_size, cell_size, cell_size);
+        //draw entrance and exit blue
+        g.setColor(new Color(19, 3, 252));
+        g.fillRect(0, CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        g.fillRect((COLUMNS - 1) * CELL_SIZE, (ROWS - 2) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
     }
     private void drawScore(Graphics g) {
         

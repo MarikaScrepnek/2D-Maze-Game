@@ -37,7 +37,7 @@ public class MainCharacter extends MovingEntity {
     @Override
     protected void getImage(){
         try{
-            this.theImage= ImageIO.read(new File("src/main/resources/blue_square.png"));
+            this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_right.png"));
 
         }
         catch(IOException e){
