@@ -45,7 +45,6 @@ public abstract class Entity {
         graphics.drawImage(theImage, x_coordinate, y_coordinate, io);
     }
 
-
     /**
      * Gets the x-coordinate of this Entity
      *
