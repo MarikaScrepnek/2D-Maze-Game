@@ -26,7 +26,7 @@ public class Board extends JPanel{
         //set the background color to a concrete grey
         setBackground(new Color(153, 153, 153));
         //intialize player
-        main_character = new MainCharacter(0, 0);
+        main_character = new MainCharacter(cell_size, cell_size);
     }
 
     @Override
