@@ -7,14 +7,32 @@ import java.awt.event.KeyEvent;
 
 public abstract class MainCharacter extends MovingEntity {
 
+    /**
+     * Constructs this MainCharacter and sets this MainCharacter's image
+     *
+     * @param x_coordinate x-coordinate where MainCharcter is on board
+     * @param y_coordinate y-coordinate where MainCharcter is on board
+     */
     //constructor for the MainCharcter
     MainCharacter(int x_coordinate, int y_coordinate) {
         super( x_coordinate, y_coordinate);
-        setImage();
+        //setImage();
+        getImage();
     }
 
     //sets the image for the moving entity
-    private void setImage (){
+//    private void setImage (){
+//        try{
+//            this.theImage= ImageIO.read(new File("resources/blue_square.png"));
+//        }
+//        catch(IOException e){
+//            System.out.println(e.getMessage());
+//        }
+//    }
+
+
+
+    protected void getImage(){
         try{
             this.theImage= ImageIO.read(new File("resources/blue_square.png"));
         }

@@ -23,7 +23,7 @@ public class Board extends JPanel{
         //set game board size
         setPreferredSize(new Dimension(cell_size*columns,cell_size*rows));
         //set the background color to a concrete grey
-        setBackground(new Color(153, 153, 153));        
+        setBackground(new Color(153, 153, 153));
     }
 
     @Override

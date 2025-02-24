@@ -14,18 +14,55 @@ public abstract class Entity {
     protected BufferedImage theImage;
 
     //constructor for an Entity
+
+    /**
+     * Constructs an Entity
+     *
+     * @param x_coordinate x-coordinate of this Entity
+     * @param y_coordinate y-coordinate of this Entity
+     */
     protected Entity(int x_coordinate, int y_coordinate) {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
     }
 
+    /**
+     * Gets the image of this Entity's image from resources directory.
+     */
     //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
 
+
+    /**
+     * Draws the image on board
+     *
+     * @param graphics
+     * @param io
+     */
     //draws the image on the gameboard
     //might not even need ImageObserver because ImageIO.read will be used to read the images. Remove later.
     protected void drawTheImage(Graphics graphics, ImageObserver io) {
         graphics.drawImage(theImage, x_coordinate, y_coordinate, io);
+    }
+
+
+    /**
+     * Gets the x-coordinate of this Entity
+     *
+     * @return x-coordinate of this Entity as an int
+     */
+
+    protected int getX_coordinate() {
+        return this.x_coordinate;
+    }
+
+    /**
+     * Gets the y-coordinate of this Entity
+     *
+     * @return y-coordinate of this Entity as an int
+     */
+    protected int getY_coordinate() {
+        return this.y_coordinate;
     }
 
 }
