@@ -1,14 +1,8 @@
 package com.sfuparkingmayhem.game;
 
-import javax.swing.SwingUtilities;
-
 public class Main {
     public static void main( String[] args ) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                Game game = new Game();
-                game.initWindow();
-            }
-    });
+        Game game = new Game();
+        game.initWindow();
     }
 }
