@@ -1,4 +1,6 @@
 com/sfuparkingmayhem/game/Board.class
 com/sfuparkingmayhem/game/Main.class
+com/sfuparkingmayhem/game/MainCharacter.class
 com/sfuparkingmayhem/game/Entity.class
+com/sfuparkingmayhem/game/MovingEntity.class
 com/sfuparkingmayhem/game/Game.class

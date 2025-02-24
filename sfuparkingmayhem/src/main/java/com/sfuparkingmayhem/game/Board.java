@@ -25,7 +25,7 @@ public class Board extends JPanel{
 
         drawCells(g);
         //drawScore(g);
-        //implement draw coing
+        //implement draw coins
         //player.draw(g, this);
 
     }
