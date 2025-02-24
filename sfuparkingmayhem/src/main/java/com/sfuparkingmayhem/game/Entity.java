@@ -45,4 +45,24 @@ public abstract class Entity {
         graphics.drawImage(theImage, x_coordinate, y_coordinate, io);
     }
 
+
+    /**
+     * Gets the x-coordinate of this Entity
+     *
+     * @return x-coordinate of this Entity as an int
+     */
+
+    protected int getX_coordinate() {
+        return this.x_coordinate;
+    }
+
+    /**
+     * Gets the y-coordinate of this Entity
+     *
+     * @return y-coordinate of this Entity as an int
+     */
+    protected int getY_coordinate() {
+        return this.y_coordinate;
+    }
+
 }
