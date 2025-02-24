@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 
 public class MainCharacter extends MovingEntity {
 
+    private int score;
+
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
      *
@@ -71,5 +73,6 @@ public class MainCharacter extends MovingEntity {
     }
 
     //potentially add a tick method (name it something else though)
+    
 
 }
