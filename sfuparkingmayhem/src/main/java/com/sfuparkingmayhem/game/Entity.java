@@ -32,6 +32,13 @@ public abstract class Entity {
     //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
 
+
+    /**
+     * Draws the image on board
+     *
+     * @param graphics
+     * @param io
+     */
     //draws the image on the gameboard
     //might not even need ImageObserver because ImageIO.read will be used to read the images. Remove later.
     protected void drawTheImage(Graphics graphics, ImageObserver io) {
