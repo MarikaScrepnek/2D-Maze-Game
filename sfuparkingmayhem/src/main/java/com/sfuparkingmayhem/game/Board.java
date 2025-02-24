@@ -7,13 +7,14 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
-    private final int rows = 15;
-    private final int columns = 15;
-    private final int cell_size = 50;
-    private final int[][] board = new int[rows][columns];
+    protected final int rows = 15;
+    protected final int columns = 15;
+    protected final int cell_size = 50;
+    protected final int[][] board = new int[rows][columns];
+    protected final int num_coins = 10;
 
-    private MainCharacter main_character;
-    //private final Coin[] coins = new Coin[10];
+    private final MainCharacter main_character;
+    //private final Coin[] coins = new Coin[num_coins];
     //private Timer timer;
     //private Score score;
 
@@ -24,6 +25,8 @@ public class Board extends JPanel{
         setPreferredSize(new Dimension(cell_size*columns,cell_size*rows));
         //set the background color to a concrete grey
         setBackground(new Color(153, 153, 153));
+        //intialize player
+        main_character= new MainCharacter(0,0);
     }
 
     @Override
@@ -31,7 +34,7 @@ public class Board extends JPanel{
         super.paintComponent(g);
 
         drawBoard(g);
-        //main_character.draw(g);
+        //main_character.draw(g, this);
         //implement draw coins
         //drawScore(g);
 
