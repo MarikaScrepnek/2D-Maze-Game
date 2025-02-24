@@ -23,23 +23,20 @@ public class Board extends JPanel{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        drawCells(g);
-        //drawScore(g);
+        drawBoard(g);
+        player.draw(g);
         //implement draw coins
-        //player.draw(g, this);
+        //drawScore(g);
 
     }
-    private void drawCells(Graphics g) {
-        g.setColor(new Color(0, 128, 0));
-        for (int row = 0; row < rows + 1; row++) {
-            g.fillRect(row*cell_size, cell_size, cell_size, cell_size);
-        }
+    private void drawBoard(Graphics g) {
+        //draw checkered cells
         g.setColor(new Color(214, 214, 214));
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                // only color every other tile
+                //only color every other tile
                 if ((row + col) % 2 == 1) {
-                    // draw a square tile at the current row/column position
+                    //draw a tile
                     g.fillRect(
                         col * cell_size, 
                         row * cell_size, 
@@ -49,5 +46,16 @@ public class Board extends JPanel{
                 }
             }
         }
+        //draw borders
+        g.setColor(new Color(0, 128, 0));
+        g.fillRect(0, 0, columns * cell_size, cell_size); // Top border
+        g.fillRect(0, (rows - 1) * cell_size, columns * cell_size, cell_size); // Bottom border
+        g.fillRect(0, 0, cell_size, rows * cell_size); // Left border
+        g.fillRect((columns - 1) * cell_size, 0, cell_size, rows * cell_size); // Right border
+
+        //draw entrance and exit red
+        g.setColor(new Color(255, 0, 0));
+        g.fillRect(0, cell_size, cell_size, cell_size);
+        g.fillRect((columns - 1) * cell_size, (rows - 2) * cell_size, cell_size, cell_size);
     }
 }
