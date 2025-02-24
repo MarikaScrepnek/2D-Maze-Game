@@ -32,9 +32,9 @@ public class Board extends JPanel{
         super.paintComponent(g);
 
         drawBoard(g);
-        //drawScore(g);
+        player.draw(g);
         //implement draw coins
-        //player.draw(g, this);
+        //drawScore(g);
 
     }
     private void drawBoard(Graphics g) {
