@@ -70,6 +70,9 @@ public class Board extends JPanel implements KeyListener{
         g.fillRect(0, cell_size, cell_size, cell_size);
         g.fillRect((columns - 1) * cell_size, (rows - 2) * cell_size, cell_size, cell_size);
     }
+    private void drawScore(Graphics g) {
+        
+    }
     @Override
     public void keyTyped(KeyEvent e) {
     }
