@@ -7,11 +7,11 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
-    protected final int rows = 15;
-    protected final int columns = 15;
-    protected final int cell_size = 50;
-    protected final int[][] board = new int[rows][columns];
-    protected final int num_coins = 10;
+    protected static final int rows = 15;
+    protected static final int columns = 15;
+    protected static final int cell_size = 50;
+    protected static final int[][] board = new int[rows][columns];
+    protected static final int num_coins = 10;
 
     private final MainCharacter main_character;
     //private final Coin[] coins = new Coin[num_coins];
