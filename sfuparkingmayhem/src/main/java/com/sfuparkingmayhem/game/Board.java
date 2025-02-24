@@ -3,10 +3,12 @@ package com.sfuparkingmayhem.game;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
-public class Board extends JPanel{
+public class Board extends JPanel implements KeyListener{
     protected static final int rows = 15;
     protected static final int columns = 15;
     protected static final int cell_size = 50;
@@ -67,5 +69,17 @@ public class Board extends JPanel{
         g.setColor(new Color(255, 0, 0));
         g.fillRect(0, cell_size, cell_size, cell_size);
         g.fillRect((columns - 1) * cell_size, (rows - 2) * cell_size, cell_size, cell_size);
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        main_character.move(e);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 }
