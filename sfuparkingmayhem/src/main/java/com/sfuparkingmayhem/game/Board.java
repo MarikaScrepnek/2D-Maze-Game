@@ -6,16 +6,25 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class Board extends JPanel {
+public class Board extends JPanel{
     private final int rows = 15;
     private final int columns = 15;
     private final int cell_size = 50;
     private final int[][] board = new int[rows][columns];
+
+    private final int DELAY = 25;
+
+    private MainCharacter player;
+    //private Timer timer;
+
     public Board() {
         //set game board size to be the same as the window size
         setPreferredSize(new Dimension(cell_size*columns,cell_size*rows));
         //set the background color to a concrete grey
         setBackground(new Color(153, 153, 153));
+
+        // initialize game state
+        
     }
 
     @Override
