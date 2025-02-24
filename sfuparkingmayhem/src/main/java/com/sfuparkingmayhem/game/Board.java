@@ -26,7 +26,7 @@ public class Board extends JPanel{
         //set the background color to a concrete grey
         setBackground(new Color(153, 153, 153));
         //intialize player
-        main_character= new MainCharacter(0,0);
+        main_character = new MainCharacter(0, 0);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Board extends JPanel{
         super.paintComponent(g);
 
         drawBoard(g);
-        //main_character.draw(g, this);
+        main_character.drawTheImage(g, this);
         //implement draw coins
         //drawScore(g);
 
