@@ -14,11 +14,21 @@ public abstract class Entity {
     protected BufferedImage theImage;
 
     //constructor for an Entity
+
+    /**
+     * Constructs an Entity
+     *
+     * @param x_coordinate x-coordinate of this Entity
+     * @param y_coordinate y-coordinate of this Entity
+     */
     protected Entity(int x_coordinate, int y_coordinate) {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
     }
 
+    /**
+     * Gets the image of this Entity's image from resources directory.
+     */
     //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
 
