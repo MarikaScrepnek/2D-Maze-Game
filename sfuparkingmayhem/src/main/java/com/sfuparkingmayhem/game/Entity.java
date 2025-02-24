@@ -64,4 +64,20 @@ public abstract class Entity {
         return this.y_coordinate;
     }
 
+    public void tick(){
+        if (x_coordinate < 0) {
+            x_coordinate = 0;
+        } else if (x_coordinate >= Board.columns) {
+            x_coordinate = Board.columns - 1;
+        }
+        // prevent the player from moving off the edge of the board vertically
+        if (y_coordinate < 0) {
+            y_coordinate = 0;
+        } else if (y_coordinate >= Board.rows) {
+            y_coordinate = Board.rows - 1;
+        }
+        }
+
+
+
 }
