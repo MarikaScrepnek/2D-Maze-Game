@@ -89,12 +89,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         
     }
     @Override
-    public void actionPerformed(ActionEvent e) {
-        //player.tick()
-        //collectCoins()
-        repaint();
-    }
-    @Override
     public void keyTyped(KeyEvent e) {
     }
 
