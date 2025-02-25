@@ -53,21 +53,45 @@ public class MainCharacter extends MovingEntity {
         //moving up with W key
         if(keyCode == KeyEvent.VK_W){
             y_coordinate = y_coordinate - 1;
+            try{
+                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_up.png"));
+            }
+            catch(IOException e){
+                System.out.println(e.getMessage());
+            }
         }
 
         //moving left with A key
         else if (keyCode == KeyEvent.VK_A){
             x_coordinate = x_coordinate - 1;
+            try{
+                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_left.png"));
+            }
+            catch(IOException e){
+                System.out.println(e.getMessage());
+            }
         }
 
         //moving down with S key
         else if (keyCode == KeyEvent.VK_S){
             y_coordinate = y_coordinate + 1;
+            try{
+                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_down.png"));
+            }
+            catch(IOException e){
+                System.out.println(e.getMessage());
+            }
         }
 
         //moving right with D key
         else if (keyCode == KeyEvent.VK_D){
             x_coordinate = x_coordinate + 1;
+            try{
+                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_right.png"));
+            }
+            catch(IOException e){
+                System.out.println(e.getMessage());
+            }
         }
 
     }
