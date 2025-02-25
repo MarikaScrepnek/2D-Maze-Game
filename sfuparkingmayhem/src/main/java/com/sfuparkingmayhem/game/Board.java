@@ -20,7 +20,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     private final MainCharacter main_character;
     private final Timer timer;
-    //private final Coin[] coins = new Coin[num_coins];
+    //private final Coin[] coins = new Coin[NUM_COINS];
     //private Score score;
 
     private final int DELAY = 25;
@@ -33,6 +33,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //intialize player
         main_character = new MainCharacter(0, 1);
 
+        //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
         timer.start();
     }
@@ -88,15 +89,18 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private void drawScore(Graphics g) {
         
     }
+    //doesn't need to be implemented but needs to be here because of interface
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
+    //move main_character when a key is pressed
     @Override
     public void keyPressed(KeyEvent e) {
         main_character.move(e);
     }
 
+    //doesn't need to be implemented but needs to be here because of interface
     @Override
     public void keyReleased(KeyEvent e) {
     }
