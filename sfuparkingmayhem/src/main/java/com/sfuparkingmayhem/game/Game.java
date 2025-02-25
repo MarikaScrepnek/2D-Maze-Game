@@ -26,7 +26,7 @@ public class Game
         //add the board panel to the window (instead of board it could be different screens)
         window.add(board);
         //make board panel able to read keyboard inputs (uncomment when moving is implemented)
-        //window.addKeyListener(board);
+        window.addKeyListener(board);
 
         //dont allow user to resize the window
         window.setResizable(false);

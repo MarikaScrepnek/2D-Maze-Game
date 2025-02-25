@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class Board extends JPanel implements ActionListener, KeyListener{
     protected static final int ROWS = 15;
@@ -18,8 +19,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     protected static final int NUM_COINS = 10;
 
     private final MainCharacter main_character;
+    private final Timer timer;
     //private final Coin[] coins = new Coin[num_coins];
-    //private Timer timer;
     //private Score score;
 
     private final int DELAY = 25;
@@ -31,6 +32,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         setBackground(new Color(153, 153, 153));
         //intialize player
         main_character = new MainCharacter(0, 1);
+
+        timer = new Timer(DELAY, this);
+        timer.start();
     }
     @Override
     public void actionPerformed(ActionEvent e) {

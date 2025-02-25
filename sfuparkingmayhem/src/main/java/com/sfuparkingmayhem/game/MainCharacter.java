@@ -52,7 +52,7 @@ public class MainCharacter extends MovingEntity {
 
         //moving up with W key
         if(keyCode == KeyEvent.VK_W){
-            y_coordinate = y_coordinate + 1;
+            y_coordinate = y_coordinate - 1;
         }
 
         //moving left with A key
@@ -62,7 +62,7 @@ public class MainCharacter extends MovingEntity {
 
         //moving down with S key
         else if (keyCode == KeyEvent.VK_S){
-            y_coordinate = y_coordinate - 1;
+            y_coordinate = y_coordinate + 1;
         }
 
         //moving right with D key
