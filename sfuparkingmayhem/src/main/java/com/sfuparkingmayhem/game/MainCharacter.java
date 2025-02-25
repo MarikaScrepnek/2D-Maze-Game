@@ -99,23 +99,24 @@ public class MainCharacter extends MovingEntity {
         }
 
     }
-
-    //potentially add a tick method (name it something else though)
+    // prevents player from going out of bounds
     protected void tickCharacter() {
-        // prevents the player from moving off the board horizontally
-        if (x_coordinate < 0) {
-            x_coordinate = 0;
+        // temporary variables to store new position
+        int tempX = x_coordinate;
+        int tempY = y_coordinate;
+
+        if (isValidMove(tempX,tempY)) {
+            x_coordinate = tempX;
+            y_coordinate = tempY;
+        } else {
+            x_coordinate = Math.max(0, Math.min(Board.COLUMNS - 1, x_coordinate));
+            y_coordinate = Math.max(0, Math.min(Board.ROWS - 1, y_coordinate));
         }
-        else if (x_coordinate >= Board.COLUMNS) {
-            x_coordinate = Board.COLUMNS - 1;
-        }
-        // prevents the player from moving off the board vertically
-        if (y_coordinate < 0) {
-            y_coordinate = 0;
-        }
-        else if (y_coordinate >= Board.ROWS) {
-            y_coordinate = Board.ROWS - 1;
-        }
+    }
+
+    protected boolean isValidMove(int newX, int newY) {
+        
+        return true;
     }
 
 }
