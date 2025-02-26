@@ -1,4 +1,7 @@
 package com.sfuparkingmayhem.game;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.io.File;
 
 public class ConcordOfficer extends MovingEntity{
     // Reference to the MainCharacter
@@ -15,6 +18,36 @@ public class ConcordOfficer extends MovingEntity{
         super(x_coordinate, y_coordinate);
         this.target = target;
         getImage(); // Load the sprite/image for this entity
+    }
+
+    /**
+     * Moves the ConcordOfficer towards the MainCharacter.
+     */
+    @Override
+    protected void move() {
+        // Move towards the MainCharacter
+        if (this.x_coordinate < target.getX_coordinate()) {
+            this.x_coordinate++;
+        } else if (this.x_coordinate > target.getX_coordinate()) {
+            this.x_coordinate--;
+        }
+
+        if (this.y_coordinate < target.getY_coordinate()) {
+            this.y_coordinate++;
+        } else if (this.y_coordinate > target.getY_coordinate()) {
+            this.y_coordinate--;
+        }
+    }
+
+    @Override
+    protected void getImage() {
+        try{
+            this.theImage= ImageIO.read(new File("src/main/resources/officer_placeholder.png"));
+
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
     }
     
 }
