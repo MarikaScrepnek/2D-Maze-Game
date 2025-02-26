@@ -11,6 +11,9 @@ public abstract class MovingEntity extends Entity {
         super(x_coordinate, y_coordinate);
     }
 
+    /**
+     * Moves the entity.
+     */
     protected abstract void move();
 
 }
