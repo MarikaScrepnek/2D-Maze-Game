@@ -23,17 +23,11 @@ public class MainCharacter extends MovingEntity {
         getImage();
     }
 
-    //sets the image for the moving entity
-//    private void setImage (){
-//        try{
-//            this.theImage= ImageIO.read(new File("resources/blue_square.png"));
-//        }
-//        catch(IOException e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
-
-
+    /**
+     * Gets the image of the MainCharacter. Catches IOExceptions and prints out the error, if there are any.
+     * Sets theImage of MainCharacter to a picture of car facing right initially.
+     *
+     */
     @Override
     protected void getImage(){
         try{
