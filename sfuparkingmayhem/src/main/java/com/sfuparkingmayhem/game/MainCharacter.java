@@ -3,12 +3,19 @@ package com.sfuparkingmayhem.game;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
+/**
+ * This MainCharacter class extends MovingEntity class and contains the following
+ * methods: a constructor to instantiate a MainCharacter, a method to get the image of this MainCharacter, and a move
+ * method allowing this MainCharacter to move Left,Right,Up,and Down on game board.
+ *
+ * @author Group25
+ * @version 1.0
+ */
 public class MainCharacter extends MovingEntity {
 
-    private int score;
+    private int score; //the score of the game
 
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
@@ -16,24 +23,16 @@ public class MainCharacter extends MovingEntity {
      * @param x_coordinate x-coordinate where MainCharcter is on board
      * @param y_coordinate y-coordinate where MainCharcter is on board
      */
-    //constructor for the MainCharcter
     MainCharacter(int x_coordinate, int y_coordinate) {
         super( x_coordinate, y_coordinate);
         //setImage();
         getImage();
     }
 
-    //sets the image for the moving entity
-//    private void setImage (){
-//        try{
-//            this.theImage= ImageIO.read(new File("resources/blue_square.png"));
-//        }
-//        catch(IOException e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
-
-
+    /**
+     * Gets the image of the MainCharacter and catches IOExceptions, if any. and prints out the error.
+     * Sets theImage of MainCharacter to a picture of car facing right, initially (start of game).
+     */
     @Override
     protected void getImage(){
         try{
@@ -43,6 +42,7 @@ public class MainCharacter extends MovingEntity {
             System.out.println("Error loading main" + e.getMessage());
         }
     }
+
 
     protected void move (KeyEvent event){
 
