@@ -21,6 +21,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final MainCharacter main_character;
     private final ConcordOfficer officer;
     private final Timer timer;
+    private final Timer officerTimer; 
     //private final Coin[] coins = new Coin[NUM_COINS];
     //private Score score;
 
@@ -39,6 +40,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
         timer.start();
+
+        officerTimer = new Timer(1000, e -> {
+            officer.move(null);  // Call move() without KeyEvent
+            repaint();  // Refresh the screen
+        });
+        officerTimer.start();
     }
     @Override
     public void actionPerformed(ActionEvent e) {

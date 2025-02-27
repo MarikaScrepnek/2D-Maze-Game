@@ -26,19 +26,19 @@ public class ConcordOfficer extends MovingEntity{
      */
     @Override
     protected void move(KeyEvent event) {
-        // Move towards the MainCharacter
         if (this.x_coordinate < target.getX_coordinate()) {
             this.x_coordinate++;
         } else if (this.x_coordinate > target.getX_coordinate()) {
             this.x_coordinate--;
         }
-
+    
         if (this.y_coordinate < target.getY_coordinate()) {
             this.y_coordinate++;
         } else if (this.y_coordinate > target.getY_coordinate()) {
             this.y_coordinate--;
         }
     }
+    
 
     @Override
     protected void getImage() {
