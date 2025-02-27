@@ -32,7 +32,6 @@ public class MainCharacter extends MovingEntity {
     /**
      * Gets the image of the MainCharacter and catches IOExceptions, if any. and prints out the error.
      * Sets theImage of MainCharacter to a picture of car facing right, initially (start of game).
-     *
      */
     @Override
     protected void getImage(){

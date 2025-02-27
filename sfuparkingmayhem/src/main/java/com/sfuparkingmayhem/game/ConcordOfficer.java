@@ -1,4 +1,5 @@
 package com.sfuparkingmayhem.game;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -23,8 +24,8 @@ public class ConcordOfficer extends MovingEntity{
     /**
      * Moves the ConcordOfficer towards the MainCharacter.
      */
-    @Override
-    protected void move() {
+
+    protected void move(KeyEvent event) {
         // Move towards the MainCharacter
         if (this.x_coordinate < target.getX_coordinate()) {
             this.x_coordinate++;
