@@ -23,7 +23,6 @@ public class MainCharacter extends MovingEntity {
      * @param x_coordinate x-coordinate where MainCharcter is on board
      * @param y_coordinate y-coordinate where MainCharcter is on board
      */
-    //constructor for the MainCharcter
     MainCharacter(int x_coordinate, int y_coordinate) {
         super( x_coordinate, y_coordinate);
         //setImage();
@@ -31,8 +30,8 @@ public class MainCharacter extends MovingEntity {
     }
 
     /**
-     * Gets the image of the MainCharacter. Catches IOExceptions and prints out the error, if there are any.
-     * Sets theImage of MainCharacter to a picture of car facing right iniitially (start of game).
+     * Gets the image of the MainCharacter and catches IOExceptions, if any. and prints out the error.
+     * Sets theImage of MainCharacter to a picture of car facing right, initially (start of game).
      *
      */
     @Override
@@ -44,6 +43,7 @@ public class MainCharacter extends MovingEntity {
             System.out.println("Error loading main" + e.getMessage());
         }
     }
+
 
     protected void move (KeyEvent event){
 
