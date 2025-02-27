@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 /**
  * This MainCharacter class extends MovingEntity class and contains the following
  * methods: a constructor to instantiate a MainCharacter, a method to get the image of this MainCharacter, and a move
- * method allowing this MainCharacter to move Left,Right,Up,and Down.
+ * method allowing this MainCharacter to move Left,Right,Up,and Down on game board.
  *
  * @author Group25
  * @version 1.0
