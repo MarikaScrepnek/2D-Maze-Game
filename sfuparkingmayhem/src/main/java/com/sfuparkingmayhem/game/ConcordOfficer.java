@@ -34,7 +34,7 @@ public class ConcordOfficer extends MovingEntity{
             this.x_coordinate--;
         }
     
-        if (this.y_coordinate < target.getY_coordinate()) {
+        else if(this.y_coordinate < target.getY_coordinate()) {
             this.y_coordinate++;
         } else if (this.y_coordinate > target.getY_coordinate()) {
             this.y_coordinate--;
