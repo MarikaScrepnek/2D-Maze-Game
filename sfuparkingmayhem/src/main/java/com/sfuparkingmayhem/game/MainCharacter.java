@@ -37,11 +37,10 @@ public class MainCharacter extends MovingEntity {
     @Override
     protected void getImage(){
         try{
-            this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_right.png"));
-
+            this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("car_sprite_right.png"));
         }
         catch(IOException e){
-            System.out.println(e.getMessage());
+            System.out.println("Error loading main" + e.getMessage());
         }
     }
 
@@ -55,7 +54,7 @@ public class MainCharacter extends MovingEntity {
             y_coordinate = y_coordinate - 1;
             //load up orientation sprite
             try{
-                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_up.png"));
+                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("car_sprite_up.png"));
             }
             catch(IOException e){
                 System.out.println(e.getMessage());
@@ -67,7 +66,7 @@ public class MainCharacter extends MovingEntity {
             x_coordinate = x_coordinate - 1;
             //load left orientation sprite
             try{
-                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_left.png"));
+                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("car_sprite_left.png"));
             }
             catch(IOException e){
                 System.out.println(e.getMessage());
@@ -79,7 +78,7 @@ public class MainCharacter extends MovingEntity {
             y_coordinate = y_coordinate + 1;
             //load down orientation sprite
             try{
-                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_down.png"));
+                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("car_sprite_down.png"));
             }
             catch(IOException e){
                 System.out.println(e.getMessage());
@@ -91,7 +90,7 @@ public class MainCharacter extends MovingEntity {
             x_coordinate = x_coordinate + 1;
             //load right orientation sprite
             try{
-                this.theImage= ImageIO.read(new File("src/main/resources/car_sprite_right.png"));
+                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("car_sprite_right.png"));
             }
             catch(IOException e){
                 System.out.println(e.getMessage());

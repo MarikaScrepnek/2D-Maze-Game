@@ -1,5 +1,7 @@
 package com.sfuparkingmayhem.game;
 
+import java.awt.event.KeyEvent;
+
 public abstract class MovingEntity extends Entity {
     /**
      * Constructs a MovingEntity with the specified coordinates.
@@ -14,6 +16,6 @@ public abstract class MovingEntity extends Entity {
     /**
      * Moves the entity.
      */
-    protected abstract void move();
+    protected abstract void move(KeyEvent event);
 
 }
