@@ -3,9 +3,16 @@ package com.sfuparkingmayhem.game;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
+/**
+ * This MainCharacter class extends MovingEntity class and contains the following
+ * methods: a constructor to instantiate a MainCharacter, a method to get the image of this MainCharacter, and a move
+ * method allowing this MainCharacter to move Left,Right,Up,and Down.
+ *
+ * @author Group25
+ * @version 1.0
+ */
 public class MainCharacter extends MovingEntity {
 
     private int score;
@@ -25,7 +32,7 @@ public class MainCharacter extends MovingEntity {
 
     /**
      * Gets the image of the MainCharacter. Catches IOExceptions and prints out the error, if there are any.
-     * Sets theImage of MainCharacter to a picture of car facing right initially.
+     * Sets theImage of MainCharacter to a picture of car facing right iniitially (start of game).
      *
      */
     @Override
