@@ -75,6 +75,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         officer.drawTheImage(g, this);
         //implement draw coins
         drawScore(g);
+        drawTimer(g);
 
     }
     private void drawBoard(Graphics g) {
@@ -113,9 +114,20 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.setColor(Color.WHITE);
 
         // Draw the score
-        g.drawString("SCORE: " + main_character.getScore() + " PTS", 10, 30);
+        g.drawString("SCORE: " + main_character.getScore() + " PTS", 555, 730);
     }
 
+    private void drawTimer(Graphics g) {
+        int minutes = timeElapsed / 60;
+        int seconds = timeElapsed % 60;
+
+        g.setFont(new Font("Bahnschrift", Font.BOLD, 25));
+        g.setColor(Color.WHITE);
+
+        String timeString = String.format("%02d:%02d", minutes, seconds);
+
+        g.drawString(timeString, 343, 30);
+    }
 
 
 
