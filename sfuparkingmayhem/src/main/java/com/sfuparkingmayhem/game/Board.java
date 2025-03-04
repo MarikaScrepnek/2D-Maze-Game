@@ -2,6 +2,7 @@ package com.sfuparkingmayhem.game;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +24,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer timer;
     private final Timer officerTimer; 
     //private final Coin[] coins = new Coin[NUM_COINS];
-    //private Score score;
 
     private final int DELAY = 25;
 
@@ -65,7 +65,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
         //implement draw coins
-        //drawScore(g);
+        drawScore(g);
 
     }
     private void drawBoard(Graphics g) {
@@ -98,7 +98,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.fillRect((COLUMNS - 1) * CELL_SIZE, (ROWS - 2) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
     }
     private void drawScore(Graphics g) {
-        
+        // Set the font and colour for the UI of Score
+        g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+        g.setColor(Color.WHITE);
+
+        // Draw the score
+        g.drawString("SCORE: " + main_character.getScore() + " PTS", 10, 30);
     }
     //doesn't need to be implemented but needs to be here because of interface
     @Override
