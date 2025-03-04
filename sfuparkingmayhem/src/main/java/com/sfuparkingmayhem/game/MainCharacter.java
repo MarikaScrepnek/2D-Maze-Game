@@ -1,8 +1,8 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 /**
@@ -135,6 +135,10 @@ public class MainCharacter extends MovingEntity {
                 }
             }
         }
+    }
+    
+    protected String getScore() {
+        return String.valueOf(score);
     }
 
 }
