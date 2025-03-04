@@ -22,10 +22,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final MainCharacter main_character;
     private final ConcordOfficer officer;
     private final Timer timer;
-    private final Timer officerTimer; 
+    private final Timer officerTimer;
+    private final Timer gameTimer; 
     //private final Coin[] coins = new Coin[NUM_COINS];
 
     private final int DELAY = 25;
+
+    private int timeElapsed = 0;
 
     public Board() {
         //set game board size
@@ -46,6 +49,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             repaint();  // Refresh the screen
         });
         officerTimer.start();
+
+        gameTimer = new Timer(1000, e -> {
+            timeElapsed++;
+            repaint();
+        });
+        gameTimer.start();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -97,6 +106,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.fillRect(0, CELL_SIZE, CELL_SIZE, CELL_SIZE);
         g.fillRect((COLUMNS - 1) * CELL_SIZE, (ROWS - 2) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
     }
+
     private void drawScore(Graphics g) {
         // Set the font and colour for the UI of Score
         g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
@@ -105,6 +115,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         // Draw the score
         g.drawString("SCORE: " + main_character.getScore() + " PTS", 10, 30);
     }
+
+
+
+
     //doesn't need to be implemented but needs to be here because of interface
     @Override
     public void keyTyped(KeyEvent e) {
