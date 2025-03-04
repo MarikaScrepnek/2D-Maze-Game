@@ -141,4 +141,8 @@ public class MainCharacter extends MovingEntity {
         return String.valueOf(score);
     }
 
+    protected void addScore(int amount) {
+        score = score + amount;
+    }
+
 }
