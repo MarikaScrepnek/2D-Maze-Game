@@ -26,7 +26,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer officerTimer;
     private final Timer gameTimer; 
     //private final Coin[] coins = new Coin[NUM_COINS];
-    private final ArrayList<Coin> coins = new ArrayList<Coin>();
+    private ArrayList<Coin> coins = new ArrayList<Coin>();
     Coin coin1;
     Coin coin2;
     Coin coin3;
@@ -37,6 +37,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     Coin coin8;
     Coin coin9;
     Coin coin10;
+    private LostNote lost_note;
 
     private final int DELAY = 25;
 
@@ -80,6 +81,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (int i =0; i<NUM_COINS; i++){
             System.out.println(i);
         }
+
+        //place a lost note onto board
+        //lost_note = new LostNote(0,8);
+
 
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
@@ -125,6 +130,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coin8.drawTheImage(g,this);
         coin9.drawTheImage(g,this);
         coin10.drawTheImage(g,this);
+        //lost_note.drawTheImage(g,this);
         drawScore(g);
         drawTimer(g);
 

@@ -25,8 +25,5 @@ public class Coin extends Reward{
         }
     }
 
-    protected void drawTheImage(Graphics graphics, ImageObserver io) {
-        graphics.drawImage(theImage, this.x_coordinate*Board.CELL_SIZE, this.y_coordinate*Board.CELL_SIZE, io);
-    }
 
 }
