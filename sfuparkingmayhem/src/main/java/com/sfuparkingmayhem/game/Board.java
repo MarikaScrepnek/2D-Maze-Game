@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -25,6 +26,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer officerTimer;
     private final Timer gameTimer; 
     //private final Coin[] coins = new Coin[NUM_COINS];
+    private final ArrayList<Coin> coins = new ArrayList<Coin>();
     Coin coin1;
     Coin coin2;
     Coin coin3;
@@ -61,6 +63,23 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coin8 = new Coin(12,12);
         coin9 = new Coin(13,13);
         coin10 = new Coin(2,2);
+
+        //add the coins to the coins arraylist
+        coins.add(coin1);
+        coins.add(coin2);
+        coins.add(coin3);
+        coins.add(coin4);
+        coins.add(coin5);
+        coins.add(coin6);
+        coins.add(coin7);
+        coins.add(coin8);
+        coins.add(coin9);
+        coins.add(coin10);
+
+        //checking that the coins got added to arraylist
+        for (int i =0; i<NUM_COINS; i++){
+            System.out.println(i);
+        }
 
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
