@@ -15,8 +15,6 @@ import javax.imageio.ImageIO;
  */
 public class MainCharacter extends MovingEntity {
 
-    private int score; //the score of the game
-
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
      *
@@ -136,10 +134,5 @@ public class MainCharacter extends MovingEntity {
             }
         }
     }
-    
-    protected String getScore() {
-        return String.valueOf(score);
-    }
-
 
 }
