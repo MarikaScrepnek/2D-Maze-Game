@@ -37,7 +37,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     Coin coin8;
     Coin coin9;
     Coin coin10;
-    private LostNote lost_note;
+    protected LostNote lost_note;
 
     private final int DELAY = 25;
 
@@ -83,7 +83,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
 
         //place a lost note onto board
-        //lost_note = new LostNote(0,8);
+        lost_note = new LostNote(5,5);
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
@@ -130,7 +130,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coin8.drawTheImage(g,this);
         coin9.drawTheImage(g,this);
         coin10.drawTheImage(g,this);
-        //lost_note.drawTheImage(g,this);
+
+        lost_note.drawTheImage(g,this);
+
         drawScore(g);
         drawTimer(g);
 
