@@ -25,6 +25,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer officerTimer;
     private final Timer gameTimer; 
     //private final Coin[] coins = new Coin[NUM_COINS];
+    Coin coin1;
 
     private final int DELAY = 25;
 
@@ -41,7 +42,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         officer = new ConcordOfficer(7, 7, main_character);
 
         //test adding a coin onto board
-        Coin coin = new Coin(5,5);
+        coin1 = new Coin(5,5);
 
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
@@ -77,6 +78,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
         //implement draw coins
+        coin1.drawTheImage(g,this);
         drawScore(g);
         drawTimer(g);
 

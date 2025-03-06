@@ -1,6 +1,8 @@
 package com.sfuparkingmayhem.game;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -22,4 +24,9 @@ public class Coin extends Reward{
             System.out.println("Error loading main" + e.getMessage());
         }
     }
+
+    protected void drawTheImage(Graphics graphics, ImageObserver io) {
+        graphics.drawImage(theImage, this.x_coordinate*Board.CELL_SIZE, this.y_coordinate*Board.CELL_SIZE, io);
+    }
+
 }
