@@ -129,7 +129,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString(timeString, 343, 30);
     }
 
-
+    public int getTimeElapsed(){
+        return timeElapsed;
+    }
 
     //doesn't need to be implemented but needs to be here because of interface
     @Override
