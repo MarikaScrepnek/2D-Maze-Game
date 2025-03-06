@@ -25,6 +25,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer timer;
     private final Timer officerTimer;
     private final Timer gameTimer; 
+    private final Score score;
     //private final Coin[] coins = new Coin[NUM_COINS];
     private ArrayList<Coin> coins = new ArrayList<Coin>();
     Coin coin1;
@@ -52,6 +53,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character = new MainCharacter(0, 1);
         //initialize officer
         officer = new ConcordOfficer(7, 7, main_character);
+        //initialize score
+        score = new Score();
 
         //test adding a coin onto board
         coin1 = new Coin(1,1);
@@ -173,7 +176,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.setColor(Color.WHITE);
 
         // Draw the score
-        g.drawString("SCORE: " + main_character.getScore() + " PTS", 555, 730);
+        g.drawString("SCORE: " + score.getScore() + " PTS", 555, 730);
     }
 
     private void drawTimer(Graphics g) {
