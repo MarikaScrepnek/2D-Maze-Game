@@ -1,5 +1,9 @@
 package com.sfuparkingmayhem.game;
 
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.util.Objects;
+
 public class Coin extends Reward{
 
     private int value = 5;
@@ -8,6 +12,13 @@ public class Coin extends Reward{
         super(x, y);
     }
 
-
-
+    @Override
+    protected void getImage() {
+        try{
+            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("coin_resized.png")));
+        }
+        catch(IOException e){
+            System.out.println("Error loading main" + e.getMessage());
+        }
+    }
 }
