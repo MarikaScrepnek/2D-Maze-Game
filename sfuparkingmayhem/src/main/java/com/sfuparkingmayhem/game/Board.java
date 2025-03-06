@@ -40,6 +40,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //initialize officer
         officer = new ConcordOfficer(7, 7, main_character);
 
+        //test adding a coin onto board
+        Coin coin = new Coin(5,5);
+
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
         timer.start();
