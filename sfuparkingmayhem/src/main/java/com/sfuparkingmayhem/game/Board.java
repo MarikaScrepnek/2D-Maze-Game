@@ -200,7 +200,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         ArrayList<Coin> coinsCopy = new ArrayList<Coin>(coins); //make a copy of coins arraylist
         for (Coin aCoin : coinsCopy){
 
-            //remove the coin from arraylist if
+            //remove the coin from arraylist if this coin and MainCharacter have same board position
             if (main_character.getMainCharacterXCoordinate() == aCoin.getX_coordinate()
                     && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
                 coins.remove(aCoin);
