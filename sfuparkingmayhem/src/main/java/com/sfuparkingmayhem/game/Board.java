@@ -118,8 +118,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
 
+        if (main_character.getMainCharacterXCoordinate() == 6 && main_character.getMainCharacterYCoordinate() == 6) {
+            coins.remove(coin2);
+        }
+
         //draw coins onto board
-        for (int i =0; i<NUM_COINS; i++){
+        for (int i =0; i<coins.size(); i++){
             Coin aCoin = coins.get(i);
             aCoin.drawTheImage(g, this);
         }
