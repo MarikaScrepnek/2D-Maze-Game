@@ -122,17 +122,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         drawBoard(g);
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
-        //implement draw coins
-        coin1.drawTheImage(g,this);
-        coin2.drawTheImage(g,this);
-        coin3.drawTheImage(g,this);
-        coin4.drawTheImage(g,this);
-        coin5.drawTheImage(g,this);
-        coin6.drawTheImage(g,this);
-        coin7.drawTheImage(g,this);
-        coin8.drawTheImage(g,this);
-        coin9.drawTheImage(g,this);
-        coin10.drawTheImage(g,this);
+
+        //draw coins onto board
+        for (int i =0; i<NUM_COINS; i++){
+            Coin aCoin = coins.get(i);
+            aCoin.drawTheImage(g, this);
+        }
 
         lost_note.drawTheImage(g,this);
 
