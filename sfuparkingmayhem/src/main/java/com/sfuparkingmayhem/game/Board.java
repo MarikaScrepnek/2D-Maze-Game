@@ -41,6 +41,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     Coin coin9;
     Coin coin10;
     protected LostNote lost_note;
+    private ArrayList<LostNote> ln = new ArrayList<LostNote>(); //added this but not on class diagram
 
     private final int DELAY = 25;
 
@@ -85,6 +86,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //place a lost note onto board
         lost_note = new LostNote(5,5);
 
+        //add lost note to ln arraylist
+        ln.add(lost_note);
+
 
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
@@ -121,7 +125,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         officer.drawTheImage(g, this);
 
         collectCoins();
-
+        collectLostNote();
 
         //draw coins onto board
         for (int i =0; i<coins.size(); i++){
@@ -129,7 +133,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             aCoin.drawTheImage(g, this);
         }
 
-        lost_note.drawTheImage(g,this);
+        //draw lost note onto board
+        for (int i =0; i<ln.size(); i++){
+            LostNote aLostNote = ln.get(i);
+            aLostNote.drawTheImage(g, this);
+            //lost_note.drawTheImage(g,this);
+        }
+        //lost_note.drawTheImage(g,this);
 
         drawScore(g);
         drawTimer(g);
@@ -205,6 +215,19 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                     && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
                 coins.remove(aCoin);
                 score.addPoints(5);
+            }
+        }
+    }
+
+    private void collectLostNote(){
+        //collect the lostNote from the board if lostNote and MainCharacter have same board position
+        ArrayList<LostNote> lnCopy = new ArrayList<LostNote>(ln);
+        for (LostNote aLostNote : lnCopy){
+            if (main_character.getMainCharacterXCoordinate() == aLostNote.getX_coordinate()
+                    && main_character.getMainCharacterYCoordinate() == aLostNote.getY_coordinate()){
+                ln.remove(aLostNote);
+                score.addPoints(10);
+
             }
         }
     }
