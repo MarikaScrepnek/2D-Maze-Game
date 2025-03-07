@@ -139,4 +139,8 @@ public class MainCharacter extends MovingEntity {
         return x_coordinate;
     }
 
+    public int getMainCharacterYCoordinate(){
+        return y_coordinate;
+    }
+
 }
