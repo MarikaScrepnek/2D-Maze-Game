@@ -80,11 +80,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coins.add(coin9);
         coins.add(coin10);
 
-        //checking that the coins got added to arraylist
-        for (int i =0; i<NUM_COINS; i++){
-            System.out.println(i);
-        }
-
         //place a lost note onto board
         lost_note = new LostNote(5,5);
 
