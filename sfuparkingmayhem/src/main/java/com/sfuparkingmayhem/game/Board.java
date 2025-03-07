@@ -201,7 +201,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public void keyReleased(KeyEvent e) {
     }
 
-//    public MainCharacter getMainCharacter(){
-//        return main_character;
-//    }
+    public int getMainCharXCoord(){
+        return main_character.getMainCharacterXCoordinate();
+    }
+
+    public int getMainCharYCoord(){
+        return main_character.getMainCharacterYCoordinate();
+    }
 }
