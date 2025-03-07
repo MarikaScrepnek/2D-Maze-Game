@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -118,10 +120,18 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
 
-        //removing 1 coin if there is a collision
-        if (main_character.getMainCharacterXCoordinate() == 6 && main_character.getMainCharacterYCoordinate() == 6) {
-            coins.remove(coin2);
+        //collect the coins from the board
+        ArrayList<Coin> coinsCopy = new ArrayList<Coin>(coins); //make a copy of coins arraylist
+        for (Coin aCoin : coinsCopy){
+
+            //remove the coin from arraylist if
+            if (main_character.getMainCharacterXCoordinate() == aCoin.getX_coordinate()
+            && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
+                coins.remove(aCoin);
+
+            }
         }
+
 
         //draw coins onto board
         for (int i =0; i<coins.size(); i++){
