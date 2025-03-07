@@ -2,7 +2,7 @@ package com.sfuparkingmayhem.game;
 
 public abstract class Reward extends StaticEntity {
 
-    private boolean collected = false;
+    protected boolean collected = false;
     private int value;
 
 
@@ -10,8 +10,6 @@ public abstract class Reward extends StaticEntity {
         super(x, y);
     }
 
-    protected boolean isCollected() {
-        return collected;
-    }
+    protected abstract boolean isCollected();
 
 }

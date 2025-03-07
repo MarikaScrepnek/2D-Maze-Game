@@ -25,5 +25,9 @@ public class Coin extends Reward{
         }
     }
 
+    @Override
+    protected boolean isCollected() {
+        return collected;
+    }
 
 }

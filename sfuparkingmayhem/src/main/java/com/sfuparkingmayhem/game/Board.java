@@ -200,4 +200,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
     }
+
+//    public MainCharacter getMainCharacter(){
+//        return main_character;
+//    }
 }

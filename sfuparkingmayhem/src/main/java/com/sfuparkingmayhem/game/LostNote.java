@@ -27,4 +27,8 @@ public class LostNote extends Reward {
         }
     }
 
+    @Override
+    protected boolean isCollected() {
+        return collected;
+    }
 }
