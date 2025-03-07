@@ -118,6 +118,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
 
+        //removing 1 coin if there is a collision
         if (main_character.getMainCharacterXCoordinate() == 6 && main_character.getMainCharacterYCoordinate() == 6) {
             coins.remove(coin2);
         }
