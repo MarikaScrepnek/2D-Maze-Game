@@ -190,7 +190,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         return timeElapsed;
     }
 
-
+    /**
+     * Removes a coin from coins ArrayList if this MainCharacter's board position matches
+     * a coin's board position. Must create a copy of coins ArrayList to prevent iterating
+     * and removing (deleting) from same ArrayList, which is not allowed.
+     */
     private void collectCoins(){
         //collect the coins from the board
         ArrayList<Coin> coinsCopy = new ArrayList<Coin>(coins); //make a copy of coins arraylist
