@@ -120,17 +120,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
 
-        //collect the coins from the board
-        ArrayList<Coin> coinsCopy = new ArrayList<Coin>(coins); //make a copy of coins arraylist
-        for (Coin aCoin : coinsCopy){
-
-            //remove the coin from arraylist if
-            if (main_character.getMainCharacterXCoordinate() == aCoin.getX_coordinate()
-            && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
-                coins.remove(aCoin);
-
-            }
-        }
+        collectCoins();
 
 
         //draw coins onto board
@@ -199,6 +189,22 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public int getTimeElapsed(){
         return timeElapsed;
     }
+
+
+    private void collectCoins(){
+        //collect the coins from the board
+        ArrayList<Coin> coinsCopy = new ArrayList<Coin>(coins); //make a copy of coins arraylist
+        for (Coin aCoin : coinsCopy){
+
+            //remove the coin from arraylist if
+            if (main_character.getMainCharacterXCoordinate() == aCoin.getX_coordinate()
+                    && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
+                coins.remove(aCoin);
+            }
+        }
+    }
+
+
 
     //doesn't need to be implemented but needs to be here because of interface
     @Override
