@@ -204,6 +204,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             if (main_character.getMainCharacterXCoordinate() == aCoin.getX_coordinate()
                     && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
                 coins.remove(aCoin);
+                score.addPoints(5);
             }
         }
     }
