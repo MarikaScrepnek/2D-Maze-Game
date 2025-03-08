@@ -31,4 +31,12 @@ public class LostNote extends Reward {
     protected boolean isCollected() {
         return collected;
     }
+
+    public boolean getCollected(){
+        return collected;
+    }
+
+    public void setCollected(boolean bool){
+        this.collected = bool;
+    }
 }
