@@ -133,11 +133,20 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             aCoin.drawTheImage(g, this);
         }
 
+        //draw note if between 3 and 10 seconds of playing game
+        if (3<=getTimeElapsed() && getTimeElapsed()<=10){
+
         //draw lost note onto board
         for (int i =0; i<ln.size(); i++){
             LostNote aLostNote = ln.get(i);
             aLostNote.drawTheImage(g, this);
-            //lost_note.drawTheImage(g,this);
+
+            }
+        }
+
+        //remove the lostNote from ln arraylist if time >10 secs
+        else if (getTimeElapsed()>10){
+            ln.clear();
         }
         //lost_note.drawTheImage(g,this);
 
