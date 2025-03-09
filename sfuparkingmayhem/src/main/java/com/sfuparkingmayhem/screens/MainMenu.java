@@ -42,4 +42,7 @@ public class MainMenu {
     public void draw (Graphics g) {
         
     }
+    public void update() {
+        
+    }
 }
