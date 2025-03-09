@@ -30,16 +30,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Score score;
     //private final Coin[] coins = new Coin[NUM_COINS];
     private ArrayList<Coin> coins = new ArrayList<Coin>();
-    Coin coin1;
-    Coin coin2;
-    Coin coin3;
-    Coin coin4;
-    Coin coin5;
-    Coin coin6;
-    Coin coin7;
-    Coin coin8;
-    Coin coin9;
-    Coin coin10;
+
     protected LostNote lost_note;
     private ArrayList<LostNote> ln = new ArrayList<LostNote>(); //added this but not on class diagram
 
@@ -76,6 +67,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         //add lost note to ln arraylist
         ln.add(lost_note);
+
+        int a = 1;
+        int b = 14;
+        for (int i = 0; i < 1000; i++) {
+        int randomNum = a + (int)Math.abs(Math.random()*(a - b) );
+        System.out.println(randomNum);}
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
