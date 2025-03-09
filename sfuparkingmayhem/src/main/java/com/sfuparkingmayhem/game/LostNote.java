@@ -44,8 +44,6 @@ public class LostNote extends Reward {
         int a = 1;
         int b = 14;
 
-
-
         int randomNum = a + (int) Math.abs(Math.random() * (a - b));
         int randomNum2= a + (int) Math.abs(Math.random() * (a - b));
 
