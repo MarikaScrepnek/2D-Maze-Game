@@ -59,29 +59,17 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //initialize score
         score = new Score();
 
-        //test adding a coin onto board
-        coin1 = new Coin(1,1);
-        coin2 = new Coin(6,6);
-        coin3 = new Coin(7,7);
-        coin4 = new Coin(8,8);
-        coin5 = new Coin(9,9);
-        coin6 = new Coin(10,10);
-        coin7 = new Coin(11,11);
-        coin8 = new Coin(12,12);
-        coin9 = new Coin(13,13);
-        coin10 = new Coin(2,2);
-
-        //add the coins to the coins arraylist
-        coins.add(coin1);
-        coins.add(coin2);
-        coins.add(coin3);
-        coins.add(coin4);
-        coins.add(coin5);
-        coins.add(coin6);
-        coins.add(coin7);
-        coins.add(coin8);
-        coins.add(coin9);
-        coins.add(coin10);
+        //created and added new coins to the coins arraylist
+        coins.add(new Coin(1,1));
+        coins.add(new Coin(2,2));
+        coins.add(new Coin(6,6 ));
+        coins.add(new Coin(7,7));
+        coins.add(new Coin(8,8));
+        coins.add(new Coin(9,9));
+        coins.add(new Coin(10,10));
+        coins.add(new Coin(11,11));
+        coins.add(new Coin(12,12));
+        coins.add(new Coin(13,13));
 
         //place a lost note onto board
         lost_note = new LostNote(5,5);
