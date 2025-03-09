@@ -18,7 +18,7 @@ public class Coin extends Reward{
     @Override
     protected void getImage() {
         try{
-            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("thecoin.png")));
+            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("coin.png")));
         }
         catch(IOException e){
             System.out.println("Error loading main" + e.getMessage());
