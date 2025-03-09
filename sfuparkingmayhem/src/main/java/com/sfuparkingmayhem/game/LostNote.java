@@ -39,4 +39,25 @@ public class LostNote extends Reward {
     public void setCollected(boolean bool){
         this.collected = bool;
     }
-}
+
+    protected void generateCoords(){
+        int a = 1;
+        int b = 14;
+
+
+
+        int randomNum = a + (int) Math.abs(Math.random() * (a - b));
+        int randomNum2= a + (int) Math.abs(Math.random() * (a - b));
+
+        this.x_coordinate = randomNum;
+        this.y_coordinate = randomNum2;
+
+        System.out.println(randomNum);
+        System.out.println(randomNum2);
+
+
+        }
+    }
+
+
+

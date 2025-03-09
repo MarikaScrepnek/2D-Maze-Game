@@ -28,7 +28,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer officerTimer;
     private final Timer gameTimer; 
     private final Score score;
-    //private final Coin[] coins = new Coin[NUM_COINS];
     private ArrayList<Coin> coins = new ArrayList<Coin>();
 
     protected LostNote lost_note;
@@ -65,14 +64,39 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //place a lost note onto board
         lost_note = new LostNote(5,5);
 
+//        //add lost note to ln arraylist
+//        ln.add(lost_note);
+
+//        int a = 1;
+//        int b = 14;
+//        for (int i = 0; i < 1000; i++) {
+//        int randomNum = a + (int)Math.abs(Math.random()*(a - b) );
+//        System.out.println(randomNum);}
+
+
+
+        boolean check = true;
+        do{
+        lost_note.generateCoords();
+
+        if (check){
+
+            //check all the coins to see if any of the coins' coords matches the lostnotes's coords
+            for (int i = 0; i < coins.size(); i++){
+                Coin coin = coins.get(i);
+                int coinXCoord = coin.getX_coordinate();
+                int coinYCoord = coin.getY_coordinate();
+
+                if(!(lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord)){
+                    check = false;
+                }
+            }
+        }
+
+        } while (check);
         //add lost note to ln arraylist
         ln.add(lost_note);
 
-        int a = 1;
-        int b = 14;
-        for (int i = 0; i < 1000; i++) {
-        int randomNum = a + (int)Math.abs(Math.random()*(a - b) );
-        System.out.println(randomNum);}
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
