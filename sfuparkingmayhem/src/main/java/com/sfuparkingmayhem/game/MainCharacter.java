@@ -41,7 +41,15 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-
+    /**
+     * Moves the MainCharacter in the direction of the key pressed on the keyboard.
+     * If the key pressed is W, the MainCharacter moves up.
+     * If the key pressed is A, the MainCharacter moves left.
+     * If the key pressed is S, the MainCharacter moves down.
+     * If the key pressed is D, the MainCharacter moves right.
+     *
+     * @param event KeyEvent object that represents the key pressed on the keyboard
+     */
     protected void move (KeyEvent event){
 
         //get key code for the specific key that was pressed on keyboard
@@ -96,7 +104,9 @@ public class MainCharacter extends MovingEntity {
         }
 
     }
-    // Prevents player from going out of bounds
+    /**
+     * Tick the character to ensure it stays within the bounds of the board.
+     */
     protected void tickCharacter() {
         // Prevent the player from moving off the board horizontally
         if (x_coordinate < 0) {
@@ -135,10 +145,20 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
+    /**
+     * Gets the x-coordinate of this MainCharacter
+     *
+     * @return x-coordinate of this MainCharacter as an int
+     */
     public int getMainCharacterXCoordinate(){
         return x_coordinate;
     }
 
+    /**
+     * Gets the y-coordinate of this MainCharacter
+     *
+     * @return y-coordinate of this MainCharacter as an int
+     */
     public int getMainCharacterYCoordinate(){
         return y_coordinate;
     }

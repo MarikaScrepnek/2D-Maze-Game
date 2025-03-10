@@ -6,7 +6,12 @@ import java.util.Objects;
 import javax.imageio.ImageIO;
 
 public class ParkedCar extends Barrier{
-
+    /**
+     * Constructs a ParkedCar object.
+     *
+     * @param x The x-coordinate of the ParkedCar.
+     * @param y The y-coordinate of the ParkedCar.
+     */
     ParkedCar(int x, int y){
         super ( x, y);
         getImage();

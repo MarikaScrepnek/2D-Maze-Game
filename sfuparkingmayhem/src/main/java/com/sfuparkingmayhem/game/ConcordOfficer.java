@@ -26,7 +26,6 @@ public class ConcordOfficer extends MovingEntity{
     /**
      * Moves the ConcordOfficer towards the MainCharacter.
      */
-
     protected void move(KeyEvent event) {
 
         if (this.x_coordinate < target.getX_coordinate()) {

@@ -93,7 +93,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         gameTimer.start();
     }
 
-    //creates the coins and adds them to the coins arraylist
+    /**
+     * Creates coins and adds them to the coins arraylist
+     */
     private void createCoins(){
         //created and added new coins to the coins arraylist
         coins.add(new Coin(1,1));
@@ -109,6 +111,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     }
 
+    /**
+     * Populates the lostNote arraylist with a lostNote object
+     */
     private void populateLostNote(){
         //create a lostNote with initial x and y coordinates of 0
         lost_note = new LostNote(0,0);
@@ -189,11 +194,17 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     }
 
+    /**
+     * Creates cones and adds them to the cones arraylist
+     */
     private void createCones(){
         //created and added new cones to the cones arraylist
         cones.add(new Cone(4,5));
     }
 
+    /**
+     * Creates parked cars and adds them to the parkedCars arraylist
+     */
     private void createParkedCars(){
         parkedCars.add(new ParkedCar(4, 6));
     }
@@ -257,6 +268,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         drawTimer(g);
 
     }
+
+    /**
+     * Draws the game board
+     * @param g Graphics object
+     */
     private void drawBoard(Graphics g) {
         Image grass=null;
         try {
@@ -308,6 +324,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
     }
 
+    /**
+     * Draws the score on the game board
+     * @param g Graphics object
+     */
     private void drawScore(Graphics g) {
         // Set the font and colour for the UI of Score
         g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
@@ -317,6 +337,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString("SCORE: " + score.getScore() + " PTS", 555, 730);
     }
 
+    /**
+     * Draws the timer on the game board
+     * @param g Graphics object
+     */
     private void drawTimer(Graphics g) {
         int minutes = timeElapsed / 60;
         int seconds = timeElapsed % 60;
@@ -329,6 +353,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString(timeString, 343, 30);
     }
 
+    /**
+     * Gets the time elapsed in the game
+     * @return timeElapsed
+     */
     public int getTimeElapsed(){
         return timeElapsed;
     }
@@ -352,6 +380,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+    /**
+     * Removes a lostNote from ln ArrayList if this MainCharacter's board position matches
+     * a lostNote's board position. Must create a copy of ln ArrayList to prevent iterating
+     * and removing (deleting) from same ArrayList, which is not allowed.
+     */
     private void collectLostNote(){
         //collect the lostNote from the board if lostNote and MainCharacter have same board position
         ArrayList<LostNote> lnCopy = new ArrayList<LostNote>(ln);
@@ -365,6 +398,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+    /**
+     * Checks if the player is colliding with a cone
+     * @param x x-coordinate of the player
+     * @param y y-coordinate of the player
+     * @return true if the player is colliding with a cone, false otherwise
+     */
     private boolean isCollidingWithCone(int x, int y) {
         for (Cone cone : cones) {
             if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
@@ -374,14 +413,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         return false;
     }
 
+    /**
+     * Checks if the player is colliding with a parked car
+     * @param x x-coordinate of the player
+     * @param y y-coordinate of the player
+     * @return true if the player is colliding with a parked car, false otherwise
+     */
     private boolean isCollidingWithParkedCar(int x, int y) {
         for (ParkedCar parkedCar : parkedCars) {
             if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
-                score.subtractPoints(5);
-                if (score.getScore() < 0) {
-                    // TO DO - Add game over logic
-                    System.out.println("Game Over: Score is negative");
-                }
                 return true;
             }
         }
@@ -410,6 +450,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         // Check if the player is colliding with a parked car
         if(isCollidingWithParkedCar(main_character.getX_coordinate(), main_character.getY_coordinate())){
+            // Subtract points from the player's score
+            if(oldX != main_character.getX_coordinate() || oldY != main_character.getY_coordinate()){
+                score.subtractPoints(5);
+                if(score.getScore() < 0){
+                    // TO DO - Add game over logic
+                    System.out.println("Game Over: Score is negative");
+                }
+            }
+
             // revert the player position
             main_character.x_coordinate = oldX;
             main_character.y_coordinate = oldY;
