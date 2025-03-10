@@ -4,9 +4,11 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -33,8 +35,10 @@ public class MainMenu extends JPanel {
         
         setLayout(null);
 
+        Font kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
+
         JLabel titleLabel = new JLabel("SFU Parking Mayhem", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Bahnschrift", Font.BOLD, 32)); // Customize font and size
+        titleLabel.setFont(kenneyFont);
         titleLabel.setForeground(Color.WHITE); // Set title text color
         titleLabel.setBounds(0, 150, 750, 50);
         
@@ -98,6 +102,32 @@ public class MainMenu extends JPanel {
             exit_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("exit_hover.png")));
         } catch (IOException e) {
             System.out.println("Error loading images: " + e.getMessage());
+        }
+    }
+
+    private Font loadCustomFont(String fontFileName, float size) {
+        try {
+            // Load font as an InputStream
+            InputStream fontStream = getClass().getClassLoader().getResourceAsStream(fontFileName);
+            
+            if (fontStream == null) {
+                System.out.println("Font file not found: " + fontFileName);
+                return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
+            }
+
+            // Create a Font instance
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+            fontStream.close(); // Close the stream after loading
+
+            // Register the font
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(customFont);
+
+            // Return the derived font with size
+            return customFont.deriveFont(size);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
         }
     }
 }
