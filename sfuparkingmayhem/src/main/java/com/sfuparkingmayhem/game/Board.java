@@ -63,13 +63,24 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         timer.start();
 
         officerTimer = new Timer(1000, e -> {
+            int oldX = officer.getX_coordinate();
+            int oldY = officer.getY_coordinate();
+
             officer.move(null);  // Call move() without KeyEvent
-            repaint();  // Refresh the screen
+
+            // Check if the officer is colliding with a cone
+            if (isCollidingWithCone(officer.getX_coordinate(), officer.getY_coordinate())) {
+                officer.x_coordinate = oldX;
+                officer.y_coordinate = oldY;
+            }
+
             if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
                 && officer.y_coordinate == main_character.getMainCharacterYCoordinate()) {
                 // TO DO - Add game over logic
                 System.out.println("Game Over");
             }
+
+            repaint();  // Refresh the screen
         });
         officerTimer.start();
 
