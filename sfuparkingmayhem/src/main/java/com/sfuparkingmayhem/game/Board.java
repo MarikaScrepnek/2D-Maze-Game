@@ -29,7 +29,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer gameTimer; 
     private final Score score;
     private ArrayList<Coin> coins = new ArrayList<Coin>();
-    private ArrayList <Wall> walls = new ArrayList<Wall>();
     private ArrayList <Cone> cones = new ArrayList<Cone>();
     private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
 
@@ -138,7 +137,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 int coinXCoord = coin.getX_coordinate();
                 int coinYCoord = coin.getY_coordinate();
 
-
+                System.out.println("coins size = "+coins.size());
 
                 //get the x and y coordinates of that coin
                 //implement and put wall objects onto the board first before uncommenting this
@@ -147,7 +146,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 //
 //                 int pcXCoord = pc.getX_coordinate();
 //                 int pcYCoord = pc.getY_coordinate();
-                //System.out.println("parkedCars size = "+parkedCars.size());
+                System.out.println("parkedCars size = "+parkedCars.size());
                 //need to add the parked cars to arraylist
 
                 //get the x and y coordinates of that coin
@@ -157,7 +156,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 //
 //                 int coneXCoord = cone.getX_coordinate();
 //                 int coneYCoord = cone.getY_coordinate();
-                //System.out.println("cones size = "+cones.size());
+                System.out.println("cones size = "+cones.size());
                 //need to add the cones to arraylist
 
                 //boolean variables needed for checking if the lostnote has matching coordinates
