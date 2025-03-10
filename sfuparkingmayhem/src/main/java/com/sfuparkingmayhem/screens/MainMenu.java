@@ -61,7 +61,7 @@ public class MainMenu extends JPanel {
         start_game_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Board board = new Board();
+                Board board = new Board(cardLayout, cardPanel);
                 cardPanel.add(board, "GameBoard");
                 cardLayout.show(cardPanel, "GameBoard");
                 board.setFocusable(true);
@@ -105,7 +105,7 @@ public class MainMenu extends JPanel {
         }
     }
 
-    private Font loadCustomFont(String fontFileName, float size) {
+    public Font loadCustomFont(String fontFileName, float size) {
         try {
             // Load font as an InputStream
             InputStream fontStream = getClass().getClassLoader().getResourceAsStream(fontFileName);

@@ -1,5 +1,6 @@
 package com.sfuparkingmayhem.game;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Dimension;
@@ -20,6 +21,8 @@ import java.util.PriorityQueue;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import com.sfuparkingmayhem.screens.WinScreen;
 
 public class Board extends JPanel implements ActionListener, KeyListener{
     protected static final int ROWS = 15;
@@ -45,7 +48,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     private int timeElapsed = 0;
 
-    public Board() {
+    CardLayout cardLayout;
+    JPanel cardPanel;
+
+    public Board(CardLayout cardLayout, JPanel cardPanel) {
+        this.cardLayout=cardLayout;
+        this.cardPanel=cardPanel;
+
         //set game board size
         setPreferredSize(new Dimension(CELL_SIZE*COLUMNS,CELL_SIZE*ROWS));
         //set the background color to a concrete grey
@@ -282,6 +291,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         collectCoins();
         collectLostNote();
+        checkGameEnd();
         
 
         //draw coins onto board
@@ -448,6 +458,17 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 score.addPoints(10);
 
             }
+        }
+    }
+
+    private void checkGameEnd() {
+        if (main_character.getMainCharacterXCoordinate() == 14 && main_character.getMainCharacterYCoordinate() == 13) {
+            int finalTime = timeElapsed; // Implement a method to track time
+            int finalScore = score.getScore(); // Assuming Score class has this method
+
+            WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
+            cardPanel.add(winScreen, "WinScreen");
+            cardLayout.show(cardPanel, "WinScreen");
         }
     }
 
