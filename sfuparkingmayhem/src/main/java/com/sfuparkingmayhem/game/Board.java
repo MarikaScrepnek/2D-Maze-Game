@@ -463,12 +463,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     private void checkGameEnd() {
         if (main_character.getMainCharacterXCoordinate() == 14 && main_character.getMainCharacterYCoordinate() == 13) {
+            if (coins.isEmpty()) {
             int finalTime = timeElapsed; // Implement a method to track time
             int finalScore = score.getScore(); // Assuming Score class has this method
 
             WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
             cardPanel.add(winScreen, "WinScreen");
             cardLayout.show(cardPanel, "WinScreen");
+        }
         }
     }
 
