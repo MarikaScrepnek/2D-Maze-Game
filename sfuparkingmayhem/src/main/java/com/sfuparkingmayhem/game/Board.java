@@ -52,31 +52,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //initialize score
         score = new Score();
 
-        //created and added new coins to the coins arraylist
-        coins.add(new Coin(1,1));
-        coins.add(new Coin(2,2));
-        coins.add(new Coin(6,6 ));
-        coins.add(new Coin(7,7));
-        coins.add(new Coin(8,8));
-        coins.add(new Coin(9,9));
-        coins.add(new Coin(10,10));
-        coins.add(new Coin(11,11));
-        coins.add(new Coin(12,12));
-        coins.add(new Coin(13,13));
+
+        createCoins();
 
         //place a lost note onto board
         lost_note = new LostNote(5,5);
-
-//        //add lost note to ln arraylist
-//        ln.add(lost_note);
-
-//        int a = 1;
-//        int b = 14;
-//        for (int i = 0; i < 1000; i++) {
-//        int randomNum = a + (int)Math.abs(Math.random()*(a - b) );
-//        System.out.println(randomNum);}
-
-
 
         boolean check = true;
         do{
@@ -118,6 +98,22 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         });
         gameTimer.start();
     }
+
+    //creates the coins and adds them to the coins arraylist
+    private void createCoins(){
+        //created and added new coins to the coins arraylist
+        coins.add(new Coin(1,1));
+        coins.add(new Coin(2,2));
+        coins.add(new Coin(6,6 ));
+        coins.add(new Coin(7,7));
+        coins.add(new Coin(8,8));
+        coins.add(new Coin(9,9));
+        coins.add(new Coin(10,10));
+        coins.add(new Coin(11,11));
+        coins.add(new Coin(12,12));
+        coins.add(new Coin(13,13));
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // This method is to update the state of the game
