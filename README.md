@@ -9,3 +9,4 @@
 ##### https://clipart-library.com/image_gallery/541546.png 
 ##### coin:  https://png.monster/wp-content/uploads/2022/08/png.monster-90.png 
 #### Cone: https://www.vecteezy.com/vector-art/32311945-pixel-art-illustration-traffic-cone-pixelated-traffic-cone-traffic-cone-safety-icon-pixelated-for-the-pixel-art-game-and-icon-for-website-and-video-game-old-school-retro
+#### TicketBooth: https://png.pngtree.com/png-vector/20220610/ourmid/pngtree-carnival-information-ticket-booth-isolated-on-white-background-png-image_4868612.png
