@@ -48,6 +48,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     private int timeElapsed = 0;
 
+    private int coinsCollectedCount = 0;
+
     CardLayout cardLayout;
     JPanel cardPanel;
 
@@ -329,6 +331,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         drawScore(g);
         drawTimer(g);
+        drawCoinsCollected(g);
 
     }
 
@@ -416,6 +419,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString(timeString, 343, 30);
     }
 
+    private void drawCoinsCollected(Graphics g) {
+        g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+        g.setColor(Color.WHITE);
+
+        g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 310, 730);
+    }
+
     /**
      * Gets the time elapsed in the game
      * @return timeElapsed
@@ -423,6 +433,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public int getTimeElapsed(){
         return timeElapsed;
     }
+
 
     /**
      * Removes a coin from coins ArrayList if this MainCharacter's board position matches
@@ -439,6 +450,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                     && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
                 coins.remove(aCoin);
                 score.addPoints(5);
+                coinsCollectedCount++;
             }
         }
     }
