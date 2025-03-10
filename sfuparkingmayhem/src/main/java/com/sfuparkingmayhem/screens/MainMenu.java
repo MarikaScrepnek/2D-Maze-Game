@@ -26,6 +26,10 @@ public class MainMenu extends JPanel{
         JButton instructions_button = new Jbutton(instructions);
         JButton exit_button = new Jbutton(exit);
 
+        start_game_button.setRolloverIcon(start_game_hover);
+        instructions_button.setRolloverIcon(instructions_hover);
+        exit_button.setRolloverIcon(exit_hover);
+
         start_game_button.setPreferredSize(new Dimension(192, 64));
         instructions_button.setPreferredSize(new Dimension(192, 64));
         exit_button.setPreferredSize(new Dimension(192, 64));
@@ -33,45 +37,15 @@ public class MainMenu extends JPanel{
     }
 
     private void load_images() { //method to load button images
-        ImageIcon start_game = new ImageIcon();
         try {
-            start_game = ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game.png"));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        ImageIcon start_game_hover = new ImageIcon();
-        try {
-            start_game_hover = ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game_hover.png"));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        ImageIcon instructions = new ImageIcon();
-        try {
-            instructions = ImageIO.read(getClass().getClassLoader().getResourceAsStream("instructions.png"));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        ImageIcon instructions_hover = new ImageIcon();
-        try {
-            instructions_hover = ImageIO.read(getClass().getClassLoader().getResourceAsStream("instructions_hover.png"));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        ImageIcon exit = new ImageIcon();
-        try {
-            quit = ImageIO.read(getClass().getClassLoader().getResourceAsStream("exit.png"));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        ImageIcon exit = new ImageIcon();
-        try {
-            quit_hover = ImageIO.read(getClass().getClassLoader().getResourceAsStream("exit.png"));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            start_game = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game.png")));
+            start_game_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game_hover.png")));
+            instructions = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("instructions.png")));
+            instructions_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("instructions_hover.png")));
+            exit = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("exit.png")));
+            exit_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("exit_hover.png")));
+        } catch (IOException e) {
+            System.out.println("Error loading images: " + e.getMessage());
         }
     }
 }
