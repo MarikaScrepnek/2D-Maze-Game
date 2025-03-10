@@ -35,7 +35,7 @@ public class Game
         CardLayout cardLayout = new CardLayout();
         JPanel cardPanel = new JPanel(cardLayout);
         
-        MainMenu mainMenu = new MainMenu(cardLayout, cardPanel, window); // Main menu panel
+        MainMenu mainMenu = new MainMenu(cardLayout, cardPanel); // Main menu panel
         //Instructions instructions = new Instructions();
 
         cardPanel.add(mainMenu, "MainMenu");
