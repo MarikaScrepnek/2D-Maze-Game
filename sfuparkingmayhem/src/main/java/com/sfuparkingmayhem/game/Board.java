@@ -138,10 +138,19 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 //get the x and y coordinates of that coin
                 //implement and put wall objects onto the board first before uncommenting this
                 /*
-                 * Wall wall = walls.get(i);
+                 * ParkecCar pc = parkedCars.get(i);
                  *
-                 * int wallXCoord = wall.getX_coordinate();
-                 * int wallYCoord = wall.getY_coordinate();
+                 * int pcXCoord = pc.getX_coordinate();
+                 * int pcYCoord = pc.getY_coordinate();
+                 * */
+
+                //get the x and y coordinates of that coin
+                //implement and put wall objects onto the board first before uncommenting this
+                /*
+                 * Cone cone = cones.get(i);
+                 *
+                 * int coneXCoord = cone.getX_coordinate();
+                 * int coneYCoord = cone.getY_coordinate();
                  * */
 
 
