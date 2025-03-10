@@ -111,6 +111,33 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coins.add(new Coin(9,12));
         coins.add(new Coin(3,13));
 
+        coins.add(new Coin(1,13));
+        coins.add(new Coin(2,13));
+        coins.add(new Coin(3,13));
+        coins.add(new Coin(4,13));
+        coins.add(new Coin(5,13));
+        coins.add(new Coin(6,13));
+        coins.add(new Coin(7,13));
+        coins.add(new Coin(8,13));
+        coins.add(new Coin(9,13));
+        coins.add(new Coin(10,13));
+        coins.add(new Coin(11,13));
+        coins.add(new Coin(12,13));
+
+        coins.add(new Coin(1,1));
+        coins.add(new Coin(2,1));
+        coins.add(new Coin(3,1));
+        coins.add(new Coin(4,1));
+        coins.add(new Coin(5,1));
+        coins.add(new Coin(6,1));
+        coins.add(new Coin(7,1));
+        coins.add(new Coin(8,1));
+        coins.add(new Coin(9,1));
+        coins.add(new Coin(10,1));
+        coins.add(new Coin(11,1));
+        coins.add(new Coin(12,1));
+        coins.add(new Coin(13,1));
+
     }
 
     /**
