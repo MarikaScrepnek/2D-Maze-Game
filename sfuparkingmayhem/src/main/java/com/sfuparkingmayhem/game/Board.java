@@ -193,7 +193,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
 
             for (int i = 0; i < cones.size(); i++){
-                //get a coin in the coins arraylist
+                //get a cone in the cone arraylist
                 Cone cone = cones.get(i);
 
                 //get the x and y coordinates of that cone
@@ -557,16 +557,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             return null;
         }
 
-        // Distances array: large default cost
+        // Distances array
         int[][] dist = new int[ROWS][COLUMNS];
         for (int r = 0; r < ROWS; r++) {
             Arrays.fill(dist[r], Integer.MAX_VALUE);
         }
 
-        // Keep track of how we got to each cell, for path reconstruction
         Point[][] parent = new Point[ROWS][COLUMNS]; // store predecessor
 
-        // Min-heap / priority queue for Dijkstra
         PriorityQueue<PointDistance> q = new PriorityQueue<>(Comparator.comparingInt(pd -> pd.distance));
 
         // Initialize distance for start node
@@ -580,10 +578,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             PointDistance current = q.poll();
             int currX = current.x;
             int currY = current.y;
-            int cdist = current.distance;
+            int currDist = current.distance;
 
-            // If we've already found a better route before, skip
-            if (cdist > dist[currY][currX]) {
+            // If there's already a better route before, skip
+            if (currDist > dist[currY][currX]) {
                 continue;
             }
 
@@ -599,7 +597,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 int neighbourY = currY + d[1];
                 // If in-bounds and not blocked
                 if (!isCellBlocked(neighbourX, neighbourY)) {
-                    int newDist = cdist + 1; // cost of 1 step
+                    int newDist = currDist + 1; // cost of 1 step
                     if (newDist < dist[neighbourY][neighbourX]) {
                         dist[neighbourY][neighbourX] = newDist;
                         parent[neighbourY][neighbourX] = new Point(currX, currY);
@@ -609,7 +607,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             }
         }
 
-        // If we exhaust the priority queue without reaching (endX, endY), no path
         return null;
     }
 
@@ -633,7 +630,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         return path;
     }
 
-    // A simple helper class to store (x, y) plus a distance in a priority queue
+    // helper class to store (x, y) plus a distance in priority queue
     private static class PointDistance {
         int x, y, distance;
         PointDistance(int x, int y, int dist) {
