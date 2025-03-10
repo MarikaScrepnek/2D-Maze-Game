@@ -73,8 +73,10 @@ public class MainMenu extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 Board board = new Board();
                 cardPanel.add(board, "GameBoard");
-                window.addKeyListener(board);
                 cardLayout.show(cardPanel, "GameBoard");
+                board.setFocusable(true);
+                board.requestFocusInWindow();
+                board.addKeyListener(board);
             }
         });
 
