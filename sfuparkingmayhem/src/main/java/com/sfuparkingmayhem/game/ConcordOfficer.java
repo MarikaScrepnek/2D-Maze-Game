@@ -44,13 +44,13 @@ public class ConcordOfficer extends MovingEntity{
         // If Concord officer is out of bounds, move it back to the board
         if (this.x_coordinate < 1) {
             this.x_coordinate = 1;
-        } else if (this.x_coordinate >= Board.COLUMNS) {
-            this.x_coordinate = Board.COLUMNS - 1;
+        } else if (this.x_coordinate >= Board.COLUMNS-1) {
+            this.x_coordinate = Board.COLUMNS - 2;
         }
         if (this.y_coordinate < 1) {
             this.y_coordinate = 1;
-        } else if (this.y_coordinate >= Board.ROWS) {
-            this.y_coordinate = Board.ROWS - 1;
+        } else if (this.y_coordinate >= Board.ROWS-1) {
+            this.y_coordinate = Board.ROWS - 2;
         }
 
     }

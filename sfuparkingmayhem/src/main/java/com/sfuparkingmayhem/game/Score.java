@@ -11,7 +11,7 @@ public class Score {
         this.score += points;
     }
 
-    protected void subtractPoitns(int points) {
+    protected void subtractPoints(int points) {
         this.score -= points;
     }
 

@@ -55,14 +55,33 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         createCoins();
         populateLostNote();
+        createCones();
+        createParkedCars();
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
         timer.start();
 
-        officerTimer = new Timer(1000, e -> {
+        officerTimer = new Timer(500, e -> {
+            int oldX = officer.getX_coordinate();
+            int oldY = officer.getY_coordinate();
+
             officer.move(null);  // Call move() without KeyEvent
+
+            // Check if the officer is colliding with a cone or parked car
+            if (isCollidingWithCone(officer.getX_coordinate(), officer.getY_coordinate()) ||
+                isCollidingWithParkedCar(officer.getX_coordinate(), officer.getY_coordinate())) {
+                officer.x_coordinate = oldX;
+                officer.y_coordinate = oldY;
+            }
+
+            if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
+                && officer.y_coordinate == main_character.getMainCharacterYCoordinate()) {
+                // TO DO - Add game over logic
+                System.out.println("Game Over: Officer caught you");
+            }
+
             repaint();  // Refresh the screen
         });
         officerTimer.start();
@@ -146,6 +165,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     }
 
+    private void createCones(){
+        //created and added new cones to the cones arraylist
+        cones.add(new Cone(4,5));
+    }
+
+    private void createParkedCars(){
+        parkedCars.add(new ParkedCar(4, 6));
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // This method is to update the state of the game
@@ -166,24 +194,35 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         collectCoins();
         collectLostNote();
+        
 
         //draw coins onto board
         for (int i =0; i<coins.size(); i++){
             Coin aCoin = coins.get(i);
             aCoin.drawTheImage(g, this);
         }
+        
+        //draw cones onto board
+        for (int i =0; i<cones.size(); i++){
+            Cone aCone = cones.get(i);
+            aCone.drawTheImage(g, this);
+        }
+
+        //draw parked cars onto board
+        for (int i =0; i<parkedCars.size(); i++){
+            ParkedCar aParkedCar = parkedCars.get(i);
+            aParkedCar.drawTheImage(g, this);
+        }
 
         //draw note if between 3 and 10 seconds of playing game
         if (3<=getTimeElapsed() && getTimeElapsed()<=10){
 
-        //draw lost note onto board
-        for (int i =0; i<ln.size(); i++){
-            LostNote aLostNote = ln.get(i);
-            aLostNote.drawTheImage(g, this);
-
-            }
+            //draw lost note onto board
+            for (int i =0; i<ln.size(); i++){
+                LostNote aLostNote = ln.get(i);
+                aLostNote.drawTheImage(g, this);
+                }
         }
-
         //remove the lostNote from ln arraylist if time >10 secs
         else if (getTimeElapsed()>10){
             ln.clear();
@@ -302,6 +341,28 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+    private boolean isCollidingWithCone(int x, int y) {
+        for (Cone cone : cones) {
+            if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isCollidingWithParkedCar(int x, int y) {
+        for (ParkedCar parkedCar : parkedCars) {
+            if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
+                score.subtractPoints(5);
+                if (score.getScore() < 0) {
+                    // TO DO - Add game over logic
+                    System.out.println("Game Over: Score is negative");
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     //doesn't need to be implemented but needs to be here because of interface
@@ -312,7 +373,23 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     //move main_character when a key is pressed
     @Override
     public void keyPressed(KeyEvent e) {
+        int oldX = main_character.getX_coordinate();
+        int oldY = main_character.getY_coordinate();
         main_character.move(e);
+
+        // Check if the player is colliding with a cone
+        if (isCollidingWithCone(main_character.getX_coordinate(), main_character.getY_coordinate())) {
+            // revert the player position
+            main_character.x_coordinate = oldX;
+            main_character.y_coordinate  = oldY;
+        }
+
+        // Check if the player is colliding with a parked car
+        if(isCollidingWithParkedCar(main_character.getX_coordinate(), main_character.getY_coordinate())){
+            // revert the player position
+            main_character.x_coordinate = oldX;
+            main_character.y_coordinate = oldY;
+        }
     }
 
     //doesn't need to be implemented but needs to be here because of interface
