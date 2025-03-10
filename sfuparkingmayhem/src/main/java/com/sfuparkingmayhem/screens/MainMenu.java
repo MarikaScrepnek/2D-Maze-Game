@@ -4,17 +4,13 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -37,18 +33,8 @@ public class MainMenu extends JPanel {
         
         setLayout(null);
 
-        try {
-            // Load the font from the file
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("resources/Kenney Future.ttf"));
-            // Register the font
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(customFont);
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace(); // Handle errors
-        }
-
         JLabel titleLabel = new JLabel("SFU Parking Mayhem", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Kenney Future", Font.BOLD, 32)); // Customize font and size
+        titleLabel.setFont(new Font("Bahnschrift", Font.BOLD, 32)); // Customize font and size
         titleLabel.setForeground(Color.WHITE); // Set title text color
         titleLabel.setBounds(0, 150, 750, 50);
         
