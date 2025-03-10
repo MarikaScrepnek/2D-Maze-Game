@@ -29,19 +29,14 @@ public class Game
         CardLayout cardLayout = new CardLayout();
         JPanel cardPanel = new JPanel(cardLayout);
         
-        MainMenu mainMenu = new MainMenu(); // Main menu panel
-        //Board board = new Board();  // Game panel (board)
+        MainMenu mainMenu = new MainMenu(cardLayout, cardPanel, window); // Main menu panel
         //Instructions instructions = new Instructions();
 
         cardPanel.add(mainMenu, "MainMenu");
-        //cardPanel.add(board, "GameBoard");
         //cardPanel.add(instructions, "Instructions");
 
         //add the board panel to the window (instead of board it could be different screens)
         window.add(cardPanel);
-        
-        //make board panel able to read keyboard inputs (uncomment when moving is implemented)
-        //window.addKeyListener(board);
 
         //dont allow user to resize the window
         window.setResizable(false);
