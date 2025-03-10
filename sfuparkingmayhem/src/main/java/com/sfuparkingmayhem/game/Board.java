@@ -98,16 +98,16 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCoins(){
         //created and added new coins to the coins arraylist
-        coins.add(new Coin(1,1));
-        coins.add(new Coin(2,2));
-        coins.add(new Coin(6,6 ));
-        coins.add(new Coin(7,7));
-        coins.add(new Coin(8,8));
-        coins.add(new Coin(9,9));
-        coins.add(new Coin(10,10));
-        coins.add(new Coin(11,11));
-        coins.add(new Coin(12,12));
-        coins.add(new Coin(13,13));
+        coins.add(new Coin(2,3));
+        coins.add(new Coin(7,2));
+        coins.add(new Coin(10,4 ));
+        coins.add(new Coin(7,5));
+        coins.add(new Coin(3,8));
+        coins.add(new Coin(11,8));
+        coins.add(new Coin(6,9));
+        coins.add(new Coin(12,11));
+        coins.add(new Coin(9,12));
+        coins.add(new Coin(3,13));
 
     }
 
@@ -184,14 +184,34 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCones(){
         //created and added new cones to the cones arraylist
+        cones.add(new Cone(4,3));
+        cones.add(new Cone(11,3));
+        cones.add(new Cone(12,3));
         cones.add(new Cone(4,5));
+        cones.add(new Cone(9,7));
+        cones.add(new Cone(6,8));
+        cones.add(new Cone(12,9));
+        cones.add(new Cone(2,10));
+        cones.add(new Cone(10,10));
+        cones.add(new Cone(7,13));
     }
 
     /**
      * Creates parked cars and adds them to the parkedCars arraylist
      */
     private void createParkedCars(){
-        parkedCars.add(new ParkedCar(4, 6));
+        parkedCars.add(new ParkedCar(2, 2));
+        parkedCars.add(new ParkedCar(6, 5));
+        parkedCars.add(new ParkedCar(8, 5));
+        parkedCars.add(new ParkedCar(12, 6));
+        parkedCars.add(new ParkedCar(12, 7));
+        parkedCars.add(new ParkedCar(3, 7));
+        parkedCars.add(new ParkedCar(4, 11));
+        parkedCars.add(new ParkedCar(4, 12));
+        parkedCars.add(new ParkedCar(8, 11));
+        parkedCars.add(new ParkedCar(8, 11));
+        parkedCars.add(new ParkedCar(9, 11));
+
     }
 
     @Override
