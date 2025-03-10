@@ -55,6 +55,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         createCoins();
         populateLostNote();
+        createCones();
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
@@ -64,6 +65,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         officerTimer = new Timer(1000, e -> {
             officer.move(null);  // Call move() without KeyEvent
             repaint();  // Refresh the screen
+            if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
+                && officer.y_coordinate == main_character.getMainCharacterYCoordinate()) {
+                // TO DO - Add game over logic
+                System.out.println("Game Over");
+            }
         });
         officerTimer.start();
 
@@ -146,6 +152,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     }
 
+    private void createCones(){
+        //created and added new cones to the cones arraylist
+        cones.add(new Cone(4,5));
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // This method is to update the state of the game
@@ -166,24 +177,30 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         collectCoins();
         collectLostNote();
+        checkConeCollision();
+        
 
         //draw coins onto board
         for (int i =0; i<coins.size(); i++){
             Coin aCoin = coins.get(i);
             aCoin.drawTheImage(g, this);
         }
+        
+        //draw cones onto board
+        for (int i =0; i<cones.size(); i++){
+            Cone aCone = cones.get(i);
+            aCone.drawTheImage(g, this);
+        }
 
         //draw note if between 3 and 10 seconds of playing game
         if (3<=getTimeElapsed() && getTimeElapsed()<=10){
 
-        //draw lost note onto board
-        for (int i =0; i<ln.size(); i++){
-            LostNote aLostNote = ln.get(i);
-            aLostNote.drawTheImage(g, this);
-
-            }
+            //draw lost note onto board
+            for (int i =0; i<ln.size(); i++){
+                LostNote aLostNote = ln.get(i);
+                aLostNote.drawTheImage(g, this);
+                }
         }
-
         //remove the lostNote from ln arraylist if time >10 secs
         else if (getTimeElapsed()>10){
             ln.clear();
@@ -277,6 +294,19 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 ln.remove(aLostNote);
                 score.addPoints(10);
 
+            }
+        }
+    }
+
+    private void checkConeCollision(){
+        //check if the main character has collided with a cone
+        ArrayList<Cone> conesCopy = new ArrayList<Cone>(cones);
+
+        for (Cone aCone : conesCopy){
+            if (main_character.getMainCharacterXCoordinate() == aCone.getX_coordinate()
+                    && main_character.getMainCharacterYCoordinate() == aCone.getY_coordinate()){
+                // TO DO: Prevent the player from moving into the cone
+                
             }
         }
     }
