@@ -20,6 +20,9 @@ public class Game
         //make sure the program shuts down when the window is closed
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //MainMenu main_menu = new MainMenu();
+        //window.add(MainMenu)
+
         //create a new board for the game
         Board board = new Board();
 

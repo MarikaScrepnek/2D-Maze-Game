@@ -44,7 +44,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //set game board size
         setPreferredSize(new Dimension(CELL_SIZE*COLUMNS,CELL_SIZE*ROWS));
         //set the background color to a concrete grey
-        setBackground(new Color(153, 153, 153));
+        setBackground(new Color(43, 43, 43));
         //intialize player
         main_character = new MainCharacter(0, 1);
         //initialize officer
@@ -196,21 +196,21 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
     private void drawBoard(Graphics g) {
         //draw checkered cells
-        g.setColor(new Color(214, 214, 214));
+        /*g.setColor(new Color(43, 43, 43));
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLUMNS; col++) {
                 //only color every other tile
                 if ((row + col) % 2 == 1) {
                     //draw a tile
                     g.fillRect(
-                        col * CELL_SIZE, 
+                        col * CELL_SIZE,
                         row * CELL_SIZE, 
                         CELL_SIZE, 
                         CELL_SIZE
                     );
                 }
             }
-        }
+        }*/
         //draw borders
         g.setColor(new Color(0, 128, 0));
         g.fillRect(0, 0, COLUMNS * CELL_SIZE, CELL_SIZE); // Top border

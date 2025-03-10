@@ -7,14 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class MainMenu {
-    private int x,y; //mouse position
     private ImageIcon start_game; //start game button image
     private ImageIcon instructions; //instructions button image
     private ImageIcon quit; //quit button image
 
     public MainMenu(int x, int y) { //initializes variables and load button images
-        this.x=x;
-        this.y=y;
         load_images();
     }
 
