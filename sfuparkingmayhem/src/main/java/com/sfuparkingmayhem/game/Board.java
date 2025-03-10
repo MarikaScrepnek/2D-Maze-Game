@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -195,33 +195,54 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     }
     private void drawBoard(Graphics g) {
-        //draw checkered cells
-        /*g.setColor(new Color(43, 43, 43));
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLUMNS; col++) {
-                //only color every other tile
-                if ((row + col) % 2 == 1) {
-                    //draw a tile
-                    g.fillRect(
-                        col * CELL_SIZE,
-                        row * CELL_SIZE, 
-                        CELL_SIZE, 
-                        CELL_SIZE
-                    );
-                }
-            }
-        }*/
-        //draw borders
-        g.setColor(new Color(0, 128, 0));
-        g.fillRect(0, 0, COLUMNS * CELL_SIZE, CELL_SIZE); // Top border
-        g.fillRect(0, (ROWS - 1) * CELL_SIZE, COLUMNS * CELL_SIZE, CELL_SIZE); // Bottom border
-        g.fillRect(0, 0, CELL_SIZE, ROWS * CELL_SIZE); // Left border
-        g.fillRect((COLUMNS - 1) * CELL_SIZE, 0, CELL_SIZE, ROWS * CELL_SIZE); // Right border
+        Image grass=null;
+        try {
+            grass = ImageIO.read(getClass().getClassLoader().getResourceAsStream("bush.png"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        //top
+        for (int col = 1; col < COLUMNS; col++) {
+            g.drawImage(grass, col * CELL_SIZE, 0, 50, 50, null);
+        }
 
-        //draw entrance and exit blue
-        g.setColor(new Color(19, 3, 252));
+        // Bottom border
+        for (int col = 0; col < COLUMNS; col++) {
+            g.drawImage(grass, col * CELL_SIZE, (ROWS - 1) * CELL_SIZE, 50, 50, null);
+        }
+
+        // Left border
+        for (int row = 0; row < ROWS; row++) {
+            g.drawImage(grass, 0, row * CELL_SIZE, 50, 50, null);
+        }
+
+        // Right border
+        for (int row = 0; row < ROWS; row++) {
+            g.drawImage(grass, (COLUMNS - 1) * CELL_SIZE, row * CELL_SIZE, 50, 50, null);
+        }
+
+        //draw entrance
+        g.setColor(new Color(43, 43, 43));
         g.fillRect(0, CELL_SIZE, CELL_SIZE, CELL_SIZE);
         g.fillRect((COLUMNS - 1) * CELL_SIZE, (ROWS - 2) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+
+        //draw parking entrance
+        Image parkingSign=null;
+        try {
+            parkingSign = ImageIO.read(getClass().getClassLoader().getResourceAsStream("parkingSign.png"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        g.drawImage(parkingSign, 0,0,50,50,null);
+
+        //draw ticketbooth
+        Image ticketBooth=null;
+        try {
+            ticketBooth = ImageIO.read(getClass().getClassLoader().getResourceAsStream("ticketBooth.png"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
     }
 
     private void drawScore(Graphics g) {
