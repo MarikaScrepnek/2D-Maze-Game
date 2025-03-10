@@ -56,6 +56,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         createCoins();
         populateLostNote();
         createCones();
+        createParkedCars();
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
@@ -168,6 +169,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         cones.add(new Cone(4,5));
     }
 
+    private void createParkedCars(){
+        parkedCars.add(new ParkedCar(4, 6));
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // This method is to update the state of the game
@@ -200,6 +205,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (int i =0; i<cones.size(); i++){
             Cone aCone = cones.get(i);
             aCone.drawTheImage(g, this);
+        }
+
+        //draw parked cars onto board
+        for (int i =0; i<parkedCars.size(); i++){
+            ParkedCar aParkedCar = parkedCars.get(i);
+            aParkedCar.drawTheImage(g, this);
         }
 
         //draw note if between 3 and 10 seconds of playing game
