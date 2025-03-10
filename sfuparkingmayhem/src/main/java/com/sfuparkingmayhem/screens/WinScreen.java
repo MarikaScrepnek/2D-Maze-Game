@@ -17,16 +17,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import com.sfuparkingmayhem.game.Score;
-
 public class WinScreen extends JPanel {
     private ImageIcon main_menu;
     private ImageIcon main_menu_hover;
-    private Score score;
+    private int score;
     private int time;
 
 
-    public WinScreen(CardLayout cardLayout, JPanel cardPanel, Score score, int time) {
+    public WinScreen(CardLayout cardLayout, JPanel cardPanel, int score, int time) {
         this.score = score;
         this.time = time;
 
