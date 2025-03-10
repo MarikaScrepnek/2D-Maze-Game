@@ -4,11 +4,13 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.awt.Point;
 
 
 public class ConcordOfficer extends MovingEntity{
     // Reference to the MainCharacter
     private MainCharacter target;
+    private Board board;
 
     /**
      * Constructs a ConcordOfficer that will chase the MainCharacter.
@@ -17,9 +19,10 @@ public class ConcordOfficer extends MovingEntity{
      * @param y_coordinate The initial y-coordinate of this ConcordOfficer.
      * @param target       The MainCharacter to chase.
      */
-    public ConcordOfficer(int x_coordinate, int y_coordinate, MainCharacter target) {
+    public ConcordOfficer(int x_coordinate, int y_coordinate, MainCharacter target, Board board) {
         super(x_coordinate, y_coordinate);
         this.target = target;
+        this.board = board;
         getImage(); // Load the sprite/image for this entity
     }
 
@@ -27,32 +30,24 @@ public class ConcordOfficer extends MovingEntity{
      * Moves the ConcordOfficer towards the MainCharacter.
      */
     protected void move(KeyEvent event) {
+        // Use Dijkstra’s pathfinding to find next step toward the player.
+        java.util.List<Point> path = board.findPathDijkstra(
+            this.getX_coordinate(),
+            this.getY_coordinate(),
+            target.getX_coordinate(),
+            target.getY_coordinate()
+        );
 
-        if (this.x_coordinate < target.getX_coordinate()) {
-            this.x_coordinate++;
-        } else if (this.x_coordinate > target.getX_coordinate()) {
-            this.x_coordinate--;
+        // If a valid path was found and has more than one step, 
+        // the first element of 'path' is our current cell, 
+        // the second element is the next cell toward the target:
+        if (path != null && path.size() > 1) {
+            Point nextStep = path.get(1);
+            this.x_coordinate = nextStep.x;
+            this.y_coordinate = nextStep.y;
         }
-    
-        else if(this.y_coordinate < target.getY_coordinate()) {
-            this.y_coordinate++;
-        } else if (this.y_coordinate > target.getY_coordinate()) {
-            this.y_coordinate--;
-        }
-
-        // If Concord officer is out of bounds, move it back to the board
-        if (this.x_coordinate < 1) {
-            this.x_coordinate = 1;
-        } else if (this.x_coordinate >= Board.COLUMNS-1) {
-            this.x_coordinate = Board.COLUMNS - 2;
-        }
-        if (this.y_coordinate < 1) {
-            this.y_coordinate = 1;
-        } else if (this.y_coordinate >= Board.ROWS-1) {
-            this.y_coordinate = Board.ROWS - 2;
-        }
-
     }
+
     
 
     @Override

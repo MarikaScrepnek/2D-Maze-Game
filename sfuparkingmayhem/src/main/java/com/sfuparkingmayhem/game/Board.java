@@ -1,6 +1,7 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -10,6 +11,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.PriorityQueue;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -48,7 +54,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //intialize player
         main_character = new MainCharacter(0, 1);
         //initialize officer
-        officer = new ConcordOfficer(7, 7, main_character);
+        officer = new ConcordOfficer(7, 7, main_character, this);
         //initialize score
         score = new Score();
 
@@ -491,4 +497,122 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
 
+    public boolean isCellBlocked(int x, int y) {
+        // Return true if out-of-bounds
+        if (x <= 0 || x >= COLUMNS-1 || y <= 0 || y >= ROWS-1) {
+            return true;
+        }
+        // Check for cones
+        for (Cone cone : cones) {
+            if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
+                return true;
+            }
+        }
+        // Check for parked cars
+        for (ParkedCar pc : parkedCars) {
+            if (pc.getX_coordinate() == x && pc.getY_coordinate() == y) {
+                return true;
+            }
+        }
+        
+    
+       
+        return false;
+    }
+    
+    /**
+     * Returns a path (as a list of Points) from (startX,startY) to (endX,endY),
+     * or null if no path exists.
+     */
+    public List<Point> findPathDijkstra(int startX, int startY, int endX, int endY) {
+        // If the start or end is blocked, no path
+        if (isCellBlocked(startX, startY) || isCellBlocked(endX, endY)) {
+            return null;
+        }
+
+        // Distances array: large default cost
+        int[][] dist = new int[ROWS][COLUMNS];
+        for (int r = 0; r < ROWS; r++) {
+            Arrays.fill(dist[r], Integer.MAX_VALUE);
+        }
+
+        // Keep track of how we got to each cell, for path reconstruction
+        Point[][] parent = new Point[ROWS][COLUMNS]; // store predecessor
+
+        // Min-heap / priority queue for Dijkstra
+        PriorityQueue<PointDistance> q = new PriorityQueue<>(Comparator.comparingInt(pd -> pd.distance));
+
+        // Initialize distance for start node
+        dist[startY][startX] = 0;
+        q.offer(new PointDistance(startX, startY, 0));
+
+        // Directions for up/down/left/right movement
+        int[][] directions = { {1,0}, {-1,0}, {0,1}, {0,-1} };
+
+        while (!q.isEmpty()) {
+            PointDistance current = q.poll();
+            int currX = current.x;
+            int currY = current.y;
+            int cdist = current.distance;
+
+            // If we've already found a better route before, skip
+            if (cdist > dist[currY][currX]) {
+                continue;
+            }
+
+            // If we reached the target, stop
+            if (currX == endX && currY == endY) {
+                // Reconstruct path from end -> start using 'parent'
+                return buildPath(parent, startX, startY, endX, endY);
+            }
+
+            // Explore neighbors
+            for (int[] d : directions) {
+                int neighbourX = currX + d[0];
+                int neighbourY = currY + d[1];
+                // If in-bounds and not blocked
+                if (!isCellBlocked(neighbourX, neighbourY)) {
+                    int newDist = cdist + 1; // cost of 1 step
+                    if (newDist < dist[neighbourY][neighbourX]) {
+                        dist[neighbourY][neighbourX] = newDist;
+                        parent[neighbourY][neighbourX] = new Point(currX, currY);
+                        q.offer(new PointDistance(neighbourX, neighbourY, newDist));
+                    }
+                }
+            }
+        }
+
+        // If we exhaust the priority queue without reaching (endX, endY), no path
+        return null;
+    }
+
+    /**
+     * Reconstructs the path by backtracking from the end cell’s parent pointer
+     * up to the start cell. Then reverse that list to get start->end order.
+     */
+    private List<Point> buildPath(Point[][] parent, int startX, int startY,
+                                  int endX, int endY) {
+        LinkedList<Point> path = new LinkedList<>();
+        int currX = endX;
+        int currY = endY;
+        while (!(currX == startX && currY == startY)) {
+            path.addFirst(new Point(currX, currY));
+            Point par = parent[currY][currX];
+            currX = par.x;
+            currY = par.y;
+        }
+        // Add the start cell at the front
+        path.addFirst(new Point(startX, startY));
+        return path;
+    }
+
+    // A simple helper class to store (x, y) plus a distance in a priority queue
+    private static class PointDistance {
+        int x, y, distance;
+        PointDistance(int x, int y, int dist) {
+            this.x = x;
+            this.y = y;
+            this.distance = dist;
+        }
+    }
 }
