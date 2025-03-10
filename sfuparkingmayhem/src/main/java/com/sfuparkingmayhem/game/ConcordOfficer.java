@@ -28,6 +28,7 @@ public class ConcordOfficer extends MovingEntity{
      */
 
     protected void move(KeyEvent event) {
+
         if (this.x_coordinate < target.getX_coordinate()) {
             this.x_coordinate++;
         } else if (this.x_coordinate > target.getX_coordinate()) {
@@ -39,6 +40,19 @@ public class ConcordOfficer extends MovingEntity{
         } else if (this.y_coordinate > target.getY_coordinate()) {
             this.y_coordinate--;
         }
+
+        // If Concord officer is out of bounds, move it back to the board
+        if (this.x_coordinate < 1) {
+            this.x_coordinate = 1;
+        } else if (this.x_coordinate >= Board.COLUMNS) {
+            this.x_coordinate = Board.COLUMNS - 1;
+        }
+        if (this.y_coordinate < 1) {
+            this.y_coordinate = 1;
+        } else if (this.y_coordinate >= Board.ROWS) {
+            this.y_coordinate = Board.ROWS - 1;
+        }
+
     }
     
 
