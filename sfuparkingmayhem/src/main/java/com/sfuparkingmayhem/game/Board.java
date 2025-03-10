@@ -29,7 +29,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer gameTimer; 
     private final Score score;
     private ArrayList<Coin> coins = new ArrayList<Coin>();
-    private ArrayList <Wall> walls = new ArrayList<Wall>();
     private ArrayList <Cone> cones = new ArrayList<Cone>();
     private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
 
@@ -93,22 +92,27 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         gameTimer.start();
     }
 
-    //creates the coins and adds them to the coins arraylist
+    /**
+     * Creates coins and adds them to the coins arraylist
+     */
     private void createCoins(){
         //created and added new coins to the coins arraylist
-        coins.add(new Coin(1,1));
-        coins.add(new Coin(2,2));
-        coins.add(new Coin(6,6 ));
-        coins.add(new Coin(7,7));
-        coins.add(new Coin(8,8));
-        coins.add(new Coin(9,9));
-        coins.add(new Coin(10,10));
-        coins.add(new Coin(11,11));
-        coins.add(new Coin(12,12));
-        coins.add(new Coin(13,13));
+        coins.add(new Coin(2,3));
+        coins.add(new Coin(7,2));
+        coins.add(new Coin(10,4 ));
+        coins.add(new Coin(7,5));
+        coins.add(new Coin(3,8));
+        coins.add(new Coin(11,8));
+        coins.add(new Coin(6,9));
+        coins.add(new Coin(12,11));
+        coins.add(new Coin(9,12));
+        coins.add(new Coin(3,13));
 
     }
 
+    /**
+     * Populates the lostNote arraylist with a lostNote object
+     */
     private void populateLostNote(){
         //create a lostNote with initial x and y coordinates of 0
         lost_note = new LostNote(0,0);
@@ -133,21 +137,45 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 int coinXCoord = coin.getX_coordinate();
                 int coinYCoord = coin.getY_coordinate();
 
-
+                System.out.println("coins size = "+coins.size());
 
                 //get the x and y coordinates of that coin
                 //implement and put wall objects onto the board first before uncommenting this
-                /*
-                 * Wall wall = walls.get(i);
-                 *
-                 * int wallXCoord = wall.getX_coordinate();
-                 * int wallYCoord = wall.getY_coordinate();
-                 * */
+
+//                 ParkedCar pc = parkedCars.get(i);
+//
+//                 int pcXCoord = pc.getX_coordinate();
+//                 int pcYCoord = pc.getY_coordinate();
+                System.out.println("parkedCars size = "+parkedCars.size());
+                //need to add the parked cars to arraylist
+
+                //get the x and y coordinates of that coin
+                //implement and put wall objects onto the board first before uncommenting this
+
+//                 Cone cone = cones.get(i);
+//
+//                 int coneXCoord = cone.getX_coordinate();
+//                 int coneYCoord = cone.getY_coordinate();
+                System.out.println("cones size = "+cones.size());
+                //need to add the cones to arraylist
+
+                //boolean variables needed for checking if the lostnote has matching coordinates
+                boolean coinCoordConflict = false;
+
+                if (lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord){
+                    coinCoordConflict = true;
+                }
+//                else if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
+//                    coinCoordConflict = true;
+//                }
+//
+//                else if (lost_note.getX_coordinate() == coneXCoord && lost_note.getY_coordinate() == coneXCoord){
+//                    coinCoordConflict = true;
+//                }
 
 
                 //check if another entity is already on that position on board
-                if((lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord) /*&&
-                !(lost_note.getX_coordinate() == wallXCoord && lost_note.getY_coordinate() == wallYCoord)*/){
+                if(coinCoordConflict){
 
                     //set check to be true as another set of coords needs to be generate for lostNote
                     check = true;
@@ -165,13 +193,39 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     }
 
+    /**
+     * Creates cones and adds them to the cones arraylist
+     */
     private void createCones(){
         //created and added new cones to the cones arraylist
+        cones.add(new Cone(4,3));
+        cones.add(new Cone(11,3));
+        cones.add(new Cone(12,3));
         cones.add(new Cone(4,5));
+        cones.add(new Cone(9,7));
+        cones.add(new Cone(6,8));
+        cones.add(new Cone(12,9));
+        cones.add(new Cone(2,10));
+        cones.add(new Cone(10,10));
+        cones.add(new Cone(7,13));
     }
 
+    /**
+     * Creates parked cars and adds them to the parkedCars arraylist
+     */
     private void createParkedCars(){
-        parkedCars.add(new ParkedCar(4, 6));
+        parkedCars.add(new ParkedCar(2, 2));
+        parkedCars.add(new ParkedCar(6, 5));
+        parkedCars.add(new ParkedCar(8, 5));
+        parkedCars.add(new ParkedCar(12, 6));
+        parkedCars.add(new ParkedCar(12, 7));
+        parkedCars.add(new ParkedCar(3, 7));
+        parkedCars.add(new ParkedCar(4, 11));
+        parkedCars.add(new ParkedCar(4, 12));
+        parkedCars.add(new ParkedCar(8, 11));
+        parkedCars.add(new ParkedCar(8, 11));
+        parkedCars.add(new ParkedCar(9, 11));
+
     }
 
     @Override
@@ -233,6 +287,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         drawTimer(g);
 
     }
+
+    /**
+     * Draws the game board
+     * @param g Graphics object
+     */
     private void drawBoard(Graphics g) {
         Image grass=null;
         try {
@@ -284,6 +343,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
     }
 
+    /**
+     * Draws the score on the game board
+     * @param g Graphics object
+     */
     private void drawScore(Graphics g) {
         // Set the font and colour for the UI of Score
         g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
@@ -293,6 +356,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString("SCORE: " + score.getScore() + " PTS", 555, 730);
     }
 
+    /**
+     * Draws the timer on the game board
+     * @param g Graphics object
+     */
     private void drawTimer(Graphics g) {
         int minutes = timeElapsed / 60;
         int seconds = timeElapsed % 60;
@@ -305,6 +372,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString(timeString, 343, 30);
     }
 
+    /**
+     * Gets the time elapsed in the game
+     * @return timeElapsed
+     */
     public int getTimeElapsed(){
         return timeElapsed;
     }
@@ -328,6 +399,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+    /**
+     * Removes a lostNote from ln ArrayList if this MainCharacter's board position matches
+     * a lostNote's board position. Must create a copy of ln ArrayList to prevent iterating
+     * and removing (deleting) from same ArrayList, which is not allowed.
+     */
     private void collectLostNote(){
         //collect the lostNote from the board if lostNote and MainCharacter have same board position
         ArrayList<LostNote> lnCopy = new ArrayList<LostNote>(ln);
@@ -341,6 +417,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+    /**
+     * Checks if the player is colliding with a cone
+     * @param x x-coordinate of the player
+     * @param y y-coordinate of the player
+     * @return true if the player is colliding with a cone, false otherwise
+     */
     private boolean isCollidingWithCone(int x, int y) {
         for (Cone cone : cones) {
             if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
@@ -350,14 +432,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         return false;
     }
 
+    /**
+     * Checks if the player is colliding with a parked car
+     * @param x x-coordinate of the player
+     * @param y y-coordinate of the player
+     * @return true if the player is colliding with a parked car, false otherwise
+     */
     private boolean isCollidingWithParkedCar(int x, int y) {
         for (ParkedCar parkedCar : parkedCars) {
             if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
-                score.subtractPoints(5);
-                if (score.getScore() < 0) {
-                    // TO DO - Add game over logic
-                    System.out.println("Game Over: Score is negative");
-                }
                 return true;
             }
         }
@@ -386,6 +469,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         // Check if the player is colliding with a parked car
         if(isCollidingWithParkedCar(main_character.getX_coordinate(), main_character.getY_coordinate())){
+            // Subtract points from the player's score
+            if(oldX != main_character.getX_coordinate() || oldY != main_character.getY_coordinate()){
+                score.subtractPoints(5);
+                if(score.getScore() < 0){
+                    // TO DO - Add game over logic
+                    System.out.println("Game Over: Score is negative");
+                }
+            }
+
             // revert the player position
             main_character.x_coordinate = oldX;
             main_character.y_coordinate = oldY;

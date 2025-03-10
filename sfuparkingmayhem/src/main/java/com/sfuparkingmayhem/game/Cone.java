@@ -6,7 +6,12 @@ import java.util.Objects;
 import javax.imageio.ImageIO;
 
 public class Cone extends Barrier{
-
+    /**
+     * Constructs a Cone object.
+     *
+     * @param x The x-coordinate of the Cone.
+     * @param y The y-coordinate of the Cone.
+     */
     Cone (int x, int y){
         super(x,y);
         getImage();
