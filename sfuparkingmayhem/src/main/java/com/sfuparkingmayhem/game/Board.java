@@ -35,7 +35,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer gameTimer; 
     private final Score score;
     private ArrayList<Coin> coins = new ArrayList<Coin>();
-    private ArrayList <Wall> walls = new ArrayList<Wall>();
     private ArrayList <Cone> cones = new ArrayList<Cone>();
     private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
 
@@ -62,7 +61,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         createCoins();
         populateLostNote();
         createCones();
+        System.out.println("cones size = "+cones.size());
         createParkedCars();
+        System.out.println("parkedCars size = "+parkedCars.size());
+
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
@@ -144,42 +146,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 int coinXCoord = coin.getX_coordinate();
                 int coinYCoord = coin.getY_coordinate();
 
-
-
-                //get the x and y coordinates of that coin
-                //implement and put wall objects onto the board first before uncommenting this
-
-//                 ParkedCar pc = parkedCars.get(i);
-//
-//                 int pcXCoord = pc.getX_coordinate();
-//                 int pcYCoord = pc.getY_coordinate();
-                //System.out.println("parkedCars size = "+parkedCars.size());
-                //need to add the parked cars to arraylist
-
-                //get the x and y coordinates of that coin
-                //implement and put wall objects onto the board first before uncommenting this
-
-//                 Cone cone = cones.get(i);
-//
-//                 int coneXCoord = cone.getX_coordinate();
-//                 int coneYCoord = cone.getY_coordinate();
-                //System.out.println("cones size = "+cones.size());
-                //need to add the cones to arraylist
-
                 //boolean variables needed for checking if the lostnote has matching coordinates
                 boolean coinCoordConflict = false;
 
                 if (lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord){
                     coinCoordConflict = true;
                 }
-//                else if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
-//                    coinCoordConflict = true;
-//                }
-//
-//                else if (lost_note.getX_coordinate() == coneXCoord && lost_note.getY_coordinate() == coneXCoord){
-//                    coinCoordConflict = true;
-//                }
-
 
                 //check if another entity is already on that position on board
                 if(coinCoordConflict){
@@ -191,6 +163,62 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                     break;
                 }
             }
+
+            for (int i = 0; i < parkedCars.size(); i++){
+                //get a coin in the coins arraylist
+                ParkedCar pc = parkedCars.get(i);
+
+                //get the x and y coordinates of that ParkedCar
+                int pcXCoord = pc.getX_coordinate();
+                int pcYCoord = pc.getY_coordinate();
+
+                //boolean variables needed for checking if the lostnote has matching coordinates
+                boolean pcCoordConflict = false;
+
+                if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
+                    pcCoordConflict = true;
+                }
+
+                //check if another entity is already on that position on board
+                if(pcCoordConflict){
+
+                    //set check to be true as another set of coords needs to be generate for lostNote
+                    check = true;
+
+                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
+                    break;
+                }
+
+            }
+
+
+            for (int i = 0; i < cones.size(); i++){
+                //get a coin in the coins arraylist
+                Cone cone = cones.get(i);
+
+                //get the x and y coordinates of that cone
+                int coneXCoord = cone.getX_coordinate();
+                int coneYCoord = cone.getY_coordinate();
+
+                //boolean variables needed for checking if the lostnote has matching coordinates
+                boolean coneCoordConflict = false;
+
+                if (lost_note.getX_coordinate() == coneXCoord && lost_note.getY_coordinate() == coneYCoord){
+                    coneCoordConflict = true;
+                }
+
+                //check if another entity is already on that position on board
+                if(coneCoordConflict){
+
+                    //set check to be true as another set of coords needs to be generate for lostNote
+                    check = true;
+
+                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
+                    break;
+                }
+
+            }
+
 
         } while (check);
 
@@ -229,7 +257,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         parkedCars.add(new ParkedCar(3, 7));
         parkedCars.add(new ParkedCar(4, 11));
         parkedCars.add(new ParkedCar(4, 12));
-        parkedCars.add(new ParkedCar(8, 11));
         parkedCars.add(new ParkedCar(8, 11));
         parkedCars.add(new ParkedCar(9, 11));
 
