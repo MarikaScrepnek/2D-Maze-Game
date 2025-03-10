@@ -177,7 +177,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         collectCoins();
         collectLostNote();
-        checkConeCollision();
         
 
         //draw coins onto board
@@ -298,17 +297,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
-    private void checkConeCollision(){
-        //check if the main character has collided with a cone
-        ArrayList<Cone> conesCopy = new ArrayList<Cone>(cones);
-
-        for (Cone aCone : conesCopy){
-            if (main_character.getMainCharacterXCoordinate() == aCone.getX_coordinate()
-                    && main_character.getMainCharacterYCoordinate() == aCone.getY_coordinate()){
-                // TO DO: Prevent the player from moving into the cone
-                
+    private boolean isCollidingWithCone(int x, int y) {
+        for (Cone cone : cones) {
+            if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
+                return true;
             }
         }
+        return false;
     }
 
 
@@ -321,7 +316,16 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     //move main_character when a key is pressed
     @Override
     public void keyPressed(KeyEvent e) {
+        int oldX = main_character.getX_coordinate();
+        int oldY = main_character.getY_coordinate();
         main_character.move(e);
+        if (isCollidingWithCone(main_character.getX_coordinate(), main_character.getY_coordinate())) {
+            // revert the player position
+            // (Since you don’t have setX/setY methods, you can directly modify the fields or
+            // add something like main_character.setCoordinates(oldX, oldY) if you prefer.)
+            main_character.x_coordinate = oldX;
+            main_character.y_coordinate  = oldY;
+        }
     }
 
     //doesn't need to be implemented but needs to be here because of interface
