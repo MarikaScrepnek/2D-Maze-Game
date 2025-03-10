@@ -78,7 +78,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
                 && officer.y_coordinate == main_character.getMainCharacterYCoordinate()) {
                 // TO DO - Add game over logic
-                System.out.println("Game Over");
+                System.out.println("Game Over: Officer caught you");
             }
 
             repaint();  // Refresh the screen
@@ -328,6 +328,19 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         return false;
     }
 
+    private boolean isCollidingWithParkedCar(int x, int y) {
+        for (ParkedCar parkedCar : parkedCars) {
+            if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
+                score.subtractPoints(5);
+                if (score.getScore() < 0) {
+                    // TO DO - Add game over logic
+                    System.out.println("Game Over: Score is negative");
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     //doesn't need to be implemented but needs to be here because of interface
@@ -341,12 +354,19 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         int oldX = main_character.getX_coordinate();
         int oldY = main_character.getY_coordinate();
         main_character.move(e);
+
+        // Check if the player is colliding with a cone
         if (isCollidingWithCone(main_character.getX_coordinate(), main_character.getY_coordinate())) {
             // revert the player position
-            // (Since you don’t have setX/setY methods, you can directly modify the fields or
-            // add something like main_character.setCoordinates(oldX, oldY) if you prefer.)
             main_character.x_coordinate = oldX;
             main_character.y_coordinate  = oldY;
+        }
+
+        // Check if the player is colliding with a parked car
+        if(isCollidingWithParkedCar(main_character.getX_coordinate(), main_character.getY_coordinate())){
+            // revert the player position
+            main_character.x_coordinate = oldX;
+            main_character.y_coordinate = oldY;
         }
     }
 
