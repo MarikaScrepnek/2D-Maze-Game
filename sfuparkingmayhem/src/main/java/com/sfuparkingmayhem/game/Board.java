@@ -87,6 +87,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coins.add(new Coin(11,11));
         coins.add(new Coin(12,12));
         coins.add(new Coin(13,13));
+
     }
 
     private void populateLostNote(){
@@ -94,49 +95,55 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         lost_note = new LostNote(0,0);
 
         //boolean value needed for do-while loop
-        boolean check = true;
+        boolean check;
 
 
         do{
 
             lost_note.generateCoords(); //generate random x and y coordinates
 
-            if (check){
+            check = false; //assume that it is not needed to find another set of coords for lostNote
 
-                //check all the coins to see if any of the coins' coords matches the lostnotes' coords
-                for (int i = 0; i < coins.size(); i++){
+            //check all the coins to see if any of the coins' coords matches the lostnotes' coords
+            for (int i = 0; i < coins.size(); i++){
 
-                    //get a coin in the coins arraylist
-                    Coin coin = coins.get(i);
+                //get a coin in the coins arraylist
+                Coin coin = coins.get(i);
 
-                    //get the x and y coordinates of that coin
-                    int coinXCoord = coin.getX_coordinate();
-                    int coinYCoord = coin.getY_coordinate();
-
-
-
-                    //get the x and y coordinates of that coin
-                    //implement and put wall objects onto the board first before uncommenting this
-                    /*
-                     * Wall wall = walls.get(i);
-                     *
-                     * int wallXCoord = wall.getX_coordinate();
-                     * int wallYCoord = wall.getY_coordinate();
-                     * */
+                //get the x and y coordinates of that coin
+                int coinXCoord = coin.getX_coordinate();
+                int coinYCoord = coin.getY_coordinate();
 
 
-                    //check if another entity is already on that position on board
-                    if(!(lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord) /*&&
-                    !(lost_note.getX_coordinate() == wallXCoord && lost_note.getY_coordinate() == wallYCoord)*/){
-                        check = false;
-                    }
 
+                //get the x and y coordinates of that coin
+                //implement and put wall objects onto the board first before uncommenting this
+                /*
+                 * Wall wall = walls.get(i);
+                 *
+                 * int wallXCoord = wall.getX_coordinate();
+                 * int wallYCoord = wall.getY_coordinate();
+                 * */
+
+
+                //check if another entity is already on that position on board
+                if((lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord) /*&&
+                !(lost_note.getX_coordinate() == wallXCoord && lost_note.getY_coordinate() == wallYCoord)*/){
+
+                    //set check to be true as another set of coords needs to be generate for lostNote
+                    check = true;
+
+                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
+                    break;
                 }
             }
 
         } while (check);
+
+
         //add lost note to ln arraylist
         ln.add(lost_note);
+
     }
 
     @Override

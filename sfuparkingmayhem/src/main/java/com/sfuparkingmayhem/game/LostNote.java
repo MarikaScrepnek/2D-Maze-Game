@@ -50,10 +50,6 @@ public class LostNote extends Reward {
         this.x_coordinate = randomNum;
         this.y_coordinate = randomNum2;
 
-        System.out.println(randomNum);
-        System.out.println(randomNum2);
-
-
         }
     }
 
