@@ -105,7 +105,7 @@ public class MainMenu extends JPanel {
         }
     }
 
-    private Font loadCustomFont(String fontFileName, float size) {
+    public Font loadCustomFont(String fontFileName, float size) {
         try {
             // Load font as an InputStream
             InputStream fontStream = getClass().getClassLoader().getResourceAsStream(fontFileName);

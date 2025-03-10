@@ -1,9 +1,12 @@
 package com.sfuparkingmayhem.screens;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -19,13 +22,16 @@ import com.sfuparkingmayhem.game.Score;
 public class WinScreen extends JPanel {
     private ImageIcon main_menu;
     private ImageIcon main_menu_hover;
-    Score score;
+    private Score score;
+    private int time;
 
 
-    public WinScreen(Score score, int time) {
+    public WinScreen(CardLayout cardLayout, JPanel cardPanel, Score score, int time) {
+        this.score = score;
+        this.time = time;
+
         load_images();
         setPreferredSize(new Dimension(750,750));
-        JPanel win_screen = new JPanel();
         setBackground(new Color(111, 194, 232));
         
         setLayout(null);
@@ -36,6 +42,22 @@ public class WinScreen extends JPanel {
         winLabel.setFont(kenneyFont);
         winLabel.setForeground(Color.WHITE); // Set title text color
         winLabel.setBounds(0, 150, 750, 50);
+        add(winLabel);
+
+        //score label
+        JLabel scoreLabel = new JLabel("Score: " + score, SwingConstants.CENTER);
+        scoreLabel.setFont(kenneyFont.deriveFont(24f)); // Smaller font size
+        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setBounds(0, 200, 750, 50);
+        add(scoreLabel);
+
+        // Time Label
+        JLabel timeLabel = new JLabel("Time: " + time/60 + "minutes" + time%60 + " seconds", SwingConstants.CENTER);
+        timeLabel.setFont(kenneyFont.deriveFont(24f)); // Smaller font size
+        timeLabel.setForeground(Color.WHITE);
+        timeLabel.setBounds(0, 250, 750, 50);
+        add(timeLabel);
+
 
         JButton main_menu_button = new JButton(main_menu);
 
@@ -44,6 +66,13 @@ public class WinScreen extends JPanel {
         main_menu_button.setPreferredSize(new Dimension(192, 64));
 
         main_menu_button.setBounds(278, 410, 192, 64);
+
+        main_menu_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "MainMenu");
+            }
+        });
     }
 
     private void load_images() {
