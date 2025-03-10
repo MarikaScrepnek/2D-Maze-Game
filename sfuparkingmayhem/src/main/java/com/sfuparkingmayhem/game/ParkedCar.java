@@ -20,7 +20,7 @@ public class ParkedCar extends Barrier{
     @Override
     protected void getImage() {
         try{
-            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("car_sprite_down.png")));
+            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("Brown_CIVIC_CLEAN_SOUTH_000.png")));
         }
         catch(IOException e){
             System.out.println("Error loading main" + e.getMessage());
