@@ -31,6 +31,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private ArrayList<Coin> coins = new ArrayList<Coin>();
     private ArrayList <Wall> walls = new ArrayList<Wall>();
     private ArrayList <Cone> cones = new ArrayList<Cone>();
+    private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
 
     protected LostNote lost_note;
     private ArrayList<LostNote> ln = new ArrayList<LostNote>(); //added this but not on class diagram
