@@ -29,7 +29,7 @@ public class MainMenu extends JPanel {
     private ImageIcon exit;
     private ImageIcon exit_hover;
 
-    public MainMenu(CardLayout cardLayout, JPanel cardPanel, JFrame window) { //initializes variables and load button images
+    public MainMenu(CardLayout cardLayout, JPanel cardPanel) { //initializes variables and load button images
         load_images();
         setPreferredSize(new Dimension(750,750));
         JPanel main_menu = new JPanel();
