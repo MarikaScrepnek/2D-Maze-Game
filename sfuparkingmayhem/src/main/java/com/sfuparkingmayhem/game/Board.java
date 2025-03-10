@@ -142,26 +142,41 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
                 //get the x and y coordinates of that coin
                 //implement and put wall objects onto the board first before uncommenting this
-                /*
-                 * ParkecCar pc = parkedCars.get(i);
-                 *
-                 * int pcXCoord = pc.getX_coordinate();
-                 * int pcYCoord = pc.getY_coordinate();
-                 * */
+
+//                 ParkedCar pc = parkedCars.get(i);
+//
+//                 int pcXCoord = pc.getX_coordinate();
+//                 int pcYCoord = pc.getY_coordinate();
+                //System.out.println("parkedCars size = "+parkedCars.size());
+                //need to add the parked cars to arraylist
 
                 //get the x and y coordinates of that coin
                 //implement and put wall objects onto the board first before uncommenting this
-                /*
-                 * Cone cone = cones.get(i);
-                 *
-                 * int coneXCoord = cone.getX_coordinate();
-                 * int coneYCoord = cone.getY_coordinate();
-                 * */
+
+//                 Cone cone = cones.get(i);
+//
+//                 int coneXCoord = cone.getX_coordinate();
+//                 int coneYCoord = cone.getY_coordinate();
+                //System.out.println("cones size = "+cones.size());
+                //need to add the cones to arraylist
+
+                //boolean variables needed for checking if the lostnote has matching coordinates
+                boolean coinCoordConflict = false;
+
+                if (lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord){
+                    coinCoordConflict = true;
+                }
+//                else if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
+//                    coinCoordConflict = true;
+//                }
+//
+//                else if (lost_note.getX_coordinate() == coneXCoord && lost_note.getY_coordinate() == coneXCoord){
+//                    coinCoordConflict = true;
+//                }
 
 
                 //check if another entity is already on that position on board
-                if((lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord) /*&&
-                !(lost_note.getX_coordinate() == wallXCoord && lost_note.getY_coordinate() == wallYCoord)*/){
+                if(coinCoordConflict){
 
                     //set check to be true as another set of coords needs to be generate for lostNote
                     check = true;
