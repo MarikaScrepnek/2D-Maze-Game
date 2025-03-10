@@ -63,14 +63,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         timer = new Timer(DELAY, this);
         timer.start();
 
-        officerTimer = new Timer(1000, e -> {
+        officerTimer = new Timer(500, e -> {
             int oldX = officer.getX_coordinate();
             int oldY = officer.getY_coordinate();
 
             officer.move(null);  // Call move() without KeyEvent
 
-            // Check if the officer is colliding with a cone
-            if (isCollidingWithCone(officer.getX_coordinate(), officer.getY_coordinate())) {
+            // Check if the officer is colliding with a cone or parked car
+            if (isCollidingWithCone(officer.getX_coordinate(), officer.getY_coordinate()) ||
+                isCollidingWithParkedCar(officer.getX_coordinate(), officer.getY_coordinate())) {
                 officer.x_coordinate = oldX;
                 officer.y_coordinate = oldY;
             }
