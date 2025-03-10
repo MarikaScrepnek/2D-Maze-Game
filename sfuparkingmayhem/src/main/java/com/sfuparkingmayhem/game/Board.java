@@ -332,11 +332,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private boolean isCollidingWithParkedCar(int x, int y) {
         for (ParkedCar parkedCar : parkedCars) {
             if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
-                score.subtractPoints(5);
-                if (score.getScore() < 0) {
-                    // TO DO - Add game over logic
-                    System.out.println("Game Over: Score is negative");
-                }
                 return true;
             }
         }
@@ -365,6 +360,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         // Check if the player is colliding with a parked car
         if(isCollidingWithParkedCar(main_character.getX_coordinate(), main_character.getY_coordinate())){
+            // Subtract points from the player's score
+            if(oldX != main_character.getX_coordinate() || oldY != main_character.getY_coordinate()){
+                score.subtractPoints(5);
+                if(score.getScore() < 0){
+                    // TO DO - Add game over logic
+                    System.out.println("Game Over: Score is negative");
+                }
+            }
+
             // revert the player position
             main_character.x_coordinate = oldX;
             main_character.y_coordinate = oldY;
