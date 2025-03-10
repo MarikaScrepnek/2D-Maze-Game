@@ -54,11 +54,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         //createCoins();
 
-        createCones();
-        //System.out.println("cones size = "+cones.size());
+        //createCones();
         createParkedCars();
-        //populateLostNote();
-        //System.out.println("parkedCars size = "+parkedCars.size());
+        populateLostNote();
 
 
 
@@ -398,7 +396,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 }
 
             }
-            System.out.println("cones size = "+cones.size());
+
             //System.out.println("parked car size = "+parkedCars.size());
 
 
