@@ -63,6 +63,9 @@ public abstract class Entity {
         return this.y_coordinate;
     }
 
+    /**
+     * Updates the Entity's position on the board
+     */
     public void tick(){
         if (x_coordinate < 0) {
             x_coordinate = 0;

@@ -10,6 +10,12 @@ public class Coin extends Reward{
 
     private int value = 5;
 
+    /**
+     * Constructs a Coin object.
+     *
+     * @param x The x-coordinate of the Coin.
+     * @param y The y-coordinate of the Coin.
+     */
     Coin(int x, int y) {
         super(x, y);
         getImage();

@@ -11,6 +11,12 @@ public class LostNote extends Reward {
     private int value = 10;
     private int expiryTime = 5; //put 5 seconds as the time limit
 
+    /**
+     * Constructs a LostNote object.
+     *
+     * @param x The x-coordinate of the LostNote.
+     * @param y The y-coordinate of the LostNote.
+     */
     LostNote(int x, int y) {
         super(x, y);
         getImage();
@@ -32,14 +38,25 @@ public class LostNote extends Reward {
         return collected;
     }
 
+    /**
+     * Gets the collected status of the LostNote.
+     * @return returns the collected status of the LostNote.
+     */
     public boolean getCollected(){
         return collected;
     }
 
+    /**
+     * Sets the collected status of the LostNote.
+     * @param bool The boolean value to set the collected status to.
+     */
     public void setCollected(boolean bool){
         this.collected = bool;
     }
 
+    /**
+     * Generates the coordinates of the LostNote.
+     */
     protected void generateCoords(){
         int a = 1;
         int b = 14;
