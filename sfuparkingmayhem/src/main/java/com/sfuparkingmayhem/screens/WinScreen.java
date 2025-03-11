@@ -30,7 +30,7 @@ public class WinScreen extends JPanel {
 
         load_images();
         setPreferredSize(new Dimension(750,750));
-        setBackground(new Color(111, 194, 232));
+        setBackground(new Color(76, 189, 51));
         
         setLayout(null);
 
