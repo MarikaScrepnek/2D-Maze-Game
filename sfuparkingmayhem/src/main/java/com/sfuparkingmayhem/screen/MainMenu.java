@@ -26,9 +26,9 @@ public class MainMenu extends Screen {
         titleLabel.setBounds(0, 150, 750, 50);
         
         //set positions and dimensions of buttons
-        start_game_button.setBounds(278, 250, 192, 64); // Position the start game button
-        instructions_button.setBounds(278, 330, 192, 64); // Position the instructions button
-        exit_button.setBounds(278, 410, 192, 64); // Position the exit button
+        start_game_button.setBounds(278, 250, 192, 64);
+        instructions_button.setBounds(278, 330, 192, 64);
+        exit_button.setBounds(278, 410, 192, 64);
         
         //add all elements to the main menu panel
         add(titleLabel);
