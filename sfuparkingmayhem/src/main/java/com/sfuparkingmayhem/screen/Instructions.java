@@ -60,7 +60,7 @@ public class Instructions extends Screen {
         //set position and dimension
         objectiveInfoLabel.setBounds(400, 200, 300, 200);
 
-        //set position of main menu button
+        //set position and dimension of main menu button
         main_menu_button.setBounds(280, 450, 192, 64);
 
         //add all elements to the instructions panel

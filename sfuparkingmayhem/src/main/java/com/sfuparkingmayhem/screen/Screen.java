@@ -64,7 +64,6 @@ public abstract class Screen extends JPanel{
         main_menu_button.setRolloverIcon(main_menu_hover);
         main_menu_button.setPreferredSize(new Dimension(192, 64));
 
-
         start_game_button.addActionListener((ActionEvent e) -> {
             Board board = new Board(cardLayout, cardPanel);
             cardPanel.add(board, "GameBoard");
