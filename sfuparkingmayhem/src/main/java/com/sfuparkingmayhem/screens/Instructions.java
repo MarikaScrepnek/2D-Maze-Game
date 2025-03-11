@@ -32,38 +32,40 @@ public class Instructions extends JPanel {
 
         JLabel instructionsLabel = new JLabel("Instructions", SwingConstants.CENTER);
         instructionsLabel.setFont(kenneyFont);
-        instructionsLabel.setForeground(Color.WHITE); // Set title text color
-        instructionsLabel.setBounds(0, 120, 750, 50);
+        instructionsLabel.setForeground(Color.WHITE);
+        instructionsLabel.setBounds(200, 50, 350, 50);
         add(instructionsLabel);
 
-        JLabel controlsLabel = new JLabel("Controls", SwingConstants.CENTER);
+        // Controls Section
+        JLabel controlsLabel = new JLabel("Controls");
         controlsLabel.setFont(kenneyFont);
-        controlsLabel.setForeground(Color.WHITE); // Set title text color
-        controlsLabel.setBounds(0, 120, 750, 50);
+        controlsLabel.setForeground(Color.WHITE);
+        controlsLabel.setBounds(50, 150, 300, 50);
         add(controlsLabel);
 
-        JLabel controlsInfoLabel = new JLabel("Move Up - W\nMove Down - S\nMove Left - A\nMove Right - D", SwingConstants.CENTER);
+        JLabel controlsInfoLabel = new JLabel("<html><brk>Move Up - W<br>Move Down - S<br>Move Left - A<br>Move Right - D</html>");
         controlsInfoLabel.setFont(smallKenneyFont);
-        controlsInfoLabel.setForeground(Color.WHITE); // Set title text color
-        controlsInfoLabel.setBounds(0, 120, 750, 50);
+        controlsInfoLabel.setForeground(Color.WHITE);
+        controlsInfoLabel.setBounds(50, 200, 300, 100);
         add(controlsInfoLabel);
 
-        JLabel objectiveLabel = new JLabel("Objective", SwingConstants.CENTER);
+        // Objective Section
+        JLabel objectiveLabel = new JLabel("Objective");
         objectiveLabel.setFont(kenneyFont);
-        objectiveLabel.setForeground(Color.WHITE); // Set title text color
-        objectiveLabel.setBounds(0, 120, 750, 50);
+        objectiveLabel.setForeground(Color.WHITE);
+        objectiveLabel.setBounds(400, 150, 300, 50);
         add(objectiveLabel);
 
-        JLabel objectiveInfoLabel = new JLabel("Collect all 10 coins and escape to the ticket booth at the bottom right of the map to buy a parking pass!\nCollecting lost notes will reward you bonus points!\nHitting parked cars will deduct points!\nIf your score goes negative or the concord officer catches you, you lose!", SwingConstants.CENTER);
+        JLabel objectiveInfoLabel = new JLabel("<html><p style='width:250px;'>Collect all 10 coins and escape to the parking booth!<br><br>Avoid hitting parked cars and don't let the parking officer catch you!</p></html>");
         objectiveInfoLabel.setFont(smallKenneyFont);
-        objectiveInfoLabel.setForeground(Color.WHITE); // Set title text color
-        objectiveInfoLabel.setBounds(0, 120, 750, 50);
+        objectiveInfoLabel.setForeground(Color.WHITE);
+        objectiveInfoLabel.setBounds(400, 200, 300, 200); // Increased width and height
         add(objectiveInfoLabel);
 
         JButton main_menu_button = new JButton(main_menu);
         main_menu_button.setRolloverIcon(main_menu_hover);
         main_menu_button.setPreferredSize(new Dimension(192, 64));
-        main_menu_button.setBounds(278, 410, 192, 64);
+        main_menu_button.setBounds(280, 450, 192, 64);
         add(main_menu_button);
 
         main_menu_button.addActionListener(new ActionListener() {
