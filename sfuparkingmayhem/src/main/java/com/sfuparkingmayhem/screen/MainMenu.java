@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class MainMenu extends Screen {
-
     public MainMenu(CardLayout cardLayout, JPanel cardPanel) {
         //call Screen constructor
         super(cardLayout, cardPanel);

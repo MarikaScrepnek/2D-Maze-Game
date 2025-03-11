@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class WinScreen extends JPanel {
+public class WinScreen extends EndScreen {
     private ImageIcon main_menu;
     private ImageIcon main_menu_hover;
     private int score;
