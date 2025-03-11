@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.sfuparkingmayhem.screen.Instructions;
+import com.sfuparkingmayhem.screen.LoseScreenConcord;
+import com.sfuparkingmayhem.screen.LoseScreenScore;
 import com.sfuparkingmayhem.screen.MainMenu;
 
 /**
@@ -38,9 +40,13 @@ public class Game
         
         MainMenu mainMenu = new MainMenu(cardLayout, cardPanel); // Main menu panel
         Instructions instructions = new Instructions(cardLayout, cardPanel);
+        LoseScreenScore loseScreenScore = new LoseScreenScore(cardLayout, cardPanel);
+        LoseScreenConcord loseScreenConcord = new LoseScreenConcord(cardLayout, cardPanel);
 
         cardPanel.add(mainMenu, "MainMenu");
         cardPanel.add(instructions, "Instructions");
+        cardPanel.add(loseScreenScore, "Lose Screen Score");
+        cardPanel.add(loseScreenConcord, "Lose Screen Concord");
 
         //add the board panel to the window (instead of board it could be different screens)
         window.add(cardPanel);
