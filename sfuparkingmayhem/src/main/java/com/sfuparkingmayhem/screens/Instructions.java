@@ -39,11 +39,13 @@ public class Instructions extends JPanel {
         controlsLabel.setBounds(0, 120, 750, 50);
         add(controlsLabel);
 
-        JLabel controlsInfoLabel = new JLabel("Controls", SwingConstants.CENTER);
-        controlsInfoLabel.setFont(kenneyFont);
+        JLabel controlsInfoLabel = new JLabel("Move Up - W\nMove Down - S\nMove Left - A\nMove Right - D", SwingConstants.CENTER);
+        controlsInfoLabel.setFont(smallKenneyFont);
         controlsInfoLabel.setForeground(Color.WHITE); // Set title text color
         controlsInfoLabel.setBounds(0, 120, 750, 50);
         add(controlsInfoLabel);
+
+        
 
         JButton main_menu_button = new JButton(main_menu);
         main_menu_button.setRolloverIcon(main_menu_hover);
