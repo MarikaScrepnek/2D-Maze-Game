@@ -418,7 +418,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         g.drawString(timeString, 343, 30);
     }
-
+    /**
+     * Draws how many coins have been collected on the game board
+     * @param g Graphics object
+     */
     private void drawCoinsCollected(Graphics g) {
         g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
         g.setColor(Color.WHITE);
