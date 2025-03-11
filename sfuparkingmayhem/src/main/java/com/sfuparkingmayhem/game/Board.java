@@ -68,7 +68,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //initialize score
         score = new Score();
 
-
+        //populate the game board with coins, cones, parked cars, and lost notes
         createCoins();
         createCones();
         createParkedCars();
@@ -372,17 +372,20 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 //boolean variables needed for checking if the lostnote has matching coordinates
                 boolean pcCoordConflict = false;
 
-                if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
-                    pcCoordConflict = true;
-                }
-
-                //check if another entity is already on that position on board
-                if(pcCoordConflict){
-
-                    //set check to be true as another set of coords needs to be generate for lostNote
-                    check = true;
-
-                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
+//                if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
+//                    pcCoordConflict = true;
+//                }
+//
+//                //check if another entity is already on that position on board
+//                if(pcCoordConflict){
+//
+//                    //set check to be true as another set of coords needs to be generate for lostNote
+//                    check = true;
+//
+//                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
+//                    break;
+//                }
+                if (isCollidingWithParkedCar(lost_note.getX_coordinate(), lost_note.getY_coordinate())){
                     break;
                 }
 
