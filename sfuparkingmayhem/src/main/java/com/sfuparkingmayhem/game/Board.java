@@ -53,9 +53,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
 
         createCoins();
-
-        //createCones();
-        //createParkedCars();
+        createCones();
+        createParkedCars();
         populateLostNote();
 
 
