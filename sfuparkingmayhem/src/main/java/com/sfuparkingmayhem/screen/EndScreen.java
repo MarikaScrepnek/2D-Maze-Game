@@ -11,5 +11,8 @@ public abstract class EndScreen extends Screen {
 
         //set position and dimension of main menu button
         main_menu_button.setBounds(278, 410, 192, 64);
+
+        //add main menu button to panel
+        add(main_menu_button);
     }
 }

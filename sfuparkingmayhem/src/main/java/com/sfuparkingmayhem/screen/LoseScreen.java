@@ -2,45 +2,46 @@ package com.sfuparkingmayhem.screen;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class LoseScreen extends EndScreen {
-    private ImageIcon main_menu;
-    private ImageIcon main_menu_hover;
-
     public LoseScreen(CardLayout cardLayout, JPanel cardPanel, boolean concord) {
+        //call EndScreen constructor
         super(cardLayout, cardPanel);
 
+        //set background color to red
         setBackground(new Color(194, 25, 25));
 
-        setLayout(null);
-
-        Font kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
-        Font smallKenneyFont = loadCustomFont("Kenney Future.ttf", 20f);
-
+        //create "you lose" title
         JLabel loseLabel = new JLabel("You Lose!", SwingConstants.CENTER);
+        //set font
         loseLabel.setFont(kenneyFont);
-        loseLabel.setForeground(Color.WHITE); // Set title text color
+        //set color
+        loseLabel.setForeground(Color.WHITE);
+        //set position and dimension
         loseLabel.setBounds(0, 120, 750, 50);
         add(loseLabel);
 
-        JLabel messageLabel = new JLabel("The Concord Officer caught you!", SwingConstants.CENTER);
-        messageLabel.setFont(smallKenneyFont); // Adjust font if needed
+        //create lose message
+        JLabel messageLabel;
+        //if caught by concord write select concord message, if not select negative score message
+        if (concord == true){
+            messageLabel = new JLabel("The Concord Officer caught you!", SwingConstants.CENTER);
+        } else {
+            messageLabel = new JLabel("Your score went negative!", SwingConstants.CENTER);
+        }
+        //set font
+        messageLabel.setFont(smallKenneyFont);
+        //set color
         messageLabel.setForeground(Color.WHITE);
+        //set postion and dimension
         messageLabel.setBounds(0, 180, 750, 50);
-        add(messageLabel);
 
-        JButton main_menu_button = new JButton(main_menu);
-        main_menu_button.setRolloverIcon(main_menu_hover);
-        main_menu_button.setPreferredSize(new Dimension(192, 64));
-        main_menu_button.setBounds(278, 410, 192, 64);
-        add(main_menu_button);
+        //add labels and messages to panel
+        add(loseLabel);
+        add(messageLabel);
     }
 }
