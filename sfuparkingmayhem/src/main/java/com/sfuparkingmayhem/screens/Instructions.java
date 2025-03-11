@@ -76,8 +76,8 @@ public class Instructions extends JPanel {
 
     private void load_images() {
         try {
-            main_menu = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game.png")));
-            main_menu_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game_hover.png")));
+            main_menu = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu.png")));
+            main_menu_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu_hover.png")));
         } catch (IOException e) {
             System.out.println("Error loading images: " + e.getMessage());
         }
