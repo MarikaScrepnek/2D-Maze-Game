@@ -995,7 +995,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
         g.setColor(Color.WHITE);
 
-        g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 290, 730);
+        g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
     }
 
     /**
