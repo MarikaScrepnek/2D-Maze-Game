@@ -38,8 +38,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer timer;
     private final Timer officerTimer;
     private final Timer gameTimer; 
-    private Timer movementTimer;
-    private boolean canMove = true;
     private final Score score;
     private ArrayList<Coin> coins = new ArrayList<Coin>();
     private ArrayList <Cone> cones = new ArrayList<Cone>();
@@ -90,9 +88,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
         timer.start();
-
-        movementTimer = new Timer(100, e -> canMove = true);
-        movementTimer.setRepeats(false);
 
         officerTimer = new Timer(500, e -> {
             int oldX = officer.getX_coordinate();
