@@ -45,7 +45,17 @@ public class Instructions extends JPanel {
         controlsInfoLabel.setBounds(0, 120, 750, 50);
         add(controlsInfoLabel);
 
-        
+        JLabel objectiveLabel = new JLabel("Objective", SwingConstants.CENTER);
+        objectiveLabel.setFont(kenneyFont);
+        objectiveLabel.setForeground(Color.WHITE); // Set title text color
+        objectiveLabel.setBounds(0, 120, 750, 50);
+        add(objectiveLabel);
+
+        JLabel objectiveInfoLabel = new JLabel("Collect all 10 coins and escape to the ticket booth at the bottom right of the map to buy a parking pass!\nHitting parked cars will deduct ", SwingConstants.CENTER);
+        objectiveInfoLabel.setFont(smallKenneyFont);
+        objectiveInfoLabel.setForeground(Color.WHITE); // Set title text color
+        objectiveInfoLabel.setBounds(0, 120, 750, 50);
+        add(objectiveInfoLabel);
 
         JButton main_menu_button = new JButton(main_menu);
         main_menu_button.setRolloverIcon(main_menu_hover);
