@@ -570,6 +570,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             // Subtract points from the player's score
             if(oldX != main_character.getX_coordinate() || oldY != main_character.getY_coordinate()){
                 score.subtractPoints(5);
+                flashRed();
                 if(score.getScore() < 0 && game_ended == false){
                     game_ended=true;
                     cardLayout.show(cardPanel, "Lose Screen Score");
@@ -692,6 +693,30 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         // Add the start cell at the front
         path.addFirst(new Point(startX, startY));
         return path;
+    }
+
+    //method to flash background red when hit a parked card
+    private void flashRed() {
+        //save original background color
+        Color originalColor = getBackground();
+
+        //set background color to red
+        setBackground(Color.RED);
+
+        //repaint screen to apply color change immediately
+        repaint();
+
+        //use a Timer to revert the color after 50ms
+        Timer flash_timer;
+        flash_timer = new Timer(50, (ActionEvent e) -> {
+            //revert background color back to original color
+            setBackground(originalColor);
+            
+            //repaint to apply color change immediately
+            repaint();
+        });
+        flash_timer.setRepeats(false);//only execute once
+        flash_timer.start(); //start the timer
     }
 
     // helper class to store (x, y) plus a distance in priority queue
