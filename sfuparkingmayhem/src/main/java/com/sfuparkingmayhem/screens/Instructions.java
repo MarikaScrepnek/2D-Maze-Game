@@ -10,7 +10,9 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Instructions extends JPanel {
     private ImageIcon main_menu;
@@ -30,6 +32,18 @@ public class Instructions extends JPanel {
         instructionsLabel.setForeground(Color.WHITE); // Set title text color
         instructionsLabel.setBounds(0, 120, 750, 50);
         add(instructionsLabel);
+
+        JLabel controlsLabel = new JLabel("Controls", SwingConstants.CENTER);
+        controlsLabel.setFont(kenneyFont);
+        controlsLabel.setForeground(Color.WHITE); // Set title text color
+        controlsLabel.setBounds(0, 120, 750, 50);
+        add(controlsLabel);
+
+        JLabel controlsInfoLabel = new JLabel("Controls", SwingConstants.CENTER);
+        controlsInfoLabel.setFont(kenneyFont);
+        controlsInfoLabel.setForeground(Color.WHITE); // Set title text color
+        controlsInfoLabel.setBounds(0, 120, 750, 50);
+        add(controlsInfoLabel);
 
         JButton main_menu_button = new JButton(main_menu);
         main_menu_button.setRolloverIcon(main_menu_hover);
