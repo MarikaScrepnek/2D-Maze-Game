@@ -22,9 +22,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.sfuparkingmayhem.screens.LoseScreenConcord;
-import com.sfuparkingmayhem.screens.LoseScreenScore;
-import com.sfuparkingmayhem.screens.WinScreen;
+import com.sfuparkingmayhem.screen.LoseScreenConcord;
+import com.sfuparkingmayhem.screen.LoseScreenScore;
+import com.sfuparkingmayhem.screen.WinScreen;
 
 public class Board extends JPanel implements ActionListener, KeyListener{
     protected static final int ROWS = 15;
