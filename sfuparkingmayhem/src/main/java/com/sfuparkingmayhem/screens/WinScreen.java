@@ -50,7 +50,7 @@ public class WinScreen extends JPanel {
         add(scoreLabel);
 
         // Time Label
-        JLabel timeLabel = new JLabel("Time: " + time/60 + "minutes" + time%60 + " seconds", SwingConstants.CENTER);
+        JLabel timeLabel = new JLabel("Time: " + time/60 + " minutes" + time%60 + " seconds", SwingConstants.CENTER);
         timeLabel.setFont(kenneyFont.deriveFont(24f)); // Smaller font size
         timeLabel.setForeground(Color.WHITE);
         timeLabel.setBounds(0, 250, 750, 50);
@@ -64,6 +64,8 @@ public class WinScreen extends JPanel {
         main_menu_button.setPreferredSize(new Dimension(192, 64));
 
         main_menu_button.setBounds(278, 410, 192, 64);
+
+        add(main_menu_button);
 
         main_menu_button.addActionListener(new ActionListener() {
             @Override

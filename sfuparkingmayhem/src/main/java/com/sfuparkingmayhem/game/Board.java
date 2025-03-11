@@ -96,7 +96,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
                 && officer.y_coordinate == main_character.getMainCharacterYCoordinate()) {
                 // TO DO - Add game over logic
-                System.out.println("Game Over: Officer caught you");
+                //LoseScreen loseScreen = new WinScreen(cardLayout, cardPanel);
+                //cardPanel.add(loseScreen, "LoseScreen");
+                //cardLayout.show(cardPanel, "WinScreen");
+
             }
 
             repaint();  // Refresh the screen
