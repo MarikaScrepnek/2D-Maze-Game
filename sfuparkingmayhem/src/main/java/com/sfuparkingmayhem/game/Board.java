@@ -106,9 +106,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 && officer.y_coordinate == main_character.getMainCharacterYCoordinate() && game_ended == false) {
                 // TO DO - Add game over logic
                 game_ended = true;
-                LoseScreenConcord loseScreen = new LoseScreenConcord(cardLayout, cardPanel);
-                cardPanel.add(loseScreen, "LoseScreenConcord");
-                cardLayout.show(cardPanel, "LoseScreenConcord");
+                cardLayout.show(cardPanel, "Lose Screen Concord");
             }
 
             repaint();  // Refresh the screen
@@ -498,8 +496,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             int finalScore = score.getScore(); // Assuming Score class has this method
 
             WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
-            cardPanel.add(winScreen, "WinScreen");
-            cardLayout.show(cardPanel, "WinScreen");
+            cardPanel.add(winScreen, "Win Screen");
+            cardLayout.show(cardPanel, "Win Screen");
         }
         }
     }
@@ -576,9 +574,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 score.subtractPoints(5);
                 if(score.getScore() < 0 && game_ended == false){
                     game_ended=true;
-                    LoseScreenScore loseScreenScore = new LoseScreenScore(cardLayout, cardPanel);
-                    cardPanel.add(loseScreenScore, "LoseScreenScore");
-                    cardLayout.show(cardPanel, "LoseScreenScore");
+                    cardLayout.show(cardPanel, "Lose Screen Score");
                 }
             }
 
