@@ -51,7 +51,7 @@ public class Instructions extends JPanel {
         objectiveLabel.setBounds(0, 120, 750, 50);
         add(objectiveLabel);
 
-        JLabel objectiveInfoLabel = new JLabel("Collect all 10 coins and escape to the ticket booth at the bottom right of the map to buy a parking pass!\nHitting parked cars will deduct ", SwingConstants.CENTER);
+        JLabel objectiveInfoLabel = new JLabel("Collect all 10 coins and escape to the ticket booth at the bottom right of the map to buy a parking pass!\nCollecting lost notes will reward you bonus points!\nHitting parked cars will deduct points!\nIf your score goes negative or the concord officer catches you, you lose!", SwingConstants.CENTER);
         objectiveInfoLabel.setFont(smallKenneyFont);
         objectiveInfoLabel.setForeground(Color.WHITE); // Set title text color
         objectiveInfoLabel.setBounds(0, 120, 750, 50);
