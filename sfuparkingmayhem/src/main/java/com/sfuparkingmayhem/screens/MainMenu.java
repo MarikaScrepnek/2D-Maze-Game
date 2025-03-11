@@ -75,13 +75,14 @@ public class MainMenu extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Instructions clicked!");
                 // Show instructions
+                Instructions instructions = new Instructions();
+                cardLayout.show(cardPanel, "Instructions");
             }
         });
 
         exit_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Exit clicked!");
                 System.exit(0); // Exit the program
             }
         });
