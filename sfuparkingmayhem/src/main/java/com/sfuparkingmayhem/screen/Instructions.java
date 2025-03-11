@@ -57,10 +57,10 @@ public class Instructions extends Screen {
         objectiveInfoLabel.setFont(smallKenneyFont);
         //set color
         objectiveInfoLabel.setForeground(Color.WHITE);
-        //set position and dimension
+        //set position and dimensions
         objectiveInfoLabel.setBounds(400, 200, 300, 200);
 
-        //set position and dimension of main menu button
+        //set position and dimensions of main menu button
         main_menu_button.setBounds(280, 450, 192, 64);
 
         //add all elements to the instructions panel

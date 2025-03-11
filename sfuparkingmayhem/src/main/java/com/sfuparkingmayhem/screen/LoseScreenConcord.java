@@ -7,13 +7,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class LoseScreenScore extends LoseScreen {
-    public LoseScreenScore(CardLayout cardLayout, JPanel cardPanel) {
+public class LoseScreenConcord extends LoseScreen {
+    public LoseScreenConcord(CardLayout cardLayout, JPanel cardPanel) {
         //call LoseScreen constructor
         super(cardLayout, cardPanel);
 
         //create reason for loss message
-        JLabel messageLabel = new JLabel("Your score went negative!", SwingConstants.CENTER);
+        JLabel messageLabel = new JLabel("You were caught by the Concord Officer!", SwingConstants.CENTER);
         //set font
         messageLabel.setFont(smallKenneyFont);
         //set color
