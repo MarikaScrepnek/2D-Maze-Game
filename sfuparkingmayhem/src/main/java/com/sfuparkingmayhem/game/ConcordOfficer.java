@@ -30,6 +30,9 @@ public class ConcordOfficer extends MovingEntity{
      * Moves the ConcordOfficer towards the MainCharacter.
      */
     protected void move(KeyEvent event) {
+        int oldX = this.getX_coordinate();
+        int oldY = this.getY_coordinate();
+
         // Use Dijkstra’s pathfinding to find next step toward the player.
         java.util.List<Point> path = board.findPathDijkstra(
             this.getX_coordinate(),
@@ -45,7 +48,38 @@ public class ConcordOfficer extends MovingEntity{
             Point nextStep = path.get(1);
             this.x_coordinate = nextStep.x;
             this.y_coordinate = nextStep.y;
+
+            if (this.x_coordinate > oldX) { 
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_east.png"));
+                }
+                catch(IOException e){
+                    System.out.println("Error displaying officer" + e.getMessage());
+                } // Moving Right
+            } else if (this.x_coordinate < oldX) { 
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_west.png"));
+                }
+                catch(IOException e){
+                    System.out.println("Error displaying officer" + e.getMessage());
+                } // Moving Left
+            } else if (this.y_coordinate > oldY) { 
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_south.png"));
+                }
+                catch(IOException e){
+                    System.out.println("Error displaying officer" + e.getMessage());
+                } // Moving Down
+            } else if (this.y_coordinate < oldY) { 
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_north.png"));
+                }
+                catch(IOException e){
+                    System.out.println("Error displaying officer" + e.getMessage());
+                } // Moving Up
+            }
         }
+
     }
 
     
@@ -53,8 +87,7 @@ public class ConcordOfficer extends MovingEntity{
     @Override
     protected void getImage() {
         try{
-            this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_placeholder.png"));
-
+            this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_north.png"));
         }
         catch(IOException e){
             System.out.println("Error displaying officer" + e.getMessage());
