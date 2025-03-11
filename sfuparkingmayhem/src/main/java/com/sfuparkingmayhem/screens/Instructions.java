@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.io.IOException;
 import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -23,6 +25,12 @@ public class Instructions extends JPanel {
         Font kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
         Font smallKenneyFont = loadCustomFont("Kenney Future.ttf", 20f);
 
+        JLabel instructionsLabel = new JLabel("Instructions", SwingConstants.CENTER);
+        instructionsLabel.setFont(kenneyFont);
+        instructionsLabel.setForeground(Color.WHITE); // Set title text color
+        instructionsLabel.setBounds(0, 120, 750, 50);
+        add(instructionsLabel);
+
         JButton main_menu_button = new JButton(main_menu);
         main_menu_button.setRolloverIcon(main_menu_hover);
         main_menu_button.setPreferredSize(new Dimension(192, 64));
@@ -31,7 +39,12 @@ public class Instructions extends JPanel {
     }
 
     private void load_images() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            main_menu = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game.png")));
+            main_menu_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game_hover.png")));
+        } catch (IOException e) {
+            System.out.println("Error loading images: " + e.getMessage());
+        }
     }
 
     public Font loadCustomFont(String fontFileName, float size) {
