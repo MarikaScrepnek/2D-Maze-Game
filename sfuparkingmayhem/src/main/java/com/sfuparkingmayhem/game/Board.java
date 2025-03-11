@@ -372,20 +372,17 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 //boolean variables needed for checking if the lostnote has matching coordinates
                 boolean pcCoordConflict = false;
 
-//                if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
-//                    pcCoordConflict = true;
-//                }
-//
-//                //check if another entity is already on that position on board
-//                if(pcCoordConflict){
-//
-//                    //set check to be true as another set of coords needs to be generate for lostNote
-//                    check = true;
-//
-//                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
-//                    break;
-//                }
-                if (isCollidingWithParkedCar(lost_note.getX_coordinate(), lost_note.getY_coordinate())){
+                if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
+                    pcCoordConflict = true;
+                }
+
+                //check if another entity is already on that position on board
+                if(pcCoordConflict){
+
+                    //set check to be true as another set of coords needs to be generate for lostNote
+                    check = true;
+
+                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
                     break;
                 }
 
@@ -1070,6 +1067,21 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private boolean isCollidingWithCone(int x, int y) {
         for (Cone cone : cones) {
             if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the player is colliding with a coin
+     * @param x x-coordinate of the player
+     * @param y y-coordinate of the player
+     * @return true if the player is colliding with a coin, false otherwise
+     */
+    private boolean isCollidingWithCoin(int x, int y) {
+        for (Coin coin : coins) {
+            if (coin.getX_coordinate() == x && coin.getY_coordinate() == y) {
                 return true;
             }
         }
