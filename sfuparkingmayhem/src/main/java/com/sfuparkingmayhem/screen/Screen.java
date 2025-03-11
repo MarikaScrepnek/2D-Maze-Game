@@ -91,25 +91,25 @@ public abstract class Screen extends JPanel{
         try {
             Font customFont;
             try (InputStream fontStream = getClass().getClassLoader().getResourceAsStream(fontFileName)) { //Load font as file stream
-                if (fontStream == null) { //If file can't be found
+                if (fontStream == null) { //if file can't be found
                     System.out.println("Font file not found: " + fontFileName);
-                    return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
+                    return new Font("SansSerif", Font.BOLD, (int) size); //fallback font
                 }
-                customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream); // Create a Font instance
+                customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream); //create a Font instance
             }
 
-            // Register the font
+            //register the font
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(customFont);
 
-            // Return the derived font with size
+            //return the derived font with size
             return customFont.deriveFont(size);
         } catch (FontFormatException | IOException e) {
-            return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
+            return new Font("SansSerif", Font.BOLD, (int) size); //fallback font
         }
     }
 
-    //method to load images needed for buttons on the selected screen
+    //method to load images needed for buttons
     private void load_images() {
         try {
             start_game = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game.png")));
