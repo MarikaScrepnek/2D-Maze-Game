@@ -22,8 +22,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.sfuparkingmayhem.screen.LoseScreenConcord;
-import com.sfuparkingmayhem.screen.LoseScreenScore;
 import com.sfuparkingmayhem.screen.WinScreen;
 
 public class Board extends JPanel implements ActionListener, KeyListener{
