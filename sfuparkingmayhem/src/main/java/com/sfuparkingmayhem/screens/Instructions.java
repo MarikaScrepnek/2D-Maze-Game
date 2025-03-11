@@ -23,7 +23,7 @@ public class Instructions extends JPanel {
     public Instructions(CardLayout cardLayout, JPanel cardPanel) {
         load_images();
         setPreferredSize(new Dimension(750,750));
-        setBackground(new Color(194, 25, 25));
+        setBackground(new Color(111, 194, 232));
 
         setLayout(null);
 
