@@ -44,8 +44,8 @@ public abstract class Screen extends JPanel{
         setLayout(null);
 
         //load both main font and a smaller font for body text
-        Font kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
-        Font smallKenneyFont = loadCustomFont("Kenney Future.ttf", 20f);
+        kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
+        smallKenneyFont = loadCustomFont("Kenney Future.ttf", 20f);
 
         start_game_button = new JButton(start_game);
         start_game_button.setRolloverIcon(start_game_hover);
