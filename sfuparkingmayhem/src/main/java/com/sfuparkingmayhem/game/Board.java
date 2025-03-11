@@ -78,8 +78,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         score = new Score();
 
         //populate the game board with coins, cones, parked cars, and lost notes
-        //createCoins();
-        //createCones();
+        createCoins();
+        createCones();
         createParkedCars();
         populateLostNote();
 
