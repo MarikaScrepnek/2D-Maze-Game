@@ -4,11 +4,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -19,7 +16,7 @@ import javax.swing.SwingConstants;
 
 import com.sfuparkingmayhem.game.Board;
 
-public class MainMenu extends JPanel {
+public class MainMenu extends Screen {
     private ImageIcon start_game;
     private ImageIcon start_game_hover;
     private ImageIcon instructions;
@@ -28,10 +25,13 @@ public class MainMenu extends JPanel {
     private ImageIcon exit_hover;
 
     public MainMenu(CardLayout cardLayout, JPanel cardPanel) { //initializes variables and load button images
+        //load button images
         load_images();
+
+        //set preferred size and background color
         setPreferredSize(new Dimension(750,750));
-        JPanel main_menu = new JPanel();
         setBackground(new Color(111, 194, 232));
+        
         
         setLayout(null);
 
@@ -58,32 +58,21 @@ public class MainMenu extends JPanel {
         instructions_button.setBounds(278, 330, 192, 64); // Position the instructions button
         exit_button.setBounds(278, 410, 192, 64); // Position the exit button
 
-        start_game_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Board board = new Board(cardLayout, cardPanel);
-                cardPanel.add(board, "GameBoard");
-                cardLayout.show(cardPanel, "GameBoard");
-                board.setFocusable(true);
-                board.requestFocusInWindow();
-                board.addKeyListener(board);
-            }
+        start_game_button.addActionListener((ActionEvent e) -> {
+            Board board = new Board(cardLayout, cardPanel);
+            cardPanel.add(board, "GameBoard");
+            cardLayout.show(cardPanel, "GameBoard");
+            board.setFocusable(true);
+            board.requestFocusInWindow();
+            board.addKeyListener(board);
         });
 
-        instructions_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Instructions clicked!");
-                // Show instructions
-                cardLayout.show(cardPanel, "Instructions");
-            }
+        instructions_button.addActionListener((ActionEvent e) -> {
+            cardLayout.show(cardPanel, "Instructions");
         });
 
-        exit_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0); // Exit the program
-            }
+        exit_button.addActionListener((ActionEvent e) -> {
+            System.exit(0); // Exit the program
         });
 
         add(titleLabel);
@@ -92,7 +81,8 @@ public class MainMenu extends JPanel {
         add(exit_button);
     }
 
-    private void load_images() { //method to load button images
+    @Override
+    public final void load_images() { //method to load button images
         try {
             start_game = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game.png")));
             start_game_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("start_game_hover.png")));
@@ -102,32 +92,6 @@ public class MainMenu extends JPanel {
             exit_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("exit_hover.png")));
         } catch (IOException e) {
             System.out.println("Error loading images: " + e.getMessage());
-        }
-    }
-
-    public Font loadCustomFont(String fontFileName, float size) {
-        try {
-            // Load font as an InputStream
-            InputStream fontStream = getClass().getClassLoader().getResourceAsStream(fontFileName);
-            
-            if (fontStream == null) {
-                System.out.println("Font file not found: " + fontFileName);
-                return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
-            }
-
-            // Create a Font instance
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
-            fontStream.close(); // Close the stream after loading
-
-            // Register the font
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(customFont);
-
-            // Return the derived font with size
-            return customFont.deriveFont(size);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
         }
     }
 }

@@ -2,35 +2,14 @@ package com.sfuparkingmayhem.screen;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class Instructions extends Screen {
-    private ImageIcon main_menu;
-    private ImageIcon main_menu_hover;
     public Instructions(CardLayout cardLayout, JPanel cardPanel) {
-        //load button images
-        load_images();
-
-        //set the preffered size of the panel and background color
-        setPreferredSize(new Dimension(750,750));
+        super(cardLayout, cardPanel);
         setBackground(new Color(111, 194, 232));
-
-        //make the layout of swing elements manually
-        setLayout(null);
-
-        //load both main font and a smaller font for body text
-        Font kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
-        Font smallKenneyFont = loadCustomFont("Kenney Future.ttf", 20f);
 
         //create the instructions title
         JLabel instructionsLabel = new JLabel("Instructions", SwingConstants.CENTER);
@@ -67,27 +46,7 @@ public class Instructions extends Screen {
         objectiveInfoLabel.setBounds(400, 200, 300, 200); // Increased width and height
         add(objectiveInfoLabel);
 
-        //create the main menu button
-        JButton main_menu_button = new JButton(main_menu);
-        main_menu_button.setRolloverIcon(main_menu_hover);
-        main_menu_button.setPreferredSize(new Dimension(192, 64));
         main_menu_button.setBounds(280, 450, 192, 64);
         add(main_menu_button);
-
-        //make the panel switch to main menu when hit the main menu button
-        main_menu_button.addActionListener((ActionEvent e) -> {
-            cardLayout.show(cardPanel, "MainMenu");
-        });
-    }
-
-    //load main menu button images
-    @Override
-     public final void load_images() {
-        try {
-            main_menu = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu.png")));
-            main_menu_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu_hover.png")));
-        } catch (IOException e) {
-            System.out.println("Error loading images: " + e.getMessage());
-        }
     }
 }
