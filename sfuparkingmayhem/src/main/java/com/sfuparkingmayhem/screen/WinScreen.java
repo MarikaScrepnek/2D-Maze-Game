@@ -1,4 +1,4 @@
-package com.sfuparkingmayhem.screens;
+package com.sfuparkingmayhem.screen;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -17,36 +17,54 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class LoseScreenConcord extends JPanel {
+public class WinScreen extends JPanel {
     private ImageIcon main_menu;
     private ImageIcon main_menu_hover;
+    private int score;
+    private int time;
 
-    public LoseScreenConcord(CardLayout cardLayout, JPanel cardPanel) {
+
+    public WinScreen(CardLayout cardLayout, JPanel cardPanel, int score, int time) {
+        this.score = score;
+        this.time = time;
+
         load_images();
         setPreferredSize(new Dimension(750,750));
-        setBackground(new Color(194, 25, 25));
-
+        setBackground(new Color(76, 189, 51));
+        
         setLayout(null);
 
         Font kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
-        Font smallKenneyFont = loadCustomFont("Kenney Future.ttf", 20f);
 
-        JLabel loseLabel = new JLabel("You Lose!", SwingConstants.CENTER);
-        loseLabel.setFont(kenneyFont);
-        loseLabel.setForeground(Color.WHITE); // Set title text color
-        loseLabel.setBounds(0, 120, 750, 50);
-        add(loseLabel);
+        JLabel winLabel = new JLabel("You Win!", SwingConstants.CENTER);
+        winLabel.setFont(kenneyFont);
+        winLabel.setForeground(Color.WHITE); // Set title text color
+        winLabel.setBounds(0, 150, 750, 50);
+        add(winLabel);
 
-        JLabel messageLabel = new JLabel("The Concord Officer caught you!", SwingConstants.CENTER);
-        messageLabel.setFont(smallKenneyFont); // Adjust font if needed
-        messageLabel.setForeground(Color.WHITE);
-        messageLabel.setBounds(0, 180, 750, 50);
-        add(messageLabel);
+        //score label
+        JLabel scoreLabel = new JLabel("Score: " + score, SwingConstants.CENTER);
+        scoreLabel.setFont(kenneyFont.deriveFont(24f)); // Smaller font size
+        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setBounds(0, 200, 750, 50);
+        add(scoreLabel);
+
+        // Time Label
+        JLabel timeLabel = new JLabel("Time: " + time/60 + " minutes, " + time%60 + " seconds", SwingConstants.CENTER);
+        timeLabel.setFont(kenneyFont.deriveFont(24f)); // Smaller font size
+        timeLabel.setForeground(Color.WHITE);
+        timeLabel.setBounds(0, 250, 750, 50);
+        add(timeLabel);
+
 
         JButton main_menu_button = new JButton(main_menu);
+
         main_menu_button.setRolloverIcon(main_menu_hover);
+
         main_menu_button.setPreferredSize(new Dimension(192, 64));
+
         main_menu_button.setBounds(278, 410, 192, 64);
+
         add(main_menu_button);
 
         main_menu_button.addActionListener(new ActionListener() {
@@ -57,7 +75,7 @@ public class LoseScreenConcord extends JPanel {
         });
     }
 
-    private void load_images() { //method to load button images
+    private void load_images() {
         try {
             main_menu = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu.png")));
             main_menu_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu_hover.png")));
@@ -92,3 +110,5 @@ public class LoseScreenConcord extends JPanel {
         }
     }
 }
+
+

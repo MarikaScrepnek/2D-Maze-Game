@@ -7,8 +7,8 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.sfuparkingmayhem.screens.Instructions;
-import com.sfuparkingmayhem.screens.MainMenu;
+import com.sfuparkingmayhem.screen.Instructions;
+import com.sfuparkingmayhem.screen.MainMenu;
 
 /**
  *

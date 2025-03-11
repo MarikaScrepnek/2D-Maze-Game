@@ -1,4 +1,4 @@
-package com.sfuparkingmayhem.screens;
+package com.sfuparkingmayhem.screen;
 
 import java.awt.CardLayout;
 import java.awt.Color;
