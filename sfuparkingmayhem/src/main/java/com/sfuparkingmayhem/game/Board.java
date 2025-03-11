@@ -22,6 +22,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import com.sfuparkingmayhem.screens.LoseScreenConcord;
+import com.sfuparkingmayhem.screens.LoseScreenScore;
 import com.sfuparkingmayhem.screens.WinScreen;
 
 public class Board extends JPanel implements ActionListener, KeyListener{
@@ -50,9 +52,16 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     private int coinsCollectedCount = 0;
 
+    private boolean game_ended = false;
+
     CardLayout cardLayout;
     JPanel cardPanel;
 
+    /**
+     * Constructor for the Board class
+     * @param cardLayout
+     * @param cardPanel
+     */
     public Board(CardLayout cardLayout, JPanel cardPanel) {
         this.cardLayout=cardLayout;
         this.cardPanel=cardPanel;
@@ -94,12 +103,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             }
 
             if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
-                && officer.y_coordinate == main_character.getMainCharacterYCoordinate()) {
+                && officer.y_coordinate == main_character.getMainCharacterYCoordinate() && game_ended == false) {
                 // TO DO - Add game over logic
-                //LoseScreen loseScreen = new WinScreen(cardLayout, cardPanel);
-                //cardPanel.add(loseScreen, "LoseScreen");
-                //cardLayout.show(cardPanel, "WinScreen");
-
+                game_ended = true;
+                LoseScreenConcord loseScreen = new LoseScreenConcord(cardLayout, cardPanel);
+                cardPanel.add(loseScreen, "LoseScreenConcord");
+                cardLayout.show(cardPanel, "LoseScreenConcord");
             }
 
             repaint();  // Refresh the screen
@@ -1128,9 +1137,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             // Subtract points from the player's score
             if(oldX != main_character.getX_coordinate() || oldY != main_character.getY_coordinate()){
                 score.subtractPoints(5);
-                if(score.getScore() < 0){
-                    // TO DO - Add game over logic
-                    System.out.println("Game Over: Score is negative");
+                if(score.getScore() < 0 && game_ended == false){
+                    game_ended=true;
+                    LoseScreenScore loseScreenScore = new LoseScreenScore(cardLayout, cardPanel);
+                    cardPanel.add(loseScreenScore, "LoseScreenScore");
+                    cardLayout.show(cardPanel, "LoseScreenScore");
                 }
             }
 
