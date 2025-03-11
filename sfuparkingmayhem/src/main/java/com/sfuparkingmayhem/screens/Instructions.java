@@ -1,9 +1,12 @@
 package com.sfuparkingmayhem.screens;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -17,7 +20,7 @@ import javax.swing.SwingConstants;
 public class Instructions extends JPanel {
     private ImageIcon main_menu;
     private ImageIcon main_menu_hover;
-    public Instructions() {
+    public Instructions(CardLayout cardLayout, JPanel cardPanel) {
         load_images();
         setPreferredSize(new Dimension(750,750));
         setBackground(new Color(194, 25, 25));
@@ -62,6 +65,13 @@ public class Instructions extends JPanel {
         main_menu_button.setPreferredSize(new Dimension(192, 64));
         main_menu_button.setBounds(278, 410, 192, 64);
         add(main_menu_button);
+
+        main_menu_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "MainMenu");
+            }
+        });
     }
 
     private void load_images() {

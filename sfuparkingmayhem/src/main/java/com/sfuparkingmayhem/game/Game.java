@@ -7,6 +7,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.sfuparkingmayhem.screens.Instructions;
 import com.sfuparkingmayhem.screens.MainMenu;
 
 /**
@@ -36,10 +37,10 @@ public class Game
         JPanel cardPanel = new JPanel(cardLayout);
         
         MainMenu mainMenu = new MainMenu(cardLayout, cardPanel); // Main menu panel
-        //Instructions instructions = new Instructions();
+        Instructions instructions = new Instructions(cardLayout, cardPanel);
 
         cardPanel.add(mainMenu, "MainMenu");
-        //cardPanel.add(instructions, "Instructions");
+        cardPanel.add(instructions, "Instructions");
 
         //add the board panel to the window (instead of board it could be different screens)
         window.add(cardPanel);

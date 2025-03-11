@@ -75,7 +75,6 @@ public class MainMenu extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Instructions clicked!");
                 // Show instructions
-                Instructions instructions = new Instructions();
                 cardLayout.show(cardPanel, "Instructions");
             }
         });
