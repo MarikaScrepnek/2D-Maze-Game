@@ -2,112 +2,50 @@ package com.sfuparkingmayhem.screen;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.InputStream;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class WinScreen extends EndScreen {
-    private ImageIcon main_menu;
-    private ImageIcon main_menu_hover;
-    private int score;
-    private int time;
-
-
     public WinScreen(CardLayout cardLayout, JPanel cardPanel, int score, int time) {
-        this.score = score;
-        this.time = time;
+        //call EndScreen constructor
+        super(cardLayout, cardPanel);
 
-        load_images();
-        setPreferredSize(new Dimension(750,750));
+        //set background color to green
         setBackground(new Color(76, 189, 51));
         
-        setLayout(null);
-
-        Font kenneyFont = loadCustomFont("Kenney Future.ttf", 32f);
-
+        //create "you win" label
         JLabel winLabel = new JLabel("You Win!", SwingConstants.CENTER);
+        //set font
         winLabel.setFont(kenneyFont);
-        winLabel.setForeground(Color.WHITE); // Set title text color
+        //set color
+        winLabel.setForeground(Color.WHITE);
+        //set position and dimensions
         winLabel.setBounds(0, 150, 750, 50);
-        add(winLabel);
 
-        //score label
+        //create score label
         JLabel scoreLabel = new JLabel("Score: " + score, SwingConstants.CENTER);
-        scoreLabel.setFont(kenneyFont.deriveFont(24f)); // Smaller font size
+        //set font with smaller font size
+        scoreLabel.setFont(kenneyFont.deriveFont(24f));
+        //set color
         scoreLabel.setForeground(Color.WHITE);
+        //set position and dimensions
         scoreLabel.setBounds(0, 200, 750, 50);
-        add(scoreLabel);
 
-        // Time Label
+        //create time label
         JLabel timeLabel = new JLabel("Time: " + time/60 + " minutes, " + time%60 + " seconds", SwingConstants.CENTER);
-        timeLabel.setFont(kenneyFont.deriveFont(24f)); // Smaller font size
+        //set font with smaller font size
+        timeLabel.setFont(kenneyFont.deriveFont(24f));
+        //set color
         timeLabel.setForeground(Color.WHITE);
+        //set position and dimensions
         timeLabel.setBounds(0, 250, 750, 50);
+
+        //add elements to panel
+        add(winLabel);
+        add(scoreLabel);
         add(timeLabel);
-
-
-        JButton main_menu_button = new JButton(main_menu);
-
-        main_menu_button.setRolloverIcon(main_menu_hover);
-
-        main_menu_button.setPreferredSize(new Dimension(192, 64));
-
-        main_menu_button.setBounds(278, 410, 192, 64);
-
-        add(main_menu_button);
-
-        main_menu_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(cardPanel, "MainMenu");
-            }
-        });
-    }
-
-    private void load_images() {
-        try {
-            main_menu = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu.png")));
-            main_menu_hover = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_menu_hover.png")));
-        } catch (IOException e) {
-            System.out.println("Error loading images: " + e.getMessage());
-        }
-    }
-
-    public Font loadCustomFont(String fontFileName, float size) {
-        try {
-            // Load font as an InputStream
-            InputStream fontStream = getClass().getClassLoader().getResourceAsStream(fontFileName);
-            
-            if (fontStream == null) {
-                System.out.println("Font file not found: " + fontFileName);
-                return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
-            }
-
-            // Create a Font instance
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
-            fontStream.close(); // Close the stream after loading
-
-            // Register the font
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(customFont);
-
-            // Return the derived font with size
-            return customFont.deriveFont(size);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Font("SansSerif", Font.BOLD, (int) size); // Fallback font
-        }
     }
 }
 
