@@ -52,10 +52,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         score = new Score();
 
 
-        //createCoins();
+        createCoins();
 
         //createCones();
-        createParkedCars();
+        //createParkedCars();
         populateLostNote();
 
 
@@ -99,197 +99,197 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCoins(){
         //created and added new coins to the coins arraylist
-//        coins.add(new Coin(2,3));
-//        coins.add(new Coin(7,2));
-//        coins.add(new Coin(10,4 ));
-//        coins.add(new Coin(7,5));
-//        coins.add(new Coin(3,8));
-//        coins.add(new Coin(11,8));
-//        coins.add(new Coin(6,9));
-//        coins.add(new Coin(12,11));
-//        coins.add(new Coin(9,12));
-//        coins.add(new Coin(3,13));
+        coins.add(new Coin(2,3));
+        coins.add(new Coin(7,2));
+        coins.add(new Coin(10,4 ));
+        coins.add(new Coin(7,5));
+        coins.add(new Coin(3,8));
+        coins.add(new Coin(11,8));
+        coins.add(new Coin(6,9));
+        coins.add(new Coin(12,11));
+        coins.add(new Coin(9,12));
+        coins.add(new Coin(3,13));
 
-        coins.add(new Coin(1, 1));
-        coins.add(new Coin(1, 2));
-        coins.add(new Coin(1, 3));
-        coins.add(new Coin(1, 4));
-        coins.add(new Coin(1, 5));
-        coins.add(new Coin(1, 6));
-        coins.add(new Coin(1, 7));
-        coins.add(new Coin(1, 8));
-        coins.add(new Coin(1, 9));
-        coins.add(new Coin(1, 10));
-        coins.add(new Coin(1, 11));
-        coins.add(new Coin(1, 12));
-        coins.add(new Coin(1, 13));
-
-        coins.add(new Coin(2, 1));
-        coins.add(new Coin(2, 2));
-        coins.add(new Coin(2, 3));
-        coins.add(new Coin(2, 4));
-        coins.add(new Coin(2, 5));
-        coins.add(new Coin(2, 6));
-        coins.add(new Coin(2, 7));
-        coins.add(new Coin(2, 8));
-        coins.add(new Coin(2, 9));
-        coins.add(new Coin(2, 10));
-        coins.add(new Coin(2, 11));
-        coins.add(new Coin(2, 12));
-        coins.add(new Coin(2, 13));
-
-        coins.add(new Coin(3, 1));
-        coins.add(new Coin(3, 2));
-        coins.add(new Coin(3, 3));
-        coins.add(new Coin(3, 4));
-        coins.add(new Coin(3, 5));
-        coins.add(new Coin(3, 6));
-        coins.add(new Coin(3, 7));
-        coins.add(new Coin(3, 8));
-        coins.add(new Coin(3, 9));
-        coins.add(new Coin(3, 10));
-        coins.add(new Coin(3, 11));
-        coins.add(new Coin(3, 12));
-        coins.add(new Coin(3, 13));
-
-        coins.add(new Coin(4, 1));
-        coins.add(new Coin(4, 2));
-        coins.add(new Coin(4, 3));
-        coins.add(new Coin(4, 4));
-        coins.add(new Coin(4, 5));
-        coins.add(new Coin(4, 6));
-        coins.add(new Coin(4, 7));
-        coins.add(new Coin(4, 8));
-        coins.add(new Coin(4, 9));
-        coins.add(new Coin(4, 10));
-        coins.add(new Coin(4, 11));
-        coins.add(new Coin(4, 12));
-        coins.add(new Coin(4, 13));
-
-        coins.add(new Coin(5, 1));
-        coins.add(new Coin(5, 2));
-        coins.add(new Coin(5, 3));
-        coins.add(new Coin(5, 4));
-        coins.add(new Coin(5, 5));
-        coins.add(new Coin(5, 6));
-        coins.add(new Coin(5, 7));
-        coins.add(new Coin(5, 8));
-        coins.add(new Coin(5, 9));
-        coins.add(new Coin(5, 10));
-        coins.add(new Coin(5, 11));
-        coins.add(new Coin(5, 12));
-        coins.add(new Coin(5, 13));
-
-        coins.add(new Coin(6, 1));
-        coins.add(new Coin(6, 2));
-        coins.add(new Coin(6, 3));
-        coins.add(new Coin(6, 4));
-        coins.add(new Coin(6, 5));
-        coins.add(new Coin(6, 6));
-        coins.add(new Coin(6, 7));
-        coins.add(new Coin(6, 8));
-        coins.add(new Coin(6, 9));
-        coins.add(new Coin(6, 10));
-        coins.add(new Coin(6, 11));
-        coins.add(new Coin(6, 12));
-        coins.add(new Coin(6, 13));
-
-        coins.add(new Coin(7, 1));
-        coins.add(new Coin(7, 2));
-        coins.add(new Coin(7, 3));
-        coins.add(new Coin(7, 4));
-        coins.add(new Coin(7, 5));
-        coins.add(new Coin(7, 6));
-        coins.add(new Coin(7, 7));
-        coins.add(new Coin(7, 8));
-        coins.add(new Coin(7, 9));
-        coins.add(new Coin(7, 10));
-        coins.add(new Coin(7, 11));
-        coins.add(new Coin(7, 12));
-        coins.add(new Coin(7, 13));
-
-        coins.add(new Coin(8, 1));
-        coins.add(new Coin(8, 2));
-        coins.add(new Coin(8, 3));
-        coins.add(new Coin(8, 4));
-        coins.add(new Coin(8, 5));
-        coins.add(new Coin(8, 6));
-        coins.add(new Coin(8, 7));
-        coins.add(new Coin(8, 8));
-        coins.add(new Coin(8, 9));
-        coins.add(new Coin(8, 10));
-        coins.add(new Coin(8, 11));
-        coins.add(new Coin(8, 12));
-        coins.add(new Coin(8, 13));
-
-        coins.add(new Coin(9, 1));
-        coins.add(new Coin(9, 2));
-        coins.add(new Coin(9, 3));
-        coins.add(new Coin(9, 4));
-        coins.add(new Coin(9, 5));
-        coins.add(new Coin(9, 6));
-        coins.add(new Coin(9, 7));
-        coins.add(new Coin(9, 8));
-        coins.add(new Coin(9, 9));
-        coins.add(new Coin(9, 10));
-        coins.add(new Coin(9, 11));
-        coins.add(new Coin(9, 12));
-        coins.add(new Coin(9, 13));
-
-        coins.add(new Coin(10, 1));
-        coins.add(new Coin(10, 2));
-        coins.add(new Coin(10, 3));
-        coins.add(new Coin(10, 4));
-        coins.add(new Coin(10, 5));
-        coins.add(new Coin(10, 6));
-        coins.add(new Coin(10, 7));
-        coins.add(new Coin(10, 8));
-        coins.add(new Coin(10, 9));
-        coins.add(new Coin(10, 10));
-        coins.add(new Coin(10, 11));
-        coins.add(new Coin(10, 12));
-        coins.add(new Coin(10, 13));
-
-        coins.add(new Coin(11, 1));
-        coins.add(new Coin(11, 2));
-        coins.add(new Coin(11, 3));
-        coins.add(new Coin(11, 4));
-        coins.add(new Coin(11, 5));
-        coins.add(new Coin(11, 6));
-        coins.add(new Coin(11, 7));
-        coins.add(new Coin(11, 8));
-        coins.add(new Coin(11, 9));
-        coins.add(new Coin(11, 10));
-        coins.add(new Coin(11, 11));
-        coins.add(new Coin(11, 12));
-        coins.add(new Coin(11, 13));
-
-        coins.add(new Coin(12, 1));
-        coins.add(new Coin(12, 2));
-        coins.add(new Coin(12, 3));
-        coins.add(new Coin(12, 4));
-        coins.add(new Coin(12, 5));
-        coins.add(new Coin(12, 6));
-        coins.add(new Coin(12, 7));
-        coins.add(new Coin(12, 8));
-        coins.add(new Coin(12, 9));
-        coins.add(new Coin(12, 10));
-        coins.add(new Coin(12, 11));
-        coins.add(new Coin(12, 12));
-        coins.add(new Coin(12, 13));
-
-        coins.add(new Coin(13, 1));
-        coins.add(new Coin(13, 2));
-        coins.add(new Coin(13, 3));
-        coins.add(new Coin(13, 4));
-        coins.add(new Coin(13, 5));
-        coins.add(new Coin(13, 6));
-        coins.add(new Coin(13, 7));
-        coins.add(new Coin(13, 8));
-        coins.add(new Coin(13, 9));
-        coins.add(new Coin(13, 10));
-        coins.add(new Coin(13, 11));
-        coins.add(new Coin(13, 12));
+//        coins.add(new Coin(1, 1));
+//        coins.add(new Coin(1, 2));
+//        coins.add(new Coin(1, 3));
+//        coins.add(new Coin(1, 4));
+//        coins.add(new Coin(1, 5));
+//        coins.add(new Coin(1, 6));
+//        coins.add(new Coin(1, 7));
+//        coins.add(new Coin(1, 8));
+//        coins.add(new Coin(1, 9));
+//        coins.add(new Coin(1, 10));
+//        coins.add(new Coin(1, 11));
+//        coins.add(new Coin(1, 12));
+//        coins.add(new Coin(1, 13));
+//
+//        coins.add(new Coin(2, 1));
+//        coins.add(new Coin(2, 2));
+//        coins.add(new Coin(2, 3));
+//        coins.add(new Coin(2, 4));
+//        coins.add(new Coin(2, 5));
+//        coins.add(new Coin(2, 6));
+//        coins.add(new Coin(2, 7));
+//        coins.add(new Coin(2, 8));
+//        coins.add(new Coin(2, 9));
+//        coins.add(new Coin(2, 10));
+//        coins.add(new Coin(2, 11));
+//        coins.add(new Coin(2, 12));
+//        coins.add(new Coin(2, 13));
+//
+//        coins.add(new Coin(3, 1));
+//        coins.add(new Coin(3, 2));
+//        coins.add(new Coin(3, 3));
+//        coins.add(new Coin(3, 4));
+//        coins.add(new Coin(3, 5));
+//        coins.add(new Coin(3, 6));
+//        coins.add(new Coin(3, 7));
+//        coins.add(new Coin(3, 8));
+//        coins.add(new Coin(3, 9));
+//        coins.add(new Coin(3, 10));
+//        coins.add(new Coin(3, 11));
+//        coins.add(new Coin(3, 12));
+//        coins.add(new Coin(3, 13));
+//
+//        coins.add(new Coin(4, 1));
+//        coins.add(new Coin(4, 2));
+//        coins.add(new Coin(4, 3));
+//        coins.add(new Coin(4, 4));
+//        coins.add(new Coin(4, 5));
+//        coins.add(new Coin(4, 6));
+//        coins.add(new Coin(4, 7));
+//        coins.add(new Coin(4, 8));
+//        coins.add(new Coin(4, 9));
+//        coins.add(new Coin(4, 10));
+//        coins.add(new Coin(4, 11));
+//        coins.add(new Coin(4, 12));
+//        coins.add(new Coin(4, 13));
+//
+//        coins.add(new Coin(5, 1));
+//        coins.add(new Coin(5, 2));
+//        coins.add(new Coin(5, 3));
+//        coins.add(new Coin(5, 4));
+//        coins.add(new Coin(5, 5));
+//        coins.add(new Coin(5, 6));
+//        coins.add(new Coin(5, 7));
+//        coins.add(new Coin(5, 8));
+//        coins.add(new Coin(5, 9));
+//        coins.add(new Coin(5, 10));
+//        coins.add(new Coin(5, 11));
+//        coins.add(new Coin(5, 12));
+//        coins.add(new Coin(5, 13));
+//
+//        coins.add(new Coin(6, 1));
+//        coins.add(new Coin(6, 2));
+//        coins.add(new Coin(6, 3));
+//        coins.add(new Coin(6, 4));
+//        coins.add(new Coin(6, 5));
+//        coins.add(new Coin(6, 6));
+//        coins.add(new Coin(6, 7));
+//        coins.add(new Coin(6, 8));
+//        coins.add(new Coin(6, 9));
+//        coins.add(new Coin(6, 10));
+//        coins.add(new Coin(6, 11));
+//        coins.add(new Coin(6, 12));
+//        coins.add(new Coin(6, 13));
+//
+//        coins.add(new Coin(7, 1));
+//        coins.add(new Coin(7, 2));
+//        coins.add(new Coin(7, 3));
+//        coins.add(new Coin(7, 4));
+//        coins.add(new Coin(7, 5));
+//        coins.add(new Coin(7, 6));
+//        coins.add(new Coin(7, 7));
+//        coins.add(new Coin(7, 8));
+//        coins.add(new Coin(7, 9));
+//        coins.add(new Coin(7, 10));
+//        coins.add(new Coin(7, 11));
+//        coins.add(new Coin(7, 12));
+//        coins.add(new Coin(7, 13));
+//
+//        coins.add(new Coin(8, 1));
+//        coins.add(new Coin(8, 2));
+//        coins.add(new Coin(8, 3));
+//        coins.add(new Coin(8, 4));
+//        coins.add(new Coin(8, 5));
+//        coins.add(new Coin(8, 6));
+//        coins.add(new Coin(8, 7));
+//        coins.add(new Coin(8, 8));
+//        coins.add(new Coin(8, 9));
+//        coins.add(new Coin(8, 10));
+//        coins.add(new Coin(8, 11));
+//        coins.add(new Coin(8, 12));
+//        coins.add(new Coin(8, 13));
+//
+//        coins.add(new Coin(9, 1));
+//        coins.add(new Coin(9, 2));
+//        coins.add(new Coin(9, 3));
+//        coins.add(new Coin(9, 4));
+//        coins.add(new Coin(9, 5));
+//        coins.add(new Coin(9, 6));
+//        coins.add(new Coin(9, 7));
+//        coins.add(new Coin(9, 8));
+//        coins.add(new Coin(9, 9));
+//        coins.add(new Coin(9, 10));
+//        coins.add(new Coin(9, 11));
+//        coins.add(new Coin(9, 12));
+//        coins.add(new Coin(9, 13));
+//
+//        coins.add(new Coin(10, 1));
+//        coins.add(new Coin(10, 2));
+//        coins.add(new Coin(10, 3));
+//        coins.add(new Coin(10, 4));
+//        coins.add(new Coin(10, 5));
+//        coins.add(new Coin(10, 6));
+//        coins.add(new Coin(10, 7));
+//        coins.add(new Coin(10, 8));
+//        coins.add(new Coin(10, 9));
+//        coins.add(new Coin(10, 10));
+//        coins.add(new Coin(10, 11));
+//        coins.add(new Coin(10, 12));
+//        coins.add(new Coin(10, 13));
+//
+//        coins.add(new Coin(11, 1));
+//        coins.add(new Coin(11, 2));
+//        coins.add(new Coin(11, 3));
+//        coins.add(new Coin(11, 4));
+//        coins.add(new Coin(11, 5));
+//        coins.add(new Coin(11, 6));
+//        coins.add(new Coin(11, 7));
+//        coins.add(new Coin(11, 8));
+//        coins.add(new Coin(11, 9));
+//        coins.add(new Coin(11, 10));
+//        coins.add(new Coin(11, 11));
+//        coins.add(new Coin(11, 12));
+//        coins.add(new Coin(11, 13));
+//
+//        coins.add(new Coin(12, 1));
+//        coins.add(new Coin(12, 2));
+//        coins.add(new Coin(12, 3));
+//        coins.add(new Coin(12, 4));
+//        coins.add(new Coin(12, 5));
+//        coins.add(new Coin(12, 6));
+//        coins.add(new Coin(12, 7));
+//        coins.add(new Coin(12, 8));
+//        coins.add(new Coin(12, 9));
+//        coins.add(new Coin(12, 10));
+//        coins.add(new Coin(12, 11));
+//        coins.add(new Coin(12, 12));
+//        coins.add(new Coin(12, 13));
+//
+//        coins.add(new Coin(13, 1));
+//        coins.add(new Coin(13, 2));
+//        coins.add(new Coin(13, 3));
+//        coins.add(new Coin(13, 4));
+//        coins.add(new Coin(13, 5));
+//        coins.add(new Coin(13, 6));
+//        coins.add(new Coin(13, 7));
+//        coins.add(new Coin(13, 8));
+//        coins.add(new Coin(13, 9));
+//        coins.add(new Coin(13, 10));
+//        coins.add(new Coin(13, 11));
+//        coins.add(new Coin(13, 12));
 // No Coin(13, 13) added if it exceeds the board size
 
     }
@@ -413,212 +413,212 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCones(){
         //created and added new cones to the cones arraylist
-//        cones.add(new Cone(4,3));
-//        cones.add(new Cone(11,3));
-//        cones.add(new Cone(12,3));
-//        cones.add(new Cone(4,5));
-//        cones.add(new Cone(9,7));
-//        cones.add(new Cone(6,8));
-//        cones.add(new Cone(12,9));
-//        cones.add(new Cone(2,10));
-//        cones.add(new Cone(10,10));
-//        cones.add(new Cone(7,13));
+        cones.add(new Cone(4,3));
+        cones.add(new Cone(11,3));
+        cones.add(new Cone(12,3));
+        cones.add(new Cone(4,5));
+        cones.add(new Cone(9,7));
+        cones.add(new Cone(6,8));
+        cones.add(new Cone(12,9));
+        cones.add(new Cone(2,10));
+        cones.add(new Cone(10,10));
+        cones.add(new Cone(7,13));
 
 
 
 
-        cones.add(new Cone(1, 1));
-        cones.add(new Cone(1, 2));
-        cones.add(new Cone(1, 3));
-        cones.add(new Cone(1, 4));
-        cones.add(new Cone(1, 5));
-        cones.add(new Cone(1, 6));
-        cones.add(new Cone(1, 7));
-        cones.add(new Cone(1, 8));
-        cones.add(new Cone(1, 9));
-        cones.add(new Cone(1, 10));
-        cones.add(new Cone(1, 11));
-        cones.add(new Cone(1, 12));
-        cones.add(new Cone(1, 13));
-
-
-        cones.add(new Cone(2, 1));
-        cones.add(new Cone(2, 2));
-        cones.add(new Cone(2, 3));
-        cones.add(new Cone(2, 4));
-        cones.add(new Cone(2, 5));
-        cones.add(new Cone(2, 6));
-        cones.add(new Cone(2, 7));
-        cones.add(new Cone(2, 8));
-        cones.add(new Cone(2, 9));
-        cones.add(new Cone(2, 10));
-        cones.add(new Cone(2, 11));
-        cones.add(new Cone(2, 12));
-        cones.add(new Cone(2, 13));
-
-
-        cones.add(new Cone(3, 1));
-        cones.add(new Cone(3, 2));
-        cones.add(new Cone(3, 3));
-        cones.add(new Cone(3, 4));
-        cones.add(new Cone(3, 5));
-        cones.add(new Cone(3, 6));
-        cones.add(new Cone(3, 7));
-        cones.add(new Cone(3, 8));
-        cones.add(new Cone(3, 9));
-        cones.add(new Cone(3, 10));
-        cones.add(new Cone(3, 11));
-        cones.add(new Cone(3, 12));
-        cones.add(new Cone(3, 13));
-
-
-        cones.add(new Cone(4, 1));
-        cones.add(new Cone(4, 2));
-        cones.add(new Cone(4, 3));
-        cones.add(new Cone(4, 4));
-        cones.add(new Cone(4, 5));
-        cones.add(new Cone(4, 6));
-        cones.add(new Cone(4, 7));
-        cones.add(new Cone(4, 8));
-        cones.add(new Cone(4, 9));
-        cones.add(new Cone(4, 10));
-        cones.add(new Cone(4, 11));
-        cones.add(new Cone(4, 12));
-        cones.add(new Cone(4, 13));
-
-
-        cones.add(new Cone(5, 1));
-        cones.add(new Cone(5, 2));
-        cones.add(new Cone(5, 3));
-        cones.add(new Cone(5, 4));
-        cones.add(new Cone(5, 5));
-        cones.add(new Cone(5, 6));
-        cones.add(new Cone(5, 7));
-        cones.add(new Cone(5, 8));
-        cones.add(new Cone(5, 9));
-        cones.add(new Cone(5, 10));
-        cones.add(new Cone(5, 11));
-        cones.add(new Cone(5, 12));
-        cones.add(new Cone(5, 13));
-
-
-        cones.add(new Cone(6, 1));
-        cones.add(new Cone(6, 2));
-        cones.add(new Cone(6, 3));
-        cones.add(new Cone(6, 4));
-        cones.add(new Cone(6, 5));
-        cones.add(new Cone(6, 6));
-        cones.add(new Cone(6, 7));
-        cones.add(new Cone(6, 8));
-        cones.add(new Cone(6, 9));
-        cones.add(new Cone(6, 10));
-        cones.add(new Cone(6, 11));
-        cones.add(new Cone(6, 12));
-        cones.add(new Cone(6, 13));
-
-
-        cones.add(new Cone(7, 1));
-        cones.add(new Cone(7, 2));
-        cones.add(new Cone(7, 3));
-        cones.add(new Cone(7, 4));
-        cones.add(new Cone(7, 5));
-        cones.add(new Cone(7, 6));
-        cones.add(new Cone(7, 7));
-        cones.add(new Cone(7, 8));
-        cones.add(new Cone(7, 9));
-        cones.add(new Cone(7, 10));
-        cones.add(new Cone(7, 11));
-        cones.add(new Cone(7, 12));
-        cones.add(new Cone(7, 13));
-
-
-        cones.add(new Cone(8, 1));
-        cones.add(new Cone(8, 2));
-        cones.add(new Cone(8, 3));
-        cones.add(new Cone(8, 4));
-        cones.add(new Cone(8, 5));
-        cones.add(new Cone(8, 6));
-        cones.add(new Cone(8, 7));
-        cones.add(new Cone(8, 8));
-        cones.add(new Cone(8, 9));
-        cones.add(new Cone(8, 10));
-        cones.add(new Cone(8, 11));
-        cones.add(new Cone(8, 12));
-        cones.add(new Cone(8, 13));
-
-
-        cones.add(new Cone(9, 1));
-        cones.add(new Cone(9, 2));
-        cones.add(new Cone(9, 3));
-        cones.add(new Cone(9, 4));
-        cones.add(new Cone(9, 5));
-        cones.add(new Cone(9, 6));
-        cones.add(new Cone(9, 7));
-        cones.add(new Cone(9, 8));
-        cones.add(new Cone(9, 9));
-        cones.add(new Cone(9, 10));
-        cones.add(new Cone(9, 11));
-        cones.add(new Cone(9, 12));
-        cones.add(new Cone(9, 13));
-
-
-        cones.add(new Cone(10, 1));
-        cones.add(new Cone(10, 2));
-        cones.add(new Cone(10, 3));
-        cones.add(new Cone(10, 4));
-        cones.add(new Cone(10, 5));
-        cones.add(new Cone(10, 6));
-        cones.add(new Cone(10, 7));
-        cones.add(new Cone(10, 8));
-        cones.add(new Cone(10, 9));
-        cones.add(new Cone(10, 10));
-        cones.add(new Cone(10, 11));
-        cones.add(new Cone(10, 12));
-        cones.add(new Cone(10, 13));
-
-
-        cones.add(new Cone(11, 1));
-        cones.add(new Cone(11, 2));
-        cones.add(new Cone(11, 3));
-        cones.add(new Cone(11, 4));
-        cones.add(new Cone(11, 5));
-        cones.add(new Cone(11, 6));
-        cones.add(new Cone(11, 7));
-        cones.add(new Cone(11, 8));
-        cones.add(new Cone(11, 9));
-        cones.add(new Cone(11, 10));
-        cones.add(new Cone(11, 11));
-        cones.add(new Cone(11, 12));
-        cones.add(new Cone(11, 13));
-
-
-        cones.add(new Cone(12, 1));
-        cones.add(new Cone(12, 2));
-        cones.add(new Cone(12, 3));
-        cones.add(new Cone(12, 4));
-        cones.add(new Cone(12, 5));
-        cones.add(new Cone(12, 6));
-        cones.add(new Cone(12, 7));
-        cones.add(new Cone(12, 8));
-        cones.add(new Cone(12, 9));
-        cones.add(new Cone(12, 10));
-        cones.add(new Cone(12, 11));
-        cones.add(new Cone(12, 12));
-        cones.add(new Cone(12, 13));
-
-
-        cones.add(new Cone(13, 1));
-        cones.add(new Cone(13, 2));
-        cones.add(new Cone(13, 3));
-        cones.add(new Cone(13, 4));
-        cones.add(new Cone(13, 5));
-        cones.add(new Cone(13, 6));
-        cones.add(new Cone(13, 7));
-        cones.add(new Cone(13, 8));
-        cones.add(new Cone(13, 9));
-        cones.add(new Cone(13, 10));
-        cones.add(new Cone(13, 11));
-        cones.add(new Cone(13, 12));
+//        cones.add(new Cone(1, 1));
+//        cones.add(new Cone(1, 2));
+//        cones.add(new Cone(1, 3));
+//        cones.add(new Cone(1, 4));
+//        cones.add(new Cone(1, 5));
+//        cones.add(new Cone(1, 6));
+//        cones.add(new Cone(1, 7));
+//        cones.add(new Cone(1, 8));
+//        cones.add(new Cone(1, 9));
+//        cones.add(new Cone(1, 10));
+//        cones.add(new Cone(1, 11));
+//        cones.add(new Cone(1, 12));
+//        cones.add(new Cone(1, 13));
+//
+//
+//        cones.add(new Cone(2, 1));
+//        cones.add(new Cone(2, 2));
+//        cones.add(new Cone(2, 3));
+//        cones.add(new Cone(2, 4));
+//        cones.add(new Cone(2, 5));
+//        cones.add(new Cone(2, 6));
+//        cones.add(new Cone(2, 7));
+//        cones.add(new Cone(2, 8));
+//        cones.add(new Cone(2, 9));
+//        cones.add(new Cone(2, 10));
+//        cones.add(new Cone(2, 11));
+//        cones.add(new Cone(2, 12));
+//        cones.add(new Cone(2, 13));
+//
+//
+//        cones.add(new Cone(3, 1));
+//        cones.add(new Cone(3, 2));
+//        cones.add(new Cone(3, 3));
+//        cones.add(new Cone(3, 4));
+//        cones.add(new Cone(3, 5));
+//        cones.add(new Cone(3, 6));
+//        cones.add(new Cone(3, 7));
+//        cones.add(new Cone(3, 8));
+//        cones.add(new Cone(3, 9));
+//        cones.add(new Cone(3, 10));
+//        cones.add(new Cone(3, 11));
+//        cones.add(new Cone(3, 12));
+//        cones.add(new Cone(3, 13));
+//
+//
+//        cones.add(new Cone(4, 1));
+//        cones.add(new Cone(4, 2));
+//        cones.add(new Cone(4, 3));
+//        cones.add(new Cone(4, 4));
+//        cones.add(new Cone(4, 5));
+//        cones.add(new Cone(4, 6));
+//        cones.add(new Cone(4, 7));
+//        cones.add(new Cone(4, 8));
+//        cones.add(new Cone(4, 9));
+//        cones.add(new Cone(4, 10));
+//        cones.add(new Cone(4, 11));
+//        cones.add(new Cone(4, 12));
+//        cones.add(new Cone(4, 13));
+//
+//
+//        cones.add(new Cone(5, 1));
+//        cones.add(new Cone(5, 2));
+//        cones.add(new Cone(5, 3));
+//        cones.add(new Cone(5, 4));
+//        cones.add(new Cone(5, 5));
+//        cones.add(new Cone(5, 6));
+//        cones.add(new Cone(5, 7));
+//        cones.add(new Cone(5, 8));
+//        cones.add(new Cone(5, 9));
+//        cones.add(new Cone(5, 10));
+//        cones.add(new Cone(5, 11));
+//        cones.add(new Cone(5, 12));
+//        cones.add(new Cone(5, 13));
+//
+//
+//        cones.add(new Cone(6, 1));
+//        cones.add(new Cone(6, 2));
+//        cones.add(new Cone(6, 3));
+//        cones.add(new Cone(6, 4));
+//        cones.add(new Cone(6, 5));
+//        cones.add(new Cone(6, 6));
+//        cones.add(new Cone(6, 7));
+//        cones.add(new Cone(6, 8));
+//        cones.add(new Cone(6, 9));
+//        cones.add(new Cone(6, 10));
+//        cones.add(new Cone(6, 11));
+//        cones.add(new Cone(6, 12));
+//        cones.add(new Cone(6, 13));
+//
+//
+//        cones.add(new Cone(7, 1));
+//        cones.add(new Cone(7, 2));
+//        cones.add(new Cone(7, 3));
+//        cones.add(new Cone(7, 4));
+//        cones.add(new Cone(7, 5));
+//        cones.add(new Cone(7, 6));
+//        cones.add(new Cone(7, 7));
+//        cones.add(new Cone(7, 8));
+//        cones.add(new Cone(7, 9));
+//        cones.add(new Cone(7, 10));
+//        cones.add(new Cone(7, 11));
+//        cones.add(new Cone(7, 12));
+//        cones.add(new Cone(7, 13));
+//
+//
+//        cones.add(new Cone(8, 1));
+//        cones.add(new Cone(8, 2));
+//        cones.add(new Cone(8, 3));
+//        cones.add(new Cone(8, 4));
+//        cones.add(new Cone(8, 5));
+//        cones.add(new Cone(8, 6));
+//        cones.add(new Cone(8, 7));
+//        cones.add(new Cone(8, 8));
+//        cones.add(new Cone(8, 9));
+//        cones.add(new Cone(8, 10));
+//        cones.add(new Cone(8, 11));
+//        cones.add(new Cone(8, 12));
+//        cones.add(new Cone(8, 13));
+//
+//
+//        cones.add(new Cone(9, 1));
+//        cones.add(new Cone(9, 2));
+//        cones.add(new Cone(9, 3));
+//        cones.add(new Cone(9, 4));
+//        cones.add(new Cone(9, 5));
+//        cones.add(new Cone(9, 6));
+//        cones.add(new Cone(9, 7));
+//        cones.add(new Cone(9, 8));
+//        cones.add(new Cone(9, 9));
+//        cones.add(new Cone(9, 10));
+//        cones.add(new Cone(9, 11));
+//        cones.add(new Cone(9, 12));
+//        cones.add(new Cone(9, 13));
+//
+//
+//        cones.add(new Cone(10, 1));
+//        cones.add(new Cone(10, 2));
+//        cones.add(new Cone(10, 3));
+//        cones.add(new Cone(10, 4));
+//        cones.add(new Cone(10, 5));
+//        cones.add(new Cone(10, 6));
+//        cones.add(new Cone(10, 7));
+//        cones.add(new Cone(10, 8));
+//        cones.add(new Cone(10, 9));
+//        cones.add(new Cone(10, 10));
+//        cones.add(new Cone(10, 11));
+//        cones.add(new Cone(10, 12));
+//        cones.add(new Cone(10, 13));
+//
+//
+//        cones.add(new Cone(11, 1));
+//        cones.add(new Cone(11, 2));
+//        cones.add(new Cone(11, 3));
+//        cones.add(new Cone(11, 4));
+//        cones.add(new Cone(11, 5));
+//        cones.add(new Cone(11, 6));
+//        cones.add(new Cone(11, 7));
+//        cones.add(new Cone(11, 8));
+//        cones.add(new Cone(11, 9));
+//        cones.add(new Cone(11, 10));
+//        cones.add(new Cone(11, 11));
+//        cones.add(new Cone(11, 12));
+//        cones.add(new Cone(11, 13));
+//
+//
+//        cones.add(new Cone(12, 1));
+//        cones.add(new Cone(12, 2));
+//        cones.add(new Cone(12, 3));
+//        cones.add(new Cone(12, 4));
+//        cones.add(new Cone(12, 5));
+//        cones.add(new Cone(12, 6));
+//        cones.add(new Cone(12, 7));
+//        cones.add(new Cone(12, 8));
+//        cones.add(new Cone(12, 9));
+//        cones.add(new Cone(12, 10));
+//        cones.add(new Cone(12, 11));
+//        cones.add(new Cone(12, 12));
+//        cones.add(new Cone(12, 13));
+//
+//
+//        cones.add(new Cone(13, 1));
+//        cones.add(new Cone(13, 2));
+//        cones.add(new Cone(13, 3));
+//        cones.add(new Cone(13, 4));
+//        cones.add(new Cone(13, 5));
+//        cones.add(new Cone(13, 6));
+//        cones.add(new Cone(13, 7));
+//        cones.add(new Cone(13, 8));
+//        cones.add(new Cone(13, 9));
+//        cones.add(new Cone(13, 10));
+//        cones.add(new Cone(13, 11));
+//        cones.add(new Cone(13, 12));
         //cones.add(new Cone(13, 13));
 
     }
@@ -627,197 +627,197 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates parked cars and adds them to the parkedCars arraylist
      */
     private void createParkedCars(){
-//        parkedCars.add(new ParkedCar(2, 2));
-//        parkedCars.add(new ParkedCar(6, 5));
-//        parkedCars.add(new ParkedCar(8, 5));
-//        parkedCars.add(new ParkedCar(12, 6));
-//        parkedCars.add(new ParkedCar(12, 7));
-//        parkedCars.add(new ParkedCar(3, 7));
-//        parkedCars.add(new ParkedCar(4, 11));
-//        parkedCars.add(new ParkedCar(4, 12));
-//        parkedCars.add(new ParkedCar(8, 11));
-//        parkedCars.add(new ParkedCar(9, 11));
-
-        parkedCars.add(new ParkedCar(1, 1));
-        parkedCars.add(new ParkedCar(1, 2));
-        parkedCars.add(new ParkedCar(1, 3));
-        parkedCars.add(new ParkedCar(1, 4));
-        parkedCars.add(new ParkedCar(1, 5));
-        parkedCars.add(new ParkedCar(1, 6));
-        parkedCars.add(new ParkedCar(1, 7));
-        parkedCars.add(new ParkedCar(1, 8));
-        parkedCars.add(new ParkedCar(1, 9));
-        parkedCars.add(new ParkedCar(1, 10));
-        parkedCars.add(new ParkedCar(1, 11));
-        parkedCars.add(new ParkedCar(1, 12));
-        parkedCars.add(new ParkedCar(1, 13));
-
-        parkedCars.add(new ParkedCar(2, 1));
         parkedCars.add(new ParkedCar(2, 2));
-        parkedCars.add(new ParkedCar(2, 3));
-        parkedCars.add(new ParkedCar(2, 4));
-        parkedCars.add(new ParkedCar(2, 5));
-        parkedCars.add(new ParkedCar(2, 6));
-        parkedCars.add(new ParkedCar(2, 7));
-        parkedCars.add(new ParkedCar(2, 8));
-        parkedCars.add(new ParkedCar(2, 9));
-        parkedCars.add(new ParkedCar(2, 10));
-        parkedCars.add(new ParkedCar(2, 11));
-        parkedCars.add(new ParkedCar(2, 12));
-        parkedCars.add(new ParkedCar(2, 13));
-
-        parkedCars.add(new ParkedCar(3, 1));
-        parkedCars.add(new ParkedCar(3, 2));
-        parkedCars.add(new ParkedCar(3, 3));
-        parkedCars.add(new ParkedCar(3, 4));
-        parkedCars.add(new ParkedCar(3, 5));
-        parkedCars.add(new ParkedCar(3, 6));
-        parkedCars.add(new ParkedCar(3, 7));
-        parkedCars.add(new ParkedCar(3, 8));
-        parkedCars.add(new ParkedCar(3, 9));
-        parkedCars.add(new ParkedCar(3, 10));
-        parkedCars.add(new ParkedCar(3, 11));
-        parkedCars.add(new ParkedCar(3, 12));
-        parkedCars.add(new ParkedCar(3, 13));
-
-        parkedCars.add(new ParkedCar(4, 1));
-        parkedCars.add(new ParkedCar(4, 2));
-        parkedCars.add(new ParkedCar(4, 3));
-        parkedCars.add(new ParkedCar(4, 4));
-        parkedCars.add(new ParkedCar(4, 5));
-        parkedCars.add(new ParkedCar(4, 6));
-        parkedCars.add(new ParkedCar(4, 7));
-        parkedCars.add(new ParkedCar(4, 8));
-        parkedCars.add(new ParkedCar(4, 9));
-        parkedCars.add(new ParkedCar(4, 10));
-        parkedCars.add(new ParkedCar(4, 11));
-        parkedCars.add(new ParkedCar(4, 12));
-        parkedCars.add(new ParkedCar(4, 13));
-
-        parkedCars.add(new ParkedCar(5, 1));
-        parkedCars.add(new ParkedCar(5, 2));
-        parkedCars.add(new ParkedCar(5, 3));
-        parkedCars.add(new ParkedCar(5, 4));
-        parkedCars.add(new ParkedCar(5, 5));
-        parkedCars.add(new ParkedCar(5, 6));
-        parkedCars.add(new ParkedCar(5, 7));
-        parkedCars.add(new ParkedCar(5, 8));
-        parkedCars.add(new ParkedCar(5, 9));
-        parkedCars.add(new ParkedCar(5, 10));
-        parkedCars.add(new ParkedCar(5, 11));
-        parkedCars.add(new ParkedCar(5, 12));
-        parkedCars.add(new ParkedCar(5, 13));
-
-        parkedCars.add(new ParkedCar(6, 1));
-        parkedCars.add(new ParkedCar(6, 2));
-        parkedCars.add(new ParkedCar(6, 3));
-        parkedCars.add(new ParkedCar(6, 4));
         parkedCars.add(new ParkedCar(6, 5));
-        parkedCars.add(new ParkedCar(6, 6));
-        parkedCars.add(new ParkedCar(6, 7));
-        parkedCars.add(new ParkedCar(6, 8));
-        parkedCars.add(new ParkedCar(6, 9));
-        parkedCars.add(new ParkedCar(6, 10));
-        parkedCars.add(new ParkedCar(6, 11));
-        parkedCars.add(new ParkedCar(6, 12));
-        parkedCars.add(new ParkedCar(6, 13));
-
-        parkedCars.add(new ParkedCar(7, 1));
-        parkedCars.add(new ParkedCar(7, 2));
-        parkedCars.add(new ParkedCar(7, 3));
-        parkedCars.add(new ParkedCar(7, 4));
-        parkedCars.add(new ParkedCar(7, 5));
-        parkedCars.add(new ParkedCar(7, 6));
-        parkedCars.add(new ParkedCar(7, 7));
-        parkedCars.add(new ParkedCar(7, 8));
-        parkedCars.add(new ParkedCar(7, 9));
-        parkedCars.add(new ParkedCar(7, 10));
-        parkedCars.add(new ParkedCar(7, 11));
-        parkedCars.add(new ParkedCar(7, 12));
-        parkedCars.add(new ParkedCar(7, 13));
-
-        parkedCars.add(new ParkedCar(8, 1));
-        parkedCars.add(new ParkedCar(8, 2));
-        parkedCars.add(new ParkedCar(8, 3));
-        parkedCars.add(new ParkedCar(8, 4));
         parkedCars.add(new ParkedCar(8, 5));
-        parkedCars.add(new ParkedCar(8, 6));
-        parkedCars.add(new ParkedCar(8, 7));
-        parkedCars.add(new ParkedCar(8, 8));
-        parkedCars.add(new ParkedCar(8, 9));
-        parkedCars.add(new ParkedCar(8, 10));
-        parkedCars.add(new ParkedCar(8, 11));
-        parkedCars.add(new ParkedCar(8, 12));
-        parkedCars.add(new ParkedCar(8, 13));
-
-        parkedCars.add(new ParkedCar(9, 1));
-        parkedCars.add(new ParkedCar(9, 2));
-        parkedCars.add(new ParkedCar(9, 3));
-        parkedCars.add(new ParkedCar(9, 4));
-        parkedCars.add(new ParkedCar(9, 5));
-        parkedCars.add(new ParkedCar(9, 6));
-        parkedCars.add(new ParkedCar(9, 7));
-        parkedCars.add(new ParkedCar(9, 8));
-        parkedCars.add(new ParkedCar(9, 9));
-        parkedCars.add(new ParkedCar(9, 10));
-        parkedCars.add(new ParkedCar(9, 11));
-        parkedCars.add(new ParkedCar(9, 12));
-        parkedCars.add(new ParkedCar(9, 13));
-
-        parkedCars.add(new ParkedCar(10, 1));
-        parkedCars.add(new ParkedCar(10, 2));
-        parkedCars.add(new ParkedCar(10, 3));
-        parkedCars.add(new ParkedCar(10, 4));
-        parkedCars.add(new ParkedCar(10, 5));
-        parkedCars.add(new ParkedCar(10, 6));
-        parkedCars.add(new ParkedCar(10, 7));
-        parkedCars.add(new ParkedCar(10, 8));
-        parkedCars.add(new ParkedCar(10, 9));
-        parkedCars.add(new ParkedCar(10, 10));
-        parkedCars.add(new ParkedCar(10, 11));
-        parkedCars.add(new ParkedCar(10, 12));
-        parkedCars.add(new ParkedCar(10, 13));
-
-        parkedCars.add(new ParkedCar(11, 1));
-        parkedCars.add(new ParkedCar(11, 2));
-        parkedCars.add(new ParkedCar(11, 3));
-        parkedCars.add(new ParkedCar(11, 4));
-        parkedCars.add(new ParkedCar(11, 5));
-        parkedCars.add(new ParkedCar(11, 6));
-        parkedCars.add(new ParkedCar(11, 7));
-        parkedCars.add(new ParkedCar(11, 8));
-        parkedCars.add(new ParkedCar(11, 9));
-        parkedCars.add(new ParkedCar(11, 10));
-        parkedCars.add(new ParkedCar(11, 11));
-        parkedCars.add(new ParkedCar(11, 12));
-        parkedCars.add(new ParkedCar(11, 13));
-
-        parkedCars.add(new ParkedCar(12, 1));
-        parkedCars.add(new ParkedCar(12, 2));
-        parkedCars.add(new ParkedCar(12, 3));
-        parkedCars.add(new ParkedCar(12, 4));
-        parkedCars.add(new ParkedCar(12, 5));
         parkedCars.add(new ParkedCar(12, 6));
         parkedCars.add(new ParkedCar(12, 7));
-        parkedCars.add(new ParkedCar(12, 8));
-        parkedCars.add(new ParkedCar(12, 9));
-        parkedCars.add(new ParkedCar(12, 10));
-        parkedCars.add(new ParkedCar(12, 11));
-        parkedCars.add(new ParkedCar(12, 12));
-        parkedCars.add(new ParkedCar(12, 13));
+        parkedCars.add(new ParkedCar(3, 7));
+        parkedCars.add(new ParkedCar(4, 11));
+        parkedCars.add(new ParkedCar(4, 12));
+        parkedCars.add(new ParkedCar(8, 11));
+        parkedCars.add(new ParkedCar(9, 11));
 
-        parkedCars.add(new ParkedCar(13, 1));
-        parkedCars.add(new ParkedCar(13, 2));
-        parkedCars.add(new ParkedCar(13, 3));
-        parkedCars.add(new ParkedCar(13, 4));
-        parkedCars.add(new ParkedCar(13, 5));
-        parkedCars.add(new ParkedCar(13, 6));
-        parkedCars.add(new ParkedCar(13, 7));
-        parkedCars.add(new ParkedCar(13, 8));
-        parkedCars.add(new ParkedCar(13, 9));
-        parkedCars.add(new ParkedCar(13, 10));
-        parkedCars.add(new ParkedCar(13, 11));
-        parkedCars.add(new ParkedCar(13, 12));
+//        parkedCars.add(new ParkedCar(1, 1));
+//        parkedCars.add(new ParkedCar(1, 2));
+//        parkedCars.add(new ParkedCar(1, 3));
+//        parkedCars.add(new ParkedCar(1, 4));
+//        parkedCars.add(new ParkedCar(1, 5));
+//        parkedCars.add(new ParkedCar(1, 6));
+//        parkedCars.add(new ParkedCar(1, 7));
+//        parkedCars.add(new ParkedCar(1, 8));
+//        parkedCars.add(new ParkedCar(1, 9));
+//        parkedCars.add(new ParkedCar(1, 10));
+//        parkedCars.add(new ParkedCar(1, 11));
+//        parkedCars.add(new ParkedCar(1, 12));
+//        parkedCars.add(new ParkedCar(1, 13));
+//
+//        parkedCars.add(new ParkedCar(2, 1));
+//        parkedCars.add(new ParkedCar(2, 2));
+//        parkedCars.add(new ParkedCar(2, 3));
+//        parkedCars.add(new ParkedCar(2, 4));
+//        parkedCars.add(new ParkedCar(2, 5));
+//        parkedCars.add(new ParkedCar(2, 6));
+//        parkedCars.add(new ParkedCar(2, 7));
+//        parkedCars.add(new ParkedCar(2, 8));
+//        parkedCars.add(new ParkedCar(2, 9));
+//        parkedCars.add(new ParkedCar(2, 10));
+//        parkedCars.add(new ParkedCar(2, 11));
+//        parkedCars.add(new ParkedCar(2, 12));
+//        parkedCars.add(new ParkedCar(2, 13));
+//
+//        parkedCars.add(new ParkedCar(3, 1));
+//        parkedCars.add(new ParkedCar(3, 2));
+//        parkedCars.add(new ParkedCar(3, 3));
+//        parkedCars.add(new ParkedCar(3, 4));
+//        parkedCars.add(new ParkedCar(3, 5));
+//        parkedCars.add(new ParkedCar(3, 6));
+//        parkedCars.add(new ParkedCar(3, 7));
+//        parkedCars.add(new ParkedCar(3, 8));
+//        parkedCars.add(new ParkedCar(3, 9));
+//        parkedCars.add(new ParkedCar(3, 10));
+//        parkedCars.add(new ParkedCar(3, 11));
+//        parkedCars.add(new ParkedCar(3, 12));
+//        parkedCars.add(new ParkedCar(3, 13));
+//
+//        parkedCars.add(new ParkedCar(4, 1));
+//        parkedCars.add(new ParkedCar(4, 2));
+//        parkedCars.add(new ParkedCar(4, 3));
+//        parkedCars.add(new ParkedCar(4, 4));
+//        parkedCars.add(new ParkedCar(4, 5));
+//        parkedCars.add(new ParkedCar(4, 6));
+//        parkedCars.add(new ParkedCar(4, 7));
+//        parkedCars.add(new ParkedCar(4, 8));
+//        parkedCars.add(new ParkedCar(4, 9));
+//        parkedCars.add(new ParkedCar(4, 10));
+//        parkedCars.add(new ParkedCar(4, 11));
+//        parkedCars.add(new ParkedCar(4, 12));
+//        parkedCars.add(new ParkedCar(4, 13));
+//
+//        parkedCars.add(new ParkedCar(5, 1));
+//        parkedCars.add(new ParkedCar(5, 2));
+//        parkedCars.add(new ParkedCar(5, 3));
+//        parkedCars.add(new ParkedCar(5, 4));
+//        parkedCars.add(new ParkedCar(5, 5));
+//        parkedCars.add(new ParkedCar(5, 6));
+//        parkedCars.add(new ParkedCar(5, 7));
+//        parkedCars.add(new ParkedCar(5, 8));
+//        parkedCars.add(new ParkedCar(5, 9));
+//        parkedCars.add(new ParkedCar(5, 10));
+//        parkedCars.add(new ParkedCar(5, 11));
+//        parkedCars.add(new ParkedCar(5, 12));
+//        parkedCars.add(new ParkedCar(5, 13));
+//
+//        parkedCars.add(new ParkedCar(6, 1));
+//        parkedCars.add(new ParkedCar(6, 2));
+//        parkedCars.add(new ParkedCar(6, 3));
+//        parkedCars.add(new ParkedCar(6, 4));
+//        parkedCars.add(new ParkedCar(6, 5));
+//        parkedCars.add(new ParkedCar(6, 6));
+//        parkedCars.add(new ParkedCar(6, 7));
+//        parkedCars.add(new ParkedCar(6, 8));
+//        parkedCars.add(new ParkedCar(6, 9));
+//        parkedCars.add(new ParkedCar(6, 10));
+//        parkedCars.add(new ParkedCar(6, 11));
+//        parkedCars.add(new ParkedCar(6, 12));
+//        parkedCars.add(new ParkedCar(6, 13));
+//
+//        parkedCars.add(new ParkedCar(7, 1));
+//        parkedCars.add(new ParkedCar(7, 2));
+//        parkedCars.add(new ParkedCar(7, 3));
+//        parkedCars.add(new ParkedCar(7, 4));
+//        parkedCars.add(new ParkedCar(7, 5));
+//        parkedCars.add(new ParkedCar(7, 6));
+//        parkedCars.add(new ParkedCar(7, 7));
+//        parkedCars.add(new ParkedCar(7, 8));
+//        parkedCars.add(new ParkedCar(7, 9));
+//        parkedCars.add(new ParkedCar(7, 10));
+//        parkedCars.add(new ParkedCar(7, 11));
+//        parkedCars.add(new ParkedCar(7, 12));
+//        parkedCars.add(new ParkedCar(7, 13));
+//
+//        parkedCars.add(new ParkedCar(8, 1));
+//        parkedCars.add(new ParkedCar(8, 2));
+//        parkedCars.add(new ParkedCar(8, 3));
+//        parkedCars.add(new ParkedCar(8, 4));
+//        parkedCars.add(new ParkedCar(8, 5));
+//        parkedCars.add(new ParkedCar(8, 6));
+//        parkedCars.add(new ParkedCar(8, 7));
+//        parkedCars.add(new ParkedCar(8, 8));
+//        parkedCars.add(new ParkedCar(8, 9));
+//        parkedCars.add(new ParkedCar(8, 10));
+//        parkedCars.add(new ParkedCar(8, 11));
+//        parkedCars.add(new ParkedCar(8, 12));
+//        parkedCars.add(new ParkedCar(8, 13));
+//
+//        parkedCars.add(new ParkedCar(9, 1));
+//        parkedCars.add(new ParkedCar(9, 2));
+//        parkedCars.add(new ParkedCar(9, 3));
+//        parkedCars.add(new ParkedCar(9, 4));
+//        parkedCars.add(new ParkedCar(9, 5));
+//        parkedCars.add(new ParkedCar(9, 6));
+//        parkedCars.add(new ParkedCar(9, 7));
+//        parkedCars.add(new ParkedCar(9, 8));
+//        parkedCars.add(new ParkedCar(9, 9));
+//        parkedCars.add(new ParkedCar(9, 10));
+//        parkedCars.add(new ParkedCar(9, 11));
+//        parkedCars.add(new ParkedCar(9, 12));
+//        parkedCars.add(new ParkedCar(9, 13));
+//
+//        parkedCars.add(new ParkedCar(10, 1));
+//        parkedCars.add(new ParkedCar(10, 2));
+//        parkedCars.add(new ParkedCar(10, 3));
+//        parkedCars.add(new ParkedCar(10, 4));
+//        parkedCars.add(new ParkedCar(10, 5));
+//        parkedCars.add(new ParkedCar(10, 6));
+//        parkedCars.add(new ParkedCar(10, 7));
+//        parkedCars.add(new ParkedCar(10, 8));
+//        parkedCars.add(new ParkedCar(10, 9));
+//        parkedCars.add(new ParkedCar(10, 10));
+//        parkedCars.add(new ParkedCar(10, 11));
+//        parkedCars.add(new ParkedCar(10, 12));
+//        parkedCars.add(new ParkedCar(10, 13));
+//
+//        parkedCars.add(new ParkedCar(11, 1));
+//        parkedCars.add(new ParkedCar(11, 2));
+//        parkedCars.add(new ParkedCar(11, 3));
+//        parkedCars.add(new ParkedCar(11, 4));
+//        parkedCars.add(new ParkedCar(11, 5));
+//        parkedCars.add(new ParkedCar(11, 6));
+//        parkedCars.add(new ParkedCar(11, 7));
+//        parkedCars.add(new ParkedCar(11, 8));
+//        parkedCars.add(new ParkedCar(11, 9));
+//        parkedCars.add(new ParkedCar(11, 10));
+//        parkedCars.add(new ParkedCar(11, 11));
+//        parkedCars.add(new ParkedCar(11, 12));
+//        parkedCars.add(new ParkedCar(11, 13));
+//
+//        parkedCars.add(new ParkedCar(12, 1));
+//        parkedCars.add(new ParkedCar(12, 2));
+//        parkedCars.add(new ParkedCar(12, 3));
+//        parkedCars.add(new ParkedCar(12, 4));
+//        parkedCars.add(new ParkedCar(12, 5));
+//        parkedCars.add(new ParkedCar(12, 6));
+//        parkedCars.add(new ParkedCar(12, 7));
+//        parkedCars.add(new ParkedCar(12, 8));
+//        parkedCars.add(new ParkedCar(12, 9));
+//        parkedCars.add(new ParkedCar(12, 10));
+//        parkedCars.add(new ParkedCar(12, 11));
+//        parkedCars.add(new ParkedCar(12, 12));
+//        parkedCars.add(new ParkedCar(12, 13));
+//
+//        parkedCars.add(new ParkedCar(13, 1));
+//        parkedCars.add(new ParkedCar(13, 2));
+//        parkedCars.add(new ParkedCar(13, 3));
+//        parkedCars.add(new ParkedCar(13, 4));
+//        parkedCars.add(new ParkedCar(13, 5));
+//        parkedCars.add(new ParkedCar(13, 6));
+//        parkedCars.add(new ParkedCar(13, 7));
+//        parkedCars.add(new ParkedCar(13, 8));
+//        parkedCars.add(new ParkedCar(13, 9));
+//        parkedCars.add(new ParkedCar(13, 10));
+//        parkedCars.add(new ParkedCar(13, 11));
+//        parkedCars.add(new ParkedCar(13, 12));
 // Avoid adding ParkedCar(13, 13) if the board ends at 12
 
 
