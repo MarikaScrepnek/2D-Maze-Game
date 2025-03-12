@@ -7,7 +7,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * Class representing the screen displayed when the player loses the game.
+ * It extends the EndScreen class and displays a message indicating that the player lost.
+ */
 abstract public class LoseScreen extends EndScreen {
+    /**
+     * Constructs a LoseScreen with a specified displaying you lose text and a red background.
+     *
+     * @param cardLayout The CardLayout used for switching between screens.
+     * @param cardPanel  The JPanel that contains all the game screens.
+     */
     public LoseScreen(CardLayout cardLayout, JPanel cardPanel) {
         //call EndScreen constructor
         super(cardLayout, cardPanel);
