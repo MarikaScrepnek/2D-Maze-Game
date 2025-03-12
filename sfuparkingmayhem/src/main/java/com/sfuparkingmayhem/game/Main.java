@@ -8,7 +8,10 @@ package com.sfuparkingmayhem.game;
  * @version 1.0
  */
 public class Main {
-
+    /**
+     * Default constructor for the Main class.
+     */
+    public Main(){}
     /**
      * Runs a new {@link Game} and uses initWindow() method
      * 

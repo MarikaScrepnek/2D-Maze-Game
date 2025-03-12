@@ -43,8 +43,6 @@ public abstract class Entity {
     /**
      * Gets the image of this Entity and throws IOExceptions e, if any, and prints out the error.
      * Sets theImage of the Entity to the corresponding png in the resources directory.
-     *
-     * @throws IOException if there is an error loading this Entity's image.
      */
     abstract protected void getImage();
 
