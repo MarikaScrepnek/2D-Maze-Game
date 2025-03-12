@@ -1,14 +1,10 @@
 package com.sfuparkingmayhem.game;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.util.Objects;
 
 public class Coin extends Reward{
-
-    private int value = 5;
 
     /**
      * Constructs a Coin object.
