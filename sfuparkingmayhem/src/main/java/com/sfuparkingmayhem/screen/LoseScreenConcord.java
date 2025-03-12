@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
  */
 public class LoseScreenConcord extends LoseScreen {
     /**
-     * Constructs a LoseScreenConcord with a message stating reason for loss.
+     * Constructs a LoseScreenConcord with a message stating they lost because they were caught by the concord officer.
      *
      * @param cardLayout The CardLayout used for switching between screens.
      * @param cardPanel  The JPanel that contains all the game screens.
