@@ -13,7 +13,7 @@ public class WinScreen extends EndScreen {
         super(cardLayout, cardPanel);
 
         //set background color to green
-        setBackground(new Color(76, 189, 51));
+        setBackground(new Color(35, 102, 14));
         
         //create "you win" label
         JLabel winLabel = new JLabel("You Win!", SwingConstants.CENTER);

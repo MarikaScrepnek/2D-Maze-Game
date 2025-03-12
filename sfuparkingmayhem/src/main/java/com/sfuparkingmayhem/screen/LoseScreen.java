@@ -13,7 +13,7 @@ abstract public class LoseScreen extends EndScreen {
         super(cardLayout, cardPanel);
 
         //set background color to red
-        setBackground(new Color(194, 25, 25));
+        setBackground(new Color(102, 14, 14));
 
         //create "you lose" title
         JLabel loseLabel = new JLabel("You Lose!", SwingConstants.CENTER);

@@ -13,7 +13,7 @@ public class MainMenu extends Screen {
         super(cardLayout, cardPanel);
 
         //set background color to light blue
-        setBackground(new Color(111, 194, 232));
+        setBackground(new Color(2, 54, 94));
         
         //create the game name title
         JLabel titleLabel = new JLabel("SFU Parking Mayhem", SwingConstants.CENTER);
