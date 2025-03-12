@@ -9,6 +9,12 @@ package com.sfuparkingmayhem.game;
  * @version 1.0
  */
 public class Main {
+
+    /**
+     * Runs a new {@link Game} and uses initWindow() method
+     * 
+     * @param args
+     */
     public static void main( String[] args ) {
         Game game = new Game();
         game.initWindow();
