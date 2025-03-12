@@ -654,6 +654,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     /**
      * Helper method to check if a cell is blocked by a cone or parked car.
+     * 
      * @param x The x-coordinate of the cell.
      * @param y The y-coordinate of the cell.
      * @return true if the cell is blocked, false otherwise.
@@ -796,10 +797,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         flash_timer.start(); //start the timer
     }
 
+
     /**
      * Inner class to store a point and its distance.
      */
     private static class PointDistance {
+
+        /**
+         * distance fields/attributes
+         */
         int x, y, distance;
 
         /**
