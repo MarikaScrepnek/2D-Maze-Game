@@ -2,7 +2,6 @@ package com.sfuparkingmayhem.game;
 import java.awt.Graphics; //for getting the image for the specific entity
 import java.awt.image.BufferedImage; //used for drawing images/sprites on game board
 import java.awt.image.ImageObserver;
-import java.io.IOException;
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
