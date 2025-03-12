@@ -7,7 +7,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * Class representing the Main Menu screen in the game.
+ * It extends the Screen class and provides buttons for starting game, instructions, and exiting the program.
+ */
 public class MainMenu extends Screen {
+    /**
+     * Constructs the Main Menu screen with navigation buttons.
+     *
+     * @param cardLayout The CardLayout used for switching screens.
+     * @param cardPanel  The JPanel that holds different game screens.
+     */
     public MainMenu(CardLayout cardLayout, JPanel cardPanel) {
         //call Screen constructor
         super(cardLayout, cardPanel);
