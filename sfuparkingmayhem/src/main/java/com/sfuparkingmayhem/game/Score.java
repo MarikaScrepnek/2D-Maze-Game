@@ -1,6 +1,8 @@
 package com.sfuparkingmayhem.game;
+
 /**
- * The Score class keeps track of the player's score.
+ * This Score class keeps track of the player's score and contains a 
+ * constructor and methods to get and add/subtract/reset the value of this score.
  */
 public class Score {
     /**
@@ -18,7 +20,7 @@ public class Score {
     /**
      * Adds points to the score.
      *
-     * @param points The number of points to add.
+     * @param points The number of points to add to score.
      */
     protected void addPoints(int points) {
         this.score += points;
@@ -34,16 +36,16 @@ public class Score {
     }
 
     /**
-     * Resets the score to 0.
+     * Resets this score to 0.
      */
     protected void reset() {
         this.score = 0;
     }
 
     /**
-     * Returns the score.
+     * Returns this score
      *
-     * @return The score.
+     * @return this.score
      */
     public int getScore() {
         return this.score;
