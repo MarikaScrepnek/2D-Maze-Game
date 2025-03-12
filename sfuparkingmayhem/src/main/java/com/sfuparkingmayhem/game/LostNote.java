@@ -50,6 +50,7 @@ public class LostNote extends Reward {
 
     /**
      * Sets the collected status of the LostNote.
+     * 
      * @param bool The boolean value to set the collected status to.
      */
     public void setCollected(boolean bool){
