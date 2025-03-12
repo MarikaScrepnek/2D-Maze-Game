@@ -8,8 +8,6 @@ package com.sfuparkingmayhem.game;
  */
 public abstract class Reward extends StaticEntity {
 
-    protected boolean collected = false;
-
     /**
      * Constructs a Reward object.
      *
