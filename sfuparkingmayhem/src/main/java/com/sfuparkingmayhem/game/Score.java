@@ -1,5 +1,7 @@
 package com.sfuparkingmayhem.game;
-
+/**
+ * The Score class keeps track of the player's score.
+ */
 public class Score {
     private int score;
 

@@ -2,6 +2,7 @@ package com.sfuparkingmayhem.game;
 import java.awt.Graphics; //for getting the image for the specific entity
 import java.awt.image.BufferedImage; //used for drawing images/sprites on game board
 import java.awt.image.ImageObserver;
+import java.io.IOException;
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
@@ -24,28 +25,31 @@ public abstract class Entity {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
     }
-
     /**
-     * Gets the image of this Entity's image from resources directory.
+     * Gets the image of this Entity and throws IOExceptions e, if any, and prints out the error.
+     * Sets theImage of the Entity to the corresponding png in the resources directory.
+     *
+     * @throws IOException e if there is an error with loading this Entity's image
      */
-    //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
 
 
     /**
-     * Draws the image on board
+     * Draws this Entity's png image, from resources directory, onto game board at this Entity's
+     * x and y coordinates. io will usually be passed as "this" since images are already loaded into resources directory.
      *
-     * @param graphics
-     * @param io
+     * @param graphics helps draw this Entity's png on the board
+     * @param io helps monitor the image being loaded for this Entity
      */
-    //draws the image on the gameboard
-    //might not even need ImageObserver because ImageIO.read will be used to read the images. Remove later.
     protected void drawTheImage(Graphics graphics, ImageObserver io) {
         graphics.drawImage(theImage, this.x_coordinate*Board.CELL_SIZE, this.y_coordinate*Board.CELL_SIZE, io);
     }
 
+
+
+
     /**
-     * Gets the x-coordinate of this Entity
+     * Gets the x-coordinate of this Entity.
      *
      * @return x-coordinate of this Entity as an int
      */
@@ -64,18 +68,25 @@ public abstract class Entity {
     }
 
     /**
-     * Updates the Entity's position on the board
+     * Updates this Entity's position on the board
      */
     public void tick(){
+
+        //prevent this Entity from going off the board horizontally
         if (x_coordinate < 0) {
             x_coordinate = 0;
-        } else if (x_coordinate >= Board.COLUMNS) {
+        } 
+        
+        else if (x_coordinate >= Board.COLUMNS) {
             x_coordinate = Board.COLUMNS - 1;
         }
+
         // prevent the player from moving off the edge of the board vertically
         if (y_coordinate < 0) {
             y_coordinate = 0;
-        } else if (y_coordinate >= Board.ROWS) {
+        } 
+        
+        else if (y_coordinate >= Board.ROWS) {
             y_coordinate = Board.ROWS - 1;
         }
         }
