@@ -324,7 +324,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
 
     /**
-     * This method will update the state of the game by repainting and uses tickCharacter()
+     * Updates the state of the game by repainting and uses tickCharacter()
      * from {@link MainCharacter} class to prevent player from disappearing off 
      * this Board.
      * 
@@ -340,7 +340,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * This method draws this Board's Entitys and updates the board
+     * Draws this Board's Entitys and updates the board
      * if certain entitys have been collected and do not need to be drawn
      * anymore.
      * 
@@ -488,9 +488,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString(timeString, 343, 30);
     }
 
-    
+
     /**
-     * Draws how many coins have been collected on the game board
+     * Draws how many coins have been collected on the game board.
+     * 
      * @param g Graphics object
      */
     private void drawCoinsCollected(Graphics g) {
@@ -500,9 +501,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
     }
 
+
     /**
      * Gets the time elapsed in the game
-     * @return timeElapsed
+     * 
+     * @return timeElapsed - the time that has elapsed since start of game.
      */
     public int getTimeElapsed(){
         return timeElapsed;
@@ -515,13 +518,16 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     private void collectCoins(){
+
         //collect the coins from the board
         ArrayList<Coin> coinsCopy = new ArrayList<Coin>(coins); //make a copy of coins arraylist
+       
         for (Coin aCoin : coinsCopy){
-
+            
             //remove the coin from arraylist if this coin and MainCharacter have same board position
             if (main_character.getMainCharacterXCoordinate() == aCoin.getX_coordinate()
                     && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
+
                 coins.remove(aCoin);
                 score.addPoints(5);
                 coinsCollectedCount++;
@@ -535,11 +541,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     private void collectLostNote(){
+        
         //collect the lostNote from the board if lostNote and MainCharacter have same board position
         ArrayList<LostNote> lnCopy = new ArrayList<LostNote>(ln);
+
         for (LostNote aLostNote : lnCopy){
+            
             if (main_character.getMainCharacterXCoordinate() == aLostNote.getX_coordinate()
                     && main_character.getMainCharacterYCoordinate() == aLostNote.getY_coordinate()){
+                
                 aLostNote.collected = true;
                 ln.remove(aLostNote);
                 score.addPoints(10);
@@ -548,6 +558,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+
+    /**
+     * 
+     */
     private void checkGameEnd() {
         if (main_character.getMainCharacterXCoordinate() == 14 && main_character.getMainCharacterYCoordinate() == 13) {
             if (coins.isEmpty()) {
@@ -592,7 +606,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
 
-    //doesn't need to be implemented but needs to be here because of interface
+    /**
+     * doesn't need to be implemented but needs to be here because of interface.
+     * 
+     * @param e - KeyEvent type that checks when keys are typed on keyboard
+     */
     @Override
     public void keyTyped(KeyEvent e) {
     }
