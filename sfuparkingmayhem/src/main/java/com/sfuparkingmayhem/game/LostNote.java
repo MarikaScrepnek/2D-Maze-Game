@@ -4,6 +4,15 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * This class extends Reward and contains a constructor, getImage() to get the png 
+ * of this LostNote from resources directory, getters and setters to check if LostNote has
+ * been collected, 
+ * 
+ * @author Group 25
+ * @version 1.0
+ */
+
 public class LostNote extends Reward {
     /**
      * Constructs a LostNote object.
@@ -27,18 +36,17 @@ public class LostNote extends Reward {
         }
     }
 
+
+    /**
+     * Gets the collected status of the LostNote.
+     * 
+     * @return returns the collected status of the LostNote.
+     */
     @Override
     protected boolean isCollected() {
         return collected;
     }
 
-    /**
-     * Gets the collected status of the LostNote.
-     * @return returns the collected status of the LostNote.
-     */
-    public boolean getCollected(){
-        return collected;
-    }
 
     /**
      * Sets the collected status of the LostNote.
