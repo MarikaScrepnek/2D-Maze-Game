@@ -16,8 +16,7 @@ import com.sfuparkingmayhem.screen.MainMenu;
  *
  *
  */
-public class Game 
-{
+public class Game {
     /**
      * Constructor for the Game class
      */
