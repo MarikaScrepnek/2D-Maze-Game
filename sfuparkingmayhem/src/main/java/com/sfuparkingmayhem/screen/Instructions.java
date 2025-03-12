@@ -52,13 +52,13 @@ public class Instructions extends Screen {
         objectiveLabel.setBounds(400, 150, 300, 50);
 
         //create the objective body
-        JLabel objectiveInfoLabel = new JLabel("<html><p style='width:250px;'>Collect all 10 coins and make your way to the parking booth to escape!<br><br>Collect Lost Notes for 10 bonus points!<br><br>Avoid crashing into parked cars, or you'll lose 5 points!<br><br>If your score drops below zero or you're caught by the Concord Officer, you'll lose the game!</p></html>");
+        JLabel objectiveInfoLabel = new JLabel("<html><p style='width:250px;'>Collect all 10 coins and make your way to the parking booth to escape!<br><br>Collect student's Lost Notes for 10 bonus points!<br><br>Avoid crashing into parked cars, or you'll lose 5 points!<br><br>If your score drops below zero or you're caught by the Concord Officer, you'll lose the game!</p></html>");
         //set font
         objectiveInfoLabel.setFont(smallKenneyFont);
         //set color
         objectiveInfoLabel.setForeground(Color.WHITE);
         //set position and dimensions
-        objectiveInfoLabel.setBounds(400, 210, 350, 400);
+        objectiveInfoLabel.setBounds(400, 200, 350, 450);
 
         //set position and dimensions of main menu button
         main_menu_button.setBounds(50, 600, 192, 64);
