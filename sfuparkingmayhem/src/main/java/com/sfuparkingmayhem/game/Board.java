@@ -175,14 +175,28 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Populates the lostNote arraylist with a lostNote object. The lostnote's random coordinates
-     * are verified if an entity already exists on that coordinate, if so, lostnote needs to have
-     * another set of random coordinates generated.
+     * Populates the lostNote arraylist with a lostNote object every 7 seconds.
+     * Removes a lost note every 7 seconds if there is a lost note to remove.
      */
     private void populateLostNote(){
+        setLostNote();
+        Timer lostNoteTimer = new Timer(7000, e -> {
+            if (!ln.isEmpty()) {
+                ln.remove(0);
+            }
+            setLostNote();
+        });
+        lostNoteTimer.start();
+    }
 
 
-        //create a lostNote with initial x and y coordinates of 0
+    /**
+     * Sets coordinates for lost note.
+     * The lostnote's random coordinates are verified if an entity already exists on that coordinate,
+     * if so, lostnote needs to have another set of random coordinates generated.
+     * Finally adds its to the lost note ArrayList.
+     */
+    private void setLostNote() { 
         lost_note = new LostNote(0,0);
 
         //boolean value needed for do-while loop
@@ -285,7 +299,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         //add lost note to ln arraylist
         ln.add(lost_note);
-
     }
 
     /**
@@ -379,19 +392,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             aParkedCar.drawTheImage(g, this);
         }
 
-        //draw note if between 3 and 10 seconds of playing game
-        if (3<=getTimeElapsed() && getTimeElapsed()<=10){
-            //draw lost note onto board
-            for (int i =0; i<ln.size(); i++){
-                LostNote aLostNote = ln.get(i);
-                aLostNote.drawTheImage(g, this);
-
-                }
-        }
-        //remove the lostNote from ln arraylist if time >10 secs
-        else if (getTimeElapsed()>10){
-            ln.clear();
-            
+        //draw lost note onto board
+        for (int i =0; i<ln.size(); i++){
+            LostNote aLostNote = ln.get(i);
+            aLostNote.drawTheImage(g, this);
         }
 
         drawScore(g);
