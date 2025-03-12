@@ -24,6 +24,16 @@ import javax.swing.Timer;
 
 import com.sfuparkingmayhem.screen.WinScreen;
 
+
+/**
+ * This class implements the ActionListener and KeyListener and implements 
+ * the JPanel classes. This class creates the game board and has entites,
+ * timers and is 15 by 15 (height = 15, width = 15). 
+ * 
+ * @author Group 25
+ * @version 1.0
+ */
+
 public class Board extends JPanel implements ActionListener, KeyListener{
     protected static final int ROWS = 15;
     protected static final int COLUMNS = 15;
