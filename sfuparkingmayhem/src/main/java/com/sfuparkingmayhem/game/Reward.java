@@ -21,7 +21,7 @@ public abstract class Reward extends StaticEntity {
     }
 
     /**
-     * Returns the value of the Reward.
+     * Returns if the Reward has been collected.
      *
      * @return The value of the Reward.
      */

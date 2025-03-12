@@ -10,6 +10,9 @@ import javax.swing.SwingConstants;
 /**
  * Class representing the screen displayed when the player wins the game.
  * It extends the EndScreen class and displays the player's final score and completion time.
+ * 
+ * @author Group 25
+ * @version 1.0
  */
 public class WinScreen extends EndScreen {
     /**
