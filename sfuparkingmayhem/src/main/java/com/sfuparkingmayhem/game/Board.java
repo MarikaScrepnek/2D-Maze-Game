@@ -138,8 +138,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
      * and a concord officer. Timers are created to start counting upward when game begins.
      * 
-     * @param cardLayout
-     * @param cardPanel
+     * @param cardLayout The CardLayout used for switching between screens.
+     * @param cardPanel The JPanel that contains all the game screens.
      */
     public Board(CardLayout cardLayout, JPanel cardPanel) {
         this.cardLayout=cardLayout;
