@@ -123,12 +123,10 @@ public class MainCharacter extends MovingEntity {
         }
 
         // Allow the player to move into the entrance and exit cells
-        // Entrance: (0, 1)
-        // Exit: (COLUMNS - 1, ROWS - 2)
         if ((x_coordinate == 0 && y_coordinate == 1) || (x_coordinate == Board.COLUMNS - 1 && y_coordinate == Board.ROWS - 2)) {
             // Do nothing, allow the player to stay in these cells
         } else {
-            // Prevent the player from moving into the green borders
+            // Prevent the player from moving into the green bushes
             if (x_coordinate == 0 || x_coordinate == Board.COLUMNS - 1 || y_coordinate == 0 || y_coordinate == Board.ROWS - 1) {
                 // Revert to the previous valid position
                 if (x_coordinate == 0) {
