@@ -81,6 +81,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         createCones();
         createParkedCars();
         populateLostNote();
+       
 
 
 
@@ -110,12 +111,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
             repaint();  // Refresh the screen
         });
+
         officerTimer.start();
+
 
         gameTimer = new Timer(1000, e -> {
             timeElapsed++;
             repaint();
         });
+
         gameTimer.start();
     }
 
@@ -139,8 +143,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Populates the lostNote arraylist with a lostNote object
      */
-    //can also use the isCollidedWithParkedCar and isCollidedWithCone methods
     private void populateLostNote(){
+
+
         //create a lostNote with initial x and y coordinates of 0
         lost_note = new LostNote(0,0);
 
@@ -148,7 +153,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         boolean check;
 
         do{
-
+            
             lost_note.generateCoords(); //generate random x and y coordinates
 
             check = false; //assume that it is not needed to find another set of coords for lostNote
@@ -303,6 +308,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
 
+
         collectCoins();
         collectLostNote();
         checkGameEnd();
@@ -329,7 +335,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         //draw note if between 3 and 10 seconds of playing game
         if (3<=getTimeElapsed() && getTimeElapsed()<=10){
-
             //draw lost note onto board
             for (int i =0; i<ln.size(); i++){
                 LostNote aLostNote = ln.get(i);
@@ -340,6 +345,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //remove the lostNote from ln arraylist if time >10 secs
         else if (getTimeElapsed()>10){
             ln.clear();
+            
         }
 
         drawScore(g);
@@ -482,6 +488,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (LostNote aLostNote : lnCopy){
             if (main_character.getMainCharacterXCoordinate() == aLostNote.getX_coordinate()
                     && main_character.getMainCharacterYCoordinate() == aLostNote.getY_coordinate()){
+                aLostNote.collected = true;
                 ln.remove(aLostNote);
                 score.addPoints(10);
 
