@@ -2,6 +2,7 @@ package com.sfuparkingmayhem.game;
 import java.awt.Graphics; //for getting the image for the specific entity
 import java.awt.image.BufferedImage; //used for drawing images/sprites on game board
 import java.awt.image.ImageObserver;
+import java.io.IOException;
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
@@ -24,9 +25,11 @@ public abstract class Entity {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
     }
-
     /**
-     * Gets the image of this Entity's image from resources directory.
+     * Gets the image of this Entity and throws IOExceptions e, if any, and prints out the error.
+     * Sets theImage of the Entity to the corresponding png in the resources directory.
+     *
+     * @throws IOException e if there is an error with loading this Entity's image
      */
     //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
