@@ -6,6 +6,14 @@ import java.io.IOException;
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
+
+/**
+ * This class provides methods for different entities {@link MovingEntity} and  {@link StaticEntity} to get x and y coordinates to be 
+ * placed on the board, getting the entities' images and drawing them on the board. 
+ * 
+ * @author Group 25
+ * @version 1.0
+ */
 public abstract class Entity {
 
     //the attributes of an entity on the game board
