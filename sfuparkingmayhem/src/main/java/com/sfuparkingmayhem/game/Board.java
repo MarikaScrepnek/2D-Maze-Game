@@ -517,21 +517,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Checks if the player is colliding with a coin.
-     * @param x x-coordinate of the player.
-     * @param y y-coordinate of the player.
-     * @return true if the player is colliding with a coin, false otherwise.
-     */
-    private boolean isCollidingWithCoin(int x, int y) {
-        for (Coin coin : coins) {
-            if (coin.getX_coordinate() == x && coin.getY_coordinate() == y) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Checks if the player is colliding with a parked car.
      * @param x x-coordinate of the player.
      * @param y y-coordinate of the player.
