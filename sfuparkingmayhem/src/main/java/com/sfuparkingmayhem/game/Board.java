@@ -35,23 +35,37 @@ import com.sfuparkingmayhem.screen.WinScreen;
  */
 
 public class Board extends JPanel implements ActionListener, KeyListener{
+
+    /**
+     * Fields for the board. Each board is 15 x 15 with each cell size 50 x 50.
+     */
     protected static final int ROWS = 15;
     protected static final int COLUMNS = 15;
     protected static final int CELL_SIZE = 50;
     protected static final int[][] BOARD = new int[ROWS][COLUMNS];
     protected static final int NUM_COINS = 10;
 
+    /**
+     * Entities that every board has
+     */
     private final MainCharacter main_character;
     private final ConcordOfficer officer;
+    protected LostNote lost_note;
+
+    /**
+     * Timer and score attributes that each board has
+     */
     private final Timer timer;
     private final Timer officerTimer;
     private final Timer gameTimer; 
     private final Score score;
+
+    /**
+     * Arraylists that each Board has, these contain StaticEntities
+     */
     private ArrayList<Coin> coins = new ArrayList<Coin>();
     private ArrayList <Cone> cones = new ArrayList<Cone>();
     private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
-
-    protected LostNote lost_note;
     private ArrayList<LostNote> ln = new ArrayList<LostNote>(); 
 
     private final int DELAY = 25;
