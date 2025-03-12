@@ -20,11 +20,4 @@ public abstract class Reward extends StaticEntity {
         super(x, y);
     }
 
-    /**
-     * Returns if the Reward has been collected.
-     *
-     * @return The value of the Reward.
-     */
-    protected abstract boolean isCollected();
-
 }

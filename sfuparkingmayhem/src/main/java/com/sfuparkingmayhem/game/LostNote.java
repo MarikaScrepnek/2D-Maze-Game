@@ -38,26 +38,6 @@ public class LostNote extends Reward {
 
 
     /**
-     * Gets the collected status of the LostNote.
-     * 
-     * @return returns the collected status of the LostNote.
-     */
-    @Override
-    protected boolean isCollected() {
-        return collected;
-    }
-
-
-    /**
-     * Sets the collected status of the LostNote.
-     * 
-     * @param bool The boolean value to set the collected status to.
-     */
-    public void setCollected(boolean bool){
-        this.collected = bool;
-    }
-
-    /**
      * Generates the coordinates of the LostNote.
      */
     protected void generateCoords(){

@@ -553,8 +553,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             
             if (main_character.getMainCharacterXCoordinate() == aLostNote.getX_coordinate()
                     && main_character.getMainCharacterYCoordinate() == aLostNote.getY_coordinate()){
-                
-                aLostNote.collected = true;
                 ln.remove(aLostNote);
                 score.addPoints(10);
 
