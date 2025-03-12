@@ -3,6 +3,9 @@ package com.sfuparkingmayhem.game;
  * The Score class keeps track of the player's score.
  */
 public class Score {
+    /**
+     * The score of the player/game/board.
+     */
     private int score;
 
     /**

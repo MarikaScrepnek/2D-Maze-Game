@@ -19,8 +19,6 @@ import com.sfuparkingmayhem.screen.MainMenu;
  * @version 1.0
  */
 public class Game {
-
-
     /**
      * Constructor for a Game object
      */
