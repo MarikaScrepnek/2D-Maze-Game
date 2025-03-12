@@ -10,6 +10,9 @@ import javax.swing.SwingConstants;
 /**
  * Class representing the instructions screen in the game.
  * It extends {@link Screen} and provides details about game controls and objectives.
+ * 
+ * @author Group 25
+ * @version 1.0
  */
 public class Instructions extends Screen {
     /**

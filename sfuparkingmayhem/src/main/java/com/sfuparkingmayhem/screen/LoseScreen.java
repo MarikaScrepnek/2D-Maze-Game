@@ -11,6 +11,9 @@ import javax.swing.SwingConstants;
  * Abstract class representing the screen displayed when the player loses the game that is 
  * extended based on reason for loss by either {@link LoseScreenConcord} or {@link LoseScreenScore}.
  * It extends the {@link EndScreen} and displays a message indicating that the player lost.
+ * 
+ * @author Group 25
+ * @version 1.0
  */
 abstract public class LoseScreen extends EndScreen {
     /**

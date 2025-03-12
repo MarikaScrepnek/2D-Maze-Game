@@ -19,6 +19,9 @@ import com.sfuparkingmayhem.game.Board;
 /**
  * Abstract class representing a screen in the game that is extended by {MainMenu}, {@link Instructions}, and {@link EndScreen}.
  * Extends JPanel and manages UI elements like buttons, button images, and fonts.
+ * 
+ * @author Group 25
+ * @version 1.0
  */
 public abstract class Screen extends JPanel{
     private ImageIcon start_game;
