@@ -5,17 +5,18 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * This class extends Reward and contains a constructor, getImage() to get the png 
- * of this LostNote from resources directory, getters and setters to check if LostNote has
- * been collected, 
+ * This class extends Reward class and contains a constructor, getImage method to get the png 
+ * of this LostNote from resources directory, and method to randomly generate X and Y coordinates
+ * for this LostNote
  * 
  * @author Group 25
  * @version 1.0
  */
 
 public class LostNote extends Reward {
+
     /**
-     * Constructs a LostNote object.
+     * Constructs a LostNote object using the X and Y coordinates and getImage method
      *
      * @param x The x-coordinate of the LostNote.
      * @param y The y-coordinate of the LostNote.
@@ -38,7 +39,7 @@ public class LostNote extends Reward {
 
 
     /**
-     * Generates the coordinates of the LostNote.
+     * Generates random X and Y coordinates for this LostNote.
      */
     protected void generateCoords(){
         int a = 1;
