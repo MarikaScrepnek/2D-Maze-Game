@@ -7,7 +7,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * Class representing the screen displayed when the player loses
+ * due to being caught by the Concord Officer. It extends LoseScreen and provides
+ * a specific loss message.
+ */
 public class LoseScreenConcord extends LoseScreen {
+    /**
+     * Constructs a LoseScreenConcord with a message stating reason for loss.
+     *
+     * @param cardLayout The CardLayout used for switching between screens.
+     * @param cardPanel  The JPanel that contains all the game screens.
+     */
     public LoseScreenConcord(CardLayout cardLayout, JPanel cardPanel) {
         //call LoseScreen constructor
         super(cardLayout, cardPanel);
