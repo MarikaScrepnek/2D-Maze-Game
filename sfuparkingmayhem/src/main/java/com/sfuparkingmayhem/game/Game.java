@@ -13,18 +13,24 @@ import com.sfuparkingmayhem.screen.LoseScreenScore;
 import com.sfuparkingmayhem.screen.MainMenu;
 
 /**
- *
- *
+ * This class initializes windows (win/lose/Main Menu/Instructions) to play the game.
+ * 
+ * @author Group 25
+ * @version 1.0
  */
 public class Game {
+
+
     /**
-     * Constructor for the Game class
+     * Constructor for a Game object
      */
     public Game() {
     }
+
     
     /**
-     * Initializes the window for the game
+     * Initializes the window for the game. Displays different windows to show instructions,
+     * main menu, or to indicate if player has won/lost game.
      */
     public void initWindow()
     {
