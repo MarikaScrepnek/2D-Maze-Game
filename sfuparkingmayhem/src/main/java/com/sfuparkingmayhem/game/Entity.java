@@ -49,7 +49,7 @@ public abstract class Entity {
 
 
     /**
-     * Gets the x-coordinate of this Entity
+     * Gets the x-coordinate of this Entity.
      *
      * @return x-coordinate of this Entity as an int
      */
@@ -68,18 +68,25 @@ public abstract class Entity {
     }
 
     /**
-     * Updates the Entity's position on the board
+     * Updates this Entity's position on the board
      */
     public void tick(){
+
+        //prevent this Entity from going off the board horizontally
         if (x_coordinate < 0) {
             x_coordinate = 0;
-        } else if (x_coordinate >= Board.COLUMNS) {
+        } 
+        
+        else if (x_coordinate >= Board.COLUMNS) {
             x_coordinate = Board.COLUMNS - 1;
         }
+
         // prevent the player from moving off the edge of the board vertically
         if (y_coordinate < 0) {
             y_coordinate = 0;
-        } else if (y_coordinate >= Board.ROWS) {
+        } 
+        
+        else if (y_coordinate >= Board.ROWS) {
             y_coordinate = Board.ROWS - 1;
         }
         }
