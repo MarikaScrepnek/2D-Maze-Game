@@ -58,6 +58,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private final Timer timer;
     private final Timer officerTimer;
     private final Timer gameTimer; 
+    private final int DELAY = 25;
+    private int timeElapsed = 0;
     private final Score score;
 
     /**
@@ -68,20 +70,26 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
     private ArrayList<LostNote> ln = new ArrayList<LostNote>(); 
 
-    private final int DELAY = 25;
 
-    private int timeElapsed = 0;
-
+    /**
+     * variable to help display the number of coins collected by user
+     */
     private int coinsCollectedCount = 0;
 
-    private boolean game_ended = false; //boolean that tells you if the game has ended to ensure lose screen doesn't pop up multiple times
 
-    //need access to these to be able to switch panels (win/lose)
+    /**
+     * Attributes to help screens appear properly.
+     * game_ended tells you if the game has ended to ensure lose screen doesn't pop up multiple times.
+     * cardLayout and cardPanel are included to switch panels (win/lose panels)
+     */
+    private boolean game_ended = false;
     CardLayout cardLayout;
     JPanel cardPanel;
 
     /**
-     * Constructor for the Board class
+     * Constructs a Board object. Uses methods to populate this Board with a score, static entities
+     * and a concord officer. Timers are created to start counting upward when game begins.
+     * 
      * @param cardLayout
      * @param cardPanel
      */
@@ -91,10 +99,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         //set game board size
         setPreferredSize(new Dimension(CELL_SIZE*COLUMNS,CELL_SIZE*ROWS));
+
         //set the background color to a concrete grey
         setBackground(new Color(43, 43, 43));
+
         //intialize player
         main_character = new MainCharacter(0, 1);
+
         //initialize officer
         officer = new ConcordOfficer(7, 7, main_character, this);
         //initialize score
@@ -105,8 +116,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         createCones();
         createParkedCars();
         populateLostNote();
-       
-
 
 
         //timer that will make sure actionPerformed is ran every DELAY interval
@@ -126,6 +135,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 officer.y_coordinate = oldY;
             }
 
+            //check if officer and mainCharacter are colliding, if so, game has ended
             if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
                 && officer.y_coordinate == main_character.getMainCharacterYCoordinate() && game_ended == false) {
                 // TO DO - Add game over logic
@@ -136,9 +146,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             repaint();  // Refresh the screen
         });
 
+    
         officerTimer.start();
 
-
+        //time for the game
         gameTimer = new Timer(1000, e -> {
             timeElapsed++;
             repaint();
@@ -151,7 +162,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates coins and adds them to the coins arraylist
      */
     private void createCoins(){
-        //created and added new coins to the coins arraylist
         coins.add(new Coin(2,3));
         coins.add(new Coin(7,2));
         coins.add(new Coin(10,4 ));
@@ -165,7 +175,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Populates the lostNote arraylist with a lostNote object
+     * Populates the lostNote arraylist with a lostNote object. The lostnote's random coordinates
+     * are verified if an entity already exists on that coordinate, if so, lostnote needs to have
+     * another set of random coordinates generated.
      */
     private void populateLostNote(){
 
@@ -240,7 +252,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
             }
 
-
+            //check cones' coordinates to see if any match with the lostnote's coordinates
             for (int i = 0; i < cones.size(); i++){
                 //get a cone in the cone arraylist
                 Cone cone = cones.get(i);
@@ -268,9 +280,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
             }
 
-            //System.out.println("parked car size = "+parkedCars.size());
-
-
         } while (check);
 
 
@@ -283,7 +292,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates cones and adds them to the cones arraylist
      */
     private void createCones(){
-        //created and added new cones to the cones arraylist
         cones.add(new Cone(4,3));
         cones.add(new Cone(11,3));
         cones.add(new Cone(12,3));
@@ -314,9 +322,16 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     }
 
+
+    /**
+     * This method will update the state of the game by repainting and uses tickCharacter()
+     * from {@link MainCharacter} class to prevent player from disappearing off 
+     * this Board.
+     * 
+     * @param e an Actionevent that has occurred during game
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        // This method is to update the state of the game
 
         // prevent the player from disapearing off the board
         main_character.tickCharacter();
@@ -324,6 +339,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         repaint();
     }
 
+    /**
+     * This method draws this Board's Entitys and updates the board
+     * if certain entitys have been collected and do not need to be drawn
+     * anymore.
+     * 
+     * @param g a Graphics object to help draw
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -379,8 +401,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Draws the game board
-     * @param g Graphics object
+     * Draws the game board and the boarder
+     * 
+     * @param g Graphics object to help draw this Board
+     * @throws e Exception if an exception occurs during loading images
      */
     private void drawBoard(Graphics g) {
         Image grass=null;
@@ -434,8 +458,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Draws the score on the game board
-     * @param g Graphics object
+     * Draws the score on the top of game board.
+     * 
+     * @param g Graphics object to help draw the graphics onto board.
      */
     private void drawScore(Graphics g) {
         // Set the font and colour for the UI of Score
@@ -447,7 +472,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Draws the timer on the game board
+     * Draws the timer on the game board.
+     * 
      * @param g Graphics object
      */
     private void drawTimer(Graphics g) {
@@ -461,6 +487,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         g.drawString(timeString, 343, 30);
     }
+
+    
     /**
      * Draws how many coins have been collected on the game board
      * @param g Graphics object
