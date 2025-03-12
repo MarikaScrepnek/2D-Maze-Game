@@ -311,6 +311,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (int i =0; i<coins.size(); i++){
             Coin aCoin = coins.get(i);
             aCoin.drawTheImage(g, this);
+
         }
         
         //draw cones onto board
@@ -332,13 +333,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             for (int i =0; i<ln.size(); i++){
                 LostNote aLostNote = ln.get(i);
                 aLostNote.drawTheImage(g, this);
+
                 }
         }
         //remove the lostNote from ln arraylist if time >10 secs
         else if (getTimeElapsed()>10){
             ln.clear();
         }
-        //lost_note.drawTheImage(g,this);
 
         drawScore(g);
         drawTimer(g);

@@ -36,16 +36,17 @@ public abstract class Entity {
 
     /**
      * Draws this Entity's png image, from resources directory, onto game board at this Entity's
-     * x and y coordinates. Takes in Graphics graphics and ImageObserver io as parameters.
+     * x and y coordinates. io will usually be passed as "this" since images are already loaded into resources directory.
      *
-     * @param graphics
-     * @param io
+     * @param graphics helps draw this Entity's png on the board
+     * @param io helps monitor the image being loaded for this Entity
      */
-    //draws the image on the gameboard
-    //might not even need ImageObserver because ImageIO.read will be used to read the images. Remove later.
     protected void drawTheImage(Graphics graphics, ImageObserver io) {
         graphics.drawImage(theImage, this.x_coordinate*Board.CELL_SIZE, this.y_coordinate*Board.CELL_SIZE, io);
     }
+
+
+
 
     /**
      * Gets the x-coordinate of this Entity
