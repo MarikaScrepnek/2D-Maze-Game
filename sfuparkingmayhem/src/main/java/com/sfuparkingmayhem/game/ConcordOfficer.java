@@ -24,7 +24,8 @@ public class ConcordOfficer extends MovingEntity{
      *
      * @param x_coordinate The initial x-coordinate of this ConcordOfficer.
      * @param y_coordinate The initial y-coordinate of this ConcordOfficer.
-     * @param target       The MainCharacter to chase.
+     * @param target The MainCharacter to chase.
+     * @param board The board that the game is happening on.
      */
     public ConcordOfficer(int x_coordinate, int y_coordinate, MainCharacter target, Board board) {
         super(x_coordinate, y_coordinate);

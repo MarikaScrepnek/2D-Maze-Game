@@ -13,7 +13,7 @@ public class Main {
     /**
      * Runs a new {@link Game} and uses initWindow() method
      * 
-     * @param args
+     * @param args Command-line arguments (not used).
      */
     public static void main( String[] args ) {
         Game game = new Game();

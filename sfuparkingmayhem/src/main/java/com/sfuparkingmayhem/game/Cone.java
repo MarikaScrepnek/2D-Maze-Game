@@ -1,8 +1,12 @@
 package com.sfuparkingmayhem.game;
 import java.io.IOException;
 import java.util.Objects;
+
 import javax.imageio.ImageIO;
 
+/**
+ * A cone barrier that acts as an obstacle in the game.
+ */
 public class Cone extends Barrier{
     /**
      * Constructs a Cone at the specified coordinates.
