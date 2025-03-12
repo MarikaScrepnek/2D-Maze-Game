@@ -8,6 +8,9 @@ import javax.swing.JPanel;
  * Abstract class serving as an abstract base class for game-over screens {@link WinScreen},{@link EndScreen}.
  * It extends {@link Screen} and provides a common structure for different
  * types of end screens, such as win or lose screens.
+ * 
+ * @author Group 25
+ * @version 1.0
  */
 public abstract class EndScreen extends Screen {
     /**

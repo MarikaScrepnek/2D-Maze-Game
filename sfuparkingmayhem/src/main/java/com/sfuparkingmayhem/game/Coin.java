@@ -21,7 +21,7 @@ public class Coin extends Reward{
      * @param x The x-coordinate of the Coin.
      * @param y The y-coordinate of the Coin.
      */
-    Coin(int x, int y) {
+    public Coin(int x, int y) {
         super(x, y);
         getImage();
     }
