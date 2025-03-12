@@ -27,17 +27,14 @@ public class MainCharacter extends MovingEntity {
         getImage();
     }
 
-    /**
-     * Gets the image of the MainCharacter and catches IOExceptions, if any. and prints out the error.
-     * Sets theImage of MainCharacter to a picture of car facing right, initially (start of game).
-     */
+
     @Override
     protected void getImage(){
         try{
             this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_east.png"));
         }
         catch(IOException e){
-            System.out.println("Error loading main" + e.getMessage());
+            System.out.println("Error loading image: " + e.getMessage());
         }
     }
 
