@@ -1,13 +1,12 @@
 package com.sfuparkingmayhem.game;
-
 import java.io.IOException;
 import java.util.Objects;
-
 import javax.imageio.ImageIO;
 
 public class Cone extends Barrier{
     /**
-     * Constructs a Cone object.
+     * Constructs a Cone at the specified coordinates.
+     * It is a Barrier that the MainCharacter cannot pass through.
      *
      * @param x The x-coordinate of the Cone.
      * @param y The y-coordinate of the Cone.
@@ -26,5 +25,4 @@ public class Cone extends Barrier{
             System.out.println("Error loading main" + e.getMessage());
         }
     }
-
 }

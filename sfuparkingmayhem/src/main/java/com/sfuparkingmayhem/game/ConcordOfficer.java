@@ -1,12 +1,12 @@
 package com.sfuparkingmayhem.game;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import java.io.File;
 import java.awt.Point;
 
-
+/**
+ * A ConcordOfficer is a MovingEntity that chases the MainCharacter.
+ */
 public class ConcordOfficer extends MovingEntity{
     // Reference to the MainCharacter
     private MainCharacter target;
@@ -33,7 +33,7 @@ public class ConcordOfficer extends MovingEntity{
         int oldX = this.getX_coordinate();
         int oldY = this.getY_coordinate();
 
-        // Use Dijkstra’s pathfinding to find next step toward the player.
+        // Use Dijkstra’s algorithm to find next step toward the player.
         java.util.List<Point> path = board.findPathDijkstra(
             this.getX_coordinate(),
             this.getY_coordinate(),
@@ -42,47 +42,49 @@ public class ConcordOfficer extends MovingEntity{
         );
 
         // If a valid path was found and has more than one step, 
-        // the first element of 'path' is our current cell, 
-        // the second element is the next cell toward the target:
+        // the first element of path is the current cell, 
+        // the second element is the next cell toward the target
         if (path != null && path.size() > 1) {
             Point nextStep = path.get(1);
             this.x_coordinate = nextStep.x;
             this.y_coordinate = nextStep.y;
 
-            if (this.x_coordinate > oldX) { 
+            if (this.x_coordinate > oldX) {
+                // Move Right
                 try{
                     this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_east.png"));
                 }
                 catch(IOException e){
                     System.out.println("Error displaying officer" + e.getMessage());
-                } // Moving Right
+                }
+                // Move Left
             } else if (this.x_coordinate < oldX) { 
                 try{
                     this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_west.png"));
                 }
                 catch(IOException e){
                     System.out.println("Error displaying officer" + e.getMessage());
-                } // Moving Left
+                } 
+                // Move Down
             } else if (this.y_coordinate > oldY) { 
                 try{
                     this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_south.png"));
                 }
                 catch(IOException e){
                     System.out.println("Error displaying officer" + e.getMessage());
-                } // Moving Down
+                }
+                // Move Up
             } else if (this.y_coordinate < oldY) { 
                 try{
                     this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_north.png"));
                 }
                 catch(IOException e){
                     System.out.println("Error displaying officer" + e.getMessage());
-                } // Moving Up
+                } 
             }
         }
 
     }
-
-    
 
     @Override
     protected void getImage() {
@@ -93,5 +95,4 @@ public class ConcordOfficer extends MovingEntity{
             System.out.println("Error displaying officer" + e.getMessage());
         }
     }
-    
 }

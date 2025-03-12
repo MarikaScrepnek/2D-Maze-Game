@@ -14,7 +14,9 @@ public abstract class MovingEntity extends Entity {
     }
 
     /**
-     * Moves the entity.
+     * Moves the entity based on the given key event.
+     *
+     * @param event The key event that triggered the move.
      */
     protected abstract void move(KeyEvent event);
 
