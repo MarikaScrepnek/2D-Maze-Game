@@ -5,8 +5,8 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
- * Class serves as an abstract base class for game-over screens.
- * It extends the Screen class and provides a common structure for different
+ * Abstract class serving as an abstract base class for game-over screens {@link WinScreen},{@link EndScreen}.
+ * It extends {@link Screen} and provides a common structure for different
  * types of end screens, such as win or lose screens.
  */
 public abstract class EndScreen extends Screen {

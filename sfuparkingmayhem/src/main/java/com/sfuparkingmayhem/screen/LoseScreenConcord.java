@@ -9,7 +9,7 @@ import javax.swing.SwingConstants;
 
 /**
  * Class representing the screen displayed when the player loses
- * due to being caught by the Concord Officer. It extends LoseScreen and provides
+ * due to being caught by the Concord Officer. It extends {@link LoseScreen} and provides
  * a specific loss message.
  */
 public class LoseScreenConcord extends LoseScreen {

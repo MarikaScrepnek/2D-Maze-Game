@@ -9,7 +9,7 @@ import javax.swing.SwingConstants;
 
 /**
  * Class representing the screen displayed when the player loses
- * due to their score becoming negative. It extends LoseScreen and provides
+ * due to their score becoming negative. It extends {@link LoseScreen} and provides
  * a specific loss message.
  */
 public class LoseScreenScore extends LoseScreen {
