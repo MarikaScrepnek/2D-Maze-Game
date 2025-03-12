@@ -37,37 +37,82 @@ import com.sfuparkingmayhem.screen.WinScreen;
 public class Board extends JPanel implements ActionListener, KeyListener{
 
     /**
-     * Fields for the board. Each board is 15 x 15 with each cell size 50 x 50.
+     * Field to hold the number of rows in a board.
      */
     protected static final int ROWS = 15;
+    /**
+     * Field to hold the number of columns in a board.
+     */
     protected static final int COLUMNS = 15;
+    /**
+     * Field to hold the size of a cell on the board.
+     */
     protected static final int CELL_SIZE = 50;
+    /**
+     * Field to hold the board itself.
+     * The board is a 2d int array of rows and columns.
+     */
     protected static final int[][] BOARD = new int[ROWS][COLUMNS];
+
+    /**
+     * Fields to hold the number of coins in the game.
+     */
     protected static final int NUM_COINS = 10;
 
     /**
-     * Entities that every board has
+     * Main character entity.
      */
     private final MainCharacter main_character;
+    /**
+     * Concord Officer entity.
+     */
     private final ConcordOfficer officer;
+    /**
+     * LostNote entity.
+     */
     protected LostNote lost_note;
 
     /**
-     * Timer and score attributes that each board has
+     * Timer that ensures game state is updated every interval.
      */
     private final Timer timer;
-    private final Timer officerTimer;
-    private final Timer gameTimer; 
+    /**
+     * Field holding the delay for Timer updating game state.
+     */
     private final int DELAY = 25;
+    /**
+     * Timer that sets the speed of the concord officer.
+     */
+    private final Timer officerTimer;
+    /**
+     * Timer that counts the seconds of the game for the player's time.
+     */
+    private final Timer gameTimer; 
+
+    /**
+     * Int variable for the timeElapsed derived from the gameTimer.
+     */
     private int timeElapsed = 0;
+    /**
+     * Keeps track of the player's score.
+     */
     private final Score score;
 
     /**
-     * Arraylists that each Board has, these contain StaticEntities
+     * Arraylists holding all coins in the game.
      */
     private ArrayList<Coin> coins = new ArrayList<Coin>();
+    /**
+     * Arraylists holding all cones in the game.
+     */
     private ArrayList <Cone> cones = new ArrayList<Cone>();
+    /**
+     * Arraylists holding all parked cars in the game.
+     */
     private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
+    /**
+     * Arraylists holding all lost notes in the game.
+     */
     private ArrayList<LostNote> ln = new ArrayList<LostNote>(); 
 
 
@@ -76,14 +121,17 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private int coinsCollectedCount = 0;
 
-
     /**
-     * Attributes to help screens appear properly.
-     * game_ended tells you if the game has ended to ensure lose screen doesn't pop up multiple times.
-     * cardLayout and cardPanel are included to switch panels (win/lose panels)
+     * Field that tells you if the game has ended to ensure lose screen doesn't pop up multiple times.
      */
     private boolean game_ended = false;
+    /**
+     * The CardLayout used for switching between screens.
+     */
     CardLayout cardLayout;
+    /**
+     * The JPanel that holds the game screens.
+     */
     JPanel cardPanel;
 
     /**
