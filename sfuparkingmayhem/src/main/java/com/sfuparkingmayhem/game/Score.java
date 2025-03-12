@@ -5,9 +5,8 @@ package com.sfuparkingmayhem.game;
  * constructor and methods to get and add/subtract/reset the value of this score.
  */
 public class Score {
-
     /**
-     * score of the game
+     * The score of the player/game/board.
      */
     private int score;
 

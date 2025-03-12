@@ -19,20 +19,12 @@ import com.sfuparkingmayhem.screen.MainMenu;
  * @version 1.0
  */
 public class Game {
-
-
     /**
-     * Constructor for a Game object
-     */
-    public Game() {
-    }
-
-    
-    /**
+     * Constructor for Game object.
      * Initializes the window for the game. Displays different windows to show instructions,
      * main menu, or to indicate if player has won/lost game.
      */
-    public void initWindow()
+    public Game()
     {
         //create a window in which the game will run
         JFrame window = new JFrame("SFU Parking Mayhem");
