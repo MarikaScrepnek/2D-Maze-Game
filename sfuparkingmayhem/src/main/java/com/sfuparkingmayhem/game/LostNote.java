@@ -1,16 +1,10 @@
 package com.sfuparkingmayhem.game;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.util.Objects;
 
 public class LostNote extends Reward {
-
-    private int value = 10;
-    private int expiryTime = 5; //put 5 seconds as the time limit
-
     /**
      * Constructs a LostNote object.
      *

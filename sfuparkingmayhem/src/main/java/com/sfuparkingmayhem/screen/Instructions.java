@@ -40,7 +40,7 @@ public class Instructions extends Screen {
         //set color
         controlsInfoLabel.setForeground(Color.WHITE);
         //set position and dimensions
-        controlsInfoLabel.setBounds(50, 200, 400, 120);
+        controlsInfoLabel.setBounds(50, 200, 300, 120);
 
         //create the objective title
         JLabel objectiveLabel = new JLabel("Objective");
@@ -49,19 +49,19 @@ public class Instructions extends Screen {
         //set color
         objectiveLabel.setForeground(Color.WHITE);
         //set position and dimensions
-        objectiveLabel.setBounds(400, 150, 500, 50);
+        objectiveLabel.setBounds(400, 150, 300, 50);
 
         //create the objective body
-        JLabel objectiveInfoLabel = new JLabel("<html><p style='width:250px;'>Collect all 10 coins and make your way to the parking booth to escape!<br><br>Avoid crashing into parked cars, or you'll lose points!<br><br>If your score drops below zero or you're caught by the Concord Officer, you'll lose the game!</p></html>");
+        JLabel objectiveInfoLabel = new JLabel("<html><p style='width:250px;'>Collect all 10 coins and make your way to the parking booth to escape!<br><br>Collect student's Lost Notes for 10 bonus points!<br><br>Avoid crashing into parked cars, or you'll lose 5 points!<br><br>If your score drops below zero or you're caught by the Concord Officer, you'll lose the game!</p></html>");
         //set font
         objectiveInfoLabel.setFont(smallKenneyFont);
         //set color
         objectiveInfoLabel.setForeground(Color.WHITE);
         //set position and dimensions
-        objectiveInfoLabel.setBounds(400, 200, 350, 350);
+        objectiveInfoLabel.setBounds(400, 200, 350, 450);
 
         //set position and dimensions of main menu button
-        main_menu_button.setBounds(279, 600, 192, 64);
+        main_menu_button.setBounds(50, 600, 192, 64);
 
         //add all elements to the instructions panel
         add(instructionsLabel);
