@@ -1,15 +1,22 @@
 package com.sfuparkingmayhem.game;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
-import java.awt.Point;
 
 /**
  * A ConcordOfficer is a MovingEntity that chases the MainCharacter.
  */
 public class ConcordOfficer extends MovingEntity{
-    // Reference to the MainCharacter
+    /**
+     * A reference to the MainCharacter instance of the game.
+     * This is used for getting its coordinates.
+     */
     private MainCharacter target;
+    /**
+     * A reference to the board instance of the gane.
+     */
     private Board board;
 
     /**

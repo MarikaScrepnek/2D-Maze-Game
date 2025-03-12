@@ -24,22 +24,89 @@ import com.sfuparkingmayhem.game.Board;
  * @version 1.0
  */
 public abstract class Screen extends JPanel{
+    /**
+     * The icon representing the "Start Game" button in its normal state.
+     * This icon is used when the "Start Game" button is not being hovered over.
+     */
     private ImageIcon start_game;
-    private  ImageIcon start_game_hover;
-    private  ImageIcon instructions;
-    private  ImageIcon instructions_hover;
-    private  ImageIcon exit;
-    private  ImageIcon exit_hover;
-    private  ImageIcon main_menu;
-    private  ImageIcon main_menu_hover;
 
+    /**
+     * The icon representing the "Start Game" button when hovered over.
+     * This icon changes when the user hovers their cursor over the "Start Game" button.
+     */
+    private ImageIcon start_game_hover;
+
+    /**
+     * The icon representing the "Instructions" button in its normal state.
+     * This icon is used when the "Instructions" button is not being hovered over.
+     */
+    private ImageIcon instructions;
+
+    /**
+     * The icon representing the "Instructions" button when hovered over.
+     * This icon changes when the user hovers their cursor over the "Instructions" button.
+     */
+    private ImageIcon instructions_hover;
+
+    /**
+     * The icon representing the "Exit" button in its normal state.
+     * This icon is used when the "Exit" button is not being hovered over.
+     */
+    private ImageIcon exit;
+
+    /**
+     * The icon representing the "Exit" button when hovered over.
+     * This icon changes when the user hovers their cursor over the "Exit" button.
+     */
+    private ImageIcon exit_hover;
+
+    /**
+     * The icon representing the "Main Menu" button in its normal state.
+     * This icon is used when the "Main Menu" button is not being hovered over.
+     */
+    private ImageIcon main_menu;
+
+    /**
+     * The icon representing the "Main Menu" button when hovered over.
+     * This icon changes when the user hovers their cursor over the "Main Menu" button.
+     */
+    private ImageIcon main_menu_hover;
+
+    /**
+     * The font used for the main game interface, typically used for larger text.
+     * This font provides the primary visual style for in-game labels and buttons.
+     */
     protected Font kenneyFont;
+
+    /**
+     * The font used for smaller text in the game interface.
+     * This font is used for auxiliary text like instructions or tooltips.
+     */
     protected Font smallKenneyFont;
 
+    /**
+     * The "Start Game" button on the user interface.
+     * This button is clickable and starts the game when pressed.
+     */
     JButton start_game_button;
+
+    /**
+     * The "Instructions" button on the user interface.
+     * This button is clickable and opens the instructions screen when pressed.
+     */
     JButton instructions_button;
+
+    /**
+     * The "Exit" button on the user interface.
+     * This button is clickable and exits the game when pressed.
+     */
     JButton exit_button;
-    JButton main_menu_button; 
+
+    /**
+     * The "Main Menu" button on the user interface.
+     * This button is clickable and returns the player to the main menu when pressed.
+     */
+    JButton main_menu_button;
     
     /**
      * Loads images for all needed UI in screens, creates needed buttons, handles their events, and loads needed fonts.
