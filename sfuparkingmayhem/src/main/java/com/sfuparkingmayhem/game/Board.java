@@ -175,9 +175,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Populates the lostNote arraylist with a lostNote object. The lostnote's random coordinates
-     * are verified if an entity already exists on that coordinate, if so, lostnote needs to have
-     * another set of random coordinates generated.
+     * Populates the lostNote arraylist with a lostNote object every 7 seconds.
+     * Removes a lost note every 7 seconds if there is a lost note to remove.
      */
     private void populateLostNote(){
         setLostNote();
@@ -192,7 +191,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
 
     /**
-     * Sets coordinates for lost note and adds its to the lost note array
+     * Sets coordinates for lost note.
+     * The lostnote's random coordinates are verified if an entity already exists on that coordinate,
+     * if so, lostnote needs to have another set of random coordinates generated.
+     * Finally adds its to the lost note ArrayList.
      */
     private void setLostNote() { 
         lost_note = new LostNote(0,0);
