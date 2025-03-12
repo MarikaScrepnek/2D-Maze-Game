@@ -35,14 +35,17 @@ public class Game
         //make sure the program shuts down when the window is closed
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //create a cardLayout which will hold different screens and cardPanel which will act as the main panel that the user sees
         CardLayout cardLayout = new CardLayout();
         JPanel cardPanel = new JPanel(cardLayout);
         
-        MainMenu mainMenu = new MainMenu(cardLayout, cardPanel); // Main menu panel
-        Instructions instructions = new Instructions(cardLayout, cardPanel);
-        LoseScreenScore loseScreenScore = new LoseScreenScore(cardLayout, cardPanel);
-        LoseScreenConcord loseScreenConcord = new LoseScreenConcord(cardLayout, cardPanel);
+        MainMenu mainMenu = new MainMenu(cardLayout, cardPanel); //create main menu panel
+        Instructions instructions = new Instructions(cardLayout, cardPanel); //create instructions panel
+        LoseScreenScore loseScreenScore = new LoseScreenScore(cardLayout, cardPanel); //create score lose screen panel
+        LoseScreenConcord loseScreenConcord = new LoseScreenConcord(cardLayout, cardPanel); //create concord lose screen panel
+        //win screen is not initialized here because it takes in score and time parameters
 
+        //add all panels to the list of panels
         cardPanel.add(mainMenu, "MainMenu");
         cardPanel.add(instructions, "Instructions");
         cardPanel.add(loseScreenScore, "Lose Screen Score");
@@ -61,6 +64,7 @@ public class Game
         //make the window visible to the user, keep this at the bottom to make sure user only sees the ready window
         window.setVisible(true);
 
+        //show main menu panel on start
         cardLayout.show(cardPanel, "MainMenu");
     }
 }

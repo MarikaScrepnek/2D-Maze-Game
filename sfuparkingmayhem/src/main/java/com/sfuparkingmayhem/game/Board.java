@@ -50,8 +50,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     private int coinsCollectedCount = 0;
 
-    private boolean game_ended = false;
+    private boolean game_ended = false; //boolean that tells you if the game has ended to ensure lose screen doesn't pop up multiple times
 
+    //need access to these to be able to switch panels (win/lose)
     CardLayout cardLayout;
     JPanel cardPanel;
 
