@@ -502,10 +502,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Checks if the player is colliding with a cone
-     * @param x x-coordinate of the player
-     * @param y y-coordinate of the player
-     * @return true if the player is colliding with a cone, false otherwise
+     * Checks if the player is colliding with a cone.
+     * @param x x-coordinate of the player.
+     * @param y y-coordinate of the player.
+     * @return true if the player is colliding with a cone, false otherwise.
      */
     private boolean isCollidingWithCone(int x, int y) {
         for (Cone cone : cones) {
@@ -517,10 +517,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Checks if the player is colliding with a coin
-     * @param x x-coordinate of the player
-     * @param y y-coordinate of the player
-     * @return true if the player is colliding with a coin, false otherwise
+     * Checks if the player is colliding with a coin.
+     * @param x x-coordinate of the player.
+     * @param y y-coordinate of the player.
+     * @return true if the player is colliding with a coin, false otherwise.
      */
     private boolean isCollidingWithCoin(int x, int y) {
         for (Coin coin : coins) {
@@ -532,10 +532,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Checks if the player is colliding with a parked car
-     * @param x x-coordinate of the player
-     * @param y y-coordinate of the player
-     * @return true if the player is colliding with a parked car, false otherwise
+     * Checks if the player is colliding with a parked car.
+     * @param x x-coordinate of the player.
+     * @param y y-coordinate of the player.
+     * @return true if the player is colliding with a parked car, false otherwise.
      */
     private boolean isCollidingWithParkedCar(int x, int y) {
         for (ParkedCar parkedCar : parkedCars) {
@@ -589,7 +589,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public void keyReleased(KeyEvent e) {
     }
 
-
+    /**
+     * Helper method to check if a cell is blocked by a cone or parked car.
+     * @param x The x-coordinate of the cell.
+     * @param y The y-coordinate of the cell.
+     * @return true if the cell is blocked, false otherwise.
+     */
     public boolean isCellBlocked(int x, int y) {
         // Return true if out-of-bounds
         if (x <= 0 || x >= COLUMNS-1 || y <= 0 || y >= ROWS-1) {
@@ -607,15 +612,17 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                 return true;
             }
         }
-        
-    
-       
         return false;
     }
     
     /**
-     * Returns a path (as a list of Points) from (startX,startY) to (endX,endY),
-     * or null if no path exists.
+     * Finds the shortest path from start to end using Dijkstra's algorithm.
+     * 
+     * @param startX The x-coordinate of the start cell.
+     * @param startY The y-coordinate of the start cell.
+     * @param endX The x-coordinate of the end cell.
+     * @param endY The y-coordinate of the end cell.
+     * @return A list of points representing the path from start to end, or null if no path exists.
      */
     public List<Point> findPathDijkstra(int startX, int startY, int endX, int endY) {
         // If the start or end is blocked, no path
@@ -677,8 +684,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Reconstructs the path by backtracking from the end cell’s parent pointer
-     * up to the start cell. Then reverse that list to get start->end order.
+     * Reconstructs the path from start to end using the parent array.
+     * 
+     * @param parent The parent array.
+     * @param startX The x-coordinate of the start cell.
+     * @param startY The y-coordinate of the start cell.
+     * @param endX The x-coordinate of the end cell.
+     * @param endY The y-coordinate of the end cell.
+     * @return A list of points representing the path from start to end.
      */
     private List<Point> buildPath(Point[][] parent, int startX, int startY,
                                   int endX, int endY) {
@@ -720,9 +733,19 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         flash_timer.start(); //start the timer
     }
 
-    // helper class to store (x, y) plus a distance in priority queue
+    /**
+     * Inner class to store a point and its distance.
+     */
     private static class PointDistance {
         int x, y, distance;
+
+        /**
+         * Constructs a PointDistance object.
+         * 
+         * @param x The x-coordinate of the point.
+         * @param y The y-coordinate of the point.
+         * @param dist The distance of the point.
+         */
         PointDistance(int x, int y, int dist) {
             this.x = x;
             this.y = y;
