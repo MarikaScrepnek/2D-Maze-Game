@@ -31,12 +31,12 @@ public abstract class Entity {
      *
      * @throws IOException e if there is an error with loading this Entity's image
      */
-    //get the sprite image of this entity. Subclasses to override
     abstract protected void getImage();
 
 
     /**
-     * Draws the image on board
+     * Draws this Entity's png image, from resources directory, onto game board at this Entity's
+     * x and y coordinates. Takes in Graphics graphics and ImageObserver io as parameters.
      *
      * @param graphics
      * @param io
