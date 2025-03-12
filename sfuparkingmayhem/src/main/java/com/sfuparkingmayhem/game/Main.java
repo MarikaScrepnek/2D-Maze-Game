@@ -2,8 +2,7 @@ package com.sfuparkingmayhem.game;
 
 
 /**
- * This main class instantiates a new {@link Game} and uses the initWindow() method
- * to run the game.
+ * This main class instantiates a new {@link Game}.
  * 
  * @author Group 25
  * @version 1.0
