@@ -9,7 +9,7 @@ import javax.swing.SwingConstants;
 
 /**
  * Class representing the Main Menu screen in the game.
- * It extends the Screen class and provides buttons for starting game, instructions, and exiting the program.
+ * It extends {@link Screen} and provides buttons for starting game, instructions, and exiting the program.
  */
 public class MainMenu extends Screen {
     /**
