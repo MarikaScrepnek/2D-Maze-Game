@@ -21,7 +21,7 @@ public class MainCharacter extends MovingEntity {
      * @param x_coordinate x-coordinate where MainCharcter is on board
      * @param y_coordinate y-coordinate where MainCharcter is on board
      */
-    MainCharacter(int x_coordinate, int y_coordinate) {
+    public MainCharacter(int x_coordinate, int y_coordinate) {
         super( x_coordinate, y_coordinate);
         //setImage();
         getImage();

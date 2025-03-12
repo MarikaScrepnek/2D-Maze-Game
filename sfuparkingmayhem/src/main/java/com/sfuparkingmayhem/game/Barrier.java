@@ -16,7 +16,7 @@ public class Barrier extends StaticEntity{
      * @param x The x-coordinate of the Barrier.
      * @param y The y-coordinate of the Barrier.
      */
-    Barrier(int x, int y) {
+    public Barrier(int x, int y) {
         super(x, y);
     }
 }

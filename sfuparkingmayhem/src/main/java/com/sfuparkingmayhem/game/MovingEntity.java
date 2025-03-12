@@ -2,6 +2,13 @@ package com.sfuparkingmayhem.game;
 
 import java.awt.event.KeyEvent;
 
+/**
+ * This MovingEntity class extends Entity class and contains the following
+ * methods: a constructor to instantiate a MovingEntity, and a method to move the entity.
+ * 
+ * @author Group25
+ * @version 1.0
+ */
 public abstract class MovingEntity extends Entity {
     /**
      * Constructs a MovingEntity with the specified coordinates.

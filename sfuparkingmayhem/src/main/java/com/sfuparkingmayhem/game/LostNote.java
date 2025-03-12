@@ -11,7 +11,7 @@ public class LostNote extends Reward {
      * @param x The x-coordinate of the LostNote.
      * @param y The y-coordinate of the LostNote.
      */
-    LostNote(int x, int y) {
+    public LostNote(int x, int y) {
         super(x, y);
         getImage();
     }
