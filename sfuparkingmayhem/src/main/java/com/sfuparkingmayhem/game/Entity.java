@@ -15,9 +15,17 @@ import java.awt.image.ImageObserver;
  */
 public abstract class Entity {
 
-    //the attributes of an entity on the game board
+    /**
+     * The x coordinate of the entity on the board.
+     */
     protected int x_coordinate;
+    /**
+     * The y coordinate of the entity on the board.
+     */
     protected int y_coordinate;
+    /**
+     * The entity's image/sprite
+     */
     protected BufferedImage theImage;
 
     //constructor for an Entity
