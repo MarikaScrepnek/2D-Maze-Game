@@ -7,7 +7,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * Class representing the instructions screen in the game.
+ * It extends the Screen class and provides details about game controls and objectives.
+ */
 public class Instructions extends Screen {
+    /**
+     * Constructs the Instructions screen with game details.
+     *
+     * @param cardLayout The CardLayout used for switching screens.
+     * @param cardPanel  The JPanel that holds different game screens.
+     */
     public Instructions(CardLayout cardLayout, JPanel cardPanel) {
         //call Screen constructor
         super(cardLayout, cardPanel);

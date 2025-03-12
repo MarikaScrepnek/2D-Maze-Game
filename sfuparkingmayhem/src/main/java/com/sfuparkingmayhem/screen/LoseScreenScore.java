@@ -7,7 +7,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * Class representing the screen displayed when the player loses
+ * due to their score becoming negative. It extends {@link LoseScreen} and provides
+ * a specific loss message.
+ */
 public class LoseScreenScore extends LoseScreen {
+    /**
+     * Constructs a LoseScreenConcord with a message stating they lost because of their score.
+     *
+     * @param cardLayout The CardLayout used for switching between screens.
+     * @param cardPanel  The JPanel that contains all the game screens.
+     */
     public LoseScreenScore(CardLayout cardLayout, JPanel cardPanel) {
         //call LoseScreen constructor
         super(cardLayout, cardPanel);

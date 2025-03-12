@@ -42,7 +42,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
 
     protected LostNote lost_note;
-    private ArrayList<LostNote> ln = new ArrayList<LostNote>(); //added this but not on class diagram
+    private ArrayList<LostNote> ln = new ArrayList<LostNote>(); 
 
     private final int DELAY = 25;
 
