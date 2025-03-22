@@ -1,6 +1,7 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  * This MovingEntity class extends Entity class and contains the following
@@ -18,6 +19,36 @@ public abstract class MovingEntity extends Entity {
      */
     public MovingEntity(int x_coordinate, int y_coordinate) {
         super(x_coordinate, y_coordinate);
+    }
+
+    /**
+     * Checks if the player is colliding with a cone.
+     * @param x x-coordinate of the player.
+     * @param y y-coordinate of the player.
+     * @return true if the player is colliding with a cone, false otherwise.
+     */
+    protected boolean isCollidingWithCone(int x, int y, ArrayList<Cone> cones) {
+        for (Cone cone : cones) {
+            if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the player is colliding with a parked car.
+     * @param x x-coordinate of the player.
+     * @param y y-coordinate of the player.
+     * @return true if the player is colliding with a parked car, false otherwise.
+     */
+    protected boolean isCollidingWithParkedCar(int x, int y, ArrayList<ParkedCar> parkedCars) {
+        for (ParkedCar parkedCar : parkedCars) {
+            if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

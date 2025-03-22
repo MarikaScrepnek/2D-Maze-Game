@@ -35,7 +35,6 @@ import com.sfuparkingmayhem.screen.WinScreen;
  */
 
 public class Board extends JPanel implements ActionListener, KeyListener{
-
     /**
      * Field to hold the number of rows in a board.
      */
@@ -52,12 +51,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Main character entity.
      */
-    private final MainCharacter main_character;
-    
+    protected final MainCharacter main_character;
     /**
      * Concord Officer entity.
      */
-    private final ConcordOfficer officer;
+    protected final ConcordOfficer officer;
     /**
      * LostNote entity.
      */
@@ -71,10 +69,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Field holding the delay for Timer updating game state.
      */
     private final int DELAY = 25;
-    /**
-     * Timer that sets the speed of the concord officer.
-     */
-    private final Timer officerTimer;
     /**
      * Timer that counts the seconds of the game for the player's time.
      */
@@ -96,16 +90,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Arraylists holding all cones in the game.
      */
-    private ArrayList <Cone> cones = new ArrayList<Cone>();
+    public static ArrayList <Cone> cones = new ArrayList<>();
     /**
      * Arraylists holding all parked cars in the game.
      */
-    private ArrayList <ParkedCar> parkedCars = new ArrayList<ParkedCar>();
+    public static ArrayList <ParkedCar> parkedCars = new ArrayList<>();
     /**
      * Arraylists holding all lost notes in the game.
      */
     private ArrayList<LostNote> ln = new ArrayList<LostNote>(); 
-
 
     /**
      * variable to help display the number of coins collected by user
@@ -115,7 +108,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Field that tells you if the game has ended to ensure lose screen doesn't pop up multiple times.
      */
-    private boolean game_ended = false;
+    protected boolean game_ended = false;
+
     /**
      * The CardLayout used for switching between screens.
      */
@@ -144,9 +138,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         //intialize player
         main_character = new MainCharacter(0, 1);
-
         //initialize officer
-        officer = new ConcordOfficer(7, 7, main_character, this);
+        officer = new ConcordOfficer(7, 7, this);
         //initialize score
         score = new Score();
 
@@ -156,37 +149,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         createParkedCars();
         populateLostNote();
 
-
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
         timer.start();
-
-        officerTimer = new Timer(500, e -> {
-            int oldX = officer.getX_coordinate();
-            int oldY = officer.getY_coordinate();
-
-            officer.move(null);  // Call move() without KeyEvent
-
-            // Check if the officer is colliding with a cone or parked car
-            if (isCollidingWithCone(officer.getX_coordinate(), officer.getY_coordinate()) ||
-                isCollidingWithParkedCar(officer.getX_coordinate(), officer.getY_coordinate())) {
-                officer.x_coordinate = oldX;
-                officer.y_coordinate = oldY;
-            }
-
-            //check if officer and mainCharacter are colliding, if so, game has ended
-            if (officer.x_coordinate == main_character.getMainCharacterXCoordinate() 
-                && officer.y_coordinate == main_character.getMainCharacterYCoordinate() && game_ended == false) {
-                // TO DO - Add game over logic
-                game_ended = true;
-                cardLayout.show(cardPanel, "Lose Screen Concord");
-            }
-
-            repaint();  // Refresh the screen
-        });
-
-    
-        officerTimer.start();
 
         //time for the game
         gameTimer = new Timer(1000, e -> {
