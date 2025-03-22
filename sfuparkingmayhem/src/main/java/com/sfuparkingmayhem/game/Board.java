@@ -72,12 +72,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Timer that counts the seconds of the game for the player's time.
      */
-    private final Timer gameTimer; 
+    private GameTimer gameTimer;
 
-    /**
-     * Int variable for the timeElapsed derived from the gameTimer.
-     */
-    private int timeElapsed = 0;
     /**
      * Keeps track of the player's score.
      */
@@ -134,14 +130,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
         timer.start();
-
-        //time for the game
-        gameTimer = new Timer(1000, e -> {
-            timeElapsed++;
-            repaint();
-        });
-
-        gameTimer.start();
     }
 
     /**
@@ -172,6 +160,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         officer = new ConcordOfficer(7, 7, this);
         //initialize score
         score = new Score();
+        //initialize game timer
+        gameTimer = new GameTimer(this);
 
         //populate the game board with coins, cones, parked cars, and lost notes
         createCoins();
@@ -418,7 +408,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
 
         drawScore(g);
-        drawTimer(g);
+        gameTimer.draw(g);
         drawCoinsCollected(g);
 
     }
@@ -495,24 +485,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Draws the timer on the game board.
-     * 
-     * @param g Graphics object
-     */
-    private void drawTimer(Graphics g) {
-        int minutes = timeElapsed / 60;
-        int seconds = timeElapsed % 60;
-
-        g.setFont(new Font("Bahnschrift", Font.BOLD, 25));
-        g.setColor(Color.WHITE);
-
-        String timeString = String.format("%02d:%02d", minutes, seconds);
-
-        g.drawString(timeString, 343, 30);
-    }
-
-
-    /**
      * Draws how many coins have been collected on the game board.
      * 
      * @param g Graphics object
@@ -523,17 +495,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
     }
-
-
-    /**
-     * Gets the time elapsed in the game
-     * 
-     * @return timeElapsed - the time that has elapsed since start of game.
-     */
-    public int getTimeElapsed(){
-        return timeElapsed;
-    }
-
 
     /**
      * Removes a coin from coins ArrayList if this MainCharacter's board position matches
@@ -586,7 +547,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private void checkGameEnd() {
         if (main_character.getMainCharacterXCoordinate() == 14 && main_character.getMainCharacterYCoordinate() == 13) {
             if (coins.isEmpty()) {
-            int finalTime = timeElapsed; // Implement a method to track time
+            int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
             int finalScore = score.getScore(); // Assuming Score class has this method
 
             WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
