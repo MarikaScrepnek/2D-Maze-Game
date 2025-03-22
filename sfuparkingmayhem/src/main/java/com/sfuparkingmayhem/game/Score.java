@@ -1,5 +1,9 @@
 package com.sfuparkingmayhem.game;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
 /**
  * This Score class keeps track of the player's score and contains a 
  * constructor and methods to get and add/subtract/reset the value of this score.
@@ -49,5 +53,19 @@ public class Score {
      */
     public int getScore() {
         return this.score;
+    }
+
+    /**
+     * Draws the score on the top of game board.
+     * 
+     * @param g Graphics object to help draw the graphics onto board.
+     */
+    public void draw(Graphics g) {
+        // Set the font and colour for the UI of Score
+        g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+        g.setColor(Color.WHITE);
+
+        // Draw the score
+        g.drawString("SCORE: " + getScore() + " PTS", 555, 730);
     }
 }

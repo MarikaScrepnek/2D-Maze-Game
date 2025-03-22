@@ -407,7 +407,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             aLostNote.drawTheImage(g, this);
         }
 
-        drawScore(g);
+        score.draw(g);
         gameTimer.draw(g);
         drawCoinsCollected(g);
 
@@ -468,20 +468,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             System.out.println(e.getMessage());
         }
         g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
-    }
-
-    /**
-     * Draws the score on the top of game board.
-     * 
-     * @param g Graphics object to help draw the graphics onto board.
-     */
-    private void drawScore(Graphics g) {
-        // Set the font and colour for the UI of Score
-        g.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-        g.setColor(Color.WHITE);
-
-        // Draw the score
-        g.drawString("SCORE: " + score.getScore() + " PTS", 555, 730);
     }
 
     /**
