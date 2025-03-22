@@ -50,14 +50,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     protected static final int CELL_SIZE = 50;
 
     /**
-     * Fields to hold the number of coins in the game.
-     */
-    protected static final int NUM_COINS = 10;
-
-    /**
      * Main character entity.
      */
     private final MainCharacter main_character;
+    
     /**
      * Concord Officer entity.
      */
