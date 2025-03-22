@@ -48,11 +48,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Field to hold the size of a cell on the board.
      */
     protected static final int CELL_SIZE = 50;
-    /**
-     * Field to hold the board itself.
-     * The board is a 2d int array of rows and columns.
-     */
-    protected static final int[][] BOARD = new int[ROWS][COLUMNS];
 
     /**
      * Fields to hold the number of coins in the game.
