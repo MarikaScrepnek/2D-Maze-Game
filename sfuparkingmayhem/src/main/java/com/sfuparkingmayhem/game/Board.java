@@ -51,11 +51,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Main character entity.
      */
-    protected final MainCharacter main_character;
+    protected MainCharacter main_character;
     /**
      * Concord Officer entity.
      */
-    protected final ConcordOfficer officer;
+    protected ConcordOfficer officer;
     /**
      * LostNote entity.
      */
@@ -81,12 +81,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Keeps track of the player's score.
      */
-    private final Score score;
-
+    private Score score;
+    
     /**
      * Arraylists holding all coins in the game.
      */
-    private ArrayList<Coin> coins = new ArrayList<Coin>();
+    private ArrayList<Coin> coins = new ArrayList<>();
     /**
      * Arraylists holding all cones in the game.
      */
@@ -98,7 +98,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Arraylists holding all lost notes in the game.
      */
-    private ArrayList<LostNote> ln = new ArrayList<LostNote>(); 
+    private ArrayList<LostNote> ln = new ArrayList<>(); 
 
     /**
      * variable to help display the number of coins collected by user
@@ -118,7 +118,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * The JPanel that holds the game screens.
      */
     JPanel cardPanel;
-
+    
     /**
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
      * and a concord officer. Timers are created to start counting upward when game begins.
@@ -127,27 +127,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * @param cardPanel The JPanel that contains all the game screens.
      */
     public Board(CardLayout cardLayout, JPanel cardPanel) {
-        this.cardLayout=cardLayout;
-        this.cardPanel=cardPanel;
+        initBoardPanel(cardLayout, cardPanel);
 
-        //set game board size
-        setPreferredSize(new Dimension(CELL_SIZE*COLUMNS,CELL_SIZE*ROWS));
-
-        //set the background color to a concrete grey
-        setBackground(new Color(43, 43, 43));
-
-        //intialize player
-        main_character = new MainCharacter(0, 1);
-        //initialize officer
-        officer = new ConcordOfficer(7, 7, this);
-        //initialize score
-        score = new Score();
-
-        //populate the game board with coins, cones, parked cars, and lost notes
-        createCoins();
-        createCones();
-        createParkedCars();
-        populateLostNote();
+        populateBoard();
 
         //timer that will make sure actionPerformed is ran every DELAY interval
         timer = new Timer(DELAY, this);
@@ -160,6 +142,42 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         });
 
         gameTimer.start();
+    }
+
+    /**
+     * Initializes Board Panel by setting dimensions, background color, and
+     * assigning a cardLayout and cardPanel.
+     * 
+     * @param cardLayout
+     * @param cardPanel
+     */
+    private void initBoardPanel(CardLayout cardLayout, JPanel cardPanel) {
+        this.cardLayout=cardLayout;
+        this.cardPanel=cardPanel;
+
+        //set game board size
+        setPreferredSize(new Dimension(CELL_SIZE*COLUMNS,CELL_SIZE*ROWS));
+
+        //set the background color to a concrete grey
+        setBackground(new Color(43, 43, 43));
+    }
+
+    /**
+     * Populates the board with all entities and timer and score.
+     */
+    private void populateBoard() {
+        //intialize player
+        main_character = new MainCharacter(0, 1);
+        //initialize officer
+        officer = new ConcordOfficer(7, 7, this);
+        //initialize score
+        score = new Score();
+
+        //populate the game board with coins, cones, parked cars, and lost notes
+        createCoins();
+        createCones();
+        createParkedCars();
+        populateLostNote();
     }
 
     /**
@@ -176,6 +194,38 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coins.add(new Coin(12,11));
         coins.add(new Coin(9,12));
         coins.add(new Coin(3,13));
+    }
+
+    /**
+     * Creates cones and adds them to the cones arraylist
+     */
+    private void createCones(){
+        cones.add(new Cone(4,3));
+        cones.add(new Cone(11,3));
+        cones.add(new Cone(12,3));
+        cones.add(new Cone(4,5));
+        cones.add(new Cone(9,7));
+        cones.add(new Cone(6,8));
+        cones.add(new Cone(12,9));
+        cones.add(new Cone(2,10));
+        cones.add(new Cone(10,10));
+        cones.add(new Cone(7,13));
+    }
+
+    /**
+     * Creates parked cars and adds them to the parkedCars arraylist
+     */
+    private void createParkedCars(){
+        parkedCars.add(new ParkedCar(2, 2));
+        parkedCars.add(new ParkedCar(6, 5));
+        parkedCars.add(new ParkedCar(8, 5));
+        parkedCars.add(new ParkedCar(12, 6));
+        parkedCars.add(new ParkedCar(12, 7));
+        parkedCars.add(new ParkedCar(3, 7));
+        parkedCars.add(new ParkedCar(4, 11));
+        parkedCars.add(new ParkedCar(4, 12));
+        parkedCars.add(new ParkedCar(8, 11));
+        parkedCars.add(new ParkedCar(9, 11));
     }
 
     /**
@@ -304,41 +354,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         //add lost note to ln arraylist
         ln.add(lost_note);
     }
-
-    /**
-     * Creates cones and adds them to the cones arraylist
-     */
-    private void createCones(){
-        cones.add(new Cone(4,3));
-        cones.add(new Cone(11,3));
-        cones.add(new Cone(12,3));
-        cones.add(new Cone(4,5));
-        cones.add(new Cone(9,7));
-        cones.add(new Cone(6,8));
-        cones.add(new Cone(12,9));
-        cones.add(new Cone(2,10));
-        cones.add(new Cone(10,10));
-        cones.add(new Cone(7,13));
-
-    }
-
-    /**
-     * Creates parked cars and adds them to the parkedCars arraylist
-     */
-    private void createParkedCars(){
-        parkedCars.add(new ParkedCar(2, 2));
-        parkedCars.add(new ParkedCar(6, 5));
-        parkedCars.add(new ParkedCar(8, 5));
-        parkedCars.add(new ParkedCar(12, 6));
-        parkedCars.add(new ParkedCar(12, 7));
-        parkedCars.add(new ParkedCar(3, 7));
-        parkedCars.add(new ParkedCar(4, 11));
-        parkedCars.add(new ParkedCar(4, 12));
-        parkedCars.add(new ParkedCar(8, 11));
-        parkedCars.add(new ParkedCar(9, 11));
-
-    }
-
 
     /**
      * Updates the state of the game by repainting and uses tickCharacter()
