@@ -91,6 +91,50 @@ public class MainCharacter extends MovingEntity {
     private long getCurrentTimeMilliseconds (){
         return System.currentTimeMillis();
     }
+
+    private void eventMoveUp(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_W ){
+            y_coordinate = y_coordinate - 1;
+
+            //load up orientation sprite
+            getImage("main_character_north.png");
+        }
+    }
+
+    private void eventMoveLeft(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_A ){
+            x_coordinate = x_coordinate - 1;
+
+            //load up orientation sprite
+            getImage("main_character_west.png");
+        }
+    }
+
+    private void eventMoveDown(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_S ){
+            y_coordinate = y_coordinate + 1;
+
+            //load up orientation sprite
+            getImage("main_character_south.png");  
+        }
+    }
+
+
+    private void eventMoveRight(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_D ){
+            x_coordinate = x_coordinate + 1;
+
+            //load up orientation sprite
+            getImage("main_character_east.png");
+        }
+    }
+
+
+
    
     /**
      * Moves the MainCharacter in the direction of the key pressed on the keyboard.
@@ -122,35 +166,23 @@ public class MainCharacter extends MovingEntity {
 
             case KeyEvent.VK_W:
 
-                y_coordinate = y_coordinate - 1;
-
-                //load up orientation sprite
-                getImage("main_character_north.png");
+                eventMoveUp(event);
                 break;
 
             case KeyEvent.VK_A:
 
-                x_coordinate = x_coordinate - 1;
-
-                //load up orientation sprite
-                getImage("main_character_west.png");
+                eventMoveLeft(event);
                 break;
                 
 
             case KeyEvent.VK_S:
 
-                y_coordinate = y_coordinate + 1;
-
-                //load up orientation sprite
-                getImage("main_character_south.png");  
+                eventMoveDown(event);
                 break;
 
             case KeyEvent.VK_D:
 
-                x_coordinate = x_coordinate + 1;
-
-                //load up orientation sprite
-                getImage("main_character_east.png");
+                eventMoveRight(event);
                 break;
             
 
