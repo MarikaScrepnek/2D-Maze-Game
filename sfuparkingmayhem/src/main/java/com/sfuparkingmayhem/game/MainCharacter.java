@@ -94,7 +94,7 @@ public class MainCharacter extends MovingEntity {
 
 
     /**
-     * increments this main character's y_coordinate on board and loads north facing png onto board
+     * decrements this main character's y_coordinate on board and loads north facing png onto board
      * 
      * @param e a Keyevent that will be checked if it corresponds to the W key being pressed by user
      */
@@ -124,6 +124,12 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
+
+    /**
+     * increments this main character's y_coordinate on board and loads south facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the S key being pressed by user
+     */
     private void eventMoveDown(KeyEvent e){
         
         if (e.getKeyCode() == KeyEvent.VK_S ){
