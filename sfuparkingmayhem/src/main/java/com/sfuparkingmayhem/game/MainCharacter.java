@@ -108,6 +108,12 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
+
+    /**
+     * decrements this main character's x_coordinate on board and loads west facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the A key being pressed by user
+     */
     private void eventMoveLeft(KeyEvent e){
         
         if (e.getKeyCode() == KeyEvent.VK_A ){
