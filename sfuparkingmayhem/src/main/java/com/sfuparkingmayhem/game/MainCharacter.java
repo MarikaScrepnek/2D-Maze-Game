@@ -49,6 +49,13 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
+    /**
+     * loads the image for this main character on game board using the parameter s to indicate which png
+     * should be loaded.
+     * 
+     * @param s path of the image/png for this main character
+     * @throws e an IOException with a message if an image was unable to be loaded correctly
+     */
     protected void getImage(String s){
         try{
             this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream(s));
@@ -75,9 +82,82 @@ public class MainCharacter extends MovingEntity {
         return true;
     }
 
+
+    /**
+     * returns the current time in milliseconds using System.currentTimeMillis() method. 
+     * 
+     * @return current time, in milliseconds
+     */
     private long getCurrentTimeMilliseconds (){
         return System.currentTimeMillis();
     }
+
+
+    /**
+     * decrements this main character's y_coordinate on board and loads north facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the W key being pressed by user
+     */
+    private void eventMoveUp(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_W ){
+            y_coordinate = y_coordinate - 1;
+
+            //load up orientation sprite
+            getImage("main_character_north.png");
+        }
+    }
+
+
+    /**
+     * decrements this main character's x_coordinate on board and loads west facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the A key being pressed by user
+     */
+    private void eventMoveLeft(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_A ){
+            x_coordinate = x_coordinate - 1;
+
+            //load up orientation sprite
+            getImage("main_character_west.png");
+        }
+    }
+
+
+    /**
+     * increments this main character's y_coordinate on board and loads south facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the S key being pressed by user
+     */
+    private void eventMoveDown(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_S ){
+            y_coordinate = y_coordinate + 1;
+
+            //load up orientation sprite
+            getImage("main_character_south.png");  
+        }
+    }
+
+
+    /**
+     * increments this main character's x_coordinate on board and loads east facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the D key being pressed by user
+     */
+    private void eventMoveRight(KeyEvent e){
+        
+        if (e.getKeyCode() == KeyEvent.VK_D ){
+            x_coordinate = x_coordinate + 1;
+
+            //load up orientation sprite
+            getImage("main_character_east.png");
+        }
+    }
+
+
+
    
     /**
      * Moves the MainCharacter in the direction of the key pressed on the keyboard.
@@ -99,49 +179,11 @@ public class MainCharacter extends MovingEntity {
         if (checkDifferenceInTime(currTime, prevMoveTime, delay) == false){
             return;
         }
-        
 
-
-        //get key code for the specific key that was pressed on keyboard
-        int keyCode = event.getKeyCode();
-
-        switch (keyCode){
-
-            case KeyEvent.VK_W:
-
-                y_coordinate = y_coordinate - 1;
-
-                //load up orientation sprite
-                getImage("main_character_north.png");
-                break;
-
-            case KeyEvent.VK_A:
-
-                x_coordinate = x_coordinate - 1;
-
-                //load up orientation sprite
-                getImage("main_character_west.png");
-                break;
-                
-
-            case KeyEvent.VK_S:
-
-                y_coordinate = y_coordinate + 1;
-
-                //load up orientation sprite
-                getImage("main_character_south.png");  
-                break;
-
-            case KeyEvent.VK_D:
-
-                x_coordinate = x_coordinate + 1;
-
-                //load up orientation sprite
-                getImage("main_character_east.png");
-                break;
-            
-
-        }
+        eventMoveUp(event);
+        eventMoveLeft(event);
+        eventMoveDown(event);
+        eventMoveRight(event);
 
         //update the prevMoveTime variable to current time (in milliseconds)
         prevMoveTime = currTime;
