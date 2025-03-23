@@ -49,7 +49,23 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-    
+    /**
+     * checks the difference between a previous time stamp and the current time stamp. If the difference
+     * betweent the timess are less than the delay value, return false. Otherwise, return true. 
+     * 
+     * @param currentTime gets a long value that represents the current time in milliseconds
+     * @param previousTime takes in a long value that represents the time since last move was made by this main character
+     * @return
+     */
+    private boolean checkDifferenceInTime(long currentTime, long previousTime, long delay){
+        //find the time difference from current time and time since the last action/move was made.
+        //if difference is less than the delay, no action should be allowed for this Main Character
+        if ((currentTime - previousTime) < delay){
+            return false;
+        }
+        return true;
+    }
+   
     /**
      * Moves the MainCharacter in the direction of the key pressed on the keyboard.
      * If the key pressed is W, the MainCharacter moves up.
@@ -66,9 +82,15 @@ public class MainCharacter extends MovingEntity {
          */
         long currTime = System.currentTimeMillis();
 
-        if ((System.currentTimeMillis() - prevMoveTime) < delay){
+        //find the time difference from current time and time since the last action/move was made.
+        //if difference is less than the delay, no action should be allowed for this Main Character
+        // if ((currTime - prevMoveTime) < delay){
+        //     return;
+        // }
+        if (checkDifferenceInTime(currTime, prevMoveTime, delay) == false){
             return;
         }
+        
 
         //get key code for the specific key that was pressed on keyboard
         int keyCode = event.getKeyCode();
