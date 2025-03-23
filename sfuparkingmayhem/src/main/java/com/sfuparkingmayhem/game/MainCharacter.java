@@ -15,6 +15,11 @@ import javax.imageio.ImageIO;
  */
 public class MainCharacter extends MovingEntity {
 
+    boolean moveUp = true;
+    boolean moveDown = true;
+    boolean moveLeft = true;
+    boolean moveRight = true;
+
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
      *
