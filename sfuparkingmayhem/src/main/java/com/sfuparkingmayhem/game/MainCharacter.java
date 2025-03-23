@@ -49,6 +49,15 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
+    protected void getImage(String s){
+        try{
+            this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream(s));
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     /**
      * checks the difference between a previous time stamp and the current time stamp. If the difference
      * betweent the timess are less than the delay value, return false. Otherwise, return true. 
@@ -83,10 +92,6 @@ public class MainCharacter extends MovingEntity {
         long currTime = System.currentTimeMillis();
 
         //find the time difference from current time and time since the last action/move was made.
-        //if difference is less than the delay, no action should be allowed for this Main Character
-        // if ((currTime - prevMoveTime) < delay){
-        //     return;
-        // }
         if (checkDifferenceInTime(currTime, prevMoveTime, delay) == false){
             return;
         }
@@ -96,53 +101,44 @@ public class MainCharacter extends MovingEntity {
         int keyCode = event.getKeyCode();
 
         switch (keyCode){
+
             case KeyEvent.VK_W:
+
                 y_coordinate = y_coordinate - 1;
+
                 //load up orientation sprite
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_north.png"));
-                }
-                catch(IOException e){
-                    System.out.println(e.getMessage());
-                }
+                getImage("main_character_north.png");
                 break;
 
             case KeyEvent.VK_A:
+
                 x_coordinate = x_coordinate - 1;
+
                 //load up orientation sprite
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_west.png"));
-                }
-                catch(IOException e){
-                    System.out.println(e.getMessage());
-                }    
+                getImage("main_character_west.png");
                 break;
                 
 
             case KeyEvent.VK_S:
+
                 y_coordinate = y_coordinate + 1;
+
                 //load up orientation sprite
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_south.png"));
-                }
-                catch(IOException e){
-                    System.out.println(e.getMessage());
-                }      
+                getImage("main_character_south.png");  
                 break;
 
             case KeyEvent.VK_D:
+
                 x_coordinate = x_coordinate + 1;
+
                 //load up orientation sprite
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_east.png"));
-                }
-                catch(IOException e){
-                    System.out.println(e.getMessage());
-                }      
+                getImage("main_character_east.png");
                 break;
             
 
         }
+
+        //update the prevMoveTime variable to current time (in milliseconds)
         prevMoveTime = currTime;
 
     }
