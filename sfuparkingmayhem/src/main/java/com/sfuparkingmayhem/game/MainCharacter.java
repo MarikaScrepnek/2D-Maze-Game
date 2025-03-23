@@ -49,6 +49,13 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
+    /**
+     * loads the image for this main character on game board using the parameter s to indicate which png
+     * should be loaded.
+     * 
+     * @param s path of the image/png for this main character
+     * @throws e an IOException with a message if an image was unable to be loaded correctly
+     */
     protected void getImage(String s){
         try{
             this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream(s));
