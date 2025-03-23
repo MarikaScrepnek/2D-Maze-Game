@@ -82,6 +82,12 @@ public class MainCharacter extends MovingEntity {
         return true;
     }
 
+
+    /**
+     * returns the current time in milliseconds using System.currentTimeMillis() method. 
+     * 
+     * @return current time, in milliseconds
+     */
     private long getCurrentTimeMilliseconds (){
         return System.currentTimeMillis();
     }
