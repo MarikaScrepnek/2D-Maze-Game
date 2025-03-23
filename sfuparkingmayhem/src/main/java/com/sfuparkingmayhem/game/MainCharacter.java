@@ -101,6 +101,7 @@ public class MainCharacter extends MovingEntity {
         }
         
 
+
         //get key code for the specific key that was pressed on keyboard
         int keyCode = event.getKeyCode();
 
