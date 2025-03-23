@@ -19,7 +19,12 @@ public class MainCharacter extends MovingEntity {
      * track the time of the most recent move made by this Main Character
      */
     private long prevMoveTime = 0;
-    private static final long move_delay = 250;
+
+    /**
+     * gives a delay for the main character's movement. Prevents this main character from moving too fast
+     * if a valid movement key is held on keyboard.
+     */
+    private static final long delay = 250;
 
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
@@ -58,7 +63,7 @@ public class MainCharacter extends MovingEntity {
 
         long currTime = System.currentTimeMillis();
 
-        if ((currTime - prevMoveTime) < move_delay){
+        if ((currTime - prevMoveTime) < delay){
             return;
         }
 
