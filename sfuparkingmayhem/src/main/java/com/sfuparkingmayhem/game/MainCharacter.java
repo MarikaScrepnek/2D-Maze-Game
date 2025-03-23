@@ -110,7 +110,7 @@ public class MainCharacter extends MovingEntity {
      *
      * @param event KeyEvent object that represents the key pressed on the keyboard
      */
-    protected void move (KeyEvent event){
+    protected void KeyPressed (KeyEvent event){
 
         //get key code for the specific key that was pressed on keyboard
         int keyCode = event.getKeyCode();

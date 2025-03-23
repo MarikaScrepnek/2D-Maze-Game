@@ -126,7 +126,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             int oldX = officer.getX_coordinate();
             int oldY = officer.getY_coordinate();
 
-            officer.move(null);  // Call move() without KeyEvent
+            officer.KeyPressed(null);  // Call move() without KeyEvent
 
             // Check if the officer is colliding with a cone or parked car
             if (isCollidingWithCone(officer.getX_coordinate(), officer.getY_coordinate()) ||
@@ -622,7 +622,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public void keyPressed(KeyEvent e) {
         int oldX = main_character.getX_coordinate();
         int oldY = main_character.getY_coordinate();
-        main_character.move(e);
+        main_character.KeyPressed(e);
 
         // Check if the player is colliding with a cone
         if (isCollidingWithCone(main_character.getX_coordinate(), main_character.getY_coordinate())) {

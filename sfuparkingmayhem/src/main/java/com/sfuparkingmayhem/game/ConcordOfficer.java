@@ -36,7 +36,7 @@ public class ConcordOfficer extends MovingEntity{
     /**
      * Moves the ConcordOfficer towards the MainCharacter.
      */
-    protected void move(KeyEvent event) {
+    protected void KeyPressed(KeyEvent event) {
         int oldX = this.getX_coordinate();
         int oldY = this.getY_coordinate();
 
