@@ -15,7 +15,9 @@ import javax.imageio.ImageIO;
  */
 public class MainCharacter extends MovingEntity {
 
-
+    /**
+     * track the time of the most recent move made by this Main Character
+     */
     private long prevMoveTime = 0;
     private static final long move_delay = 250;
 
