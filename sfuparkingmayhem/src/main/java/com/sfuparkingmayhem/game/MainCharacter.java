@@ -15,6 +15,10 @@ import javax.imageio.ImageIO;
  */
 public class MainCharacter extends MovingEntity {
 
+
+    private long prevMoveTime = 0;
+    private static final long move_delay = 250;
+
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
      *
@@ -38,6 +42,7 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
+    
     /**
      * Moves the MainCharacter in the direction of the key pressed on the keyboard.
      * If the key pressed is W, the MainCharacter moves up.
@@ -47,60 +52,69 @@ public class MainCharacter extends MovingEntity {
      *
      * @param event KeyEvent object that represents the key pressed on the keyboard
      */
-    protected void move (KeyEvent event){
+    protected void KeyPressed (KeyEvent event){
+
+        long currTime = System.currentTimeMillis();
+
+        if ((currTime - prevMoveTime) < move_delay){
+            return;
+        }
 
         //get key code for the specific key that was pressed on keyboard
         int keyCode = event.getKeyCode();
 
-        //moving up with W key
-        if(keyCode == KeyEvent.VK_W){
-            y_coordinate = y_coordinate - 1;
-            //load up orientation sprite
-            try{
-                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_north.png"));
-            }
-            catch(IOException e){
-                System.out.println(e.getMessage());
-            }
-        }
+        switch (keyCode){
+            case KeyEvent.VK_W:
+                y_coordinate = y_coordinate - 1;
+                //load up orientation sprite
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_north.png"));
+                }
+                catch(IOException e){
+                    System.out.println(e.getMessage());
+                }
+                break;
 
-        //moving left with A key
-        else if (keyCode == KeyEvent.VK_A){
-            x_coordinate = x_coordinate - 1;
-            //load left orientation sprite
-            try{
-                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_west.png"));
-            }
-            catch(IOException e){
-                System.out.println(e.getMessage());
-            }
-        }
+            case KeyEvent.VK_A:
+                x_coordinate = x_coordinate - 1;
+                //load up orientation sprite
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_west.png"));
+                }
+                catch(IOException e){
+                    System.out.println(e.getMessage());
+                }    
+                break;
+                
 
-        //moving down with S key
-        else if (keyCode == KeyEvent.VK_S){
-            y_coordinate = y_coordinate + 1;
-            //load down orientation sprite
-            try{
-                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_south.png"));
-            }
-            catch(IOException e){
-                System.out.println(e.getMessage());
-            }
-        }
+            case KeyEvent.VK_S:
+                y_coordinate = y_coordinate + 1;
+                //load up orientation sprite
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_south.png"));
+                }
+                catch(IOException e){
+                    System.out.println(e.getMessage());
+                }      
+                break;
 
-        //moving right with D key
-        else if (keyCode == KeyEvent.VK_D){
-            x_coordinate = x_coordinate + 1;
-            //load right orientation sprite
-            try{
-                this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_east.png"));
-            }
-            catch(IOException e){
-                System.out.println(e.getMessage());
-            }
+            case KeyEvent.VK_D:
+                x_coordinate = x_coordinate + 1;
+                //load up orientation sprite
+                try{
+                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_east.png"));
+                }
+                catch(IOException e){
+                    System.out.println(e.getMessage());
+                }      
+                break;
+            
+
         }
+        prevMoveTime = currTime;
 
     }
+
     /**
      * Tick the character to ensure it stays within the bounds of the board.
      */

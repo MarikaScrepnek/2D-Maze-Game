@@ -56,6 +56,6 @@ public abstract class MovingEntity extends Entity {
      *
      * @param event The key event that triggered the move.
      */
-    protected abstract void move(KeyEvent event);
+    protected abstract void KeyPressed(KeyEvent event);
 
 }
