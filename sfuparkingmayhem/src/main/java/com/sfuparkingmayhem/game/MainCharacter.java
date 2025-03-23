@@ -141,6 +141,11 @@ public class MainCharacter extends MovingEntity {
     }
 
 
+    /**
+     * increments this main character's x_coordinate on board and loads east facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the D key being pressed by user
+     */
     private void eventMoveRight(KeyEvent e){
         
         if (e.getKeyCode() == KeyEvent.VK_D ){
