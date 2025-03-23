@@ -156,37 +156,11 @@ public class MainCharacter extends MovingEntity {
         if (checkDifferenceInTime(currTime, prevMoveTime, delay) == false){
             return;
         }
-        
 
-
-        //get key code for the specific key that was pressed on keyboard
-        int keyCode = event.getKeyCode();
-
-        switch (keyCode){
-
-            case KeyEvent.VK_W:
-
-                eventMoveUp(event);
-                break;
-
-            case KeyEvent.VK_A:
-
-                eventMoveLeft(event);
-                break;
-                
-
-            case KeyEvent.VK_S:
-
-                eventMoveDown(event);
-                break;
-
-            case KeyEvent.VK_D:
-
-                eventMoveRight(event);
-                break;
-            
-
-        }
+        eventMoveUp(event);
+        eventMoveLeft(event);
+        eventMoveDown(event);
+        eventMoveRight(event);
 
         //update the prevMoveTime variable to current time (in milliseconds)
         prevMoveTime = currTime;
