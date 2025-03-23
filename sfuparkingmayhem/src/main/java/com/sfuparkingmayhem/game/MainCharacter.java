@@ -92,6 +92,12 @@ public class MainCharacter extends MovingEntity {
         return System.currentTimeMillis();
     }
 
+
+    /**
+     * increments this main character's y_coordinate on board and loads north facing png onto board
+     * 
+     * @param e a Keyevent that will be checked if it corresponds to the W key being pressed by user
+     */
     private void eventMoveUp(KeyEvent e){
         
         if (e.getKeyCode() == KeyEvent.VK_W ){
