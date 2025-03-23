@@ -21,7 +21,7 @@ public class MainCharacter extends MovingEntity {
     private long prevMoveTime = 0;
 
     /**
-     * gives a delay for the main character's movement. Prevents this main character from moving too fast
+     * gives a delay for this main character's movement. Prevents this main character from moving too fast
      * if a valid movement key is held on keyboard.
      */
     private static final long delay = 250;
@@ -61,9 +61,12 @@ public class MainCharacter extends MovingEntity {
      */
     protected void KeyPressed (KeyEvent event){
 
+        /**
+         * gets the current time in milliseconds
+         */
         long currTime = System.currentTimeMillis();
 
-        if ((currTime - prevMoveTime) < delay){
+        if ((System.currentTimeMillis() - prevMoveTime) < delay){
             return;
         }
 
