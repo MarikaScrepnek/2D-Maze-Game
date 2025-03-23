@@ -38,7 +38,70 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-    /**
+    // /**
+    //  * Moves the MainCharacter in the direction of the key pressed on the keyboard.
+    //  * If the key pressed is W, the MainCharacter moves up.
+    //  * If the key pressed is A, the MainCharacter moves left.
+    //  * If the key pressed is S, the MainCharacter moves down.
+    //  * If the key pressed is D, the MainCharacter moves right.
+    //  *
+    //  * @param event KeyEvent object that represents the key pressed on the keyboard
+    //  */
+    // protected void move (KeyEvent event){
+
+    //     //get key code for the specific key that was pressed on keyboard
+    //     int keyCode = event.getKeyCode();
+
+    //     //moving up with W key
+    //     if(keyCode == KeyEvent.VK_W){
+    //         y_coordinate = y_coordinate - 1;
+    //         //load up orientation sprite
+    //         try{
+    //             this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_north.png"));
+    //         }
+    //         catch(IOException e){
+    //             System.out.println(e.getMessage());
+    //         }
+    //     }
+
+    //     //moving left with A key
+    //     else if (keyCode == KeyEvent.VK_A){
+    //         x_coordinate = x_coordinate - 1;
+    //         //load left orientation sprite
+    //         try{
+    //             this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_west.png"));
+    //         }
+    //         catch(IOException e){
+    //             System.out.println(e.getMessage());
+    //         }
+    //     }
+
+    //     //moving down with S key
+    //     else if (keyCode == KeyEvent.VK_S){
+    //         y_coordinate = y_coordinate + 1;
+    //         //load down orientation sprite
+    //         try{
+    //             this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_south.png"));
+    //         }
+    //         catch(IOException e){
+    //             System.out.println(e.getMessage());
+    //         }
+    //     }
+
+    //     //moving right with D key
+    //     else if (keyCode == KeyEvent.VK_D){
+    //         x_coordinate = x_coordinate + 1;
+    //         //load right orientation sprite
+    //         try{
+    //             this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_east.png"));
+    //         }
+    //         catch(IOException e){
+    //             System.out.println(e.getMessage());
+    //         }
+    //     }
+
+    // }
+        /**
      * Moves the MainCharacter in the direction of the key pressed on the keyboard.
      * If the key pressed is W, the MainCharacter moves up.
      * If the key pressed is A, the MainCharacter moves left.
