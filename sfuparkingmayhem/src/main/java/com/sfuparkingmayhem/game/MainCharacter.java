@@ -74,6 +74,10 @@ public class MainCharacter extends MovingEntity {
         }
         return true;
     }
+
+    private long getCurrentTimeMilliseconds (){
+        return System.currentTimeMillis();
+    }
    
     /**
      * Moves the MainCharacter in the direction of the key pressed on the keyboard.
@@ -89,7 +93,7 @@ public class MainCharacter extends MovingEntity {
         /**
          * gets the current time in milliseconds
          */
-        long currTime = System.currentTimeMillis();
+        long currTime = getCurrentTimeMilliseconds();//System.currentTimeMillis();
 
         //find the time difference from current time and time since the last action/move was made.
         if (checkDifferenceInTime(currTime, prevMoveTime, delay) == false){
