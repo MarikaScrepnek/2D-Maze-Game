@@ -48,4 +48,9 @@ public class MainCharacterTest {
 
     }
 
+    @Test
+    public void moveMainCharacterLeft(){
+
+    }
+
 }
