@@ -18,21 +18,21 @@ Ensure you have the following installed:
     - `mvn clean package`
     - This will compile the project
 
-### Running the Game
+## Running the Game
 After building the project, to run the game copy and paste the code below:
   - `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
 
-### Testing
+## Testing
 To run tests using JUnit and Maven copy and paste the code below:
   - `mvn clean test`
 
 # <br>
-### Helpful Resources:
+## Helpful Resources:
   - Game: [Youtube Video](https://www.youtube.com/watch?v=PJLLDpaLjds)
   - Concord officer: [Youtube Video](https://www.youtube.com/watch?v=yhx0Ew8ttP4)
   - Concord officer: [GeeksForGeeks](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/) 
 
-### References for Images/Sprites:
+## References for Images/Sprites:
   - [Lost Note](https://clipart-library.com/image_gallery/541546.png) 
   - [Coin](https://png.monster/wp-content/uploads/2022/08/png.monster-90.png) 
   - [Cone](https://www.vecteezy.com/vector-art/32311945-pixel-art-illustration-traffic-cone-pixelated-traffic-cone-traffic-cone-safety-icon-pixelated-for-the-pixel-art-game-and-icon-for-website-and-video-game-old-school-retro)
