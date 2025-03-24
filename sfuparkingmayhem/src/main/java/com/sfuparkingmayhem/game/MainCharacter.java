@@ -205,21 +205,7 @@ public class MainCharacter extends MovingEntity {
         if ((x_coordinate == 0 && y_coordinate == 1) || (x_coordinate == Board.COLUMNS - 1 && y_coordinate == Board.ROWS - 2)) {
             // Do nothing, allow the player to stay in these cells
         } else {
-            // // Prevent the player from moving into the green bushes
-            // if (x_coordinate == 0 || x_coordinate == Board.COLUMNS - 1 || y_coordinate == 0 || y_coordinate == Board.ROWS - 1) {
-            //     // Revert to the previous valid position
-            //     if (x_coordinate == 0) {
-            //         x_coordinate = 1;
-            //     } else if (x_coordinate == Board.COLUMNS - 1) {
-            //         x_coordinate = Board.COLUMNS - 2;
-            //     }
-            //     if (y_coordinate == 0) {
-            //         y_coordinate = 1;
-            //     } else if (y_coordinate == Board.ROWS - 1) {
-            //         y_coordinate = Board.ROWS - 2;
-            //     }
-            // }
-
+            // Prevent the player from moving into the green bushes horizontally
             if (x_coordinate == 0 || x_coordinate == Board.COLUMNS - 1){
                  // Revert to the previous valid position
                  if (x_coordinate == 0) {
@@ -229,6 +215,7 @@ public class MainCharacter extends MovingEntity {
                 }
             }
 
+            // Prevent the player from moving into the green bushes vertically
             if (y_coordinate == 0 || y_coordinate == Board.ROWS - 1){
                 if (y_coordinate == 0) {
                     y_coordinate = 1;
