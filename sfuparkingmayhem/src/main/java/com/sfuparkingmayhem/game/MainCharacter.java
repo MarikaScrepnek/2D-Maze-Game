@@ -180,6 +180,20 @@ public class MainCharacter extends MovingEntity {
             return;
         }
 
+        // Prevent movement out of the entrance cell
+        if (x_coordinate == 0 && y_coordinate == 1) {
+            if (event.getKeyCode() == KeyEvent.VK_W || event.getKeyCode() == KeyEvent.VK_S) {
+                return;
+            }
+        }
+
+        // Prevent movement out of the exit cell
+        if (x_coordinate == 14 && y_coordinate == 13) {
+            if (event.getKeyCode() == KeyEvent.VK_W || event.getKeyCode() == KeyEvent.VK_S) {
+                return;
+            }
+        }        
+        
         eventMoveUp(event);
         eventMoveLeft(event);
         eventMoveDown(event);
