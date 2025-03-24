@@ -262,7 +262,7 @@ public class MainCharacter extends MovingEntity {
      * a coin's board position. Must create a copy of coins ArrayList to prevent iterating
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
-    private void collectCoins(){
+    protected void collectCoins(){
         for (Coin aCoin : board.coins){
             
             //remove the coin from arraylist if this coin and MainCharacter have same board position
