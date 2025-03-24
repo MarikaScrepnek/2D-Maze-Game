@@ -59,6 +59,11 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void moveMainCharacterUpwardIntoParkedCar(){
+
+    }
+
+    @Test
     public void moveMainCharacterLeft(){
 
     }
