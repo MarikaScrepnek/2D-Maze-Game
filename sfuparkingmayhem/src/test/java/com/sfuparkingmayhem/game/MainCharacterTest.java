@@ -21,13 +21,11 @@ public class MainCharacterTest {
 
     @BeforeEach
     void setUp() {
-        // Set up your dependencies
-        
+            
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         aBoard = new Board(cardLayout, cardPanel);
 
-        // Pass in whatever your MainCharacter needs
         mainChar = new MainCharacter(1, 2, aBoard);
     }
 
