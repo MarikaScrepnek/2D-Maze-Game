@@ -269,7 +269,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
 
         main_character.collectCoins();
-        collectLostNote();
+        main_character.collectLostNote();
         checkGameEnd();
         
 
@@ -367,27 +367,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
     }
 
-    //move to main character
-    /**
-     * Removes a lostNote from ln ArrayList if this MainCharacter's board position matches
-     * a lostNote's board position. Must create a copy of ln ArrayList to prevent iterating
-     * and removing (deleting) from same ArrayList, which is not allowed.
-     */
-    private void collectLostNote(){
-        
-        //collect the lostNote from the board if lostNote and MainCharacter have same board position
-        ArrayList<LostNote> lnCopy = new ArrayList<>(ln);
-
-        for (LostNote aLostNote : lnCopy){
-            
-            if (main_character.getX_coordinate() == aLostNote.getX_coordinate()
-                    && main_character.getY_coordinate() == aLostNote.getY_coordinate()){
-                ln.remove(aLostNote);
-                score.addPoints(10);
-            }
-        }
+    protected void updateCoinsCollectedCount() {
+        coinsCollectedCount++;
     }
-
 
     /**
      * 
