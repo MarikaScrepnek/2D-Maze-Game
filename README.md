@@ -1,4 +1,4 @@
-# CMPT276S25_group25
+# SFU Parking Mayhem
 
 ### References:
 ##### Game: https://www.youtube.com/watch?v=PJLLDpaLjds
