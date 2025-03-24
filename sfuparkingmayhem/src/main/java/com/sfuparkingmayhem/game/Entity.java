@@ -95,28 +95,4 @@ public abstract class Entity {
     protected int getY_coordinate() {
         return this.y_coordinate;
     }
-
-    /**
-     * Updates this Entity's position on the board
-     */
-    public void tick(){
-
-        //prevent this Entity from going off the board horizontally
-        if (x_coordinate < 0) {
-            x_coordinate = 0;
-        } 
-        
-        else if (x_coordinate >= Board.COLUMNS) {
-            x_coordinate = Board.COLUMNS - 1;
-        }
-
-        // prevent the player from moving off the edge of the board vertically
-        if (y_coordinate < 0) {
-            y_coordinate = 0;
-        } 
-        
-        else if (y_coordinate >= Board.ROWS) {
-            y_coordinate = Board.ROWS - 1;
-        }
-        }
 }
