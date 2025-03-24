@@ -11,9 +11,12 @@ Ensure you have the following installed:
 
 ### Installation 
 1. Clone the Repository: 
-  - Copy and paste the code below into your desired IDE
-  - `git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git`
-2.  
+    - Copy and paste the code below into your desired IDE terminal
+    - `git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git`
+2. Build the Project:
+    - Using maven copy and paste the code below
+    - `mvn clean package`
+    - This will compile the project
 
 # <br>
 ### Helpful Resources:
