@@ -176,7 +176,7 @@ public class MainCharacter extends MovingEntity {
     /**
      * Tick the character to ensure it stays within the bounds of the board.
      */
-    protected void tickCharacter() {
+    protected void tick() {
         // Prevent the player from moving off the board horizontally
         if (x_coordinate < 0) {
             x_coordinate = 0;
