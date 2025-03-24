@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 public class MainCharacterTest {
 
 
-
     MainCharacter mainChar;
     Board aBoard;
     CardLayout cardLayout;
