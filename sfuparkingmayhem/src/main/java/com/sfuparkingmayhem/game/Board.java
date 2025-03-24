@@ -2,15 +2,16 @@ package com.sfuparkingmayhem.game;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -86,15 +87,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Arraylists holding all cones in the game.
      */
-    static ArrayList<Cone> cones = new ArrayList<>();
+    ArrayList<Cone> cones = new ArrayList<>();
     /**
      * Arraylists holding all parked cars in the game.
      */
-    static ArrayList<ParkedCar> parkedCars = new ArrayList<>();
+    ArrayList<ParkedCar> parkedCars = new ArrayList<>();
     /**
      * Arraylists holding all lost notes in the game.
      */
-    private ArrayList<LostNote> ln = new ArrayList<>(); 
+    ArrayList<LostNote> ln = new ArrayList<>(); 
 
     /**
      * variable to help display the number of coins collected by user
@@ -340,7 +341,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         Image parkingSign=null;
         try {
             parkingSign = ImageIO.read(getClass().getClassLoader().getResourceAsStream("parkingSign.png"));
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         g.drawImage(parkingSign, 0,0,50,50,null);
@@ -349,7 +350,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         Image ticketBooth=null;
         try {
             ticketBooth = ImageIO.read(getClass().getClassLoader().getResourceAsStream("ticketBooth.png"));
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
@@ -375,7 +376,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private void collectCoins(){
 
         //collect the coins from the board
-        ArrayList<Coin> coinsCopy = new ArrayList<Coin>(coins); //make a copy of coins arraylist
+        ArrayList<Coin> coinsCopy = new ArrayList<>(coins); //make a copy of coins arraylist
        
         for (Coin aCoin : coinsCopy){
             
@@ -398,7 +399,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private void collectLostNote(){
         
         //collect the lostNote from the board if lostNote and MainCharacter have same board position
-        ArrayList<LostNote> lnCopy = new ArrayList<LostNote>(ln);
+        ArrayList<LostNote> lnCopy = new ArrayList<>(ln);
 
         for (LostNote aLostNote : lnCopy){
             
