@@ -174,22 +174,32 @@ public class MainCharacter extends MovingEntity {
     }
 
     /**
-     * Tick the character to ensure it stays within the bounds of the board.
+     * prevents the player from moving off the board horizontally
      */
-    protected void tick() {
-        // Prevent the player from moving off the board horizontally
+    private void limitPlayerXCoord (){
         if (x_coordinate < 0) {
             x_coordinate = 0;
         } else if (x_coordinate >= Board.COLUMNS) {
             x_coordinate = Board.COLUMNS - 1;
         }
+    }
 
-        // Prevent the player from moving off the board vertically
+    // Prevent the player from moving off the board vertically
+    private void limitPlayerYCoord(){
         if (y_coordinate < 0) {
             y_coordinate = 0;
         } else if (y_coordinate >= Board.ROWS) {
             y_coordinate = Board.ROWS - 1;
         }
+
+    }
+
+    /**
+     * Tick the character to ensure it stays within the bounds of the board.
+     */
+    protected void tick() {
+        limitPlayerXCoord();
+        limitPlayerYCoord();
 
         // Allow the player to move into the entrance and exit cells
         if ((x_coordinate == 0 && y_coordinate == 1) || (x_coordinate == Board.COLUMNS - 1 && y_coordinate == Board.ROWS - 2)) {
