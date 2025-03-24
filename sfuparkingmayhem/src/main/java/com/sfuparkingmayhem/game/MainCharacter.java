@@ -137,7 +137,7 @@ public class MainCharacter extends MovingEntity {
      *
      * @param event KeyEvent object that represents the key pressed on the keyboard
      */
-    protected void move (KeyEvent event){
+    protected void delayedMove (KeyEvent event){
 
         /**
          * gets the current time in milliseconds
@@ -256,5 +256,40 @@ public class MainCharacter extends MovingEntity {
     public int getMainCharacterYCoordinate(){
         return y_coordinate;
     }
+
+
+//move main_character when a key is pressed
+public void move(KeyEvent e) {
+    int oldX = getX_coordinate();
+    int oldY = getY_coordinate();
+    delayedMove(e);
+
+    // Check if the player is colliding with a cone
+    if (board.isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
+        // revert the player position
+        x_coordinate = oldX;
+        y_coordinate  = oldY;
+    }
+
+    // Check if the player is colliding with a parked car
+    if(board.isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
+        // Subtract points from the player's score
+        if(oldX != getX_coordinate() || oldY != getY_coordinate()){
+            board.score.subtractPoints(5);
+            board.flashRed();
+            if(board.score.getScore() < 0 && board.game_ended == false){
+                board.game_ended=true;
+                board.cardLayout.show(board.cardPanel, "Lose Screen Score");
+            }
+        }
+
+        // revert the player position
+        x_coordinate = oldX;
+        y_coordinate = oldY;
+    }
+}
+
+
+
 
 }

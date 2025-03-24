@@ -78,7 +78,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Keeps track of the player's score.
      */
-    private Score score;
+    protected Score score;
     
     /**
      * Arraylists holding all coins in the game.
@@ -437,7 +437,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * @param y y-coordinate of the player.
      * @return true if the player is colliding with a cone, false otherwise.
      */
-    private boolean isCollidingWithCone(int x, int y) {
+    protected boolean isCollidingWithCone(int x, int y) {
         for (Cone cone : cones) {
             if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
                 return true;
@@ -453,7 +453,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * @param y y-coordinate of the player.
      * @return true if the player is colliding with a parked car, false otherwise.
      */
-    private boolean isCollidingWithParkedCar(int x, int y) {
+    protected boolean isCollidingWithParkedCar(int x, int y) {
         for (ParkedCar parkedCar : parkedCars) {
             if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
                 return true;
@@ -476,33 +476,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     //move main_character when a key is pressed
     @Override
     public void keyPressed(KeyEvent e) {
-        int oldX = main_character.getX_coordinate();
-        int oldY = main_character.getY_coordinate();
         main_character.move(e);
-
-        // Check if the player is colliding with a cone
-        if (isCollidingWithCone(main_character.getX_coordinate(), main_character.getY_coordinate())) {
-            // revert the player position
-            main_character.x_coordinate = oldX;
-            main_character.y_coordinate  = oldY;
-        }
-
-        // Check if the player is colliding with a parked car
-        if(isCollidingWithParkedCar(main_character.getX_coordinate(), main_character.getY_coordinate())){
-            // Subtract points from the player's score
-            if(oldX != main_character.getX_coordinate() || oldY != main_character.getY_coordinate()){
-                score.subtractPoints(5);
-                flashRed();
-                if(score.getScore() < 0 && game_ended == false){
-                    game_ended=true;
-                    cardLayout.show(cardPanel, "Lose Screen Score");
-                }
-            }
-
-            // revert the player position
-            main_character.x_coordinate = oldX;
-            main_character.y_coordinate = oldY;
-        }
     }
 
     //doesn't need to be implemented but needs to be here because of interface
@@ -632,7 +606,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     //method to flash background red when hit a parked card
-    private void flashRed() {
+    public void flashRed() {
         //save original background color
         Color originalColor = getBackground();
 

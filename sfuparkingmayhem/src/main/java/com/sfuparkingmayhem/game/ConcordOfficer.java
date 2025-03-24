@@ -29,7 +29,7 @@ public class ConcordOfficer extends MovingEntity{
             int oldX = this.getX_coordinate();
             int oldY = this.getY_coordinate();
 
-            this.move(null);  // Call move() without KeyEvent
+            this.delayedMove(null);  // Call move() without KeyEvent
 
             // Check if the officer is colliding with a cone or parked car
             if (isCollidingWithCone(this.getX_coordinate(), this.getY_coordinate(), this.board.cones) ||
@@ -54,7 +54,7 @@ public class ConcordOfficer extends MovingEntity{
      * Moves the ConcordOfficer towards the MainCharacter.
      */
     @Override
-    protected void move(KeyEvent event) {
+    protected void delayedMove(KeyEvent event) {
         int oldX = this.getX_coordinate();
         int oldY = this.getY_coordinate();
 
