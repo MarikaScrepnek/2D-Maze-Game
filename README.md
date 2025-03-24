@@ -26,7 +26,6 @@ After building the project, to run the game copy and paste the code below:
 To run tests using JUnit and Maven copy and paste the code below:
   - `mvn clean test`
 
-# <br>
 ## Helpful Resources:
   - Game: [Youtube Video](https://www.youtube.com/watch?v=PJLLDpaLjds)
   - Concord officer: [Youtube Video](https://www.youtube.com/watch?v=yhx0Ew8ttP4)
