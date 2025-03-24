@@ -142,7 +142,7 @@ public class MainCharacter extends MovingEntity {
         /**
          * gets the current time in milliseconds
          */
-        long currTime = getCurrentTimeMilliseconds();//System.currentTimeMillis();
+        long currTime = getCurrentTimeMilliseconds();
 
         //find the time difference from current time and time since the last action/move was made.
         if (checkDifferenceInTime(currTime, prevMoveTime, delay) == false){
