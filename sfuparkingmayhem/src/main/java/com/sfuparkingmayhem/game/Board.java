@@ -387,41 +387,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
-    //moving entity
     /**
-     * Checks if the player is colliding with a cone.
-     * @param x x-coordinate of the player.
-     * @param y y-coordinate of the player.
-     * @return true if the player is colliding with a cone, false otherwise.
-     */
-    protected boolean isCollidingWithCone(int x, int y) {
-        for (Cone cone : cones) {
-            if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //moving entity
-    /**
-     * Checks if the player is colliding with a parked car.
-     * @param x x-coordinate of the player.
-     * @param y y-coordinate of the player.
-     * @return true if the player is colliding with a parked car, false otherwise.
-     */
-    protected boolean isCollidingWithParkedCar(int x, int y) {
-        for (ParkedCar parkedCar : parkedCars) {
-            if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    /**
-     * doesn't need to be implemented but needs to be here because of interface.
+     * Doesn't need to be implemented but needs to be here because of interface.
      * 
      * @param e - KeyEvent type that checks when keys are typed on keyboard
      */
