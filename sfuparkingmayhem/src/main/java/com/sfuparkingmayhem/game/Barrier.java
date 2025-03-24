@@ -16,8 +16,8 @@ public class Barrier extends StaticEntity{
      * @param x The x-coordinate of the Barrier.
      * @param y The y-coordinate of the Barrier.
      */
-    public Barrier(int x, int y) {
-        super(x, y);
+    public Barrier(int x, int y, Board board) {
+        super(x, y, board);
         getImage("bush.png");
     }
 }

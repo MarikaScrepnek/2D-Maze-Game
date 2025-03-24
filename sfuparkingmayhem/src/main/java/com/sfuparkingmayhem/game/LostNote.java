@@ -20,9 +20,9 @@ public class LostNote extends Reward {
      * @param y The y-coordinate of the LostNote.
      */
     public LostNote(int x, int y, Board board) {
-        super(x, y);
+        super(x, y, board);
         getImage("lost_notes_resized.png");
-        setLostNote(board);
+        setLostNote();
     }
 
     /**
@@ -46,7 +46,7 @@ public class LostNote extends Reward {
      * if so, lostnote needs to have another set of random coordinates generated.
      * Finally adds its to the lost note ArrayList.
      */
-    protected final void setLostNote(Board board) { 
+    protected final void setLostNote() { 
         //boolean value needed for do-while loop
         boolean check;
         ArrayList<Coin> coins = board.coins;

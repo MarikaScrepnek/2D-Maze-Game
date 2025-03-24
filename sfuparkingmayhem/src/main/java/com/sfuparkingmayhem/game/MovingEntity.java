@@ -17,8 +17,8 @@ public abstract class MovingEntity extends Entity {
      * @param x_coordinate The initial x-coordinate.
      * @param y_coordinate The initial y-coordinate.
      */
-    public MovingEntity(int x_coordinate, int y_coordinate) {
-        super(x_coordinate, y_coordinate);
+    public MovingEntity(int x_coordinate, int y_coordinate, Board board) {
+        super(x_coordinate, y_coordinate, board);
     }
 
     /**

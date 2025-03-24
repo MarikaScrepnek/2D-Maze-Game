@@ -31,6 +31,10 @@ public abstract class Entity {
      * The entity's image/sprite
      */
     protected BufferedImage theImage;
+    /**
+     * The board that the entity belongs to.
+     */
+    protected Board board;
 
     //constructor for an Entity
 
@@ -40,9 +44,10 @@ public abstract class Entity {
      * @param x_coordinate x-coordinate of this Entity
      * @param y_coordinate y-coordinate of this Entity
      */
-    protected Entity(int x_coordinate, int y_coordinate) {
+    protected Entity(int x_coordinate, int y_coordinate, Board board) {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
+        this.board = board;
     }
     /**
      * Gets the image of this Entity and throws IOExceptions e, if any, and prints out the error.
@@ -114,7 +119,4 @@ public abstract class Entity {
             y_coordinate = Board.ROWS - 1;
         }
         }
-
-
-
 }

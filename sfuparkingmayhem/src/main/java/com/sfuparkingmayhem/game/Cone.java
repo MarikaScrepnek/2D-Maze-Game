@@ -11,8 +11,8 @@ public class Cone extends Barrier{
      * @param x The x-coordinate of the Cone.
      * @param y The y-coordinate of the Cone.
      */
-    public Cone (int x, int y){
-        super(x,y);
+    public Cone (int x, int y, Board board){
+        super(x, y, board);
         getImage("cone.png");
     }
 }

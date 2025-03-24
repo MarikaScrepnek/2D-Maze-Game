@@ -9,11 +9,6 @@ import javax.swing.Timer;
  */
 public class ConcordOfficer extends MovingEntity{
     /**
-     * A reference to the board instance of the gane.
-     */
-    private final Board board;
-
-    /**
      * Timer that sets the speed of the concord officer
      */
     public Timer officerTimer;
@@ -26,7 +21,7 @@ public class ConcordOfficer extends MovingEntity{
      * @param board The board that the game is happening on.
      */
     public ConcordOfficer(int x_coordinate, int y_coordinate, Board board) {
-        super(x_coordinate, y_coordinate);
+        super(x_coordinate, y_coordinate, board);
         this.board = board;
         getImage("officer_north.png"); // Load the sprite/image for this entity
 
@@ -37,20 +32,20 @@ public class ConcordOfficer extends MovingEntity{
             this.move(null);  // Call move() without KeyEvent
 
             // Check if the officer is colliding with a cone or parked car
-            if (isCollidingWithCone(this.getX_coordinate(), this.getY_coordinate(), Board.cones) ||
-                isCollidingWithParkedCar(this.getX_coordinate(), this.getY_coordinate(), Board.parkedCars)) {
+            if (isCollidingWithCone(this.getX_coordinate(), this.getY_coordinate(), this.board.cones) ||
+                isCollidingWithParkedCar(this.getX_coordinate(), this.getY_coordinate(), this.board.parkedCars)) {
                 this.x_coordinate = oldX;
                 this.y_coordinate = oldY;
             }
 
             //check if officer and mainCharacter are colliding, if so, game has ended
-            if (board.officer.x_coordinate == board.main_character.getMainCharacterXCoordinate() 
-                && board.officer.y_coordinate == board.main_character.getMainCharacterYCoordinate() && board.game_ended == false) {
-                board.game_ended = true;
-                board.cardLayout.show(board.cardPanel, "Lose Screen Concord");
+            if (this.board.officer.x_coordinate == this.board.main_character.getMainCharacterXCoordinate() 
+                && this.board.officer.y_coordinate == this.board.main_character.getMainCharacterYCoordinate() && this.board.game_ended == false) {
+                this.board.game_ended = true;
+                this.board.cardLayout.show(this.board.cardPanel, "Lose Screen Concord");
             }
 
-            board.repaint();  // Refresh the screen
+            this.board.repaint();  // Refresh the screen
         });
         officerTimer.start();
     }
@@ -64,11 +59,11 @@ public class ConcordOfficer extends MovingEntity{
         int oldY = this.getY_coordinate();
 
         // Use Dijkstra’s algorithm to find next step toward the player.
-        java.util.List<Point> path = board.findPathDijkstra(
+        java.util.List<Point> path = this.board.findPathDijkstra(
             this.getX_coordinate(),
             this.getY_coordinate(),
-            board.main_character.getX_coordinate(),
-            board.main_character.getY_coordinate()
+            this.board.main_character.getX_coordinate(),
+            this.board.main_character.getY_coordinate()
         );
 
         // If a valid path was found and has more than one step, 

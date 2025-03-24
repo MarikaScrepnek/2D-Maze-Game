@@ -155,7 +155,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void populateBoard() {
         //intialize player
-        main_character = new MainCharacter(0, 1);
+        main_character = new MainCharacter(0, 1, this);
         //initialize officer
         officer = new ConcordOfficer(7, 7, this);
         //initialize score
@@ -174,48 +174,48 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates coins and adds them to the coins arraylist
      */
     private void createCoins(){
-        coins.add(new Coin(2,3));
-        coins.add(new Coin(7,2));
-        coins.add(new Coin(10,4 ));
-        coins.add(new Coin(7,5));
-        coins.add(new Coin(3,8));
-        coins.add(new Coin(11,8));
-        coins.add(new Coin(6,9));
-        coins.add(new Coin(12,11));
-        coins.add(new Coin(9,12));
-        coins.add(new Coin(3,13));
+        coins.add(new Coin(2,3, this));
+        coins.add(new Coin(7,2, this));
+        coins.add(new Coin(10,4, this));
+        coins.add(new Coin(7,5, this));
+        coins.add(new Coin(3,8, this));
+        coins.add(new Coin(11,8, this));
+        coins.add(new Coin(6,9, this));
+        coins.add(new Coin(12,11, this));
+        coins.add(new Coin(9,12, this));
+        coins.add(new Coin(3,13, this));
     }
 
     /**
      * Creates cones and adds them to the cones arraylist
      */
     private void createCones(){
-        cones.add(new Cone(4,3));
-        cones.add(new Cone(11,3));
-        cones.add(new Cone(12,3));
-        cones.add(new Cone(4,5));
-        cones.add(new Cone(9,7));
-        cones.add(new Cone(6,8));
-        cones.add(new Cone(12,9));
-        cones.add(new Cone(2,10));
-        cones.add(new Cone(10,10));
-        cones.add(new Cone(7,13));
+        cones.add(new Cone(4,3, this));
+        cones.add(new Cone(11,3, this));
+        cones.add(new Cone(12,3, this));
+        cones.add(new Cone(4,5, this));
+        cones.add(new Cone(9,7, this));
+        cones.add(new Cone(6,8, this));
+        cones.add(new Cone(12,9, this));
+        cones.add(new Cone(2,10, this));
+        cones.add(new Cone(10,10, this));
+        cones.add(new Cone(7,13, this));
     }
 
     /**
      * Creates parked cars and adds them to the parkedCars arraylist
      */
     private void createParkedCars(){
-        parkedCars.add(new ParkedCar(2, 2));
-        parkedCars.add(new ParkedCar(6, 5));
-        parkedCars.add(new ParkedCar(8, 5));
-        parkedCars.add(new ParkedCar(12, 6));
-        parkedCars.add(new ParkedCar(12, 7));
-        parkedCars.add(new ParkedCar(3, 7));
-        parkedCars.add(new ParkedCar(4, 11));
-        parkedCars.add(new ParkedCar(4, 12));
-        parkedCars.add(new ParkedCar(8, 11));
-        parkedCars.add(new ParkedCar(9, 11));
+        parkedCars.add(new ParkedCar(2, 2, this));
+        parkedCars.add(new ParkedCar(6, 5, this));
+        parkedCars.add(new ParkedCar(8, 5, this));
+        parkedCars.add(new ParkedCar(12, 6, this));
+        parkedCars.add(new ParkedCar(12, 7, this));
+        parkedCars.add(new ParkedCar(3, 7, this));
+        parkedCars.add(new ParkedCar(4, 11, this));
+        parkedCars.add(new ParkedCar(4, 12, this));
+        parkedCars.add(new ParkedCar(8, 11, this));
+        parkedCars.add(new ParkedCar(9, 11, this));
     }
 
     /**
@@ -310,7 +310,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * @throws e Exception if an exception occurs during loading images
      */
     private void drawBoard(Graphics g) {
-        Barrier barrier = new Barrier(0, 0);
+        Barrier barrier = new Barrier(0, 0, this);
         //top
         for (int col = 1; col < COLUMNS; col++) {
             g.drawImage(barrier.theImage, col * CELL_SIZE, 0, 50, 50, null);
