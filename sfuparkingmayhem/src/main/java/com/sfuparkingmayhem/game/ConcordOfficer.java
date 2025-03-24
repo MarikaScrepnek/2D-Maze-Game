@@ -39,8 +39,8 @@ public class ConcordOfficer extends MovingEntity{
             }
 
             //check if officer and mainCharacter are colliding, if so, game has ended
-            if (this.board.officer.x_coordinate == this.board.main_character.getMainCharacterXCoordinate() 
-                && this.board.officer.y_coordinate == this.board.main_character.getMainCharacterYCoordinate() && this.board.game_ended == false) {
+            if (this.board.officer.getX_coordinate() == this.board.main_character.getX_coordinate() 
+                && this.board.officer.getY_coordinate() == this.board.main_character.getY_coordinate() && this.board.game_ended == false) {
                 this.board.game_ended = true;
                 this.board.cardLayout.show(this.board.cardPanel, "Lose Screen Concord");
             }

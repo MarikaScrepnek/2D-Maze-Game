@@ -239,57 +239,55 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-    /**
-     * Gets the x-coordinate of this MainCharacter
-     *
-     * @return x-coordinate of this MainCharacter as an int
-     */
-    public int getMainCharacterXCoordinate(){
-        return x_coordinate;
-    }
+    //move main_character when a key is pressed
+    public void move(KeyEvent e) {
+        int oldX = getX_coordinate();
+        int oldY = getY_coordinate();
+        delayedMove(e);
 
-    /**
-     * Gets the y-coordinate of this MainCharacter
-     *
-     * @return y-coordinate of this MainCharacter as an int
-     */
-    public int getMainCharacterYCoordinate(){
-        return y_coordinate;
-    }
-
-
-//move main_character when a key is pressed
-public void move(KeyEvent e) {
-    int oldX = getX_coordinate();
-    int oldY = getY_coordinate();
-    delayedMove(e);
-
-    // Check if the player is colliding with a cone
-    if (board.isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
-        // revert the player position
-        x_coordinate = oldX;
-        y_coordinate  = oldY;
-    }
-
-    // Check if the player is colliding with a parked car
-    if(board.isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
-        // Subtract points from the player's score
-        if(oldX != getX_coordinate() || oldY != getY_coordinate()){
-            board.score.subtractPoints(5);
-            board.flashRed();
-            if(board.score.getScore() < 0 && board.game_ended == false){
-                board.game_ended=true;
-                board.cardLayout.show(board.cardPanel, "Lose Screen Score");
-            }
+        // Check if the player is colliding with a cone
+        if (board.isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
+            // revert the player position
+            x_coordinate = oldX;
+            y_coordinate  = oldY;
         }
 
-        // revert the player position
-        x_coordinate = oldX;
-        y_coordinate = oldY;
+        // Check if the player is colliding with a parked car
+        if(board.isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
+            // Subtract points from the player's score
+            if(oldX != getX_coordinate() || oldY != getY_coordinate()){
+                board.score.subtractPoints(5);
+                board.flashRed();
+                if(board.score.getScore() < 0 && board.game_ended == false){
+                    board.game_ended=true;
+                    board.cardLayout.show(board.cardPanel, "Lose Screen Score");
+                }
+            }
+
+            // revert the player position
+            x_coordinate = oldX;
+            y_coordinate = oldY;
+        }
     }
-}
 
+    /**
+     * Removes a coin from coins ArrayList if this MainCharacter's board position matches
+     * a coin's board position. Must create a copy of coins ArrayList to prevent iterating
+     * and removing (deleting) from same ArrayList, which is not allowed.
+     */
+    private void collectCoins(){
+        for (Coin aCoin : board.coins){
+            
+            //remove the coin from arraylist if this coin and MainCharacter have same board position
+            if (board.main_character.getX_coordinate() == aCoin.getX_coordinate()
+                    && board.main_character.getY_coordinate() == aCoin.getY_coordinate()){
 
+                board.coins.remove(aCoin);
+                board.score.addPoints(5);
+                board.updateCoinsCollectedCount();
+            }
+        }
+    }
 
 
 }

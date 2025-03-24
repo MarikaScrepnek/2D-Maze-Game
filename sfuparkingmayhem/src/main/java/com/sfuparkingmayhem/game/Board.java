@@ -381,14 +381,18 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (Coin aCoin : coinsCopy){
             
             //remove the coin from arraylist if this coin and MainCharacter have same board position
-            if (main_character.getMainCharacterXCoordinate() == aCoin.getX_coordinate()
-                    && main_character.getMainCharacterYCoordinate() == aCoin.getY_coordinate()){
+            if (main_character.getX_coordinate() == aCoin.getX_coordinate()
+                    && main_character.getY_coordinate() == aCoin.getY_coordinate()){
 
                 coins.remove(aCoin);
                 score.addPoints(5);
                 coinsCollectedCount++;
             }
         }
+    }
+
+    protected void updateCoinsCollectedCount() {
+        coinsCollectedCount++;
     }
 
     //move to main character
@@ -404,11 +408,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         for (LostNote aLostNote : lnCopy){
             
-            if (main_character.getMainCharacterXCoordinate() == aLostNote.getX_coordinate()
-                    && main_character.getMainCharacterYCoordinate() == aLostNote.getY_coordinate()){
+            if (main_character.getX_coordinate() == aLostNote.getX_coordinate()
+                    && main_character.getY_coordinate() == aLostNote.getY_coordinate()){
                 ln.remove(aLostNote);
                 score.addPoints(10);
-
             }
         }
     }
@@ -418,7 +421,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * 
      */
     private void checkGameEnd() {
-        if (main_character.getMainCharacterXCoordinate() == 14 && main_character.getMainCharacterYCoordinate() == 13) {
+        if (main_character.getX_coordinate() == 14 && main_character.getY_coordinate() == 13) {
             if (coins.isEmpty()) {
             int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
             int finalScore = score.getScore(); // Assuming Score class has this method
