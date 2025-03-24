@@ -11,17 +11,10 @@ import java.awt.event.KeyEvent;
  * @version 1.0
  */
 public class MainCharacter extends MovingEntity {
-
     /**
-     * track the time of the most recent move made by this Main Character
+     * Feild holding if the key action has been performed already.
      */
-    private long prevMoveTime = 0;
-
-    /**
-     * gives a delay for this main character's movement. Prevents this main character from moving too fast
-     * if a valid movement key is held on keyboard.
-     */
-    private static final long delay = 250;
+    private boolean key_pressed;
 
     /**
      * Constructs this MainCharacter and sets this MainCharacter's image
@@ -34,33 +27,6 @@ public class MainCharacter extends MovingEntity {
         getImage("main_character_east.png");
     }
 
-    /**
-     * checks the difference between a previous time stamp and the current time stamp. If the difference
-     * betweent the timess are less than the delay value, return false. Otherwise, return true. 
-     * 
-     * @param currentTime gets a long value that represents the current time in milliseconds
-     * @param previousTime takes in a long value that represents the time since last move was made by this main character
-     * @return
-     */
-    private boolean checkDifferenceInTime(long currentTime, long previousTime, long delay){
-        //find the time difference from current time and time since the last action/move was made.
-        //if difference is less than the delay, no action should be allowed for this Main Character
-        if ((currentTime - previousTime) < delay){
-            return false;
-        }
-        return true;
-    }
-
-
-    /**
-     * returns the current time in milliseconds using System.currentTimeMillis() method. 
-     * 
-     * @return current time, in milliseconds
-     */
-    private long getCurrentTimeMilliseconds (){
-        return System.currentTimeMillis();
-    }
-
 
     /**
      * decrements this main character's y_coordinate on board and loads north facing png onto board
@@ -68,7 +34,6 @@ public class MainCharacter extends MovingEntity {
      * @param e a Keyevent that will be checked if it corresponds to the W key being pressed by user
      */
     private void eventMoveUp(KeyEvent e){
-        
         if (e.getKeyCode() == KeyEvent.VK_W ){
             y_coordinate = y_coordinate - 1;
 
@@ -77,14 +42,12 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-
     /**
      * decrements this main character's x_coordinate on board and loads west facing png onto board
      * 
      * @param e a Keyevent that will be checked if it corresponds to the A key being pressed by user
      */
     private void eventMoveLeft(KeyEvent e){
-        
         if (e.getKeyCode() == KeyEvent.VK_A ){
             x_coordinate = x_coordinate - 1;
 
@@ -93,14 +56,12 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-
     /**
      * increments this main character's y_coordinate on board and loads south facing png onto board
      * 
      * @param e a Keyevent that will be checked if it corresponds to the S key being pressed by user
      */
-    private void eventMoveDown(KeyEvent e){
-        
+    private void eventMoveDown(KeyEvent e){  
         if (e.getKeyCode() == KeyEvent.VK_S ){
             y_coordinate = y_coordinate + 1;
 
@@ -109,14 +70,12 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-
     /**
      * increments this main character's x_coordinate on board and loads east facing png onto board
      * 
      * @param e a Keyevent that will be checked if it corresponds to the D key being pressed by user
      */
     private void eventMoveRight(KeyEvent e){
-        
         if (e.getKeyCode() == KeyEvent.VK_D ){
             x_coordinate = x_coordinate + 1;
 
@@ -126,6 +85,53 @@ public class MainCharacter extends MovingEntity {
     }
 
 
+    /**
+     * Makes sure you cant hold down move key.
+     * 
+     * @param e The event of the key press.
+     */
+    @Override
+    public void delayedMove(KeyEvent e) {
+        if (key_pressed) {
+            return; // Ignore if key is still held down
+        }
+        key_pressed = true; // Mark key as pressed
+        
+        int oldX = getX_coordinate();
+        int oldY = getY_coordinate();
+        move(e);
+
+        // Check if the player is colliding with a cone
+        if (isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
+            // revert the player position
+            x_coordinate = oldX;
+            y_coordinate  = oldY;
+        }
+
+        // Check if the player is colliding with a parked car
+        if(isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
+            // Subtract points from the player's score
+            if(oldX != getX_coordinate() || oldY != getY_coordinate()){
+                board.score.subtractPoints(5);
+                board.flashRed();
+                if(board.score.getScore() < 0 && board.game_ended == false){
+                    board.game_ended=true;
+                    board.cardLayout.show(board.cardPanel, "Lose Screen Score");
+                }
+            }
+
+            // revert the player position
+            x_coordinate = oldX;
+            y_coordinate = oldY;
+        }
+    }
+
+    /**
+     * Resets key_pressed flag when a key is released.
+     */
+    public void keyReleased(KeyEvent e) {
+        key_pressed = false; // Allow movement again when the key is released
+    }
 
    
     /**
@@ -137,19 +143,8 @@ public class MainCharacter extends MovingEntity {
      *
      * @param event KeyEvent object that represents the key pressed on the keyboard
      */
-    protected void delayedMove (KeyEvent event){
-
-        /**
-         * gets the current time in milliseconds
-         */
-        long currTime = getCurrentTimeMilliseconds();
-
-        //find the time difference from current time and time since the last action/move was made.
-        if (checkDifferenceInTime(currTime, prevMoveTime, delay) == false){
-            return;
-        }
-
-        // Prevent movement out of the entrance cell
+    protected void move (KeyEvent event){
+        //Prevent movement out of the entrance cell
         if (x_coordinate == 0 && y_coordinate == 1) {
             if (event.getKeyCode() == KeyEvent.VK_W || event.getKeyCode() == KeyEvent.VK_S) {
                 return;
@@ -167,10 +162,6 @@ public class MainCharacter extends MovingEntity {
         eventMoveLeft(event);
         eventMoveDown(event);
         eventMoveRight(event);
-
-        //update the prevMoveTime variable to current time (in milliseconds)
-        prevMoveTime = currTime;
-
     }
 
     /**
@@ -191,7 +182,6 @@ public class MainCharacter extends MovingEntity {
         } else if (y_coordinate >= Board.ROWS) {
             y_coordinate = Board.ROWS - 1;
         }
-
     }
 
     /**
@@ -223,37 +213,6 @@ public class MainCharacter extends MovingEntity {
                     y_coordinate = Board.ROWS - 2;
                 }
             }
-        }
-    }
-
-    //move main_character when a key is pressed
-    public void move(KeyEvent e) {
-        int oldX = getX_coordinate();
-        int oldY = getY_coordinate();
-        delayedMove(e);
-
-        // Check if the player is colliding with a cone
-        if (isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
-            // revert the player position
-            x_coordinate = oldX;
-            y_coordinate  = oldY;
-        }
-
-        // Check if the player is colliding with a parked car
-        if(isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
-            // Subtract points from the player's score
-            if(oldX != getX_coordinate() || oldY != getY_coordinate()){
-                board.score.subtractPoints(5);
-                board.flashRed();
-                if(board.score.getScore() < 0 && board.game_ended == false){
-                    board.game_ended=true;
-                    board.cardLayout.show(board.cardPanel, "Lose Screen Score");
-                }
-            }
-
-            // revert the player position
-            x_coordinate = oldX;
-            y_coordinate = oldY;
         }
     }
 

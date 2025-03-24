@@ -396,18 +396,18 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public void keyTyped(KeyEvent e) {
     }
 
-    
     /**
-     * Is implemented in marin character. Moves the main character when getting a key input.
+     * Is implemented in main character. Moves the main character when getting a key input.
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        main_character.move(e);
+        main_character.delayedMove(e);
     }
 
     //doesn't need to be implemented but needs to be here because of interface
     @Override
     public void keyReleased(KeyEvent e) {
+        main_character.keyReleased(e);
     }
 
     /**
