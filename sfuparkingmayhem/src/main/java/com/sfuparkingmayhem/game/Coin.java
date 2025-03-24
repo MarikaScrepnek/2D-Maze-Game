@@ -1,6 +1,5 @@
 package com.sfuparkingmayhem.game;
 
-
 /**
  * This class extends the Reward class. This coin will have an x and y coordinate to be placed on the board. 
  * This class has a getImage() to get the png sprite from resources directory and isCollected() to check if this

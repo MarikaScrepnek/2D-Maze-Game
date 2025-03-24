@@ -28,7 +28,7 @@ public class LostNote extends Reward {
     /**
      * Generates random X and Y coordinates for this LostNote.
      */
-    protected void generateCoords(){
+    private void generateCoords(){
         int a = 1;
         int b = 14;
 
@@ -46,7 +46,7 @@ public class LostNote extends Reward {
      * if so, lostnote needs to have another set of random coordinates generated.
      * Finally adds its to the lost note ArrayList.
      */
-    protected final void setLostNote() { 
+    private void setLostNote() { 
         //boolean value needed for do-while loop
         boolean check;
         ArrayList<Coin> coins = board.coins;
