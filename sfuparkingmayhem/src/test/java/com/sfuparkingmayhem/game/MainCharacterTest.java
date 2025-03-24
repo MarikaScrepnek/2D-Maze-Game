@@ -54,12 +54,22 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void moveMainCharacterUpwardIntoCone(){
+
+    }
+
+    @Test
     public void moveMainCharacterLeft(){
 
     }
 
     @Test
     public void moveMainCharacterLeftIntoBush(){
+
+    }
+
+    @Test
+    public void moveMainCharacterLeftIntoCone(){
 
     }
 
