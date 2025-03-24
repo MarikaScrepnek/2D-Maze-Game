@@ -28,7 +28,7 @@ To run tests using JUnit and Maven copy and paste the code below:
 
 # <br>
 ### Helpful Resources:
-  - Game: [Youtube Video] (https://www.youtube.com/watch?v=PJLLDpaLjds)
+  - Game: [Youtube Video](https://www.youtube.com/watch?v=PJLLDpaLjds)
   - Concord officer: https://www.youtube.com/watch?v=yhx0Ew8ttP4
   - Concord officer: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/ 
 
