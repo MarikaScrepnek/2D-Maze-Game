@@ -99,6 +99,11 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void moveMainCharacterRightIntoParkedCar(){
+
+    }
+
+    @Test
     public void moveMainCharacterDown(){
 
     }
