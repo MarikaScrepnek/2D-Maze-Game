@@ -367,6 +367,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
     }
 
+    protected void updateCoinsCollectedCount() {
+        coinsCollectedCount++;
+    }
+
     //move to main character
     /**
      * Removes a lostNote from ln ArrayList if this MainCharacter's board position matches
