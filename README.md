@@ -18,6 +18,10 @@ Ensure you have the following installed:
     - `mvn clean package`
     - This will compile the project
 
+### Running the Game
+After building the project, to run the game copy and paste the code below:
+- `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
+
 # <br>
 ### Helpful Resources:
 ##### Game: https://www.youtube.com/watch?v=PJLLDpaLjds
