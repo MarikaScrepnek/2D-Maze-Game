@@ -20,4 +20,11 @@ class ScoreTest {
         score.addPoints(points);
         assertEquals(10, score.getScore());
     }
+
+    @Test
+    void testSubtractPoints() {
+        points = 10;
+        score.subtractPoints(points);
+        assertEquals(-10, score.getScore());
+    }
 }
