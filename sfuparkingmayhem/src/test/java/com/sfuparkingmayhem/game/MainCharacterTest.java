@@ -6,13 +6,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JPanel;
+
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 public class MainCharacterTest {
 
+
+
     MainCharacter mainChar;
+    Board aBoard;
+    CardLayout cardLayout;
+    JPanel cardPanel;
 
     @BeforeEach
-    void setUp(){
-        mainChar = new MainCharacter(1, 2);
+    void setUp() {
+        // Set up your dependencies
+        
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
+        aBoard = new Board(cardLayout, cardPanel);
+
+        // Pass in whatever your MainCharacter needs
+        mainChar = new MainCharacter(1, 2, aBoard);
     }
 
     @Test
