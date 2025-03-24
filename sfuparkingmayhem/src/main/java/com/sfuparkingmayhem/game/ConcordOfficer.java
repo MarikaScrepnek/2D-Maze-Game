@@ -1,9 +1,7 @@
 package com.sfuparkingmayhem.game;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 /**
@@ -30,7 +28,7 @@ public class ConcordOfficer extends MovingEntity{
     public ConcordOfficer(int x_coordinate, int y_coordinate, Board board) {
         super(x_coordinate, y_coordinate);
         this.board = board;
-        getImage(); // Load the sprite/image for this entity
+        getImage("officer_north.png"); // Load the sprite/image for this entity
 
         officerTimer = new Timer(500, e -> {
             int oldX = this.getX_coordinate();
@@ -83,48 +81,18 @@ public class ConcordOfficer extends MovingEntity{
 
             if (this.x_coordinate > oldX) {
                 // Move Right
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_east.png"));
-                }
-                catch(IOException e){
-                    System.out.println("Error displaying officer" + e.getMessage());
-                }
+                getImage("officer_east.png");
                 // Move Left
-            } else if (this.x_coordinate < oldX) { 
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_west.png"));
-                }
-                catch(IOException e){
-                    System.out.println("Error displaying officer" + e.getMessage());
-                } 
+            } else if (this.x_coordinate < oldX) {
+                getImage("officer_west.png");
                 // Move Down
-            } else if (this.y_coordinate > oldY) { 
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_south.png"));
-                }
-                catch(IOException e){
-                    System.out.println("Error displaying officer" + e.getMessage());
-                }
+            } else if (this.y_coordinate > oldY) {
+                getImage("officer_south.png");
                 // Move Up
             } else if (this.y_coordinate < oldY) { 
-                try{
-                    this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_north.png"));
-                }
-                catch(IOException e){
-                    System.out.println("Error displaying officer" + e.getMessage());
-                } 
+                getImage("officer_north.png");
             }
         }
 
-    }
-
-    @Override
-    protected void getImage() {
-        try{
-            this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("officer_north.png"));
-        }
-        catch(IOException e){
-            System.out.println("Error displaying officer" + e.getMessage());
-        }
     }
 }

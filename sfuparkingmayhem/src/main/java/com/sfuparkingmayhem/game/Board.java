@@ -420,30 +420,25 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * @throws e Exception if an exception occurs during loading images
      */
     private void drawBoard(Graphics g) {
-        Image grass=null;
-        try {
-            grass = ImageIO.read(getClass().getClassLoader().getResourceAsStream("bush.png"));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        Barrier barrier = new Barrier(0, 0);
         //top
         for (int col = 1; col < COLUMNS; col++) {
-            g.drawImage(grass, col * CELL_SIZE, 0, 50, 50, null);
+            g.drawImage(barrier.theImage, col * CELL_SIZE, 0, 50, 50, null);
         }
 
         // Bottom border
         for (int col = 0; col < COLUMNS; col++) {
-            g.drawImage(grass, col * CELL_SIZE, (ROWS - 1) * CELL_SIZE, 50, 50, null);
+            g.drawImage(barrier.theImage, col * CELL_SIZE, (ROWS - 1) * CELL_SIZE, 50, 50, null);
         }
 
         // Left border
         for (int row = 0; row < ROWS; row++) {
-            g.drawImage(grass, 0, row * CELL_SIZE, 50, 50, null);
+            g.drawImage(barrier.theImage, 0, row * CELL_SIZE, 50, 50, null);
         }
 
         // Right border
         for (int row = 0; row < ROWS; row++) {
-            g.drawImage(grass, (COLUMNS - 1) * CELL_SIZE, row * CELL_SIZE, 50, 50, null);
+            g.drawImage(barrier.theImage, (COLUMNS - 1) * CELL_SIZE, row * CELL_SIZE, 50, 50, null);
         }
 
         //draw entrance

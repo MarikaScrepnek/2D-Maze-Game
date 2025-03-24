@@ -1,8 +1,4 @@
 package com.sfuparkingmayhem.game;
-import java.io.IOException;
-import java.util.Objects;
-
-import javax.imageio.ImageIO;
 
 /**
  * A cone barrier that acts as an obstacle in the game.
@@ -17,16 +13,6 @@ public class Cone extends Barrier{
      */
     public Cone (int x, int y){
         super(x,y);
-        getImage();
-    }
-
-    @Override
-    protected void getImage() {
-        try{
-            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("cone.png")));
-        }
-        catch(IOException e){
-            System.out.println("Error loading main" + e.getMessage());
-        }
+        getImage("cone.png");
     }
 }

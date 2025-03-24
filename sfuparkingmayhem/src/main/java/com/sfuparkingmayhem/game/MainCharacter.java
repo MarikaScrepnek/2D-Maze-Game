@@ -1,9 +1,6 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 /**
  * This MainCharacter class extends MovingEntity class and contains the following
@@ -35,34 +32,7 @@ public class MainCharacter extends MovingEntity {
     public MainCharacter(int x_coordinate, int y_coordinate) {
         super( x_coordinate, y_coordinate);
         //setImage();
-        getImage();
-    }
-
-
-    @Override
-    protected void getImage(){
-        try{
-            this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream("main_character_east.png"));
-        }
-        catch(IOException e){
-            System.out.println("Error loading image: " + e.getMessage());
-        }
-    }
-
-    /**
-     * loads the image for this main character on game board using the parameter s to indicate which png
-     * should be loaded.
-     * 
-     * @param s path of the image/png for this main character
-     * @throws e an IOException with a message if an image was unable to be loaded correctly
-     */
-    protected void getImage(String s){
-        try{
-            this.theImage = ImageIO.read(getClass().getClassLoader().getResourceAsStream(s));
-        }
-        catch(IOException e){
-            System.out.println(e.getMessage());
-        }
+        getImage("main_character_east.png");
     }
 
     /**

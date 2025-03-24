@@ -17,5 +17,4 @@ public abstract class Reward extends StaticEntity {
     public Reward(int x, int y) {
         super(x, y);
     }
-
 }

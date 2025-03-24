@@ -1,9 +1,5 @@
 package com.sfuparkingmayhem.game;
 
-import javax.imageio.ImageIO;
-import java.io.IOException;
-import java.util.Objects;
-
 /**
  * This class extends Reward class and contains a constructor, getImage method to get the png 
  * of this LostNote from resources directory, and method to randomly generate X and Y coordinates
@@ -23,20 +19,8 @@ public class LostNote extends Reward {
      */
     public LostNote(int x, int y) {
         super(x, y);
-        getImage();
+        getImage("lost_notes_resized.png");
     }
-
-
-    @Override
-    protected void getImage() {
-        try{
-            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("lost_notes_resized.png")));
-        }
-        catch(IOException e){
-            System.out.println("Error loading main" + e.getMessage());
-        }
-    }
-
 
     /**
      * Generates random X and Y coordinates for this LostNote.

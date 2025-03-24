@@ -18,5 +18,6 @@ public class Barrier extends StaticEntity{
      */
     public Barrier(int x, int y) {
         super(x, y);
+        getImage("bush.png");
     }
 }

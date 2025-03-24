@@ -1,10 +1,5 @@
 package com.sfuparkingmayhem.game;
 
-import java.io.IOException;
-import java.util.Objects;
-
-import javax.imageio.ImageIO;
-
 /**
  * This class extends the Barrier class and represents a ParkedCar.
  * 
@@ -20,16 +15,6 @@ public class ParkedCar extends Barrier{
      */
     public ParkedCar(int x, int y) {
         super ( x, y);
-        getImage();
-    }
-
-    @Override
-    protected void getImage() {
-        try{
-            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("parked_car.png")));
-        }
-        catch(IOException e){
-            System.out.println("Error loading main" + e.getMessage());
-        }
+        getImage("parked_car.png");
     }
 }

@@ -1,9 +1,5 @@
 package com.sfuparkingmayhem.game;
 
-import javax.imageio.ImageIO;
-import java.io.IOException;
-import java.util.Objects;
-
 
 /**
  * This class extends the Reward class. This coin will have an x and y coordinate to be placed on the board. 
@@ -23,17 +19,6 @@ public class Coin extends Reward{
      */
     public Coin(int x, int y) {
         super(x, y);
-        getImage();
+        getImage("coin.png");
     }
-
-    @Override
-    protected void getImage() {
-        try{
-            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("coin.png")));
-        }
-        catch(IOException e){
-            System.out.println("Error loading main" + e.getMessage());
-        }
-    }
-
 }
