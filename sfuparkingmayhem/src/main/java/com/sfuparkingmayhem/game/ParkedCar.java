@@ -13,8 +13,8 @@ public class ParkedCar extends Barrier{
      * @param x The x-coordinate of the ParkedCar.
      * @param y The y-coordinate of the ParkedCar.
      */
-    public ParkedCar(int x, int y) {
-        super ( x, y);
+    public ParkedCar(int x, int y, Board board) {
+        super (x, y, board);
         getImage("parked_car.png");
     }
 }

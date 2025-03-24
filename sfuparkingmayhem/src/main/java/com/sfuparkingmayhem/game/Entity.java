@@ -31,6 +31,10 @@ public abstract class Entity {
      * The entity's image/sprite
      */
     protected BufferedImage theImage;
+    /**
+     * The board that the entity belongs to.
+     */
+    protected Board board;
 
     //constructor for an Entity
 
@@ -40,9 +44,10 @@ public abstract class Entity {
      * @param x_coordinate x-coordinate of this Entity
      * @param y_coordinate y-coordinate of this Entity
      */
-    protected Entity(int x_coordinate, int y_coordinate) {
+    protected Entity(int x_coordinate, int y_coordinate, Board board) {
         this.x_coordinate = x_coordinate;
         this.y_coordinate = y_coordinate;
+        this.board = board;
     }
     /**
      * Gets the image of this Entity and throws IOExceptions e, if any, and prints out the error.
@@ -90,31 +95,4 @@ public abstract class Entity {
     protected int getY_coordinate() {
         return this.y_coordinate;
     }
-
-    /**
-     * Updates this Entity's position on the board
-     */
-    public void tick(){
-
-        //prevent this Entity from going off the board horizontally
-        if (x_coordinate < 0) {
-            x_coordinate = 0;
-        } 
-        
-        else if (x_coordinate >= Board.COLUMNS) {
-            x_coordinate = Board.COLUMNS - 1;
-        }
-
-        // prevent the player from moving off the edge of the board vertically
-        if (y_coordinate < 0) {
-            y_coordinate = 0;
-        } 
-        
-        else if (y_coordinate >= Board.ROWS) {
-            y_coordinate = Board.ROWS - 1;
-        }
-        }
-
-
-
 }

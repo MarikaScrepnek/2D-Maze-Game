@@ -17,7 +17,7 @@ public class StaticEntity extends Entity{
      * @param x The x-coordinate of the StaticEntity.
      * @param y The y-coordinate of the StaticEntity.
      */
-    public StaticEntity(int x, int y) {
-        super(x,y);
+    public StaticEntity(int x, int y, Board board) {
+        super(x, y, board);
     }
 }

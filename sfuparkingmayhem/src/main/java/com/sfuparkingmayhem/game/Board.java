@@ -82,15 +82,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Arraylists holding all coins in the game.
      */
-    private ArrayList<Coin> coins = new ArrayList<>();
+    ArrayList<Coin> coins = new ArrayList<>();
     /**
      * Arraylists holding all cones in the game.
      */
-    public static ArrayList <Cone> cones = new ArrayList<>();
+    static ArrayList<Cone> cones = new ArrayList<>();
     /**
      * Arraylists holding all parked cars in the game.
      */
-    public static ArrayList <ParkedCar> parkedCars = new ArrayList<>();
+    static ArrayList<ParkedCar> parkedCars = new ArrayList<>();
     /**
      * Arraylists holding all lost notes in the game.
      */
@@ -155,7 +155,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void populateBoard() {
         //intialize player
-        main_character = new MainCharacter(0, 1);
+        main_character = new MainCharacter(0, 1, this);
         //initialize officer
         officer = new ConcordOfficer(7, 7, this);
         //initialize score
@@ -174,48 +174,48 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates coins and adds them to the coins arraylist
      */
     private void createCoins(){
-        coins.add(new Coin(2,3));
-        coins.add(new Coin(7,2));
-        coins.add(new Coin(10,4 ));
-        coins.add(new Coin(7,5));
-        coins.add(new Coin(3,8));
-        coins.add(new Coin(11,8));
-        coins.add(new Coin(6,9));
-        coins.add(new Coin(12,11));
-        coins.add(new Coin(9,12));
-        coins.add(new Coin(3,13));
+        coins.add(new Coin(2,3, this));
+        coins.add(new Coin(7,2, this));
+        coins.add(new Coin(10,4, this));
+        coins.add(new Coin(7,5, this));
+        coins.add(new Coin(3,8, this));
+        coins.add(new Coin(11,8, this));
+        coins.add(new Coin(6,9, this));
+        coins.add(new Coin(12,11, this));
+        coins.add(new Coin(9,12, this));
+        coins.add(new Coin(3,13, this));
     }
 
     /**
      * Creates cones and adds them to the cones arraylist
      */
     private void createCones(){
-        cones.add(new Cone(4,3));
-        cones.add(new Cone(11,3));
-        cones.add(new Cone(12,3));
-        cones.add(new Cone(4,5));
-        cones.add(new Cone(9,7));
-        cones.add(new Cone(6,8));
-        cones.add(new Cone(12,9));
-        cones.add(new Cone(2,10));
-        cones.add(new Cone(10,10));
-        cones.add(new Cone(7,13));
+        cones.add(new Cone(4,3, this));
+        cones.add(new Cone(11,3, this));
+        cones.add(new Cone(12,3, this));
+        cones.add(new Cone(4,5, this));
+        cones.add(new Cone(9,7, this));
+        cones.add(new Cone(6,8, this));
+        cones.add(new Cone(12,9, this));
+        cones.add(new Cone(2,10, this));
+        cones.add(new Cone(10,10, this));
+        cones.add(new Cone(7,13, this));
     }
 
     /**
      * Creates parked cars and adds them to the parkedCars arraylist
      */
     private void createParkedCars(){
-        parkedCars.add(new ParkedCar(2, 2));
-        parkedCars.add(new ParkedCar(6, 5));
-        parkedCars.add(new ParkedCar(8, 5));
-        parkedCars.add(new ParkedCar(12, 6));
-        parkedCars.add(new ParkedCar(12, 7));
-        parkedCars.add(new ParkedCar(3, 7));
-        parkedCars.add(new ParkedCar(4, 11));
-        parkedCars.add(new ParkedCar(4, 12));
-        parkedCars.add(new ParkedCar(8, 11));
-        parkedCars.add(new ParkedCar(9, 11));
+        parkedCars.add(new ParkedCar(2, 2, this));
+        parkedCars.add(new ParkedCar(6, 5, this));
+        parkedCars.add(new ParkedCar(8, 5, this));
+        parkedCars.add(new ParkedCar(12, 6, this));
+        parkedCars.add(new ParkedCar(12, 7, this));
+        parkedCars.add(new ParkedCar(3, 7, this));
+        parkedCars.add(new ParkedCar(4, 11, this));
+        parkedCars.add(new ParkedCar(4, 12, this));
+        parkedCars.add(new ParkedCar(8, 11, this));
+        parkedCars.add(new ParkedCar(9, 11, this));
     }
 
     /**
@@ -223,126 +223,16 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Removes a lost note every 7 seconds if there is a lost note to remove.
      */
     private void populateLostNote(){
-        setLostNote();
+        LostNote lostNote = new LostNote(0,0, this);
+        ln.add(lostNote);
         Timer lostNoteTimer = new Timer(7000, e -> {
             if (!ln.isEmpty()) {
                 ln.remove(0);
             }
-            setLostNote();
+            LostNote newLostNote = new LostNote(0,0, this);
+            ln.add(newLostNote);
         });
         lostNoteTimer.start();
-    }
-
-
-    /**
-     * Sets coordinates for lost note.
-     * The lostnote's random coordinates are verified if an entity already exists on that coordinate,
-     * if so, lostnote needs to have another set of random coordinates generated.
-     * Finally adds its to the lost note ArrayList.
-     */
-    private void setLostNote() { 
-        lost_note = new LostNote(0,0);
-
-        //boolean value needed for do-while loop
-        boolean check;
-
-        do{
-            
-            lost_note.generateCoords(); //generate random x and y coordinates
-
-            check = false; //assume that it is not needed to find another set of coords for lostNote
-
-            //check all the coins to see if any of the coins' coords matches the lostnotes' coords
-            for (int i = 0; i < coins.size(); i++){
-
-                //get a coin in the coins arraylist
-                Coin coin = coins.get(i);
-
-                //get the x and y coordinates of that coin
-                int coinXCoord = coin.getX_coordinate();
-                int coinYCoord = coin.getY_coordinate();
-
-                //boolean variables needed for checking if the lostnote has matching coordinates
-                boolean coinCoordConflict = false;
-
-                if (lost_note.getX_coordinate() == coinXCoord && lost_note.getY_coordinate() == coinYCoord){
-                    coinCoordConflict = true;
-                }
-
-                //check if another entity is already on that position on board
-                if(coinCoordConflict){
-
-                    //set check to be true as another set of coords needs to be generate for lostNote
-                    check = true;
-
-                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
-                    break;
-                }
-            }
-
-
-            for (int i = 0; i < parkedCars.size(); i++){
-                //get a coin in the coins arraylist
-                ParkedCar pc = parkedCars.get(i);
-
-                //get the x and y coordinates of that ParkedCar
-                int pcXCoord = pc.getX_coordinate();
-                int pcYCoord = pc.getY_coordinate();
-
-
-
-                //boolean variables needed for checking if the lostnote has matching coordinates
-                boolean pcCoordConflict = false;
-
-                if (lost_note.getX_coordinate() == pcXCoord && lost_note.getY_coordinate() == pcYCoord){
-                    pcCoordConflict = true;
-                }
-
-                //check if another entity is already on that position on board
-                if(pcCoordConflict){
-
-                    //set check to be true as another set of coords needs to be generate for lostNote
-                    check = true;
-
-                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
-                    break;
-                }
-
-            }
-
-            //check cones' coordinates to see if any match with the lostnote's coordinates
-            for (int i = 0; i < cones.size(); i++){
-                //get a cone in the cone arraylist
-                Cone cone = cones.get(i);
-
-                //get the x and y coordinates of that cone
-                int coneXCoord = cone.getX_coordinate();
-                int coneYCoord = cone.getY_coordinate();
-
-                //boolean variables needed for checking if the lostnote has matching coordinates
-                boolean coneCoordConflict = false;
-
-                if (lost_note.getX_coordinate() == coneXCoord && lost_note.getY_coordinate() == coneYCoord){
-                    coneCoordConflict = true;
-                }
-
-                //check if another entity is already on that position on board
-                if(coneCoordConflict){
-
-                    //set check to be true as another set of coords needs to be generate for lostNote
-                    check = true;
-
-                    //already know there is a coin's coordinates that matches lostnotes's coordinates so break out of for loop
-                    break;
-                }
-
-            }
-
-        } while (check);
-
-
-        //add lost note to ln arraylist
-        ln.add(lost_note);
     }
 
     /**
@@ -420,7 +310,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * @throws e Exception if an exception occurs during loading images
      */
     private void drawBoard(Graphics g) {
-        Barrier barrier = new Barrier(0, 0);
+        Barrier barrier = new Barrier(0, 0, this);
         //top
         for (int col = 1; col < COLUMNS; col++) {
             g.drawImage(barrier.theImage, col * CELL_SIZE, 0, 50, 50, null);
