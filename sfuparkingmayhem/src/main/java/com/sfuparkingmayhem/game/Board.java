@@ -268,7 +268,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         officer.drawTheImage(g, this);
 
 
-        collectCoins();
+        main_character.collectCoins();
         collectLostNote();
         checkGameEnd();
         
@@ -365,34 +365,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.setColor(Color.WHITE);
 
         g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
-    }
-
-    //move to main character
-    /**
-     * Removes a coin from coins ArrayList if this MainCharacter's board position matches
-     * a coin's board position. Must create a copy of coins ArrayList to prevent iterating
-     * and removing (deleting) from same ArrayList, which is not allowed.
-     */
-    private void collectCoins(){
-
-        //collect the coins from the board
-        ArrayList<Coin> coinsCopy = new ArrayList<>(coins); //make a copy of coins arraylist
-       
-        for (Coin aCoin : coinsCopy){
-            
-            //remove the coin from arraylist if this coin and MainCharacter have same board position
-            if (main_character.getX_coordinate() == aCoin.getX_coordinate()
-                    && main_character.getY_coordinate() == aCoin.getY_coordinate()){
-
-                coins.remove(aCoin);
-                score.addPoints(5);
-                coinsCollectedCount++;
-            }
-        }
-    }
-
-    protected void updateCoinsCollectedCount() {
-        coinsCollectedCount++;
     }
 
     //move to main character
