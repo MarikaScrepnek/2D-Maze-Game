@@ -605,7 +605,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         return path;
     }
 
-    //method to flash background red when hit a parked card
+    /**
+     * Flashes the background red.
+     */
     public void flashRed() {
         //save original background color
         Color originalColor = getBackground();
