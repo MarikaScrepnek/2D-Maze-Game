@@ -168,13 +168,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         createCoins();
         createCones();
         createParkedCars();
-        populateLostNote();
+        createLostNote();
     }
 
     /**
      * Creates coins and adds them to the coins arraylist
      */
-    private void createCoins(){
+    protected void createCoins(){
         coins.add(new Coin(2,3, this));
         coins.add(new Coin(7,2, this));
         coins.add(new Coin(10,4, this));
@@ -223,7 +223,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Populates the lostNote arraylist with a lostNote object every 7 seconds.
      * Removes a lost note every 7 seconds if there is a lost note to remove.
      */
-    private void populateLostNote(){
+    private void createLostNote(){
         LostNote lostNote = new LostNote(0,0, this);
         ln.add(lostNote);
         Timer lostNoteTimer = new Timer(7000, e -> {
@@ -367,6 +367,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
     }
 
+    //move to main character
     /**
      * Removes a coin from coins ArrayList if this MainCharacter's board position matches
      * a coin's board position. Must create a copy of coins ArrayList to prevent iterating
@@ -390,6 +391,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+    //move to main character
     /**
      * Removes a lostNote from ln ArrayList if this MainCharacter's board position matches
      * a lostNote's board position. Must create a copy of ln ArrayList to prevent iterating
@@ -428,6 +430,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
     }
 
+    //moving entity
     /**
      * Checks if the player is colliding with a cone.
      * @param x x-coordinate of the player.
@@ -443,6 +446,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         return false;
     }
 
+    //moving entity
     /**
      * Checks if the player is colliding with a parked car.
      * @param x x-coordinate of the player.
@@ -468,6 +472,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public void keyTyped(KeyEvent e) {
     }
 
+    
     //move main_character when a key is pressed
     @Override
     public void keyPressed(KeyEvent e) {
