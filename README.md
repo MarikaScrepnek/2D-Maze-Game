@@ -11,7 +11,7 @@ Ensure you have the following installed:
 
 ### Installation 
 1. Clone the Repository 
-'git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git'
+  `git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git`
 2.  
 
 # <br>
