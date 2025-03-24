@@ -1,7 +1,11 @@
-# SFU Parking Mayhem
+<h1 align="center">
+  SFU Parking Mayhem
+</h1>
 
-<img width="747" alt="Screenshot 2025-03-23 at 10 43 40 PM" src="https://media.github.sfu.ca/user/3707/files/2436dd54-6d90-43ec-8f5b-a6937b3f7ba0">
-
+<p align="center">
+  <img width="747" alt="Screenshot 2025-03-23 at 10 43 40 PM" src="https://media.github.sfu.ca/user/3707/files/2436dd54-6d90-43ec-8f5b-a6937b3f7ba0">
+</p>
+  
 ## Description
 Navigate the chaos of SFU’s mid-day parking in this fast-paced game where every decision matters. As a driver trapped in a maze-like parking lot filled with traffic cones, parked cars, and a persistent Concord parking officer, your goal is simple: collect 10 scattered coins to afford a parking pass and escape without penalties. Avoid parked cars, outrun the ever-watchful parking officer, and seize lost student notes for bonus points. But beware—if your score drops below zero or you’re caught without a pass, it’s game over! Can you secure your a parking pass before disaster strikes?
 
