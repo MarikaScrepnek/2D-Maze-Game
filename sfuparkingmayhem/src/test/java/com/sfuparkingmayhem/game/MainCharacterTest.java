@@ -84,6 +84,11 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void moveMainCharacterRightIntoCone(){
+
+    }
+
+    @Test
     public void moveMainCharacterDown(){
 
     }
