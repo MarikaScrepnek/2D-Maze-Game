@@ -13,19 +13,19 @@ Ensure you have the following installed:
 
 ## Installation 
 1. Clone the Repository: 
-    - Copy and paste the code below into your desired IDE terminal
+    - Copy and paste the command below into your desired IDE terminal
     - `git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git`
 2. Build the Project:
-    - Using maven copy and paste the code below
+    - Using maven copy and paste the command below
     - `mvn clean package`
     - This will compile the project
 
 ## Running the Game
-After building the project, to run the game copy and paste the code below:
+After building the project, to run the game copy and paste the command below:
   - `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
 
 ## Testing
-To run tests using JUnit and Maven copy and paste the code below:
+To run tests using JUnit and Maven copy and paste the command below:
   - `mvn clean test`
 
 ## Helpful Resources:
