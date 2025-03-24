@@ -247,7 +247,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public void actionPerformed(ActionEvent e) {
 
         // prevent the player from disapearing off the board
-        main_character.tickCharacter();
+        main_character.tick();
 
         repaint();
     }
