@@ -29,14 +29,13 @@ To run tests using JUnit and Maven copy and paste the code below:
 # <br>
 ### Helpful Resources:
   - Game: [Youtube Video](https://www.youtube.com/watch?v=PJLLDpaLjds)
-  - Concord officer: https://www.youtube.com/watch?v=yhx0Ew8ttP4
-  - Concord officer: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/ 
+  - Concord officer: [Youtube Video](https://www.youtube.com/watch?v=yhx0Ew8ttP4)
+  - Concord officer: [GeeksForGeeks](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/) 
 
-# <br>
 ### References for Images/Sprites:
-##### Lost Note: https://clipart-library.com/image_gallery/541546.png 
-##### Coin:  https://png.monster/wp-content/uploads/2022/08/png.monster-90.png 
-#### Cone: https://www.vecteezy.com/vector-art/32311945-pixel-art-illustration-traffic-cone-pixelated-traffic-cone-traffic-cone-safety-icon-pixelated-for-the-pixel-art-game-and-icon-for-website-and-video-game-old-school-retro
+  - [Lost Note](https://clipart-library.com/image_gallery/541546.png) 
+  - [Coin](https://png.monster/wp-content/uploads/2022/08/png.monster-90.png) 
+  - Cone: https://www.vecteezy.com/vector-art/32311945-pixel-art-illustration-traffic-cone-pixelated-traffic-cone-traffic-cone-safety-icon-pixelated-for-the-pixel-art-game-and-icon-for-website-and-video-game-old-school-retro
 #### TicketBooth: https://png.pngtree.com/png-vector/20220610/ourmid/pngtree-carnival-information-ticket-booth-isolated-on-white-background-png-image_4868612.png
 #### Bush: https://img.itch.zone/aW1nLzEzNTMyODEzLnBuZw==/original/sfw8DA.png
 #### Vehicles: https://minzinn.itch.io/pixelvehicles
