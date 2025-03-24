@@ -20,7 +20,11 @@ Ensure you have the following installed:
 
 ### Running the Game
 After building the project, to run the game copy and paste the code below:
-- `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
+  - `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
+
+### Testing
+To run tests using JUnit and Maven copy and paste the code below:
+  - `mvn clean test`
 
 # <br>
 ### Helpful Resources:
