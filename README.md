@@ -9,6 +9,10 @@ Ensure you have the following installed:
   - Apache Maven (for building and testing)
   - Git (for version control)
 
+### Installation 
+1. Clone the Repository 
+'git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git'
+2.  
 
 # <br>
 ### Helpful Resources:
