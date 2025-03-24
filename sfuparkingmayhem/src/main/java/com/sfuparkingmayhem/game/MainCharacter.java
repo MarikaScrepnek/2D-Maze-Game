@@ -276,5 +276,18 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-
+    /**
+     * Removes a lostNote from ln ArrayList if this MainCharacter's board position matches
+     * a lostNote's board position. Must create a copy of ln ArrayList to prevent iterating
+     * and removing (deleting) from same ArrayList, which is not allowed.
+     */
+    protected void collectLostNote(){
+        for (LostNote aLostNote : board.ln){
+            if (getX_coordinate() == aLostNote.getX_coordinate()
+                    && getY_coordinate() == aLostNote.getY_coordinate()){
+                board.ln.remove(aLostNote);
+                board.score.addPoints(10);
+            }
+        }
+    }
 }
