@@ -59,6 +59,11 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void moveMainCharacterLeftIntoBush(){
+
+    }
+
+    @Test
     public void moveMainCharacterRight(){
 
     }
