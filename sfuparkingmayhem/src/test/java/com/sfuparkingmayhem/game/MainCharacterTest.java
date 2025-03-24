@@ -43,4 +43,9 @@ public class MainCharacterTest {
         assertEquals(2, y_coord);
     }
 
+    @Test
+    public void moveMainCharacterUpward(){
+
+    }
+
 }
