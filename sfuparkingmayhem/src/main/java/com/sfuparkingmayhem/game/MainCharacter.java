@@ -206,11 +206,12 @@ public class MainCharacter extends MovingEntity {
         limitPlayerXCoord();
 
         // Prevent the player from moving off the board vertically
-        if (y_coordinate < 0) {
-            y_coordinate = 0;
-        } else if (y_coordinate >= Board.ROWS) {
-            y_coordinate = Board.ROWS - 1;
-        }
+        // if (y_coordinate < 0) {
+        //     y_coordinate = 0;
+        // } else if (y_coordinate >= Board.ROWS) {
+        //     y_coordinate = Board.ROWS - 1;
+        // }
+        limitPlayerYCoord();
 
         // Allow the player to move into the entrance and exit cells
         if ((x_coordinate == 0 && y_coordinate == 1) || (x_coordinate == Board.COLUMNS - 1 && y_coordinate == Board.ROWS - 2)) {
