@@ -32,8 +32,8 @@ public class ConcordOfficer extends MovingEntity{
             this.delayedMove(null);  // Call move() without KeyEvent
 
             // Check if the officer is colliding with a cone or parked car
-            if (isCollidingWithCone(this.getX_coordinate(), this.getY_coordinate(), this.board.cones) ||
-                isCollidingWithParkedCar(this.getX_coordinate(), this.getY_coordinate(), this.board.parkedCars)) {
+            if (isCollidingWithCone(this.getX_coordinate(), this.getY_coordinate()) ||
+                isCollidingWithParkedCar(this.getX_coordinate(), this.getY_coordinate())) {
                 this.x_coordinate = oldX;
                 this.y_coordinate = oldY;
             }

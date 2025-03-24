@@ -233,14 +233,14 @@ public class MainCharacter extends MovingEntity {
         delayedMove(e);
 
         // Check if the player is colliding with a cone
-        if (board.isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
+        if (isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
             // revert the player position
             x_coordinate = oldX;
             y_coordinate  = oldY;
         }
 
         // Check if the player is colliding with a parked car
-        if(board.isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
+        if(isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
             // Subtract points from the player's score
             if(oldX != getX_coordinate() || oldY != getY_coordinate()){
                 board.score.subtractPoints(5);
