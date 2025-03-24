@@ -473,7 +473,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     
-    //move main_character when a key is pressed
+    /**
+     * Is implemented in marin character. Moves the main character when getting a key input.
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         main_character.move(e);
