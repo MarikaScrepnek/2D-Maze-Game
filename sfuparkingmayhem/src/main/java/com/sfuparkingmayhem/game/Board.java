@@ -263,7 +263,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        drawBoard(g);
+        drawBoardBackground(g);
         main_character.drawTheImage(g, this);
         officer.drawTheImage(g, this);
 
@@ -277,7 +277,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (int i =0; i<coins.size(); i++){
             Coin aCoin = coins.get(i);
             aCoin.drawTheImage(g, this);
-
         }
         
         //draw cones onto board
@@ -305,12 +304,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * Draws the game board and the boarder
+     * Draws the game board and the boarder.
      * 
      * @param g Graphics object to help draw this Board
      * @throws e Exception if an exception occurs during loading images
      */
-    private void drawBoard(Graphics g) {
+    private void drawBoardBackground(Graphics g) {
         Barrier barrier = new Barrier(0, 0, this);
         //top
         for (int col = 1; col < COLUMNS; col++) {
