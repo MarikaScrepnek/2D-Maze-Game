@@ -1,11 +1,12 @@
 package com.sfuparkingmayhem.game;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-import java.awt.CardLayout;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ParkedCarTest {
 
@@ -22,8 +23,11 @@ public class ParkedCarTest {
         aBoard = new Board(cardLayout, cardPanel);
 
         pc = new ParkedCar(0, 0, aBoard);
-        
     }
 
+    @Test
+    public void testParkedCarConstruction() {
+        assertNotNull(pc, "ParkedCar should not be null after setup.");
+    }
     
 }
