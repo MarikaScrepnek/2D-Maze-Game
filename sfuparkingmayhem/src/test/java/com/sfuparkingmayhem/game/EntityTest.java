@@ -1,12 +1,14 @@
 package com.sfuparkingmayhem.game;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-import javax.swing.JPanel;
 import java.awt.CardLayout;
 
+import javax.swing.JPanel;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+//abstract class
 public class EntityTest {
 
     Entity entityMainChar;
