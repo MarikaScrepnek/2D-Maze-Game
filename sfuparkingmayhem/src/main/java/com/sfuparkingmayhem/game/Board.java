@@ -6,18 +6,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -436,101 +430,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         }
         return false;
     }
-    
-    /**
-     * Finds the shortest path from start to end using Dijkstra's algorithm.
-     * 
-     * @param startX The x-coordinate of the start cell.
-     * @param startY The y-coordinate of the start cell.
-     * @param endX The x-coordinate of the end cell.
-     * @param endY The y-coordinate of the end cell.
-     * @return A list of points representing the path from start to end, or null if no path exists.
-     */
-    public List<Point> findPathDijkstra(int startX, int startY, int endX, int endY) {
-        // If the start or end is blocked, no path
-        if (isCellBlocked(startX, startY) || isCellBlocked(endX, endY)) {
-            return null;
-        }
-
-        // Distances array
-        int[][] dist = new int[ROWS][COLUMNS];
-        for (int r = 0; r < ROWS; r++) {
-            Arrays.fill(dist[r], Integer.MAX_VALUE);
-        }
-
-        Point[][] parent = new Point[ROWS][COLUMNS]; // store predecessor
-
-        PriorityQueue<PointDistance> q = new PriorityQueue<>(Comparator.comparingInt(pd -> pd.distance));
-
-        // Initialize distance for start node
-        dist[startY][startX] = 0;
-        q.offer(new PointDistance(startX, startY, 0));
-
-        // Directions for up/down/left/right movement
-        int[][] directions = { {1,0}, {-1,0}, {0,1}, {0,-1} };
-
-        while (!q.isEmpty()) {
-            PointDistance current = q.poll();
-            int currX = current.x;
-            int currY = current.y;
-            int currDist = current.distance;
-
-            // If there's already a better route before, skip
-            if (currDist > dist[currY][currX]) {
-                continue;
-            }
-
-            // If we reached the target, stop
-            if (currX == endX && currY == endY) {
-                // Reconstruct path from end -> start using 'parent'
-                return buildPath(parent, startX, startY, endX, endY);
-            }
-
-            // Explore neighbors
-            for (int[] d : directions) {
-                int neighbourX = currX + d[0];
-                int neighbourY = currY + d[1];
-                // If in-bounds and not blocked
-                if (!isCellBlocked(neighbourX, neighbourY)) {
-                    int newDist = currDist + 1; // cost of 1 step
-                    if (newDist < dist[neighbourY][neighbourX]) {
-                        dist[neighbourY][neighbourX] = newDist;
-                        parent[neighbourY][neighbourX] = new Point(currX, currY);
-                        q.offer(new PointDistance(neighbourX, neighbourY, newDist));
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Reconstructs the path from start to end using the parent array.
-     * 
-     * @param parent The parent array.
-     * @param startX The x-coordinate of the start cell.
-     * @param startY The y-coordinate of the start cell.
-     * @param endX The x-coordinate of the end cell.
-     * @param endY The y-coordinate of the end cell.
-     * @return A list of points representing the path from start to end.
-     */
-    private List<Point> buildPath(Point[][] parent, int startX, int startY,
-                                  int endX, int endY) {
-        LinkedList<Point> path = new LinkedList<>();
-        int currX = endX;
-        int currY = endY;
-        while (!(currX == startX && currY == startY)) {
-            path.addFirst(new Point(currX, currY));
-            Point par = parent[currY][currX];
-            currX = par.x;
-            currY = par.y;
-        }
-        // Add the start cell at the front
-        path.addFirst(new Point(startX, startY));
-        return path;
-    }
-
+  
     /**
      * Flashes the background red.
      */
@@ -557,28 +457,4 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         flash_timer.start(); //start the timer
     }
 
-
-    /**
-     * Inner class to store a point and its distance.
-     */
-    private static class PointDistance {
-
-        /**
-         * distance fields/attributes
-         */
-        int x, y, distance;
-
-        /**
-         * Constructs a PointDistance object.
-         * 
-         * @param x The x-coordinate of the point.
-         * @param y The y-coordinate of the point.
-         * @param dist The distance of the point.
-         */
-        PointDistance(int x, int y, int dist) {
-            this.x = x;
-            this.y = y;
-            this.distance = dist;
-        }
-    }
 }
