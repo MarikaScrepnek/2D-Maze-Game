@@ -1,16 +1,19 @@
 package com.sfuparkingmayhem.game;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-import java.awt.CardLayout;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 public class ConcordOfficerTest {
 
 
     ConcordOfficer officer;
-    Board aBoard;
+
+    Board board;
     CardLayout cardLayout;
     JPanel cardPanel;
 
@@ -19,11 +22,14 @@ public class ConcordOfficerTest {
 
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
-        aBoard = new Board(cardLayout, cardPanel);
+        board = new Board(cardLayout, cardPanel);
 
-        officer = new ConcordOfficer(1,2,aBoard);
+        officer = new ConcordOfficer(1,2,board);
         
     }
 
-    
+    @Test
+    public void testOfficerConstruction() {
+        assertNotNull(officer, "Officer should not be null after setup.");
+    }
 }
