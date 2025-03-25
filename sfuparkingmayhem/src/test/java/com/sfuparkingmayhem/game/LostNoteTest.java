@@ -4,7 +4,9 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class LostNoteTest {
     CardLayout cardLayout;
@@ -19,5 +21,10 @@ public class LostNoteTest {
         board = new Board(cardLayout, cardPanel);
 
         lostNote = new LostNote(0, 0, board);
+    }
+
+    @Test
+    public void testLostNoteConstruction() {
+        assertNotNull(lostNote, "LostNote should not be null after setup.");
     }
 }
