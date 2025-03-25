@@ -9,5 +9,21 @@ import javax.swing.JPanel;
 import java.awt.CardLayout;
 
 public class ConeTest {
+
+    Cone cone;
+    Board aBoard;
+    CardLayout cardLayout;
+    JPanel cardPanel;
+
+    @BeforeEach
+    public void setUp(){
+
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
+        aBoard = new Board(cardLayout, cardPanel);
+
+        cone = new Cone(1,2,aBoard);
+        
+    }
     
 }
