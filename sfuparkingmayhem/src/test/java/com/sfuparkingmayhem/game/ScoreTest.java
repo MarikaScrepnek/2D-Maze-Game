@@ -1,13 +1,16 @@
 package com.sfuparkingmayhem.game;
 
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 
 class ScoreTest {
@@ -15,8 +18,13 @@ class ScoreTest {
     private int points;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         score = new Score();
+    }
+
+    @Test
+    public void testScoreConstruction() {
+        assertNotNull(score, "Score should not be null after setup.");
     }
 
     @Test
