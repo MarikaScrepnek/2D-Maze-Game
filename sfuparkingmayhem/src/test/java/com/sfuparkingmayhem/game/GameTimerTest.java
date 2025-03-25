@@ -1,18 +1,34 @@
 package com.sfuparkingmayhem.game;
 
+import java.awt.CardLayout;
+
+import javax.swing.JPanel;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class GameTimerTest {
     private int timeElapsed;
     private GameTimer gameTimer;
+
     private Board board;
+    private CardLayout cardLayout;
+    private JPanel cardPanel;
 
     @BeforeEach
-    void setUp() {
-        //board = new Board();
+    public void setUp() {
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel();
+        board = new Board(cardLayout, cardPanel);
+
         gameTimer = new GameTimer(board);
+    }
+
+    @Test
+    public void testGameTimerConstruction() {
+        assertNotNull(gameTimer, "GameTimer should not be null after setup.");
     }
 
     @Test
