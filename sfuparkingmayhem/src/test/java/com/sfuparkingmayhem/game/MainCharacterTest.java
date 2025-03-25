@@ -1,11 +1,13 @@
 package com.sfuparkingmayhem.game;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-import java.awt.CardLayout;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 
 public class MainCharacterTest {
@@ -17,13 +19,18 @@ public class MainCharacterTest {
     JPanel cardPanel;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
             
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         aBoard = new Board(cardLayout, cardPanel);
 
         mainChar = new MainCharacter(1, 2, aBoard);
+    }
+
+    @Test
+    public void testMainCharacterConstruction() {
+        assertNotNull(mainChar, "MainCharacter should not be null after setup.");
     }
 
     @Test
