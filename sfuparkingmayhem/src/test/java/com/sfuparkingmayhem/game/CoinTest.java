@@ -10,4 +10,22 @@ import java.awt.CardLayout;
 
 public class CoinTest {
     
+    Coin coin;
+    Board aBoard;
+    CardLayout cardLayout;
+    JPanel cardPanel;
+
+    @BeforeEach
+    public void setUp(){
+
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
+        aBoard = new Board(cardLayout, cardPanel);
+
+        coin = new Coin(1,2,aBoard);
+        
+    }
+    
+
+
 }
