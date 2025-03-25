@@ -1,29 +1,33 @@
 package com.sfuparkingmayhem.game;
 
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-import java.awt.CardLayout;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ConeTest {
 
     Cone cone;
-    Board aBoard;
+
+    Board board;
     CardLayout cardLayout;
     JPanel cardPanel;
 
     @BeforeEach
     public void setUp(){
-
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
-        aBoard = new Board(cardLayout, cardPanel);
+        board = new Board(cardLayout, cardPanel);
 
-        cone = new Cone(1,2,aBoard);
-        
+        cone = new Cone(1,2,board);
     }
-    
+
+    @Test
+    public void testConeConstruction() {
+        assertNotNull(cone, "Cone should not be null after setup.");
+    }
 }
