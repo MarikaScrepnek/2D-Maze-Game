@@ -1,33 +1,23 @@
 package com.sfuparkingmayhem.game;
 
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-import javax.swing.JPanel;
-import java.awt.CardLayout;
 
 
 
 public class GameTest {
 
     Game game;
-    Board aBoard;
-    CardLayout cardLayout;
-    JPanel cardPanel;
 
     @BeforeEach
     public void setUp(){
-
-        cardLayout = new CardLayout();
-        cardPanel = new JPanel(cardLayout);
-        aBoard = new Board(cardLayout, cardPanel);
-
         game = new Game();
-        
     }
 
-
-    
+    @Test
+    public void testGameConstruction() {
+        assertNotNull(game, "Game should not be null after setup.");
+    }
 }
