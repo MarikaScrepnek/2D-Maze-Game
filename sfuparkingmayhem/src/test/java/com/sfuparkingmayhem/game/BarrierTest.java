@@ -1,11 +1,12 @@
 package com.sfuparkingmayhem.game;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-import java.awt.CardLayout;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class BarrierTest {
 
@@ -21,8 +22,11 @@ public class BarrierTest {
         cardPanel = new JPanel(cardLayout);
         aBoard = new Board(cardLayout, cardPanel);
 
-        barrier = new Barrier(0, 0, aBoard);
-        
+        barrier = new Barrier(0, 0, aBoard);   
     }
     
+    @Test
+    public void testBarrierConstruction() {
+        assertNotNull(barrier, "Barrier should not be null after setup.");
+    }
 }
