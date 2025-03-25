@@ -15,6 +15,7 @@ public class EntityTest {
     Entity entityCoin;
     Entity entityLostNote;
     Entity entityParkedCar;
+    Entity entityBarrier; 
     Board aBoard;
     CardLayout cardLayout;
     JPanel cardPanel;
@@ -56,6 +57,12 @@ public class EntityTest {
 
     @Test
     public void createParkedCarEntity(){
+        
+    }
+
+    //this test might allow us to get rid of the BarrierTest.java file
+    @Test
+    public void createBarrierEntity(){
         
     }
 
