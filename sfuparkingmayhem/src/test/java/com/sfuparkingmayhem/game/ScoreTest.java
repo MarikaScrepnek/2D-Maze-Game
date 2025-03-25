@@ -27,4 +27,11 @@ class ScoreTest {
         score.subtractPoints(points);
         assertEquals(-10, score.getScore());
     }
+    @Test
+    void testReset() {
+        points = 10;
+        score.addPoints(points);
+        score.reset();
+        assertEquals(0, score.getScore());
+    }
 }
