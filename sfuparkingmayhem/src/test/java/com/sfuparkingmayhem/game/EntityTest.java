@@ -54,5 +54,10 @@ public class EntityTest {
         
     }
 
+    @Test
+    public void createParkedCarEntity(){
+        
+    }
+
     
 }
