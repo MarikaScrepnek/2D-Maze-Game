@@ -8,7 +8,7 @@ package com.sfuparkingmayhem.game;
  * @author Group 25
  * @version 1.0
  */
-public class StaticEntity extends Entity{
+public abstract class StaticEntity extends Entity{
 
     /**
      * Constructs a StaticEntity object using the x-coordinate
