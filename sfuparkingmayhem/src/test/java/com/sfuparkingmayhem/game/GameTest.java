@@ -11,5 +11,23 @@ import java.awt.CardLayout;
 
 
 public class GameTest {
+
+    Game game;
+    Board aBoard;
+    CardLayout cardLayout;
+    JPanel cardPanel;
+
+    @BeforeEach
+    public void setUp(){
+
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
+        aBoard = new Board(cardLayout, cardPanel);
+
+        game = new Game();
+        
+    }
+
+
     
 }
