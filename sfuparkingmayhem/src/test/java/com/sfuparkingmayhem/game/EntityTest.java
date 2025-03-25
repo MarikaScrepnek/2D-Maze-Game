@@ -44,5 +44,10 @@ public class EntityTest {
         
     }
 
+    @Test
+    public void createCoinEntity(){
+        
+    }
+
     
 }
