@@ -1,6 +1,82 @@
 package com.sfuparkingmayhem.game;
 
-//abstract class
-public class MovingEntityTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class MovingEntityTest {
+
+    private MovingEntity movingEntity;
+    private Board board;
+    private CardLayout cardLayout;
+    private JPanel cardPanel;
+
+    @BeforeEach
+    void setUp() {
+        board = new Board(cardLayout, cardPanel);
+        board.cones = new ArrayList<>();
+        board.parkedCars = new ArrayList<>();
+
+        // Add some cones and parked cars to the board
+        board.cones.add(new Cone(2, 3, board));
+        board.cones.add(new Cone(4, 5, board));
+        board.parkedCars.add(new ParkedCar(6, 7, board));
+        board.parkedCars.add(new ParkedCar(8, 9, board));
+
+        // Create a concrete subclass of MovingEntity for testing
+        movingEntity = new MovingEntity(0, 0, board) {
+            @Override
+            protected void delayedMove(KeyEvent event) {}
+        };
+    }
+    @Test
+    void testConstructor() {
+        assertNotNull(movingEntity); // Ensure the object is created
+        assertEquals(0, movingEntity.getX_coordinate());
+        assertEquals(0, movingEntity.getY_coordinate());
+    }
+
+    @Test
+    void testIsCollidingWithCone() {
+        assertTrue(movingEntity.isCollidingWithCone(2, 3)); // Collides with a cone
+        assertTrue(movingEntity.isCollidingWithCone(4, 5)); // Collides with another cone
+        assertFalse(movingEntity.isCollidingWithCone(1, 1)); // Does not collide
+    }
+
+    @Test
+    void testIsCollidingWithParkedCar() {
+        assertTrue(movingEntity.isCollidingWithParkedCar(6, 7)); // Collides with a parked car
+        assertTrue(movingEntity.isCollidingWithParkedCar(8, 9)); // Collides with another parked car
+        assertFalse(movingEntity.isCollidingWithParkedCar(1, 1)); // Does not collide
+    }
+
+    @Test
+    void testIsCollidingWithParkedCarNoCollision() {
+        assertFalse(movingEntity.isCollidingWithParkedCar(1, 1)); // Does not collide
+        assertFalse(movingEntity.isCollidingWithParkedCar(10, 10)); // Does not collide
+    }
+
+    @Test 
+    void testIsCollidingWithParkedCarEmpty() {
+        board.parkedCars.clear();
+        assertFalse(movingEntity.isCollidingWithParkedCar(6, 7)); // Does not collide
+        assertFalse(movingEntity.isCollidingWithParkedCar(8, 9)); // Does not collide
+    }
+
+    @Test
+    void testIsCollidingWithParkedCar_CloseCoordinates() {
+        // Test coordinates that are close but not matching
+        assertFalse(movingEntity.isCollidingWithParkedCar(6, 8)); // Close but not a collision
+        assertFalse(movingEntity.isCollidingWithParkedCar(7, 7)); // Close but not a collision
+    }
 }
