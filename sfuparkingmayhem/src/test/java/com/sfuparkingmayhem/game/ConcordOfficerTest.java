@@ -32,6 +32,9 @@ public class ConcordOfficerTest {
         board.cones = new ArrayList<>();
         board.parkedCars = new ArrayList<>();
 
+        // Create a main character
+        board.main_character = new MainCharacter(1,2,board);
+
         // Add some cones and parked cars to the board
         board.cones.add(new Cone(2, 3, board));
         board.cones.add(new Cone(4, 5, board));
@@ -91,5 +94,36 @@ public class ConcordOfficerTest {
 
         assertEquals(oldX, officer.getX_coordinate(), "Officer should revert to old X after colliding with a parked car.");
         assertEquals(oldY, officer.getY_coordinate(), "Officer should revert to old Y after colliding with a parked car.");
+    }
+
+    @Test
+    void testOfficerCollisionWithMainCharacterEndsGame() {
+        officer.x_coordinate = 3;
+        officer.y_coordinate = 4;
+
+        // Position of the officer
+        board.main_character.x_coordinate = 3;
+        board.main_character.y_coordinate = 4; 
+        
+        board.game_ended = true;
+
+        officer.officerTimer.getActionListeners()[0].actionPerformed(null); // Simulate movement
+
+        assertTrue(board.game_ended, "Game should end when officer collides with main character.");
+    }
+
+    @Test
+    void testOfficerDoesNotCollideWithMainCharacter() {
+        officer.x_coordinate = 5;
+        officer.y_coordinate = 6;
+
+        board.main_character.x_coordinate = 7;
+        board.main_character.y_coordinate = 8;
+
+        board.game_ended = false;
+
+        officer.officerTimer.getActionListeners()[0].actionPerformed(null);
+
+        assertFalse(board.game_ended, "Game should not end when officer does not collide with main character.");
     }
 }   
