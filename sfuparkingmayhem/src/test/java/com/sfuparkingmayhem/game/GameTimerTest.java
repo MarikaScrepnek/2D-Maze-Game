@@ -8,6 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 
 class GameTimerTest {
     private int timeElapsed;
@@ -37,18 +43,12 @@ class GameTimerTest {
         assertEquals(timeElapsed, gameTimer.getTimeElapsed());
     }
 
-    //commented this out because it was failing and stopping jacoco from running
-    /*@Test 
+    @Test 
     void testDraw() {
         Graphics g = mock(Graphics.class);
         gameTimer.draw(g);
         verify(g).setColor(Color.WHITE);
         verify(g).setFont(new Font("Bahnschrift", Font.BOLD, 25));
         verify(g).drawString("00:00", 343, 30);
-    }  */
-
-    // Test lines 14 and 15 in GameTimer.java 
-    
-    
-
+    }
 }
