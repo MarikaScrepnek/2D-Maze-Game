@@ -302,4 +302,27 @@ public class MainCharacterTest {
         mainChar.keyReleased(eventS);
     }
 
+    @Test
+    public void testCollectCoins() {
+        mainChar.x_coordinate = 2;
+        mainChar.y_coordinate = 3;
+        
+        board.coins.clear();
+        Coin coin1 = new Coin(2, 3, board);
+        Coin coin2 = new Coin(4, 5, board);
+        board.coins.add(coin1);
+        board.coins.add(coin2);
+        
+        int initialScore = 0;
+        int initialCount = 0;
+        
+        mainChar.collectCoins();
+        
+        assertEquals(1, board.coins.size(), "Only one coin should remain after collection");
+        assertEquals(initialScore + 5, board.score.getScore(), "Score should increase by 5 after collecting a coin");
+        
+        int updatedCount = board.getCoinsCollectedCount();
+        assertEquals(initialCount + 1, updatedCount, "coinsCollectedCount should be incremented by 1");
+    }
+
 }
