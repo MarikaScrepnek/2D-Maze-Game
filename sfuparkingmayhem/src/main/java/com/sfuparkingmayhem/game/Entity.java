@@ -3,9 +3,6 @@ import java.awt.Graphics; //for getting the image for the specific entity
 import java.awt.image.BufferedImage; //used for drawing images/sprites on game board
 import java.awt.image.ImageObserver;
 import java.io.IOException;
-import java.util.Objects;
-
-import javax.imageio.ImageIO;
 
 //should this class be abstract since no "Entity" objects will be instantiated (always creating
 //objects like MainCharacter, Concord officer, coins etc.)
@@ -55,7 +52,10 @@ public abstract class Entity {
      */
     protected void getImage(String path) {
         try{
-            this.theImage = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(path)));
+            var resourceStream = getClass().getClassLoader().getResourceAsStream(path);
+            if (resourceStream == null) {
+                throw new IOException("Resource not found: " + path);
+            }
         }
         catch(IOException e){
             System.out.println("Error loading image" + e.getMessage());
