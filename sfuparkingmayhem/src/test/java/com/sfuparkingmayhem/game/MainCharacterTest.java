@@ -213,7 +213,16 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterRightIntoCone(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.cones.add(new Cone(6, 5, board));
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_A, 'D');
+        mainChar.delayedMove(eventD);
 
+        // Collision with cone should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventD);
     }
 
     @Test
