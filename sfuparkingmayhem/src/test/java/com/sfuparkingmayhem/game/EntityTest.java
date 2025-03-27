@@ -70,7 +70,8 @@ public class EntityTest {
 
     @Test
     public void createParkedCarEntity(){
-        
+        entityParkedCar = new ParkedCar(8, 9, aBoard);
+        assertNotNull(entityParkedCar);
     }
 
     //this test might allow us to get rid of the BarrierTest.java file
