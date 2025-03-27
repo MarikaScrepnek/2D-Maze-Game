@@ -154,7 +154,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     protected void createCoins(){
         for (int i=0; i<10; i++) {
-            coins.add(new Coin(EntCoords.coin_coords[0][i], EntCoords.coin_coords[1][i], this));
+            entityLists.coins.add(new Coin(EntCoords.coin_coords[0][i], EntCoords.coin_coords[1][i], this));
         }
     }
 
@@ -163,7 +163,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCones(){
         for (int i=0; i<10; i++) {
-            cones.add(new Cone(EntCoords.cone_coords[0][i], EntCoords.cone_coords[1][i], this));
+            entityLists.cones.add(new Cone(EntCoords.cone_coords[0][i], EntCoords.cone_coords[1][i], this));
         }
     }
 
@@ -172,7 +172,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createParkedCars(){
         for (int i=0; i<10; i++) {
-            parkedCars.add(new ParkedCar(EntCoords.pc_coords[0][i], EntCoords.pc_coords[1][i], this));
+            entityLists.parkedCars.add(new ParkedCar(EntCoords.pc_coords[0][i], EntCoords.pc_coords[1][i], this));
         }
     }
 
