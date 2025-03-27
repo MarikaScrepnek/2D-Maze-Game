@@ -73,6 +73,7 @@ public class MainCharacterTest {
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
 
+        // Y coordinate should decrease by 1
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(4, mainChar.getY_coordinate());
         mainChar.keyReleased(eventW);
@@ -117,7 +118,7 @@ public class MainCharacterTest {
         // Collision with parked car should not change position.
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(5, mainChar.getY_coordinate());
-        
+
         // Score should now be -5 and game_ended should be set to true.
         assertEquals(-5, board.score.getScore());
         assertTrue(board.game_ended, "Game should end when score falls below 0 after collision with a parked car.");
@@ -126,7 +127,15 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterLeft(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
+        mainChar.delayedMove(eventA);
 
+        // X coordinate should decrease by 1
+        assertEquals(4, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventA);
     }
 
     @Test
