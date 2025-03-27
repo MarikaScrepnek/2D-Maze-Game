@@ -376,4 +376,16 @@ public class MainCharacterTest {
         mainChar.keyReleased(eventS);
     }
 
+    @Test
+    public void moveMainCharacterUpwardOutOfExitCell(){
+        mainChar.x_coordinate = 14;
+        mainChar.y_coordinate = 13;
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        mainChar.delayedMove(eventW);
+
+        // Y coordinate should not change
+        assertEquals(14, mainChar.getX_coordinate());
+        assertEquals(13, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventW);
+    }
 }
