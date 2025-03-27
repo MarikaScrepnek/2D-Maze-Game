@@ -73,6 +73,7 @@ public class MainCharacterTest {
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
 
+        // Y coordinate should decrease by 1
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(4, mainChar.getY_coordinate());
         mainChar.keyReleased(eventW);
@@ -117,7 +118,7 @@ public class MainCharacterTest {
         // Collision with parked car should not change position.
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(5, mainChar.getY_coordinate());
-        
+
         // Score should now be -5 and game_ended should be set to true.
         assertEquals(-5, board.score.getScore());
         assertTrue(board.game_ended, "Game should end when score falls below 0 after collision with a parked car.");
@@ -126,75 +127,179 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterLeft(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
+        mainChar.delayedMove(eventA);
 
+        // X coordinate should decrease by 1
+        assertEquals(4, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventA);
     }
 
     @Test
     public void moveMainCharacterLeftIntoBush(){
+        mainChar.x_coordinate = 1;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
+        mainChar.delayedMove(eventA);
 
+        // Collision with bush should not change position.
+        mainChar.tick();
+        assertEquals(1, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventA);
     }
 
     @Test
     public void moveMainCharacterLeftIntoCone(){
-        mainChar.x_coordinate = 2;
-        mainChar.y_coordinate = 1;
-        board.cones.add(new Cone(1, 1, board));
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.cones.add(new Cone(4, 5, board));
         KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
         mainChar.delayedMove(eventA);
 
-        // Collision with parked car should not change position.
-        assertEquals(2, mainChar.getX_coordinate());
-        assertEquals(1, mainChar.getY_coordinate());
-        
-        // Score should now be -5 and game_ended should be set to true.
-        assertEquals(board.score.getScore(), board.score.getScore());
-        //assertTrue(board.game_ended, "Game should end when score falls below 0 after collision with a parked car.");
+        // Collision with cone should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
         mainChar.keyReleased(eventA);
     }
 
     @Test
     public void moveMainCharacterLeftIntoParkedCar(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.parkedCars.add(new ParkedCar(4, 5, board));
+        KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
+        mainChar.delayedMove(eventA);
 
+        // Collision with parked car should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+
+        // Score should now be -5 and game_ended should be set to true.
+        assertEquals(-5, board.score.getScore());
+        assertTrue(board.game_ended, "Game should end on collision with parked car.");
+        mainChar.keyReleased(eventA);
     }
 
     @Test
     public void moveMainCharacterRight(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
+        mainChar.delayedMove(eventD);
 
+        // X coordinate should increase by 1
+        assertEquals(6, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventD);
     }
 
     @Test
     public void moveMainCharacterRightIntoBush(){
+        mainChar.x_coordinate = 13;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
+        mainChar.delayedMove(eventD);
 
+        // Collision with bush should not change position.
+        mainChar.tick();
+        assertEquals(13, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventD);
     }
 
     @Test
     public void moveMainCharacterRightIntoCone(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.cones.add(new Cone(6, 5, board));
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
+        mainChar.delayedMove(eventD);
 
+        // Collision with cone should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventD);
     }
 
     @Test
     public void moveMainCharacterRightIntoParkedCar(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.parkedCars.add(new ParkedCar(6, 5, board));
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
+        mainChar.delayedMove(eventD);
 
+        // Collision with parked car should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+
+        // Score should now be -5 and game_ended should be set to true.
+        assertEquals(-5, board.score.getScore());
+        assertTrue(board.game_ended, "Game should end on collision with parked car.");
+        mainChar.keyReleased(eventD);
     }
 
     @Test
     public void moveMainCharacterDown(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
+        mainChar.delayedMove(eventS);
 
+        // Y coordinate should increase by 1
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(6, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventS);
     }
 
     @Test
     public void moveMainCharacterDownIntoBush(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 13;
+        KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
+        mainChar.delayedMove(eventS);
 
+        // Collision with bush should not change position.
+        mainChar.tick();
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(13, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventS);
     }
 
     @Test
     public void moveMainCharacterDownIntoCone(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.cones.add(new Cone(5, 6, board));
+        KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
+        mainChar.delayedMove(eventS);
 
+        // Collision with cone should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventS);
     }
 
     @Test
     public void moveMainCharacterDownIntoParkedCar(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.parkedCars.add(new ParkedCar(5, 6, board));
+        KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
+        mainChar.delayedMove(eventS);
 
+        // Collision with parked car should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+
+        // Score should now be -5 and game_ended should be set to true.
+        assertEquals(-5, board.score.getScore());
+        assertTrue(board.game_ended, "Game should end on collision with parked car.");
+        mainChar.keyReleased(eventS);
     }
 
 }
