@@ -118,50 +118,30 @@ public class MainCharacter extends MovingEntity {
         key_pressed = false; // Allow movement again when the key is released
     }
 
-    private void limitPlayerCoord() {
-        if (x_coordinate < 0) {
-            x_coordinate = 0;
-        } else if (x_coordinate >= Board.DIMENSIONS.get_columns()) {
-            x_coordinate = Board.DIMENSIONS.get_columns() - 1;
-        }
-        if (y_coordinate < 0) {
-            y_coordinate = 0;
-        } else if (y_coordinate >= Board.DIMENSIONS.get_rows()) {
-            y_coordinate = Board.DIMENSIONS.get_rows() - 1;
-        }
-    }
-
-    /**
-     * Tick the character to ensure it stays within the bounds of the board.
-     */
     protected void tick() {
-
-        limitPlayerCoord();
-
-        // Allow the player to move into the entrance and exit cells
-        if ((x_coordinate == 0 && y_coordinate == 1) || (x_coordinate == Board.DIMENSIONS.get_columns() - 1 && y_coordinate == Board.DIMENSIONS.get_rows() - 2)) {
-            // Do nothing, allow the player to stay in these cells
-        } else {
-            // Prevent the player from moving into the green bushes horizontally
-            if (x_coordinate == 0 || x_coordinate == Board.DIMENSIONS.get_columns() - 1){
-                 // Revert to the previous valid position
-                 if (x_coordinate == 0) {
-                    x_coordinate = 1;
-                } else if (x_coordinate == Board.DIMENSIONS.get_columns() - 1) {
-                    x_coordinate = Board.DIMENSIONS.get_columns() - 2;
-                }
-            }
-
-            // Prevent the player from moving into the green bushes vertically
-            if (y_coordinate == 0 || y_coordinate == Board.DIMENSIONS.get_rows() - 1){
-                if (y_coordinate == 0) {
-                    y_coordinate = 1;
-                } else if (y_coordinate == Board.DIMENSIONS.get_rows() - 1) {
-                    y_coordinate = Board.DIMENSIONS.get_rows() - 2;
-                }
-            }
+        // First, ensure coordinates are within the overall board bounds.
+        x_coordinate = clamp(x_coordinate, 0, Board.DIMENSIONS.get_columns() - 1);
+        y_coordinate = clamp(y_coordinate, 0, Board.DIMENSIONS.get_rows() - 1);
+        
+        // If the player is in an entrance or exit cell, allow it.
+        if (isEntranceOrExitCell()) {
+            return;
         }
+        
+        // Otherwise, clamp the coordinates to the inner bounds (avoid green bushes).
+        x_coordinate = clamp(x_coordinate, 1, Board.DIMENSIONS.get_columns() - 2);
+        y_coordinate = clamp(y_coordinate, 1, Board.DIMENSIONS.get_rows() - 2);
     }
+    
+    private boolean isEntranceOrExitCell() {
+        return (x_coordinate == 0 && y_coordinate == 1) ||
+               (x_coordinate == Board.DIMENSIONS.get_columns() - 1 && y_coordinate == Board.DIMENSIONS.get_rows() - 2);
+    }
+    
+    private int clamp(int value, int min, int max) {
+        return Math.max(min, Math.min(value, max));
+    }
+    
 
     /**
      * Removes a coin from coins ArrayList if this MainCharacter's board position matches
