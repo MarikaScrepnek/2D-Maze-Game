@@ -30,6 +30,17 @@ public class ConcordOfficer extends MovingEntity{
         this.board = board;
         getImage("officer_north.png"); // Load the sprite/image for this entity
 
+        startOfficerTimer(x_coordinate, y_coordinate, board);
+    }
+
+
+    /**
+     * Starts the timer for the ConcordOfficer.
+     * @param x_coordinate
+     * @param y_coordinate
+     * @param board
+     */
+    private void startOfficerTimer(int x_coordinate, int y_coordinate, Board board) {
         officerTimer = new Timer(500, e -> {
             int oldX = this.getX_coordinate();
             int oldY = this.getY_coordinate();
