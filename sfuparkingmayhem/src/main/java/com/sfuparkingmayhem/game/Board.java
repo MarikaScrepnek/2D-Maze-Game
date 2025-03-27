@@ -115,6 +115,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Array holding the coordinates for coins.
      */
     private int[][] coin_coords = {{2, 7, 10, 7, 3, 11, 6, 12, 9, 3}, {3, 2, 4, 5, 8, 8, 9, 11, 12, 13}};
+
+    /**
+     * Array holding the coordinates for cones.
+     */
+    private int[][] cone_coords = {{4, 11, 12, 4, 9, 6, 12, 2, 10, 7}, {3, 3, 3, 5, 7, 8,9, 10, 10, 13}};
     
     /**
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
@@ -178,32 +183,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (int i=0; i<10; i++) {
             coins.add(new Coin(coin_coords[0][i], coin_coords[1][i], this));
         }
-        /*coins.add(new Coin(2,3, this));
-        coins.add(new Coin(7,2, this));
-        coins.add(new Coin(10,4, this));
-        coins.add(new Coin(7,5, this));
-        coins.add(new Coin(3,8, this));
-        coins.add(new Coin(11,8, this));
-        coins.add(new Coin(6,9, this));
-        coins.add(new Coin(12,11, this));
-        coins.add(new Coin(9,12, this));
-        coins.add(new Coin(3,13, this));*/
     }
 
     /**
      * Creates cones and adds them to the cones arraylist
      */
     private void createCones(){
-        cones.add(new Cone(4,3, this));
-        cones.add(new Cone(11,3, this));
-        cones.add(new Cone(12,3, this));
-        cones.add(new Cone(4,5, this));
-        cones.add(new Cone(9,7, this));
-        cones.add(new Cone(6,8, this));
-        cones.add(new Cone(12,9, this));
-        cones.add(new Cone(2,10, this));
-        cones.add(new Cone(10,10, this));
-        cones.add(new Cone(7,13, this));
+        for (int i=0; i<10; i++) {
+            cones.add(new Cone(cone_coords[0][i], cone_coords[1][i], this));
+        }
     }
 
     /**
