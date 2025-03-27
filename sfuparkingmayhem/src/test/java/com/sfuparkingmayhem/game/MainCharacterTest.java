@@ -258,7 +258,16 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterDownIntoBush(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 13;
+        KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
+        mainChar.delayedMove(eventS);
 
+        // Collision with bush should not change position.
+        mainChar.tick();
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(13, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventS);
     }
 
     @Test
