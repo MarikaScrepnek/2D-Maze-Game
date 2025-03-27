@@ -304,6 +304,19 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void testRandomKeyPress() {
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent event = createKeyEvent(KeyEvent.VK_X, 'X');
+        mainChar.delayedMove(event);
+
+        // Position should not change
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(event);
+    }
+
+    @Test
     public void testCollectCoins() {
         mainChar.x_coordinate = 2;
         mainChar.y_coordinate = 3;
