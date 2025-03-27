@@ -126,12 +126,12 @@ public class ConcordOfficer extends MovingEntity{
         }
 
         // Distances array
-        int[][] dist = new int[Board.ROWS][Board.COLUMNS];
-        for (int r = 0; r < Board.ROWS; r++) {
+        int[][] dist = new int[Board.DIMENSIONS.get_rows()][Board.DIMENSIONS.get_columns()];
+        for (int r = 0; r < Board.DIMENSIONS.get_rows(); r++) {
             Arrays.fill(dist[r], Integer.MAX_VALUE);
         }
 
-        Point[][] parent = new Point[Board.ROWS][Board.COLUMNS]; // store predecessor
+        Point[][] parent = new Point[Board.DIMENSIONS.get_rows()][Board.DIMENSIONS.get_columns()]; // store predecessor
 
         PriorityQueue<PointDistance> q = new PriorityQueue<>(Comparator.comparingInt(pd -> pd.distance));
 
