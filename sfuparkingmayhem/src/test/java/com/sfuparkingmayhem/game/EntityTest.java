@@ -58,7 +58,8 @@ public class EntityTest {
 
     @Test
     public void createCoinEntity(){
-        
+        entityCoin = new Coin(4, 5, aBoard);
+        assertNotNull(entityCoin);
     }
 
     @Test
