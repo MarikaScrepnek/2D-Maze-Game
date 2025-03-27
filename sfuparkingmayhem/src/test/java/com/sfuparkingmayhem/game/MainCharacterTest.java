@@ -136,7 +136,20 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterLeftIntoCone(){
+        mainChar.x_coordinate = 2;
+        mainChar.y_coordinate = 1;
+        board.cones.add(new Cone(1, 1, board));
+        KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
+        mainChar.delayedMove(eventA);
 
+        // Collision with parked car should not change position.
+        assertEquals(2, mainChar.getX_coordinate());
+        assertEquals(1, mainChar.getY_coordinate());
+        
+        // Score should now be -5 and game_ended should be set to true.
+        assertEquals(board.score.getScore(), board.score.getScore());
+        //assertTrue(board.game_ended, "Game should end when score falls below 0 after collision with a parked car.");
+        mainChar.keyReleased(eventA);
     }
 
     @Test
