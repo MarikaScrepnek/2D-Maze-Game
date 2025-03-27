@@ -262,11 +262,12 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         checkGameEnd();
         
 
-        //draw coins onto board
-        for (int i =0; i<coins.size(); i++){
-            Coin aCoin = coins.get(i);
-            aCoin.drawTheImage(g, this);
-        }
+        // //draw coins onto board
+        // for (int i =0; i<coins.size(); i++){
+        //     Coin aCoin = coins.get(i);
+        //     aCoin.drawTheImage(g, this);
+        // }
+        drawCoins (g);
         
         //draw cones onto board
         for (int i =0; i<cones.size(); i++){
@@ -291,6 +292,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         drawCoinsCollected(g);
 
     }
+
+    private void drawCoins(Graphics g){
+        //draw coins onto board
+        for (int i =0; i<coins.size(); i++){
+            Coin aCoin = coins.get(i);
+            aCoin.drawTheImage(g, this);
+        }
+    }
+
 
     /**
      * Draws the game board and the boarder.
