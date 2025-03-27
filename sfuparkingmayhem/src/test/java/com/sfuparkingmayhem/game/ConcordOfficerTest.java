@@ -126,4 +126,57 @@ public class ConcordOfficerTest {
 
         assertFalse(board.game_ended, "Game should not end when officer does not collide with main character.");
     }
+
+    @Test
+    public void testOfficerDelayedMoveRight() {
+        board.officer.x_coordinate = 5;
+        board.officer.y_coordinate = 5;
+        board.main_character.x_coordinate = 6;
+        board.main_character.y_coordinate = 5;
+    
+        board.officer.delayedMove(null);
+    
+        assertEquals(6, board.officer.getX_coordinate());
+        assertEquals(5, board.officer.getY_coordinate());
+    }
+    
+    @Test
+    public void testOfficerDelayedMoveLeft() {
+        board.officer.x_coordinate = 6;
+        board.officer.y_coordinate = 5;
+        board.main_character.x_coordinate = 5;
+        board.main_character.y_coordinate = 5;
+    
+        board.officer.delayedMove(null);
+    
+        assertEquals(5, board.officer.getX_coordinate());
+        assertEquals(5, board.officer.getY_coordinate());
+    }
+    
+    @Test
+    public void testOfficerDelayedMoveDown() {
+        board.officer.x_coordinate = 5;
+        board.officer.y_coordinate = 5;
+        board.main_character.x_coordinate = 5;
+        board.main_character.y_coordinate = 6;
+    
+        board.officer.delayedMove(null);
+    
+        assertEquals(5, board.officer.getX_coordinate());
+        assertEquals(6, board.officer.getY_coordinate());
+    }
+    
+    @Test
+    public void testOfficerDelayedMoveUp() {
+        board.officer.x_coordinate = 5;
+        board.officer.y_coordinate = 6;
+        board.main_character.x_coordinate = 5;
+        board.main_character.y_coordinate = 5;
+    
+        board.officer.delayedMove(null);
+    
+        assertEquals(5, board.officer.getX_coordinate());
+        assertEquals(5, board.officer.getY_coordinate());
+    }
+    
 }   
