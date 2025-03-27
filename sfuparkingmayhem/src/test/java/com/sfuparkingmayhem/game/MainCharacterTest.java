@@ -377,6 +377,19 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void moveMainCharacterRightOutOfEntranceCell(){
+        mainChar.x_coordinate = 0;
+        mainChar.y_coordinate = 1;
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
+        mainChar.delayedMove(eventD);
+
+        // X coordinate should not change
+        assertEquals(1, mainChar.getX_coordinate());
+        assertEquals(1, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventD);
+    }
+
+    @Test
     public void moveMainCharacterUpwardOutOfExitCell(){
         mainChar.x_coordinate = 14;
         mainChar.y_coordinate = 13;
@@ -400,5 +413,18 @@ public class MainCharacterTest {
         assertEquals(14, mainChar.getX_coordinate());
         assertEquals(13, mainChar.getY_coordinate());
         mainChar.keyReleased(eventS);
+    }
+
+    @Test
+    public void moveMainCharacterLeftOutOfExitCell(){
+        mainChar.x_coordinate = 14;
+        mainChar.y_coordinate = 13;
+        KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
+        mainChar.delayedMove(eventA);
+
+        // X coordinate should not change
+        assertEquals(13, mainChar.getX_coordinate());
+        assertEquals(13, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventA);
     }
 }
