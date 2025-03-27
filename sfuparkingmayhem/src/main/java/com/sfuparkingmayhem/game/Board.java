@@ -32,17 +32,9 @@ import com.sfuparkingmayhem.screen.WinScreen;
 
 public class Board extends JPanel implements ActionListener, KeyListener{
     /**
-     * Field to hold the number of rows in a board.
+     * Field to hold the dimensions of the board.
      */
-    protected static final int ROWS = 15;
-    /**
-     * Field to hold the number of columns in a board.
-     */
-    protected static final int COLUMNS = 15;
-    /**
-     * Field to hold the size of a cell on the board.
-     */
-    protected static final int CELL_SIZE = 50;
+    protected static final Dimensions DIMENSIONS = new Dimensions();
 
     /**
      * Main character entity.
@@ -75,6 +67,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     protected Score score;
     
+    /**
+     * Holds all arraylists of all entities on the board.
+     */
+    EntityLists entityLists = new EntityLists();
     /**
      * Arraylists holding all coins in the game.
      */
@@ -155,7 +151,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         this.cardPanel=cardPanel;
 
         //set game board size
-        setPreferredSize(new Dimension(CELL_SIZE*COLUMNS,CELL_SIZE*ROWS));
+        setPreferredSize(new Dimension(DIMENSIONS.get_cell_size()*DIMENSIONS.get_columns(),DIMENSIONS.get_cell_size()*DIMENSIONS.get_rows()));
 
         //set the background color to a concrete grey
         setBackground(new Color(43, 43, 43));
@@ -316,7 +312,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void drawBoardBackground(Graphics g) {
         Barrier barrier = new Barrier(0, 0, this);
-        barrier.draw(ROWS, COLUMNS, CELL_SIZE, g);
+        barrier.draw(DIMENSIONS.get_rows(), DIMENSIONS.get_columns(), DIMENSIONS.get_cell_size(), g);
 
         drawParkingSign(g);
 
@@ -340,7 +336,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
+        g.drawImage(ticketBooth, 14*DIMENSIONS.get_cell_size(),12*DIMENSIONS.get_cell_size(),50,50,null);
     }
 
     /**
@@ -414,7 +410,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     public boolean isCellBlocked(int x, int y) {
         // Return true if out-of-bounds
-        if (x <= 0 || x >= COLUMNS-1 || y <= 0 || y >= ROWS-1) {
+        if (x <= 0 || x >= DIMENSIONS.get_columns()-1 || y <= 0 || y >= DIMENSIONS.get_rows()-1) {
             return true;
         }
         // Check for cones

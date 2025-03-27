@@ -121,13 +121,13 @@ public class MainCharacter extends MovingEntity {
     private void limitPlayerCoord() {
         if (x_coordinate < 0) {
             x_coordinate = 0;
-        } else if (x_coordinate >= Board.COLUMNS) {
-            x_coordinate = Board.COLUMNS - 1;
+        } else if (x_coordinate >= Board.DIMENSIONS.get_columns()) {
+            x_coordinate = Board.DIMENSIONS.get_columns() - 1;
         }
         if (y_coordinate < 0) {
             y_coordinate = 0;
-        } else if (y_coordinate >= Board.ROWS) {
-            y_coordinate = Board.ROWS - 1;
+        } else if (y_coordinate >= Board.DIMENSIONS.get_rows()) {
+            y_coordinate = Board.DIMENSIONS.get_rows() - 1;
         }
     }
 
@@ -139,25 +139,25 @@ public class MainCharacter extends MovingEntity {
         limitPlayerCoord();
 
         // Allow the player to move into the entrance and exit cells
-        if ((x_coordinate == 0 && y_coordinate == 1) || (x_coordinate == Board.COLUMNS - 1 && y_coordinate == Board.ROWS - 2)) {
+        if ((x_coordinate == 0 && y_coordinate == 1) || (x_coordinate == Board.DIMENSIONS.get_columns() - 1 && y_coordinate == Board.DIMENSIONS.get_rows() - 2)) {
             // Do nothing, allow the player to stay in these cells
         } else {
             // Prevent the player from moving into the green bushes horizontally
-            if (x_coordinate == 0 || x_coordinate == Board.COLUMNS - 1){
+            if (x_coordinate == 0 || x_coordinate == Board.DIMENSIONS.get_columns() - 1){
                  // Revert to the previous valid position
                  if (x_coordinate == 0) {
                     x_coordinate = 1;
-                } else if (x_coordinate == Board.COLUMNS - 1) {
-                    x_coordinate = Board.COLUMNS - 2;
+                } else if (x_coordinate == Board.DIMENSIONS.get_columns() - 1) {
+                    x_coordinate = Board.DIMENSIONS.get_columns() - 2;
                 }
             }
 
             // Prevent the player from moving into the green bushes vertically
-            if (y_coordinate == 0 || y_coordinate == Board.ROWS - 1){
+            if (y_coordinate == 0 || y_coordinate == Board.DIMENSIONS.get_rows() - 1){
                 if (y_coordinate == 0) {
                     y_coordinate = 1;
-                } else if (y_coordinate == Board.ROWS - 1) {
-                    y_coordinate = Board.ROWS - 2;
+                } else if (y_coordinate == Board.DIMENSIONS.get_rows() - 1) {
+                    y_coordinate = Board.DIMENSIONS.get_rows() - 2;
                 }
             }
         }

@@ -1,23 +1,16 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.CardLayout;
-
-import javax.swing.JPanel;
-
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 
+import javax.swing.JPanel;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import java.io.IOException;
-
-import com.github.stefanbirkner.systemlambda.SystemLambda;
 
 //abstract class
 public class EntityTest {
@@ -101,8 +94,8 @@ public class EntityTest {
         // Verify that the drawImage method was called with the correct parameters
         Mockito.verify(mockGraphics).drawImage(
             Mockito.eq(entityCone.theImage),
-            Mockito.eq(entityCone.getX_coordinate() * Board.CELL_SIZE),
-            Mockito.eq(entityCone.getY_coordinate() * Board.CELL_SIZE),
+            Mockito.eq(entityCone.getX_coordinate() * Board.DIMENSIONS.get_cell_size()),
+            Mockito.eq(entityCone.getY_coordinate() * Board.DIMENSIONS.get_cell_size()),
             Mockito.eq(mockImageObserver)
         );
     }
