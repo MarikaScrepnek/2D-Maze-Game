@@ -1,16 +1,15 @@
 package com.sfuparkingmayhem.game;
 
+import java.awt.CardLayout;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-
-import java.awt.CardLayout;
-import javax.swing.JPanel;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,14 +23,14 @@ class MovingEntityTest {
     @BeforeEach
     void setUp() {
         board = new Board(cardLayout, cardPanel);
-        board.cones = new ArrayList<>();
-        board.parkedCars = new ArrayList<>();
+        board.entityLists.cones = new ArrayList<>();
+        board.entityLists.parkedCars = new ArrayList<>();
 
         // Add some cones and parked cars to the board
-        board.cones.add(new Cone(2, 3, board));
-        board.cones.add(new Cone(4, 5, board));
-        board.parkedCars.add(new ParkedCar(6, 7, board));
-        board.parkedCars.add(new ParkedCar(8, 9, board));
+        board.entityLists.cones.add(new Cone(2, 3, board));
+        board.entityLists.cones.add(new Cone(4, 5, board));
+        board.entityLists.parkedCars.add(new ParkedCar(6, 7, board));
+        board.entityLists.parkedCars.add(new ParkedCar(8, 9, board));
 
         // Create a concrete subclass of MovingEntity for testing
         movingEntity = new MovingEntity(0, 0, board) {
@@ -68,7 +67,7 @@ class MovingEntityTest {
 
     @Test 
     void testIsCollidingWithParkedCarEmpty() {
-        board.parkedCars.clear();
+        board.entityLists.parkedCars.clear();
         assertFalse(movingEntity.isCollidingWithParkedCar(6, 7)); // Does not collide
         assertFalse(movingEntity.isCollidingWithParkedCar(8, 9)); // Does not collide
     }

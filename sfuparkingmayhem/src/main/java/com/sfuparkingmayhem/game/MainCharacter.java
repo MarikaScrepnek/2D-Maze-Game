@@ -169,7 +169,7 @@ public class MainCharacter extends MovingEntity {
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     protected void collectCoins(){
-        Iterator<Coin> coinIterator = board.coins.iterator();
+        Iterator<Coin> coinIterator = board.entityLists.coins.iterator();
     
         while (coinIterator.hasNext()) {
             Coin aCoin = coinIterator.next();
@@ -190,7 +190,7 @@ public class MainCharacter extends MovingEntity {
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     protected void collectLostNote(){
-        Iterator<LostNote> iterator = board.ln.iterator();
+        Iterator<LostNote> iterator = board.entityLists.ln.iterator();
 
         while (iterator.hasNext()) {
             LostNote aLostNote = iterator.next();

@@ -1,17 +1,16 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.CardLayout;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 
 public class MainCharacterTest {
@@ -29,8 +28,8 @@ public class MainCharacterTest {
         board = new Board(cardLayout, cardPanel);
 
         // Clear obstacles
-        board.cones.clear();
-        board.parkedCars.clear();
+        board.entityLists.cones.clear();
+        board.entityLists.parkedCars.clear();
 
         // Create a main character at (1,2)
         mainChar = new MainCharacter(1, 2, board);
@@ -98,7 +97,7 @@ public class MainCharacterTest {
     public void moveMainCharacterUpwardIntoCone(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.cones.add(new Cone(5, 4, board));
+        board.entityLists.cones.add(new Cone(5, 4, board));
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
         
@@ -112,7 +111,7 @@ public class MainCharacterTest {
     public void moveMainCharacterUpwardIntoParkedCar(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.parkedCars.add(new ParkedCar(5, 4, board));
+        board.entityLists.parkedCars.add(new ParkedCar(5, 4, board));
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
 
@@ -157,7 +156,7 @@ public class MainCharacterTest {
     public void moveMainCharacterLeftIntoCone(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.cones.add(new Cone(4, 5, board));
+        board.entityLists.cones.add(new Cone(4, 5, board));
         KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
         mainChar.delayedMove(eventA);
 
@@ -171,7 +170,7 @@ public class MainCharacterTest {
     public void moveMainCharacterLeftIntoParkedCar(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.parkedCars.add(new ParkedCar(4, 5, board));
+        board.entityLists.parkedCars.add(new ParkedCar(4, 5, board));
         KeyEvent eventA = createKeyEvent(KeyEvent.VK_A, 'A');
         mainChar.delayedMove(eventA);
 
@@ -216,7 +215,7 @@ public class MainCharacterTest {
     public void moveMainCharacterRightIntoCone(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.cones.add(new Cone(6, 5, board));
+        board.entityLists.cones.add(new Cone(6, 5, board));
         KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
         mainChar.delayedMove(eventD);
 
@@ -230,7 +229,7 @@ public class MainCharacterTest {
     public void moveMainCharacterRightIntoParkedCar(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.parkedCars.add(new ParkedCar(6, 5, board));
+        board.entityLists.parkedCars.add(new ParkedCar(6, 5, board));
         KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
         mainChar.delayedMove(eventD);
 
@@ -275,7 +274,7 @@ public class MainCharacterTest {
     public void moveMainCharacterDownIntoCone(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.cones.add(new Cone(5, 6, board));
+        board.entityLists.cones.add(new Cone(5, 6, board));
         KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
         mainChar.delayedMove(eventS);
 
@@ -289,7 +288,7 @@ public class MainCharacterTest {
     public void moveMainCharacterDownIntoParkedCar(){
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
-        board.parkedCars.add(new ParkedCar(5, 6, board));
+        board.entityLists.parkedCars.add(new ParkedCar(5, 6, board));
         KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
         mainChar.delayedMove(eventS);
 
@@ -321,18 +320,18 @@ public class MainCharacterTest {
         mainChar.x_coordinate = 2;
         mainChar.y_coordinate = 3;
         
-        board.coins.clear();
+        board.entityLists.coins.clear();
         Coin coin1 = new Coin(2, 3, board);
         Coin coin2 = new Coin(4, 5, board);
-        board.coins.add(coin1);
-        board.coins.add(coin2);
+        board.entityLists.coins.add(coin1);
+        board.entityLists.coins.add(coin2);
         
         int initialScore = 0;
         int initialCount = 0;
         
         mainChar.collectCoins();
         
-        assertEquals(1, board.coins.size(), "Only one coin should remain after collection");
+        assertEquals(1, board.entityLists.coins.size(), "Only one coin should remain after collection");
         assertEquals(initialScore + 5, board.score.getScore(), "Score should increase by 5 after collecting a coin");
         
         int updatedCount = board.getCoinsCollectedCount();
@@ -344,10 +343,10 @@ public class MainCharacterTest {
         mainChar.x_coordinate = 3;
         mainChar.y_coordinate = 4;
 
-        board.ln = new ArrayList<>();
-        board.ln.clear();
+        board.entityLists.ln = new ArrayList<>();
+        board.entityLists.ln.clear();
         LostNote note = new LostNote(3, 4, board);
-        board.ln.add(note);
+        board.entityLists.ln.add(note);
 
         // Force note to be at (3, 4) instead of random position
         note.x_coordinate = 3;
@@ -357,7 +356,7 @@ public class MainCharacterTest {
         
         mainChar.collectLostNote();
         
-        assertEquals(0, board.ln.size(), "0 lost notes should remain after collection");
+        assertEquals(0, board.entityLists.ln.size(), "0 lost notes should remain after collection");
         assertEquals(initialScore + 10, board.score.getScore(), "Score should increase by 10 after collecting a lost note");
     }
 

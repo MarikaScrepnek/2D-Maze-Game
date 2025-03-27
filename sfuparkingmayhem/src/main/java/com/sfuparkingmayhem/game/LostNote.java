@@ -49,9 +49,9 @@ public class LostNote extends Reward {
     private void setLostNote() { 
         //boolean value needed for do-while loop
         boolean check;
-        ArrayList<Coin> coins = board.coins;
-        ArrayList<ParkedCar> parkedCars = board.parkedCars;
-        ArrayList<Cone> cones = board.cones;
+        ArrayList<Coin> coins = board.entityLists.coins;
+        ArrayList<ParkedCar> parkedCars = board.entityLists.parkedCars;
+        ArrayList<Cone> cones = board.entityLists.cones;
 
         do{
             generateCoords(); //generate random x and y coordinates

@@ -1,18 +1,17 @@
 package com.sfuparkingmayhem.game;
 
-import java.awt.event.KeyEvent;
-
 import java.awt.CardLayout;
+import java.awt.Point;
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.awt.Point;
-import java.util.ArrayList;
 
 public class ConcordOfficerTest {
 
@@ -29,17 +28,17 @@ public class ConcordOfficerTest {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         board = new Board(cardLayout, cardPanel);
-        board.cones = new ArrayList<>();
-        board.parkedCars = new ArrayList<>();
+        board.entityLists.cones = new ArrayList<>();
+        board.entityLists.parkedCars = new ArrayList<>();
 
         // Create a main character
         board.main_character = new MainCharacter(1,2,board);
 
         // Add some cones and parked cars to the board
-        board.cones.add(new Cone(2, 3, board));
-        board.cones.add(new Cone(4, 5, board));
-        board.parkedCars.add(new ParkedCar(6, 7, board));
-        board.parkedCars.add(new ParkedCar(8, 9, board));
+        board.entityLists.cones.add(new Cone(2, 3, board));
+        board.entityLists.cones.add(new Cone(4, 5, board));
+        board.entityLists.parkedCars.add(new ParkedCar(6, 7, board));
+        board.entityLists.parkedCars.add(new ParkedCar(8, 9, board));
 
         officer = new ConcordOfficer(1, 2, board); 
         board.officer = officer; 

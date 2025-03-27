@@ -27,7 +27,7 @@ public abstract class MovingEntity extends Entity {
      * @return true if the player is colliding with a cone, false otherwise.
      */
     protected boolean isCollidingWithCone(int x, int y) {
-        for (Cone cone : board.cones) {
+        for (Cone cone : board.entityLists.cones) {
             if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
                 return true;
             }
@@ -42,7 +42,7 @@ public abstract class MovingEntity extends Entity {
      * @return true if the player is colliding with a parked car, false otherwise.
      */
     protected boolean isCollidingWithParkedCar(int x, int y) {
-        for (ParkedCar parkedCar : board.parkedCars) {
+        for (ParkedCar parkedCar : board.entityLists.parkedCars) {
             if (parkedCar.getX_coordinate() == x && parkedCar.getY_coordinate() == y) {
                 return true;
             }

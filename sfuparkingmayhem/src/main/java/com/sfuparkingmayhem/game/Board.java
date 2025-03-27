@@ -11,8 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -71,22 +69,6 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Holds all arraylists of all entities on the board.
      */
     EntityLists entityLists = new EntityLists();
-    /**
-     * Arraylists holding all coins in the game.
-     */
-    ArrayList<Coin> coins = new ArrayList<>();
-    /**
-     * Arraylists holding all cones in the game.
-     */
-    ArrayList<Cone> cones = new ArrayList<>();
-    /**
-     * Arraylists holding all parked cars in the game.
-     */
-    ArrayList<ParkedCar> parkedCars = new ArrayList<>();
-    /**
-     * Arraylists holding all lost notes in the game.
-     */
-    List<LostNote> ln = new ArrayList<>(); 
 
     /**
      * variable to help display the number of coins collected by user
@@ -182,7 +164,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     protected void createCoins(){
         for (int i=0; i<10; i++) {
-            coins.add(new Coin(coin_coords[0][i], coin_coords[1][i], this));
+            entityLists.coins.add(new Coin(coin_coords[0][i], coin_coords[1][i], this));
         }
     }
 
@@ -191,7 +173,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCones(){
         for (int i=0; i<10; i++) {
-            cones.add(new Cone(cone_coords[0][i], cone_coords[1][i], this));
+            entityLists.cones.add(new Cone(cone_coords[0][i], cone_coords[1][i], this));
         }
     }
 
@@ -200,7 +182,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createParkedCars(){
         for (int i=0; i<10; i++) {
-            parkedCars.add(new ParkedCar(pc_coords[0][i], pc_coords[1][i], this));
+            entityLists.parkedCars.add(new ParkedCar(pc_coords[0][i], pc_coords[1][i], this));
         }
     }
 
@@ -210,13 +192,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createLostNote(){
         LostNote lostNote = new LostNote(0,0, this);
-        ln.add(lostNote);
+        entityLists.ln.add(lostNote);
         Timer lostNoteTimer = new Timer(7000, e -> {
-            if (!ln.isEmpty()) {
-                ln.remove(0);
+            if (!entityLists.ln.isEmpty()) {
+                entityLists.ln.remove(0);
             }
             LostNote newLostNote = new LostNote(0,0, this);
-            ln.add(newLostNote);
+            entityLists.ln.add(newLostNote);
         });
         lostNoteTimer.start();
     }
@@ -273,32 +255,32 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     private void drawCoins(Graphics g){
         //draw coins onto board
-        for (int i =0; i<coins.size(); i++){
-            Coin aCoin = coins.get(i);
+        for (int i =0; i<entityLists.coins.size(); i++){
+            Coin aCoin = entityLists.coins.get(i);
             aCoin.drawTheImage(g, this);
         }
     }
 
     private void drawCones(Graphics g){
         //draw cones onto board
-        for (int i =0; i<cones.size(); i++){
-        Cone aCone = cones.get(i);
+        for (int i =0; i<entityLists.cones.size(); i++){
+        Cone aCone = entityLists.cones.get(i);
         aCone.drawTheImage(g, this);
         }
     }
 
     private void drawParkedCars(Graphics g){
         //draw parked cars onto board
-        for (int i =0; i<parkedCars.size(); i++){
-            ParkedCar aParkedCar = parkedCars.get(i);
+        for (int i =0; i<entityLists.parkedCars.size(); i++){
+            ParkedCar aParkedCar = entityLists.parkedCars.get(i);
             aParkedCar.drawTheImage(g, this);
         }
     }
 
     private void drawLostNote(Graphics g){
         //draw lost note onto board
-        for (int i =0; i<ln.size(); i++){
-            LostNote aLostNote = ln.get(i);
+        for (int i =0; i<entityLists.ln.size(); i++){
+            LostNote aLostNote = entityLists.ln.get(i);
             aLostNote.drawTheImage(g, this);
         }
     }
@@ -365,14 +347,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void checkGameEnd() {
         if (main_character.getX_coordinate() == 14 && main_character.getY_coordinate() == 13) {
-            if (coins.isEmpty()) {
-            if (game_ended == false) {
-                int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
-                int finalScore = score.getScore(); // Assuming Score class has this method
-                WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
-                cardPanel.add(winScreen, "Win Screen");
-                cardLayout.show(cardPanel, "Win Screen");
-            }
+            if (entityLists.coins.isEmpty()) {
+                if (game_ended == false) {
+                    int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
+                    int finalScore = score.getScore(); // Assuming Score class has this method
+                    WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
+                    cardPanel.add(winScreen, "Win Screen");
+                    cardLayout.show(cardPanel, "Win Screen");
+                }
             game_ended = true;
         }
         }
@@ -414,13 +396,13 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             return true;
         }
         // Check for cones
-        for (Cone cone : cones) {
+        for (Cone cone : entityLists.cones) {
             if (cone.getX_coordinate() == x && cone.getY_coordinate() == y) {
                 return true;
             }
         }
         // Check for parked cars
-        for (ParkedCar pc : parkedCars) {
+        for (ParkedCar pc : entityLists.parkedCars) {
             if (pc.getX_coordinate() == x && pc.getY_coordinate() == y) {
                 return true;
             }
