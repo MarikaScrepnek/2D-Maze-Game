@@ -201,7 +201,7 @@ public class MainCharacterTest {
     public void moveMainCharacterRightIntoBush(){
         mainChar.x_coordinate = 13;
         mainChar.y_coordinate = 5;
-        KeyEvent eventD = createKeyEvent(KeyEvent.VK_A, 'D');
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
         mainChar.delayedMove(eventD);
 
         // Collision with bush should not change position.
@@ -216,7 +216,7 @@ public class MainCharacterTest {
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 5;
         board.cones.add(new Cone(6, 5, board));
-        KeyEvent eventD = createKeyEvent(KeyEvent.VK_A, 'D');
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
         mainChar.delayedMove(eventD);
 
         // Collision with cone should not change position.
@@ -227,7 +227,20 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterRightIntoParkedCar(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.parkedCars.add(new ParkedCar(6, 5, board));
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
+        mainChar.delayedMove(eventD);
 
+        // Collision with parked car should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+
+        // Score should now be -5 and game_ended should be set to true.
+        assertEquals(-5, board.score.getScore());
+        assertTrue(board.game_ended, "Game should end on collision with parked car.");
+        mainChar.keyReleased(eventD);
     }
 
     @Test
