@@ -77,7 +77,8 @@ public class EntityTest {
     //this test might allow us to get rid of the BarrierTest.java file
     @Test
     public void createBarrierEntity(){
-        
+        entityBarrier = new Barrier(10, 11, aBoard);
+        assertNotNull(entityBarrier);
     }
 
     
