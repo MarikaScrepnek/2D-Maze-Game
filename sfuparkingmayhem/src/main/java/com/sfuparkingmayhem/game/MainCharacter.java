@@ -172,10 +172,10 @@ public class MainCharacter extends MovingEntity {
         Iterator<Coin> coinIterator = board.entityLists.coins.iterator();
     
         while (coinIterator.hasNext()) {
+
             Coin aCoin = coinIterator.next();
             
-            if (board.main_character.getX_coordinate() == aCoin.getX_coordinate()
-                    && board.main_character.getY_coordinate() == aCoin.getY_coordinate()) {
+            if (board.main_character.getX_coordinate() == aCoin.getX_coordinate() && board.main_character.getY_coordinate() == aCoin.getY_coordinate()) {
                 
                 coinIterator.remove();
                 board.score.addPoints(5);
