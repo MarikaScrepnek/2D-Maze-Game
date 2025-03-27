@@ -595,4 +595,27 @@ public class MainCharacterTest {
         mainChar.keyReleased(eventS);
     }
 
+    @Test
+    public void testCheckCollisionCar(){
+    
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 6;
+
+        // Collect coin to get score to 5
+        board.entityLists.coins.clear();
+        Coin coin = new Coin(5, 6, board);
+        board.entityLists.coins.add(coin);
+        mainChar.collectCoins();
+
+
+        board.entityLists.parkedCars.add(new ParkedCar(5, 5, board));
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        mainChar.delayedMove(eventW);
+        mainChar.tick();
+
+        // Position should not change
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(6, mainChar.getY_coordinate());
+    }
+
 }
