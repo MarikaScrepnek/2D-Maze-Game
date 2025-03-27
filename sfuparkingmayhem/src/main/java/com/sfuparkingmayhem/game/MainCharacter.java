@@ -31,7 +31,7 @@ public class MainCharacter extends MovingEntity {
      * Moves the MainCharacter in the direction of the key pressed on the keyboard.
      * @param e
      */
-    private void eventMove(KeyEvent e){
+    private void changeImageDirection(KeyEvent e){
         if (e.getKeyCode() == KeyEvent.VK_W) {
             y_coordinate = y_coordinate - 1;
             getImage("main_character_north.png");
@@ -64,7 +64,6 @@ public class MainCharacter extends MovingEntity {
         
         int oldX = getX_coordinate();
         int oldY = getY_coordinate();
-        //move(e);
 
         //Prevent movement out of the entrance cell
         if (x_coordinate == 0 && y_coordinate == 1) {
@@ -79,8 +78,7 @@ public class MainCharacter extends MovingEntity {
                 return;
             }
         }      
-        eventMove(event);
-
+        changeImageDirection(event);
         checkCollision(oldX, oldY);
     }
 
@@ -106,7 +104,6 @@ public class MainCharacter extends MovingEntity {
             x_coordinate = oldX;
             y_coordinate = oldY;
         }
-        
     }
 
     /**
