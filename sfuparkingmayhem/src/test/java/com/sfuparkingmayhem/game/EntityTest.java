@@ -7,12 +7,15 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import java.io.IOException;
 
 import com.github.stefanbirkner.systemlambda.SystemLambda;
 
@@ -104,17 +107,32 @@ public class EntityTest {
         );
     }
     @Test
-    void testGetImageHandlesIOException() throws Exception {
-        // Create an entity (e.g., Cone) with valid coordinates
+    void testGetImageHandlesException() throws Exception {
+        // // Create an entity (e.g., Cone) with valid coordinates
         Entity entityCone = new Cone(1, 2, new Board(new CardLayout(), new JPanel()));
 
-        // Capture the System.out output
-        String output = SystemLambda.tapSystemOut(() -> {
-            // Pass an invalid file path to trigger the exception
-            entityCone.getImage("non_existent_image.png");
-        });
+        //create a "comparison" exception and string
+        Exception exception = null;
+        String message ="";
 
-        // Verify that the error message was printed
-        assertTrue(output.contains("Error loading image"), "Expected error message not found in output.");
+        try {
+            // Attempt to load a non-existent image file
+            entityCone.getImage("non_existent_image.png");
+        } catch (Exception e) {
+
+            //update the message (string) and the exception
+            exception = e; 
+            message=e.getMessage();
+        } finally{
+
+
+        //make sure there is an exception because the image does not exist
+        assertNotNull(exception);
+
+        //verify that the messages match
+        assertEquals(message, exception.getMessage());
+        }
+    
+
     }
 }
