@@ -316,32 +316,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void drawBoardBackground(Graphics g) {
         Barrier barrier = new Barrier(0, 0, this);
-        //top
-        for (int col = 1; col < COLUMNS; col++) {
-            g.drawImage(barrier.theImage, col * CELL_SIZE, 0, 50, 50, null);
-        }
+        barrier.draw(ROWS, COLUMNS, CELL_SIZE, g);
 
-        // Bottom border
-        for (int col = 0; col < COLUMNS; col++) {
-            g.drawImage(barrier.theImage, col * CELL_SIZE, (ROWS - 1) * CELL_SIZE, 50, 50, null);
-        }
+        drawParkingSign(g);
 
-        // Left border
-        for (int row = 0; row < ROWS; row++) {
-            g.drawImage(barrier.theImage, 0, row * CELL_SIZE, 50, 50, null);
-        }
+        drawTicketBooth(g);
+    }
 
-        // Right border
-        for (int row = 0; row < ROWS; row++) {
-            g.drawImage(barrier.theImage, (COLUMNS - 1) * CELL_SIZE, row * CELL_SIZE, 50, 50, null);
-        }
-
-        //draw entrance
-        g.setColor(new Color(43, 43, 43));
-        g.fillRect(0, CELL_SIZE, CELL_SIZE, CELL_SIZE);
-        g.fillRect((COLUMNS - 1) * CELL_SIZE, (ROWS - 2) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-
-        //draw parking entrance
+    private void drawParkingSign(Graphics g) {
         Image parkingSign=null;
         try {
             parkingSign = ImageIO.read(getClass().getClassLoader().getResourceAsStream("parkingSign.png"));
@@ -349,8 +331,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             System.out.println(e.getMessage());
         }
         g.drawImage(parkingSign, 0,0,50,50,null);
+    }
 
-        //draw ticketbooth
+    private void drawTicketBooth(Graphics g) {
         Image ticketBooth=null;
         try {
             ticketBooth = ImageIO.read(getClass().getClassLoader().getResourceAsStream("ticketBooth.png"));
