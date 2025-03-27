@@ -11,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.awt.event.KeyEvent;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.awt.Point;
+import java.util.ArrayList;
 
 
 public class MainCharacterTest {
@@ -332,7 +331,7 @@ public class MainCharacterTest {
         mainChar.x_coordinate = 3;
         mainChar.y_coordinate = 4;
 
-        board.ln = new CopyOnWriteArrayList<>();
+        board.ln = new ArrayList<>();
         board.ln.clear();
         LostNote note = new LostNote(3, 4, board);
         board.ln.add(note);
@@ -347,7 +346,6 @@ public class MainCharacterTest {
         
         assertEquals(0, board.ln.size(), "0 lost notes should remain after collection");
         assertEquals(initialScore + 10, board.score.getScore(), "Score should increase by 10 after collecting a lost note");
-
     }
 
     @Test
