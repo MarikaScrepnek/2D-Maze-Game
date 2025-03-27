@@ -121,6 +121,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Array holding the coordinates for parked cars.
      */
     private int[][] pc_coords = {{2, 6, 8, 12, 12, 3, 4, 4, 8, 9}, {2, 5, 5, 6, 7, 7, 11, 12, 11, 11}};
+
+    /**
+     * All of the coordinates on the board for each entity
+     */
+    private EntityCoordinates EntCoords = new EntityCoordinates();
     
     /**
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
@@ -182,7 +187,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     protected void createCoins(){
         for (int i=0; i<10; i++) {
-            coins.add(new Coin(coin_coords[0][i], coin_coords[1][i], this));
+            coins.add(new Coin(EntCoords.coin_coords[0][i], EntCoords.coin_coords[1][i], this));
         }
     }
 
@@ -191,7 +196,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCones(){
         for (int i=0; i<10; i++) {
-            cones.add(new Cone(cone_coords[0][i], cone_coords[1][i], this));
+            cones.add(new Cone(EntCoords.cone_coords[0][i], EntCoords.cone_coords[1][i], this));
         }
     }
 
@@ -200,7 +205,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createParkedCars(){
         for (int i=0; i<10; i++) {
-            parkedCars.add(new ParkedCar(pc_coords[0][i], pc_coords[1][i], this));
+            parkedCars.add(new ParkedCar(EntCoords.pc_coords[0][i], EntCoords.pc_coords[1][i], this));
         }
     }
 
