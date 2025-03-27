@@ -1,6 +1,6 @@
 package com.sfuparkingmayhem.game;
 
-public class EntityCoordinates {
+public class EntityCoordinates  {
 
     
     
