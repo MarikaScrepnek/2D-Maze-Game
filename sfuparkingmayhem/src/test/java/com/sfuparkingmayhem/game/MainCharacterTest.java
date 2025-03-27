@@ -340,6 +340,27 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void testDontCollectCoins(){
+        mainChar.x_coordinate = 2;
+        mainChar.y_coordinate = 3;
+        
+        board.coins.clear();
+        Coin coin1 = new Coin(2, 5, board);
+        board.coins.add(coin1);
+        
+        int initialScore = 0;
+        int initialCount = 0;
+        
+        mainChar.collectCoins();
+        
+        assertEquals(1, board.coins.size(), "Only one coin should remain after collection");
+        assertEquals(initialScore, board.score.getScore(), "Score should not increase after collecting a coin");
+        
+        int updatedCount = board.getCoinsCollectedCount();
+        assertEquals(initialCount, updatedCount, "coinsCollectedCount should not be incremented");
+    }
+
+    @Test
     public void testCollectLostNote() {
         mainChar.x_coordinate = 3;
         mainChar.y_coordinate = 4;
