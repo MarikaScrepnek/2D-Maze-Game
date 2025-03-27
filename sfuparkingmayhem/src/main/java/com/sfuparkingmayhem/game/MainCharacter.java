@@ -170,13 +170,12 @@ public class MainCharacter extends MovingEntity {
         while (coinIterator.hasNext()) {
             Coin aCoin = coinIterator.next();
             
-            // Remove the coin if it shares the same position as the main character
             if (board.main_character.getX_coordinate() == aCoin.getX_coordinate()
                     && board.main_character.getY_coordinate() == aCoin.getY_coordinate()) {
                 
-                coinIterator.remove();  // Safe removal
-                board.score.addPoints(5);  // Add points to the score
-                board.updateCoinsCollectedCount();  // Update the count of collected coins
+                coinIterator.remove();
+                board.score.addPoints(5);
+                board.updateCoinsCollectedCount();
             }
         }
     }
@@ -187,10 +186,13 @@ public class MainCharacter extends MovingEntity {
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     protected void collectLostNote(){
-        for (LostNote aLostNote : board.ln){
+        Iterator<LostNote> iterator = board.ln.iterator();
+
+        while (iterator.hasNext()) {
+            LostNote aLostNote = iterator.next();
             if (getX_coordinate() == aLostNote.getX_coordinate()
-                    && getY_coordinate() == aLostNote.getY_coordinate()){
-                board.ln.remove(aLostNote);
+                    && getY_coordinate() == aLostNote.getY_coordinate()) {
+                iterator.remove();
                 board.score.addPoints(10);
             }
         }
