@@ -90,19 +90,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     JPanel cardPanel;
 
     /**
-     * Array holding the coordinates for coins.
+     * All of the coordinates on the board for each entity
      */
-    private int[][] coin_coords = {{2, 7, 10, 7, 3, 11, 6, 12, 9, 3}, {3, 2, 4, 5, 8, 8, 9, 11, 12, 13}};
-
-    /**
-     * Array holding the coordinates for cones.
-     */
-    private int[][] cone_coords = {{4, 11, 12, 4, 9, 6, 12, 2, 10, 7}, {3, 3, 3, 5, 7, 8,9, 10, 10, 13}};
-
-    /**
-     * Array holding the coordinates for parked cars.
-     */
-    private int[][] pc_coords = {{2, 6, 8, 12, 12, 3, 4, 4, 8, 9}, {2, 5, 5, 6, 7, 7, 11, 12, 11, 11}};
+    private EntityCoordinates EntCoords = new EntityCoordinates();
     
     /**
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
@@ -164,7 +154,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     protected void createCoins(){
         for (int i=0; i<10; i++) {
-            entityLists.coins.add(new Coin(coin_coords[0][i], coin_coords[1][i], this));
+            coins.add(new Coin(EntCoords.coin_coords[0][i], EntCoords.coin_coords[1][i], this));
         }
     }
 
@@ -173,7 +163,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createCones(){
         for (int i=0; i<10; i++) {
-            entityLists.cones.add(new Cone(cone_coords[0][i], cone_coords[1][i], this));
+            cones.add(new Cone(EntCoords.cone_coords[0][i], EntCoords.cone_coords[1][i], this));
         }
     }
 
@@ -182,7 +172,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void createParkedCars(){
         for (int i=0; i<10; i++) {
-            entityLists.parkedCars.add(new ParkedCar(pc_coords[0][i], pc_coords[1][i], this));
+            parkedCars.add(new ParkedCar(EntCoords.pc_coords[0][i], EntCoords.pc_coords[1][i], this));
         }
     }
 
