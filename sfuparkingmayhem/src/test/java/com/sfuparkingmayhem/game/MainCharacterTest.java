@@ -186,7 +186,15 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterRight(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventD = createKeyEvent(KeyEvent.VK_D, 'D');
+        mainChar.delayedMove(eventD);
 
+        // X coordinate should increase by 1
+        assertEquals(6, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventD);
     }
 
     @Test
