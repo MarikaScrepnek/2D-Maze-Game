@@ -439,5 +439,15 @@ public class MainCharacterTest {
         assertEquals(1, mainChar.getY_coordinate());
     }
 
+    @Test
+    public void testMainCharacterOutOfRightBound(){
+        mainChar.x_coordinate = 15;
+        mainChar.y_coordinate = 13;
+        mainChar.tick();
+
+        // X coordinate should revert to 14
+        assertEquals(14, mainChar.getX_coordinate());
+        assertEquals(13, mainChar.getY_coordinate());
+    }
 
 }
