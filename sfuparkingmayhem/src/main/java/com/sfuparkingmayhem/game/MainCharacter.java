@@ -1,6 +1,7 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 
 /**
  * This MainCharacter class extends MovingEntity class and contains the following
@@ -164,15 +165,18 @@ public class MainCharacter extends MovingEntity {
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     protected void collectCoins(){
-        for (Coin aCoin : board.coins){
+        Iterator<Coin> coinIterator = board.coins.iterator();
+    
+        while (coinIterator.hasNext()) {
+            Coin aCoin = coinIterator.next();
             
-            //remove the coin from arraylist if this coin and MainCharacter have same board position
+            // Remove the coin if it shares the same position as the main character
             if (board.main_character.getX_coordinate() == aCoin.getX_coordinate()
-                    && board.main_character.getY_coordinate() == aCoin.getY_coordinate()){
-
-                board.coins.remove(aCoin);
-                board.score.addPoints(5);
-                board.updateCoinsCollectedCount();
+                    && board.main_character.getY_coordinate() == aCoin.getY_coordinate()) {
+                
+                coinIterator.remove();  // Safe removal
+                board.score.addPoints(5);  // Add points to the score
+                board.updateCoinsCollectedCount();  // Update the count of collected coins
             }
         }
     }
