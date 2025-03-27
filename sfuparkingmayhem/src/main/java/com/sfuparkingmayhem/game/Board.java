@@ -316,30 +316,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void drawBoardBackground(Graphics g) {
         Barrier barrier = new Barrier(0, 0, this);
-        //top
-        for (int col = 1; col < COLUMNS; col++) {
-            g.drawImage(barrier.theImage, col * CELL_SIZE, 0, 50, 50, null);
-        }
-
-        // Bottom border
-        for (int col = 0; col < COLUMNS; col++) {
-            g.drawImage(barrier.theImage, col * CELL_SIZE, (ROWS - 1) * CELL_SIZE, 50, 50, null);
-        }
-
-        // Left border
-        for (int row = 0; row < ROWS; row++) {
-            g.drawImage(barrier.theImage, 0, row * CELL_SIZE, 50, 50, null);
-        }
-
-        // Right border
-        for (int row = 0; row < ROWS; row++) {
-            g.drawImage(barrier.theImage, (COLUMNS - 1) * CELL_SIZE, row * CELL_SIZE, 50, 50, null);
-        }
-
-        //draw entrance
-        g.setColor(new Color(43, 43, 43));
-        g.fillRect(0, CELL_SIZE, CELL_SIZE, CELL_SIZE);
-        g.fillRect((COLUMNS - 1) * CELL_SIZE, (ROWS - 2) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        barrier.draw(ROWS, COLUMNS, CELL_SIZE, g);
 
         //draw parking entrance
         Image parkingSign=null;
