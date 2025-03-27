@@ -33,21 +33,25 @@ public class MainCharacter extends MovingEntity {
      * @param e
      */
     private void changeImageDirection(KeyEvent e){
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            y_coordinate = y_coordinate - 1;
-            getImage("main_character_north.png");
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_A) {
-            x_coordinate = x_coordinate - 1;
-            getImage("main_character_west.png");
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_S) {
-            y_coordinate = y_coordinate + 1;
-            getImage("main_character_south.png");
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_D) {
-            x_coordinate = x_coordinate + 1;
-            getImage("main_character_east.png");
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_W -> {
+                y_coordinate = y_coordinate - 1;
+                getImage("main_character_north.png");
+            }
+            case KeyEvent.VK_A -> {
+                x_coordinate = x_coordinate - 1;
+                getImage("main_character_west.png");
+            }
+            case KeyEvent.VK_S -> {
+                y_coordinate = y_coordinate + 1;
+                getImage("main_character_south.png");
+            }
+            case KeyEvent.VK_D -> {
+                x_coordinate = x_coordinate + 1;
+                getImage("main_character_east.png");
+            }
+            default -> {
+            }
         }
     }
 
