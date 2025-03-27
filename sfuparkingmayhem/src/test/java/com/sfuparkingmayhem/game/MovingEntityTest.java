@@ -21,7 +21,7 @@ class MovingEntityTest {
     private JPanel cardPanel;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         board = new Board(cardLayout, cardPanel);
         board.entityLists.cones = new ArrayList<>();
         board.entityLists.parkedCars = new ArrayList<>();
