@@ -581,4 +581,18 @@ public class MainCharacterTest {
         mainChar.keyReleased(eventW);
     }
 
+    @Test
+    public void testDelayedMoveExitCell(){
+        mainChar.x_coordinate = 14;
+        mainChar.y_coordinate = 12;
+        KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
+        mainChar.delayedMove(eventS);
+        mainChar.tick();
+
+        // Y coordinate should not change
+        assertEquals(14, mainChar.getX_coordinate());
+        assertEquals(13, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventS);
+    }
+
 }
