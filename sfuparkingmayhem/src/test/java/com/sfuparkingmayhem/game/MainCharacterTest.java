@@ -68,7 +68,14 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterUpwardIntoBush(){
-
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 1;
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        mainChar.delayedMove(eventW);
+        mainChar.tick();
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(1, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventW);
     }
 
     @Test
