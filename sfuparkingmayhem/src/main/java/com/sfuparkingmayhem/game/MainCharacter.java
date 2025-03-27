@@ -1,6 +1,7 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 
 /**
  * This MainCharacter class extends MovingEntity class and contains the following
@@ -32,21 +33,25 @@ public class MainCharacter extends MovingEntity {
      * @param e
      */
     private void changeImageDirection(KeyEvent e){
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            y_coordinate = y_coordinate - 1;
-            getImage("main_character_north.png");
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_A) {
-            x_coordinate = x_coordinate - 1;
-            getImage("main_character_west.png");
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_S) {
-            y_coordinate = y_coordinate + 1;
-            getImage("main_character_south.png");
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_D) {
-            x_coordinate = x_coordinate + 1;
-            getImage("main_character_east.png");
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_W -> {
+                y_coordinate = y_coordinate - 1;
+                getImage("main_character_north.png");
+            }
+            case KeyEvent.VK_A -> {
+                x_coordinate = x_coordinate - 1;
+                getImage("main_character_west.png");
+            }
+            case KeyEvent.VK_S -> {
+                y_coordinate = y_coordinate + 1;
+                getImage("main_character_south.png");
+            }
+            case KeyEvent.VK_D -> {
+                x_coordinate = x_coordinate + 1;
+                getImage("main_character_east.png");
+            }
+            default -> {
+            }
         }
     }
 
@@ -164,13 +169,15 @@ public class MainCharacter extends MovingEntity {
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     protected void collectCoins(){
-        for (Coin aCoin : board.coins){
+        Iterator<Coin> coinIterator = board.coins.iterator();
+    
+        while (coinIterator.hasNext()) {
+            Coin aCoin = coinIterator.next();
             
-            //remove the coin from arraylist if this coin and MainCharacter have same board position
             if (board.main_character.getX_coordinate() == aCoin.getX_coordinate()
-                    && board.main_character.getY_coordinate() == aCoin.getY_coordinate()){
-
-                board.coins.remove(aCoin);
+                    && board.main_character.getY_coordinate() == aCoin.getY_coordinate()) {
+                
+                coinIterator.remove();
                 board.score.addPoints(5);
                 board.updateCoinsCollectedCount();
             }
@@ -183,10 +190,13 @@ public class MainCharacter extends MovingEntity {
      * and removing (deleting) from same ArrayList, which is not allowed.
      */
     protected void collectLostNote(){
-        for (LostNote aLostNote : board.ln){
+        Iterator<LostNote> iterator = board.ln.iterator();
+
+        while (iterator.hasNext()) {
+            LostNote aLostNote = iterator.next();
             if (getX_coordinate() == aLostNote.getX_coordinate()
-                    && getY_coordinate() == aLostNote.getY_coordinate()){
-                board.ln.remove(aLostNote);
+                    && getY_coordinate() == aLostNote.getY_coordinate()) {
+                iterator.remove();
                 board.score.addPoints(10);
             }
         }
