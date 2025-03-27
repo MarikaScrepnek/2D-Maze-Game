@@ -3,8 +3,6 @@ package com.sfuparkingmayhem.game;
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-
-import java.awt.Color;
 import java.awt.Graphics;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -12,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 public class BarrierTest {
 
