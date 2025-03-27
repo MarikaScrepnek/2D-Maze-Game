@@ -383,6 +383,28 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void testDontCollectLostNoteY(){
+        mainChar.x_coordinate = 3;
+        mainChar.y_coordinate = 4;
+
+        board.ln = new ArrayList<>();
+        board.ln.clear();
+        LostNote note = new LostNote(3, 5, board);
+        board.ln.add(note);
+
+        // Force note to be at (3, 5) instead of random position
+        note.x_coordinate = 3;
+        note.y_coordinate = 5;
+        
+        int initialScore = 0;
+        
+        mainChar.collectLostNote();
+        
+        assertEquals(1, board.ln.size(), "1 lost note should remain after collection");
+        assertEquals(initialScore, board.score.getScore(), "Score should not increase after collecting a lost note");
+    }
+
+    @Test
     public void moveMainCharacterUpwardOutOfEntranceCell(){
         mainChar.x_coordinate = 0;
         mainChar.y_coordinate = 1;
