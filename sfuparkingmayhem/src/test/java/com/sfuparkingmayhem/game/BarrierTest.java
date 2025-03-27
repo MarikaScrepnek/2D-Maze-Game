@@ -35,4 +35,15 @@ public class BarrierTest {
     public void testBarrierConstruction() {
         assertNotNull(barrier, "Barrier should not be null after setup.");
     }
+    @Test
+    void testDraw() {
+        int ROWS = 10;
+        int COLUMNS = 10;
+        int CELL_SIZE = 50;
+
+        // Create a mock Graphics object (you may need to use a mocking library like Mockito)
+        Graphics g = mock(Graphics.class); 
+
+        barrier.draw(ROWS, COLUMNS, CELL_SIZE, g);
+    }
 }
