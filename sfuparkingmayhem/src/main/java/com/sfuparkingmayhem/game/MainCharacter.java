@@ -27,59 +27,25 @@ public class MainCharacter extends MovingEntity {
         getImage("main_character_east.png");
     }
 
-
     /**
-     * decrements this main character's y_coordinate on board and loads north facing png onto board
-     * 
-     * @param e a Keyevent that will be checked if it corresponds to the W key being pressed by user
+     * Moves the MainCharacter in the direction of the key pressed on the keyboard.
+     * @param e
      */
-    private void eventMoveUp(KeyEvent e){
-        if (e.getKeyCode() == KeyEvent.VK_W ){
+    private void eventMove(KeyEvent e){
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             y_coordinate = y_coordinate - 1;
-
-            //load up orientation sprite
             getImage("main_character_north.png");
         }
-    }
-
-    /**
-     * decrements this main character's x_coordinate on board and loads west facing png onto board
-     * 
-     * @param e a Keyevent that will be checked if it corresponds to the A key being pressed by user
-     */
-    private void eventMoveLeft(KeyEvent e){
-        if (e.getKeyCode() == KeyEvent.VK_A ){
+        else if (e.getKeyCode() == KeyEvent.VK_A) {
             x_coordinate = x_coordinate - 1;
-
-            //load up orientation sprite
             getImage("main_character_west.png");
         }
-    }
-
-    /**
-     * increments this main character's y_coordinate on board and loads south facing png onto board
-     * 
-     * @param e a Keyevent that will be checked if it corresponds to the S key being pressed by user
-     */
-    private void eventMoveDown(KeyEvent e){  
-        if (e.getKeyCode() == KeyEvent.VK_S ){
+        else if (e.getKeyCode() == KeyEvent.VK_S) {
             y_coordinate = y_coordinate + 1;
-
-            //load up orientation sprite
-            getImage("main_character_south.png");  
+            getImage("main_character_south.png");
         }
-    }
-
-    /**
-     * increments this main character's x_coordinate on board and loads east facing png onto board
-     * 
-     * @param e a Keyevent that will be checked if it corresponds to the D key being pressed by user
-     */
-    private void eventMoveRight(KeyEvent e){
-        if (e.getKeyCode() == KeyEvent.VK_D ){
+        else if (e.getKeyCode() == KeyEvent.VK_D) {
             x_coordinate = x_coordinate + 1;
-
-            //load up orientation sprite
             getImage("main_character_east.png");
         }
     }
@@ -157,11 +123,7 @@ public class MainCharacter extends MovingEntity {
                 return;
             }
         }        
-        
-        eventMoveUp(event);
-        eventMoveLeft(event);
-        eventMoveDown(event);
-        eventMoveRight(event);
+        eventMove(event);
     }
 
     /**
