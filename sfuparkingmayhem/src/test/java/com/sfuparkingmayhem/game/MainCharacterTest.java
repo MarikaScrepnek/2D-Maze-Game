@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.awt.event.KeyEvent;
@@ -28,7 +30,7 @@ public class MainCharacterTest {
         // Clear obstacles
         board.cones.clear();
         board.parkedCars.clear();
-        
+
         // Create a main character at (1,2)
         mainChar = new MainCharacter(1, 2, board);
         board.main_character = mainChar;
@@ -84,6 +86,7 @@ public class MainCharacterTest {
         mainChar.delayedMove(eventW);
         mainChar.tick();
 
+        // Collision with bush should not change position.
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(1, mainChar.getY_coordinate());
         mainChar.keyReleased(eventW);
@@ -97,6 +100,7 @@ public class MainCharacterTest {
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
         
+        // Collision with cone should not change position.
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(5, mainChar.getY_coordinate());
         mainChar.keyReleased(eventW);
@@ -104,7 +108,20 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterUpwardIntoParkedCar(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.parkedCars.add(new ParkedCar(5, 4, board));
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        mainChar.delayedMove(eventW);
 
+        // Collision with parked car should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        
+        // Score should now be -5 and game_ended should be set to true.
+        assertEquals(-5, board.score.getScore());
+        assertTrue(board.game_ended, "Game should end when score falls below 0 after collision with a parked car.");
+        mainChar.keyReleased(eventW);
     }
 
     @Test
