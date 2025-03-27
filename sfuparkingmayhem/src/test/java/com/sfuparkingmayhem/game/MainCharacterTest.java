@@ -350,4 +350,17 @@ public class MainCharacterTest {
 
     }
 
+    @Test
+    public void moveMainCharacterUpwardOutOfEntranceCell(){
+        mainChar.x_coordinate = 0;
+        mainChar.y_coordinate = 1;
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        mainChar.delayedMove(eventW);
+
+        // Y coordinate should not change
+        assertEquals(0, mainChar.getX_coordinate());
+        assertEquals(1, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventW);
+    }
+
 }
