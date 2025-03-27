@@ -262,19 +262,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         checkGameEnd();
         
 
-        // //draw coins onto board
-        // for (int i =0; i<coins.size(); i++){
-        //     Coin aCoin = coins.get(i);
-        //     aCoin.drawTheImage(g, this);
-        // }
         drawCoins (g);
         
-        //draw cones onto board
-        for (int i =0; i<cones.size(); i++){
-            Cone aCone = cones.get(i);
-            aCone.drawTheImage(g, this);
-        }
-
+        drawCones(g);
         //draw parked cars onto board
         for (int i =0; i<parkedCars.size(); i++){
             ParkedCar aParkedCar = parkedCars.get(i);
@@ -298,6 +288,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (int i =0; i<coins.size(); i++){
             Coin aCoin = coins.get(i);
             aCoin.drawTheImage(g, this);
+        }
+    }
+
+    private void drawCones(Graphics g){
+        //draw cones onto board
+        for (int i =0; i<cones.size(); i++){
+        Cone aCone = cones.get(i);
+        aCone.drawTheImage(g, this);
         }
     }
 
