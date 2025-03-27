@@ -64,7 +64,8 @@ public class EntityTest {
 
     @Test
     public void createLostNoteEntity(){
-        
+        entityLostNote = new LostNote(6, 7, aBoard);
+        assertNotNull(entityLostNote);
     }
 
     @Test
