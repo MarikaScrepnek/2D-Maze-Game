@@ -286,7 +286,20 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterDownIntoParkedCar(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.parkedCars.add(new ParkedCar(5, 6, board));
+        KeyEvent eventS = createKeyEvent(KeyEvent.VK_S, 'S');
+        mainChar.delayedMove(eventS);
 
+        // Collision with parked car should not change position.
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+
+        // Score should now be -5 and game_ended should be set to true.
+        assertEquals(-5, board.score.getScore());
+        assertTrue(board.game_ended, "Game should end on collision with parked car.");
+        mainChar.keyReleased(eventS);
     }
 
 }
