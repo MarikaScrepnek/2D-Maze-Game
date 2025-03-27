@@ -607,7 +607,6 @@ public class MainCharacterTest {
         board.entityLists.coins.add(coin);
         mainChar.collectCoins();
 
-
         board.entityLists.parkedCars.add(new ParkedCar(5, 5, board));
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
@@ -616,6 +615,24 @@ public class MainCharacterTest {
         // Position should not change
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(6, mainChar.getY_coordinate());
+    }
+
+    @Test
+    public void testCheckCollisionCarGameEnded(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 6;
+
+
+        board.entityLists.parkedCars.add(new ParkedCar(5, 5, board));
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        board.game_ended = true;
+        mainChar.delayedMove(eventW);
+        mainChar.tick();
+
+        // Position should not change
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(6, mainChar.getY_coordinate());
+
     }
 
 }
