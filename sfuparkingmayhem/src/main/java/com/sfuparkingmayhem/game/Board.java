@@ -379,7 +379,8 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * 
+     * Method that checks if the player has collected all coins and is on the end tile.
+     * If the player is it displays the win screen and ends the game.
      */
     private void checkGameEnd() {
         if (main_character.getX_coordinate() == 14 && main_character.getY_coordinate() == 13) {
