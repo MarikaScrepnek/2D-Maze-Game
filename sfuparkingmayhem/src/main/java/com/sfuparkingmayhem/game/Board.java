@@ -68,6 +68,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     protected Score score;
     
     /**
+     * Holds all arraylists of all entities on the board.
+     */
+    EntityLists entityLists = new EntityLists();
+    /**
      * Arraylists holding all coins in the game.
      */
     ArrayList<Coin> coins = new ArrayList<>();
