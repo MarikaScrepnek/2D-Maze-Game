@@ -386,6 +386,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             if (coins.isEmpty()) {
             int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
             int finalScore = score.getScore(); // Assuming Score class has this method
+            game_ended = true;
 
             WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
             cardPanel.add(winScreen, "Win Screen");
