@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -89,7 +90,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     /**
      * Arraylists holding all lost notes in the game.
      */
-    ArrayList<LostNote> ln = new ArrayList<>(); 
+    List<LostNote> ln = new ArrayList<>(); 
 
     /**
      * variable to help display the number of coins collected by user
@@ -363,6 +364,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
     protected void updateCoinsCollectedCount() {
         coinsCollectedCount++;
+    }
+
+    public int getCoinsCollectedCount() {
+        return coinsCollectedCount;
     }
 
     /**
