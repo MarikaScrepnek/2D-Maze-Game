@@ -110,6 +110,21 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * The JPanel that holds the game screens.
      */
     JPanel cardPanel;
+
+    /**
+     * Array holding the coordinates for coins.
+     */
+    private int[][] coin_coords = {{2, 7, 10, 7, 3, 11, 6, 12, 9, 3}, {3, 2, 4, 5, 8, 8, 9, 11, 12, 13}};
+
+    /**
+     * Array holding the coordinates for cones.
+     */
+    private int[][] cone_coords = {{4, 11, 12, 4, 9, 6, 12, 2, 10, 7}, {3, 3, 3, 5, 7, 8,9, 10, 10, 13}};
+
+    /**
+     * Array holding the coordinates for parked cars.
+     */
+    private int[][] pc_coords = {{2, 6, 8, 12, 12, 3, 4, 4, 8, 9}, {2, 5, 5, 6, 7, 7, 11, 12, 11, 11}};
     
     /**
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
@@ -170,48 +185,27 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates coins and adds them to the coins arraylist
      */
     protected void createCoins(){
-        coins.add(new Coin(2,3, this));
-        coins.add(new Coin(7,2, this));
-        coins.add(new Coin(10,4, this));
-        coins.add(new Coin(7,5, this));
-        coins.add(new Coin(3,8, this));
-        coins.add(new Coin(11,8, this));
-        coins.add(new Coin(6,9, this));
-        coins.add(new Coin(12,11, this));
-        coins.add(new Coin(9,12, this));
-        coins.add(new Coin(3,13, this));
+        for (int i=0; i<10; i++) {
+            coins.add(new Coin(coin_coords[0][i], coin_coords[1][i], this));
+        }
     }
 
     /**
      * Creates cones and adds them to the cones arraylist
      */
     private void createCones(){
-        cones.add(new Cone(4,3, this));
-        cones.add(new Cone(11,3, this));
-        cones.add(new Cone(12,3, this));
-        cones.add(new Cone(4,5, this));
-        cones.add(new Cone(9,7, this));
-        cones.add(new Cone(6,8, this));
-        cones.add(new Cone(12,9, this));
-        cones.add(new Cone(2,10, this));
-        cones.add(new Cone(10,10, this));
-        cones.add(new Cone(7,13, this));
+        for (int i=0; i<10; i++) {
+            cones.add(new Cone(cone_coords[0][i], cone_coords[1][i], this));
+        }
     }
 
     /**
      * Creates parked cars and adds them to the parkedCars arraylist
      */
     private void createParkedCars(){
-        parkedCars.add(new ParkedCar(2, 2, this));
-        parkedCars.add(new ParkedCar(6, 5, this));
-        parkedCars.add(new ParkedCar(8, 5, this));
-        parkedCars.add(new ParkedCar(12, 6, this));
-        parkedCars.add(new ParkedCar(12, 7, this));
-        parkedCars.add(new ParkedCar(3, 7, this));
-        parkedCars.add(new ParkedCar(4, 11, this));
-        parkedCars.add(new ParkedCar(4, 12, this));
-        parkedCars.add(new ParkedCar(8, 11, this));
-        parkedCars.add(new ParkedCar(9, 11, this));
+        for (int i=0; i<10; i++) {
+            parkedCars.add(new ParkedCar(pc_coords[0][i], pc_coords[1][i], this));
+        }
     }
 
     /**
@@ -268,35 +262,52 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         checkGameEnd();
         
 
-        //draw coins onto board
-        for (int i =0; i<coins.size(); i++){
-            Coin aCoin = coins.get(i);
-            aCoin.drawTheImage(g, this);
-        }
+        drawCoins (g);
         
-        //draw cones onto board
-        for (int i =0; i<cones.size(); i++){
-            Cone aCone = cones.get(i);
-            aCone.drawTheImage(g, this);
-        }
+        drawCones(g);
 
-        //draw parked cars onto board
-        for (int i =0; i<parkedCars.size(); i++){
-            ParkedCar aParkedCar = parkedCars.get(i);
-            aParkedCar.drawTheImage(g, this);
-        }
+        drawParkedCars(g);
 
-        //draw lost note onto board
-        for (int i =0; i<ln.size(); i++){
-            LostNote aLostNote = ln.get(i);
-            aLostNote.drawTheImage(g, this);
-        }
+        drawLostNote(g);
 
         score.draw(g);
         gameTimer.draw(g);
         drawCoinsCollected(g);
 
     }
+
+    private void drawCoins(Graphics g){
+        //draw coins onto board
+        for (int i =0; i<coins.size(); i++){
+            Coin aCoin = coins.get(i);
+            aCoin.drawTheImage(g, this);
+        }
+    }
+
+    private void drawCones(Graphics g){
+        //draw cones onto board
+        for (int i =0; i<cones.size(); i++){
+        Cone aCone = cones.get(i);
+        aCone.drawTheImage(g, this);
+        }
+    }
+
+    private void drawParkedCars(Graphics g){
+        //draw parked cars onto board
+        for (int i =0; i<parkedCars.size(); i++){
+            ParkedCar aParkedCar = parkedCars.get(i);
+            aParkedCar.drawTheImage(g, this);
+        }
+    }
+
+    private void drawLostNote(Graphics g){
+        //draw lost note onto board
+        for (int i =0; i<ln.size(); i++){
+            LostNote aLostNote = ln.get(i);
+            aLostNote.drawTheImage(g, this);
+        }
+    }
+
 
     /**
      * Draws the game board and the boarder.
@@ -371,13 +382,15 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     }
 
     /**
-     * 
+     * Method that checks if the player has collected all coins and is on the end tile.
+     * If the player is it displays the win screen and ends the game.
      */
     private void checkGameEnd() {
         if (main_character.getX_coordinate() == 14 && main_character.getY_coordinate() == 13) {
             if (coins.isEmpty()) {
             int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
             int finalScore = score.getScore(); // Assuming Score class has this method
+            game_ended = true;
 
             WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
             cardPanel.add(winScreen, "Win Screen");
