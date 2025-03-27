@@ -320,14 +320,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         drawParkingSign(g);
 
-        //draw ticketbooth
-        Image ticketBooth=null;
-        try {
-            ticketBooth = ImageIO.read(getClass().getClassLoader().getResourceAsStream("ticketBooth.png"));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
+        drawTicketBooth(g);
     }
 
     private void drawParkingSign(Graphics g) {
@@ -338,6 +331,16 @@ public class Board extends JPanel implements ActionListener, KeyListener{
             System.out.println(e.getMessage());
         }
         g.drawImage(parkingSign, 0,0,50,50,null);
+    }
+
+    private void drawTicketBooth(Graphics g) {
+        Image ticketBooth=null;
+        try {
+            ticketBooth = ImageIO.read(getClass().getClassLoader().getResourceAsStream("ticketBooth.png"));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        g.drawImage(ticketBooth, 14*CELL_SIZE,12*CELL_SIZE,50,50,null);
     }
 
     /**
