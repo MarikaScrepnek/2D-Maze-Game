@@ -4,15 +4,17 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
-import java.awt.event.KeyEvent;
-
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import com.github.stefanbirkner.systemlambda.SystemLambda;
 
 //abstract class
 public class EntityTest {
@@ -30,11 +32,9 @@ public class EntityTest {
 
     @BeforeEach
     public void setUp(){
-
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         aBoard = new Board(cardLayout, cardPanel);
-        
     }
 
     @Test
@@ -45,11 +45,7 @@ public class EntityTest {
 
     @Test
     public void createConcordOfficerEntity(){
-        entityOfficer = new ConcordOfficer(1,2,aBoard){
-            @Override
-            protected void delayedMove(KeyEvent event) {
-            }
-        };
+        entityOfficer = new ConcordOfficer(1,2,aBoard);
         assertNotNull(entityOfficer);
 
     }
@@ -106,5 +102,19 @@ public class EntityTest {
             Mockito.eq(entityCone.getY_coordinate() * Board.CELL_SIZE),
             Mockito.eq(mockImageObserver)
         );
+    }
+    @Test
+    void testGetImageHandlesIOException() throws Exception {
+        // Create an entity (e.g., Cone) with valid coordinates
+        Entity entityCone = new Cone(1, 2, new Board(new CardLayout(), new JPanel()));
+
+        // Capture the System.out output
+        String output = SystemLambda.tapSystemOut(() -> {
+            // Pass an invalid file path to trigger the exception
+            entityCone.getImage("non_existent_image.png");
+        });
+
+        // Verify that the error message was printed
+        assertTrue(output.contains("Error loading image"), "Expected error message not found in output.");
     }
 }
