@@ -1,5 +1,7 @@
 package com.sfuparkingmayhem.game;
 
-public class Dimensions {
+public class EntityCoordinates {
+
+    
     
 }
