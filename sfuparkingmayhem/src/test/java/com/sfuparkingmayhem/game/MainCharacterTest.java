@@ -427,4 +427,17 @@ public class MainCharacterTest {
         assertEquals(13, mainChar.getY_coordinate());
         mainChar.keyReleased(eventA);
     }
+
+    @Test
+    public void testMainCharacterOutOfLeftBound(){
+        mainChar.x_coordinate = -1;
+        mainChar.y_coordinate = 1;
+        mainChar.tick();
+
+        // X coordinate should revert to 0
+        assertEquals(0, mainChar.getX_coordinate());
+        assertEquals(1, mainChar.getY_coordinate());
+    }
+
+
 }
