@@ -47,20 +47,6 @@ public class ConcordOfficer extends MovingEntity{
 
             this.delayedMove(null);  // Call move() without KeyEvent
 
-            /* // Check if the officer is colliding with a cone or parked car
-            if (isCollidingWithCone(this.getX_coordinate(), this.getY_coordinate()) ||
-                isCollidingWithParkedCar(this.getX_coordinate(), this.getY_coordinate())) {
-                this.x_coordinate = oldX;
-                this.y_coordinate = oldY;
-            }
-
-            //check if officer and mainCharacter are colliding, if so, game has ended
-            if (this.board.officer.getX_coordinate() == this.board.main_character.getX_coordinate() 
-                && this.board.officer.getY_coordinate() == this.board.main_character.getY_coordinate() && this.board.game_ended == false) {
-                this.board.game_ended = true;
-                this.board.cardLayout.show(this.board.cardPanel, "Lose Screen Concord");
-            } */
-
             officerCollision(oldX, oldY); // Check for collision with cones or parked cars
 
             this.board.repaint();  // Refresh the screen
