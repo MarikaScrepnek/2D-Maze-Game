@@ -365,6 +365,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coinsCollectedCount++;
     }
 
+    public int getCoinsCollectedCount() {
+        return coinsCollectedCount;
+    }
+
     /**
      * 
      */
