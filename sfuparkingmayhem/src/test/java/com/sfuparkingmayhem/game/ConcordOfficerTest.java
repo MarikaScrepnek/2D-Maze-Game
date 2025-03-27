@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class ConcordOfficerTest {
@@ -41,11 +41,8 @@ public class ConcordOfficerTest {
         board.parkedCars.add(new ParkedCar(6, 7, board));
         board.parkedCars.add(new ParkedCar(8, 9, board));
 
-        officer = new ConcordOfficer(1,2,board){
-            @Override
-            protected void delayedMove(KeyEvent event) {
-            }
-        };
+        officer = new ConcordOfficer(1, 2, board); 
+        board.officer = officer; 
         
     }
 
@@ -168,15 +165,24 @@ public class ConcordOfficerTest {
     
     @Test
     public void testOfficerDelayedMoveUp() {
-        board.officer.x_coordinate = 5;
-        board.officer.y_coordinate = 6;
-        board.main_character.x_coordinate = 5;
-        board.main_character.y_coordinate = 5;
+        ConcordOfficer officer = new ConcordOfficer(3, 4, board) {
+            @Override
+            public java.util.List<Point> findPathDijkstra(int startX, int startY, int endX, int endY) {
+                // Force a path that moves up
+                java.util.List<Point> path = new ArrayList<>();
+                path.add(new Point(3, 4)); // current position
+                path.add(new Point(3, 3)); // next position (up)
+                return path;
+            }
+        };
+        board.officer = officer;
     
-        board.officer.delayedMove(null);
+        // Run the move logic
+        officer.delayedMove(null);
     
-        assertEquals(5, board.officer.getX_coordinate());
-        assertEquals(5, board.officer.getY_coordinate());
+        // Officer should have moved up
+        assertEquals(3, officer.getX_coordinate());
+        assertEquals(3, officer.getY_coordinate());
     }
     
 }   
