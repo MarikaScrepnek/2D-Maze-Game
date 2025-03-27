@@ -15,18 +15,27 @@ public class MainCharacterTest {
 
 
     MainCharacter mainChar;
-    Board aBoard;
+    Board board;
     CardLayout cardLayout;
     JPanel cardPanel;
 
     @BeforeEach
     public void setUp() {
-            
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
-        aBoard = new Board(cardLayout, cardPanel);
+        board = new Board(cardLayout, cardPanel);
 
-        mainChar = new MainCharacter(1, 2, aBoard);
+        // Clear obstacles
+        board.cones.clear();
+        board.parkedCars.clear();
+        
+        // Create a main character at (1,2)
+        mainChar = new MainCharacter(1, 2, board);
+        board.main_character = mainChar;
+
+        // Reset score and game_ended for collision tests.
+        board.score.reset();
+        board.game_ended = false;
     }
 
     private KeyEvent createKeyEvent(int keyCode, char keyChar) {
@@ -61,6 +70,7 @@ public class MainCharacterTest {
         mainChar.y_coordinate = 5;
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
+
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(4, mainChar.getY_coordinate());
         mainChar.keyReleased(eventW);
@@ -73,6 +83,7 @@ public class MainCharacterTest {
         KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
         mainChar.delayedMove(eventW);
         mainChar.tick();
+
         assertEquals(5, mainChar.getX_coordinate());
         assertEquals(1, mainChar.getY_coordinate());
         mainChar.keyReleased(eventW);
@@ -80,7 +91,15 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterUpwardIntoCone(){
-
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        board.cones.add(new Cone(5, 4, board));
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        mainChar.delayedMove(eventW);
+        
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventW);
     }
 
     @Test
