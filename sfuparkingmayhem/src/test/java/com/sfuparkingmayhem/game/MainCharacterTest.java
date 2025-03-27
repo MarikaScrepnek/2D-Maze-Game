@@ -597,7 +597,6 @@ public class MainCharacterTest {
 
     @Test
     public void testCheckCollisionCar(){
-    
         mainChar.x_coordinate = 5;
         mainChar.y_coordinate = 6;
 
@@ -634,5 +633,4 @@ public class MainCharacterTest {
         assertEquals(6, mainChar.getY_coordinate());
 
     }
-
 }
