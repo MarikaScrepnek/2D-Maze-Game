@@ -6,9 +6,13 @@ import javax.swing.JPanel;
 
 import java.awt.event.KeyEvent;
 
+import java.awt.Graphics;
+import java.awt.image.ImageObserver;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 //abstract class
 public class EntityTest {
@@ -74,12 +78,33 @@ public class EntityTest {
         assertNotNull(entityParkedCar);
     }
 
-    //this test might allow us to get rid of the BarrierTest.java file
     @Test
     public void createBarrierEntity(){
         entityBarrier = new Barrier(10, 11, aBoard);
         assertNotNull(entityBarrier);
     }
 
-    
+    @Test
+    void testDrawEntity(){
+        // Create a mock Graphics object
+        Graphics mockGraphics = Mockito.mock(Graphics.class);
+
+        // Create a mock ImageObserver object
+        ImageObserver mockImageObserver = Mockito.mock(ImageObserver.class);
+
+        // Create an entity and set its image
+        entityCone = new Cone(1, 2, aBoard);
+        entityCone.getImage("cone.png");
+
+        // Call the drawTheImage method
+        entityCone.drawTheImage(mockGraphics, mockImageObserver);
+
+        // Verify that the drawImage method was called with the correct parameters
+        Mockito.verify(mockGraphics).drawImage(
+            Mockito.eq(entityCone.theImage),
+            Mockito.eq(entityCone.getX_coordinate() * Board.CELL_SIZE),
+            Mockito.eq(entityCone.getY_coordinate() * Board.CELL_SIZE),
+            Mockito.eq(mockImageObserver)
+        );
+    }
 }
