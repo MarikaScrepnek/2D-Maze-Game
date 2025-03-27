@@ -57,6 +57,13 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterUpward(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+        mainChar.delayedMove(eventW);
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(4, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventW);
     }
 
     @Test
