@@ -52,7 +52,8 @@ public class EntityTest {
 
     @Test
     public void createConeEntity(){
-        
+        entityCone = new Cone(2, 3, aBoard);
+        assertNotNull(entityCone);
     }
 
     @Test
