@@ -4,6 +4,8 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
+import java.awt.event.KeyEvent;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,6 +41,12 @@ public class EntityTest {
 
     @Test
     public void createConcordOfficerEntity(){
+        entityOfficer = new ConcordOfficer(1,2,aBoard){
+            @Override
+            protected void delayedMove(KeyEvent event) {
+            }
+        };
+        assertNotNull(entityOfficer);
 
     }
 
