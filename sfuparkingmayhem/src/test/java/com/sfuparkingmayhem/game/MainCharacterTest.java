@@ -472,4 +472,24 @@ public class MainCharacterTest {
         assertEquals(13, mainChar.getY_coordinate());
     }
 
+    @Test
+    public void testKeyHeldDown(){
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent eventW = createKeyEvent(KeyEvent.VK_W, 'W');
+
+        mainChar.delayedMove(eventW);
+
+        // Y coordinate should decrease by 1
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(4, mainChar.getY_coordinate());
+
+        mainChar.delayedMove(eventW);
+
+        // Y coordinate should stay the same
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(4, mainChar.getY_coordinate());
+        mainChar.keyReleased(eventW);
+    }
+
 }
