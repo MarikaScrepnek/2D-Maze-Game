@@ -339,6 +339,27 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void testDontCollectCoins(){
+        mainChar.x_coordinate = 2;
+        mainChar.y_coordinate = 3;
+        
+        board.coins.clear();
+        Coin coin1 = new Coin(2, 5, board);
+        board.coins.add(coin1);
+        
+        int initialScore = 0;
+        int initialCount = 0;
+        
+        mainChar.collectCoins();
+        
+        assertEquals(1, board.coins.size(), "Only one coin should remain after collection");
+        assertEquals(initialScore, board.score.getScore(), "Score should not increase after collecting a coin");
+        
+        int updatedCount = board.getCoinsCollectedCount();
+        assertEquals(initialCount, updatedCount, "coinsCollectedCount should not be incremented");
+    }
+
+    @Test
     public void testCollectLostNote() {
         mainChar.x_coordinate = 3;
         mainChar.y_coordinate = 4;
@@ -358,6 +379,50 @@ public class MainCharacterTest {
         
         assertEquals(0, board.entityLists.ln.size(), "0 lost notes should remain after collection");
         assertEquals(initialScore + 10, board.score.getScore(), "Score should increase by 10 after collecting a lost note");
+    }
+
+    @Test
+    public void testDontCollectLostNoteY(){
+        mainChar.x_coordinate = 3;
+        mainChar.y_coordinate = 4;
+
+        board.ln = new ArrayList<>();
+        board.ln.clear();
+        LostNote note = new LostNote(3, 5, board);
+        board.ln.add(note);
+
+        // Force note to be at (3, 5) instead of random position
+        note.x_coordinate = 3;
+        note.y_coordinate = 5;
+        
+        int initialScore = 0;
+        
+        mainChar.collectLostNote();
+        
+        assertEquals(1, board.ln.size(), "1 lost note should remain after collection");
+        assertEquals(initialScore, board.score.getScore(), "Score should not increase after collecting a lost note");
+    }
+
+    @Test
+    public void testDontCollectLostNoteX(){
+        mainChar.x_coordinate = 3;
+        mainChar.y_coordinate = 4;
+
+        board.ln = new ArrayList<>();
+        board.ln.clear();
+        LostNote note = new LostNote(4, 4, board);
+        board.ln.add(note);
+
+        // Force note to be at (4, 4) instead of random position
+        note.x_coordinate = 4;
+        note.y_coordinate = 4;
+        
+        int initialScore = 0;
+        
+        mainChar.collectLostNote();
+        
+        assertEquals(1, board.ln.size(), "1 lost note should remain after collection");
+        assertEquals(initialScore, board.score.getScore(), "Score should not increase after collecting a lost note");
     }
 
     @Test
