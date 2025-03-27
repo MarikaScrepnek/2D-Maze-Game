@@ -50,14 +50,13 @@ public class MainCharacter extends MovingEntity {
         }
     }
 
-
     /**
      * Makes sure you cant hold down move key.
      * 
      * @param e The event of the key press.
      */
     @Override
-    public void delayedMove(KeyEvent e) {
+    public void delayedMove(KeyEvent event) {
         if (key_pressed) {
             return; // Ignore if key is still held down
         }
@@ -65,51 +64,8 @@ public class MainCharacter extends MovingEntity {
         
         int oldX = getX_coordinate();
         int oldY = getY_coordinate();
-        move(e);
+        //move(e);
 
-        // Check if the player is colliding with a cone
-        if (isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
-            // revert the player position
-            x_coordinate = oldX;
-            y_coordinate  = oldY;
-        }
-
-        // Check if the player is colliding with a parked car
-        if(isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
-            // Subtract points from the player's score
-            if(oldX != getX_coordinate() || oldY != getY_coordinate()){
-                board.score.subtractPoints(5);
-                board.flashRed();
-                if(board.score.getScore() < 0 && board.game_ended == false){
-                    board.game_ended=true;
-                    board.cardLayout.show(board.cardPanel, "Lose Screen Score");
-                }
-            }
-
-            // revert the player position
-            x_coordinate = oldX;
-            y_coordinate = oldY;
-        }
-    }
-
-    /**
-     * Resets key_pressed flag when a key is released.
-     */
-    public void keyReleased(KeyEvent e) {
-        key_pressed = false; // Allow movement again when the key is released
-    }
-
-   
-    /**
-     * Moves the MainCharacter in the direction of the key pressed on the keyboard.
-     * If the key pressed is W, the MainCharacter moves up.
-     * If the key pressed is A, the MainCharacter moves left.
-     * If the key pressed is S, the MainCharacter moves down.
-     * If the key pressed is D, the MainCharacter moves right.
-     *
-     * @param event KeyEvent object that represents the key pressed on the keyboard
-     */
-    protected void move (KeyEvent event){
         //Prevent movement out of the entrance cell
         if (x_coordinate == 0 && y_coordinate == 1) {
             if (event.getKeyCode() == KeyEvent.VK_W || event.getKeyCode() == KeyEvent.VK_S) {
@@ -122,8 +78,42 @@ public class MainCharacter extends MovingEntity {
             if (event.getKeyCode() == KeyEvent.VK_W || event.getKeyCode() == KeyEvent.VK_S) {
                 return;
             }
-        }        
+        }      
         eventMove(event);
+
+        checkCollision(oldX, oldY);
+    }
+
+    private void checkCollision(int oldX, int oldY){
+        // Check if the player is colliding with a cone
+        if (isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
+            // revert the player position
+            x_coordinate = oldX;
+            y_coordinate  = oldY;
+        }
+        // Check if the player is colliding with a parked car
+        if(isCollidingWithParkedCar(getX_coordinate(), getY_coordinate())){
+            // Subtract points from the player's score
+            if(oldX != getX_coordinate() || oldY != getY_coordinate()){
+                board.score.subtractPoints(5);
+                board.flashRed();
+                if(board.score.getScore() < 0 && board.game_ended == false){
+                    board.game_ended=true;
+                    board.cardLayout.show(board.cardPanel, "Lose Screen Score");
+                }
+            }
+            // revert the player position
+            x_coordinate = oldX;
+            y_coordinate = oldY;
+        }
+        
+    }
+
+    /**
+     * Resets key_pressed flag when a key is released.
+     */
+    public void keyReleased(KeyEvent e) {
+        key_pressed = false; // Allow movement again when the key is released
     }
 
     /**
