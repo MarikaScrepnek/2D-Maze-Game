@@ -75,7 +75,7 @@ public abstract class Entity {
      * @param io helps monitor the image being loaded for this Entity
      */
     protected void drawTheImage(Graphics graphics, ImageObserver io) {
-        graphics.drawImage(theImage, this.x_coordinate*Board.CELL_SIZE, this.y_coordinate*Board.CELL_SIZE, io);
+        graphics.drawImage(theImage, this.x_coordinate*Board.DIMENSIONS.get_cell_size(), this.y_coordinate*Board.DIMENSIONS.get_cell_size(), io);
     }
 
 

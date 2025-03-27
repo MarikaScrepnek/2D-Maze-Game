@@ -11,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.awt.event.KeyEvent;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.awt.Point;
+import java.util.ArrayList;
 
 
 public class MainCharacterTest {
@@ -305,6 +304,19 @@ public class MainCharacterTest {
     }
 
     @Test
+    public void testRandomKeyPress() {
+        mainChar.x_coordinate = 5;
+        mainChar.y_coordinate = 5;
+        KeyEvent event = createKeyEvent(KeyEvent.VK_X, 'X');
+        mainChar.delayedMove(event);
+
+        // Position should not change
+        assertEquals(5, mainChar.getX_coordinate());
+        assertEquals(5, mainChar.getY_coordinate());
+        mainChar.keyReleased(event);
+    }
+
+    @Test
     public void testCollectCoins() {
         mainChar.x_coordinate = 2;
         mainChar.y_coordinate = 3;
@@ -332,7 +344,7 @@ public class MainCharacterTest {
         mainChar.x_coordinate = 3;
         mainChar.y_coordinate = 4;
 
-        board.ln = new CopyOnWriteArrayList<>();
+        board.ln = new ArrayList<>();
         board.ln.clear();
         LostNote note = new LostNote(3, 4, board);
         board.ln.add(note);
@@ -347,7 +359,6 @@ public class MainCharacterTest {
         
         assertEquals(0, board.ln.size(), "0 lost notes should remain after collection");
         assertEquals(initialScore + 10, board.score.getScore(), "Score should increase by 10 after collecting a lost note");
-
     }
 
     @Test
