@@ -268,12 +268,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         drawParkedCars(g);
 
-
-        //draw lost note onto board
-        for (int i =0; i<ln.size(); i++){
-            LostNote aLostNote = ln.get(i);
-            aLostNote.drawTheImage(g, this);
-        }
+        drawLostNote(g);
 
         score.draw(g);
         gameTimer.draw(g);
@@ -302,6 +297,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         for (int i =0; i<parkedCars.size(); i++){
             ParkedCar aParkedCar = parkedCars.get(i);
             aParkedCar.drawTheImage(g, this);
+        }
+    }
+
+    private void drawLostNote(Graphics g){
+        //draw lost note onto board
+        for (int i =0; i<ln.size(); i++){
+            LostNote aLostNote = ln.get(i);
+            aLostNote.drawTheImage(g, this);
         }
     }
 
