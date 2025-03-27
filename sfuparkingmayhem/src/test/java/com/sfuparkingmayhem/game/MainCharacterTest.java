@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.awt.event.KeyEvent;
 
 
 public class MainCharacterTest {
@@ -26,6 +27,10 @@ public class MainCharacterTest {
         aBoard = new Board(cardLayout, cardPanel);
 
         mainChar = new MainCharacter(1, 2, aBoard);
+    }
+
+    private KeyEvent createKeyEvent(int keyCode, char keyChar) {
+        return new KeyEvent(new JPanel(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, keyCode, keyChar);
     }
 
     @Test
@@ -52,7 +57,6 @@ public class MainCharacterTest {
 
     @Test
     public void moveMainCharacterUpward(){
-
     }
 
     @Test
