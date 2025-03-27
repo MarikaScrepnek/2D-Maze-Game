@@ -237,6 +237,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
         // prevent the player from disapearing off the board
         main_character.tick();
+        checkGameEnd();
 
         repaint();
     }
@@ -258,9 +259,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
 
 
         main_character.collectCoins();
-        main_character.collectLostNote();
-        checkGameEnd();
-        
+        main_character.collectLostNote();        
 
         drawCoins (g);
         
@@ -388,13 +387,14 @@ public class Board extends JPanel implements ActionListener, KeyListener{
     private void checkGameEnd() {
         if (main_character.getX_coordinate() == 14 && main_character.getY_coordinate() == 13) {
             if (coins.isEmpty()) {
-            int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
-            int finalScore = score.getScore(); // Assuming Score class has this method
+            if (game_ended == false) {
+                int finalTime = gameTimer.getTimeElapsed(); // Implement a method to track time
+                int finalScore = score.getScore(); // Assuming Score class has this method
+                WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
+                cardPanel.add(winScreen, "Win Screen");
+                cardLayout.show(cardPanel, "Win Screen");
+            }
             game_ended = true;
-
-            WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
-            cardPanel.add(winScreen, "Win Screen");
-            cardLayout.show(cardPanel, "Win Screen");
         }
         }
     }
