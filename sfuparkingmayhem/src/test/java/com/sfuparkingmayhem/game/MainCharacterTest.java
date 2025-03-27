@@ -461,5 +461,15 @@ public class MainCharacterTest {
         assertEquals(1, mainChar.getY_coordinate());
     }
 
-    
+    @Test
+    public void testMainCharacterOutOfLowerBound(){
+        mainChar.x_coordinate = 1;
+        mainChar.y_coordinate = 15;
+        mainChar.tick();
+
+        // Y coordinate should revert to 13
+        assertEquals(1, mainChar.getX_coordinate());
+        assertEquals(13, mainChar.getY_coordinate());
+    }
+
 }
