@@ -110,6 +110,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * The JPanel that holds the game screens.
      */
     JPanel cardPanel;
+
+    /**
+     * Array holding the coordinates for coins.
+     */
+    private int[][] coin_coords = {{2, 7, 10, 7, 3, 11, 6, 12, 9, 3}, {3, 2, 4, 5, 8, 8, 9, 11, 12, 13}};
     
     /**
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
@@ -170,7 +175,10 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates coins and adds them to the coins arraylist
      */
     protected void createCoins(){
-        coins.add(new Coin(2,3, this));
+        for (int i=0; i<10; i++) {
+            coins.add(new Coin(coin_coords[0][i], coin_coords[1][i], this));
+        }
+        /*coins.add(new Coin(2,3, this));
         coins.add(new Coin(7,2, this));
         coins.add(new Coin(10,4, this));
         coins.add(new Coin(7,5, this));
@@ -179,7 +187,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coins.add(new Coin(6,9, this));
         coins.add(new Coin(12,11, this));
         coins.add(new Coin(9,12, this));
-        coins.add(new Coin(3,13, this));
+        coins.add(new Coin(3,13, this));*/
     }
 
     /**
