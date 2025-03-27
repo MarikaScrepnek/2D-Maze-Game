@@ -120,6 +120,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Array holding the coordinates for cones.
      */
     private int[][] cone_coords = {{4, 11, 12, 4, 9, 6, 12, 2, 10, 7}, {3, 3, 3, 5, 7, 8,9, 10, 10, 13}};
+
+    /**
+     * Array holding the coordinates for parked cars.
+     */
+    private int[][] pc_coords = {{2, 6, 8, 12, 12, 3, 4, 4, 8, 9}, {2, 5, 5, 6, 7, 7, 11, 12, 11, 11}};
     
     /**
      * Constructs a Board object. Uses methods to populate this Board with a score, static entities
@@ -198,16 +203,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      * Creates parked cars and adds them to the parkedCars arraylist
      */
     private void createParkedCars(){
-        parkedCars.add(new ParkedCar(2, 2, this));
-        parkedCars.add(new ParkedCar(6, 5, this));
-        parkedCars.add(new ParkedCar(8, 5, this));
-        parkedCars.add(new ParkedCar(12, 6, this));
-        parkedCars.add(new ParkedCar(12, 7, this));
-        parkedCars.add(new ParkedCar(3, 7, this));
-        parkedCars.add(new ParkedCar(4, 11, this));
-        parkedCars.add(new ParkedCar(4, 12, this));
-        parkedCars.add(new ParkedCar(8, 11, this));
-        parkedCars.add(new ParkedCar(9, 11, this));
+        for (int i=0; i<10; i++) {
+            parkedCars.add(new ParkedCar(pc_coords[0][i], pc_coords[1][i], this));
+        }
     }
 
     /**
