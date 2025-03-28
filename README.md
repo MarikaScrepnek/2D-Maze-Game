@@ -20,7 +20,7 @@ Ensure you have the following installed:
     - Copy and paste the command below into your desired IDE terminal
     - `git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git`
 2. Build the Project:
-    - Using maven copy and paste the command below
+    - Using maven, copy and paste the command below
     - `mvn clean package`
     - This will compile the project
 
