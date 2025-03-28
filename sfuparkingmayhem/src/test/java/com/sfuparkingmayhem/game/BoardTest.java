@@ -50,14 +50,14 @@ public class BoardTest {
         assertEquals(1, board.entityLists.ln.size());
     }
 
-    /*@Test 
+    @Test 
     void testLostNoteTimer() throws InterruptedException {
         int initialSize = board.entityLists.ln.size();
 
-        Thread.sleep(7000);
+        Thread.sleep(10000);
 
         assertEquals(initialSize, board.entityLists.ln.size()); 
-    }*/
+    }
     
     @Test
     void testLostNoteAdd() {
