@@ -8,10 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.sfuparkingmayhem.screen.Screen;
 import com.sfuparkingmayhem.screen.WinScreen;
 
 public class WinScreenTest {
-    WinScreen winScreen;
+    Screen winScreen;
 
     CardLayout cardLayout;
     JPanel cardPanel;
