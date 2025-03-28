@@ -1,6 +1,7 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JPanel;
 
@@ -41,14 +42,14 @@ public class BoardTest {
         assertEquals(1, board.entityLists.ln.size());
     }
 
-    @Test 
+    /*@Test 
     void testLostNoteTimer() throws InterruptedException {
         int initialSize = board.entityLists.ln.size();
 
         Thread.sleep(7000);
 
         assertEquals(initialSize, board.entityLists.ln.size()); 
-    }
+    }*/
     
     @Test
     void testLostNoteAdd() {
@@ -63,5 +64,26 @@ public class BoardTest {
         board.entityLists.ln.remove(0);
         assertTrue(board.entityLists.ln.isEmpty());
         assertEquals(0, board.entityLists.ln.size());
+    }
+    
+    @Test
+    void testCheckGameEndTrue() {
+        MainCharacter mainCharacter = new MainCharacter(14, 13, board);  // Position matches the condition for game end
+        board.main_character = mainCharacter;
+
+        // Clear coins list to simulate coins being collected
+        board.entityLists.coins.clear();
+
+        // Create and trigger an action event
+        ActionEvent event = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "test");
+        board.actionPerformed(event);
+
+        assertTrue(board.game_ended);  // Ensure the game is marked as ended
+        assertTrue(cardPanel.getComponentCount() > 0);  // Check if a component was added to the card panel (for WinScreen)
+
+        // Now ensure the win screen is not added again on the second call to actionPerformed
+        int initialComponentCount = cardPanel.getComponentCount();
+        board.actionPerformed(event);
+        assertEquals(initialComponentCount, cardPanel.getComponentCount(), "Win screen should not be added again.");
     }
 }

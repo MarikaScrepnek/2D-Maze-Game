@@ -344,9 +344,9 @@ public class Board extends JPanel implements ActionListener, KeyListener{
                     WinScreen winScreen = new WinScreen(cardLayout, cardPanel, finalScore, finalTime);
                     cardPanel.add(winScreen, "Win Screen");
                     cardLayout.show(cardPanel, "Win Screen");
+                    game_ended = true;
                 }
-            game_ended = true;
-        }
+            }
         }
     }
 
