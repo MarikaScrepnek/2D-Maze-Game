@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,11 @@ public class BoardTest {
         assertNotNull(board, "Board should not be null after setup.");
     }
 
+    @Test
+    void testLostNoteInitial() {
+        assertEquals(1, board.entityLists.ln.size());
+    }
+
     @Test 
     void testLostNoteTimer() throws InterruptedException {
         int initialSize = board.entityLists.ln.size();
@@ -43,5 +49,12 @@ public class BoardTest {
         assertEquals(initialSize, board.entityLists.ln.size()); 
     }
     
-    
+    @Test
+    void testLostNoteRemoval() {
+        board.entityLists.ln.add(new LostNote(1,3, board));
+
+        assertFalse(board.entityLists.ln.isEmpty());
+
+        assertEquals(2, board.entityLists.ln.size());
+    }
 }
