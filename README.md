@@ -3,6 +3,7 @@
 </h1>
 
 <p align="center">
+  <img width="745" alt="Screenshot 2025-03-28 at 1 39 13 PM" src="https://media.github.sfu.ca/user/3707/files/101805c9-d102-486f-92b2-6d428fdce11a">
   <img width="747" alt="Screenshot 2025-03-23 at 10 43 40 PM" src="https://media.github.sfu.ca/user/3707/files/2436dd54-6d90-43ec-8f5b-a6937b3f7ba0">
 </p>
   
