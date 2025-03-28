@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,11 +51,17 @@ public class BoardTest {
     }
     
     @Test
-    void testLostNoteRemoval() {
+    void testLostNoteAdd() {
         board.entityLists.ln.add(new LostNote(1,3, board));
 
         assertFalse(board.entityLists.ln.isEmpty());
 
         assertEquals(2, board.entityLists.ln.size());
+    }
+    @Test
+    void testLostNoteRemove() {
+        board.entityLists.ln.remove(0);
+        assertTrue(board.entityLists.ln.isEmpty());
+        assertEquals(0, board.entityLists.ln.size());
     }
 }
