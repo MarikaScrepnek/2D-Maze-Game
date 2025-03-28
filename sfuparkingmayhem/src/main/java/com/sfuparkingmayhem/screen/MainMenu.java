@@ -2,7 +2,10 @@ package com.sfuparkingmayhem.screen;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -15,6 +18,8 @@ import javax.swing.SwingConstants;
  * @version 1.0
  */
 public class MainMenu extends Screen {
+    private Image backGroundImage;
+
     /**
      * Constructs the Main Menu screen with navigation buttons.
      *
@@ -25,8 +30,7 @@ public class MainMenu extends Screen {
         //call Screen constructor
         super(cardLayout, cardPanel);
 
-        //set background color to light blue
-        setBackground(new Color(2, 54, 94));
+        backGroundImage = new ImageIcon(getClass().getResource("/background.png")).getImage();
         
         //create the game name title
         JLabel titleLabel = new JLabel("SFU Parking Mayhem", SwingConstants.CENTER);
@@ -47,5 +51,14 @@ public class MainMenu extends Screen {
         add(start_game_button);
         add(instructions_button);
         add(exit_button);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        if (backGroundImage != null) {
+            g.drawImage(backGroundImage, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 }
