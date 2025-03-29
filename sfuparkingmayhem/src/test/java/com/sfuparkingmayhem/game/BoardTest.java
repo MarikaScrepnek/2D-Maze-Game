@@ -129,4 +129,17 @@ public class BoardTest {
         assertFalse(board.game_ended);  // Ensure the game is not marked as ended
         assertFalse(cardPanel.getComponentCount() > 0);  // Check that a component was not added to the card panel (for WinScreen)
     }
+
+    @Test
+    void testCheckGameEndFalse2() {
+        MainCharacter mainCharacter = new MainCharacter(14, 12, board);  // Position matches the condition for game end
+        board.main_character = mainCharacter;
+
+        // Create and trigger an action event
+        ActionEvent event = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "test");
+        board.actionPerformed(event);
+
+        assertFalse(board.game_ended);  // Ensure the game is marked as ended
+        assertFalse(cardPanel.getComponentCount() > 0);  // Check if a component was added to the card panel (for WinScreen)
+    }
 }
