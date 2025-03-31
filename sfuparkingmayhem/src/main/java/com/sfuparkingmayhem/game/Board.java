@@ -284,7 +284,7 @@ public class Board extends JPanel implements ActionListener, KeyListener{
      */
     private void drawBoardBackground(Graphics g) {
         Barrier barrier = new Barrier(0, 0, this);
-        barrier.draw(DIMENSIONS.get_rows(), DIMENSIONS.get_columns(), DIMENSIONS.get_cell_size(), g);
+        barrier.draw(g);
 
         drawParkingSign(g);
 
