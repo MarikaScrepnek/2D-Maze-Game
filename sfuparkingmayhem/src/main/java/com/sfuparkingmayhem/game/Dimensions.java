@@ -1,5 +1,13 @@
 package com.sfuparkingmayhem.game;
 
+
+/**
+ * This Dimensions class extends contains the following methods: a constructor
+ * and getters to get the values of the ROWS, COLUMNS, and CELL_SIZE attributes.
+ *
+ * @author Group25
+ * @version 1.0
+ */
 public class Dimensions {
     /**
      * Field holding number of rows on the board.
