@@ -21,16 +21,13 @@ Ensure you have the following installed:
     - Copy and paste the command below into your desired IDE terminal
     - `git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git`
 2. Build the Project:
-    - Using maven, copy and paste the command below
+    - Using maven, copy and paste the command below in the /sfuparkingmayhem directory
     - `mvn clean package`
     - This will compile the project
 
 ## Running the Game
-After building the project, to run the game copy and paste the command below for Mac:
-  - `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
-
-Or copy the command below for Windows:
-  - `mvn exec:java "-Dexec.mainClass=com.sfuparkingmayhem.game.Main"`
+After building the project, to run the game copy and paste the command below:
+  - `java -jar target/sfuparkingmayhem-1.0-SNAPSHOT.jar`
 
 ## Testing
 To run tests using JUnit and Maven copy and paste the command below:
