@@ -118,6 +118,9 @@ public class MainCharacter extends MovingEntity {
         key_pressed = false; // Allow movement again when the key is released
     }
 
+    /**
+     * Prevents this main character from moving out of bounds on the {@link Board}
+     */
     protected void tick() {
         // First, ensure coordinates are within the overall board bounds.
         x_coordinate = clamp(x_coordinate, 0, Board.DIMENSIONS.get_columns() - 1);
