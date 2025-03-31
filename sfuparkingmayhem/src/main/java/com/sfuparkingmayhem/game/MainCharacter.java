@@ -22,6 +22,7 @@ public class MainCharacter extends MovingEntity {
      *
      * @param x_coordinate x-coordinate where MainCharcter is on board
      * @param y_coordinate y-coordinate where MainCharcter is on board
+     * @param board The board that the main character is on.
      */
     public MainCharacter(int x_coordinate, int y_coordinate, Board board) {
         super( x_coordinate, y_coordinate, board);
@@ -58,7 +59,7 @@ public class MainCharacter extends MovingEntity {
     /**
      * Makes sure you cant hold down move key.
      * 
-     * @param e The event of the key press.
+     * @param event The event of the key press.
      */
     @Override
     public void delayedMove(KeyEvent event) {
@@ -122,6 +123,8 @@ public class MainCharacter extends MovingEntity {
 
     /**
      * Resets key_pressed flag when a key is released.
+     * 
+     * @param e The event that handles when the key is released.
      */
     public void keyReleased(KeyEvent e) {
         key_pressed = false; // Allow movement again when the key is released

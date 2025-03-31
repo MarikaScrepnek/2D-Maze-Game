@@ -15,6 +15,7 @@ public class Coin extends Reward{
      *
      * @param x The x-coordinate of the Coin.
      * @param y The y-coordinate of the Coin.
+     * @param board The board that the coin is on.
      */
     public Coin(int x, int y, Board board) {
         super(x, y, board);

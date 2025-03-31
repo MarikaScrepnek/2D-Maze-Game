@@ -18,6 +18,7 @@ public class LostNote extends Reward {
      *
      * @param x The x-coordinate of the LostNote.
      * @param y The y-coordinate of the LostNote.
+     * @param board The board that the lost note is on.
      */
     public LostNote(int x, int y, Board board) {
         super(x, y, board);
