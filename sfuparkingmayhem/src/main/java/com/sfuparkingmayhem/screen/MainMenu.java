@@ -18,6 +18,9 @@ import javax.swing.SwingConstants;
  * @version 1.0
  */
 public class MainMenu extends Screen {
+    /**
+     * The background image.
+     */
     private Image backGroundImage;
 
     /**
