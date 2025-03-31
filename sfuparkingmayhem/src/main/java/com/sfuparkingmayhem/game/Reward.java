@@ -13,6 +13,7 @@ public abstract class Reward extends StaticEntity {
      *
      * @param x The x-coordinate of the Reward.
      * @param y The y-coordinate of the Reward.
+     * @param board The board that the reward is on.
      */
     public Reward(int x, int y, Board board) {
         super(x, y, board);
