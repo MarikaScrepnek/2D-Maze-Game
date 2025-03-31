@@ -87,6 +87,15 @@ public class MainCharacter extends MovingEntity {
         checkCollision(oldX, oldY);
     }
 
+
+    /**
+     * Checks if this main character is colliding with an Entity. For example, 
+     * this method checks if this main character is colliding with a Cone or with a ParkedCar.
+     * This method takes the previous X and Y coordinate of this main character as parameters
+     * 
+     * @param oldX 
+     * @param oldY
+     */
     private void checkCollision(int oldX, int oldY){
         // Check if the player is colliding with a cone
         if (isCollidingWithCone(getX_coordinate(), getY_coordinate())) {
@@ -118,6 +127,9 @@ public class MainCharacter extends MovingEntity {
         key_pressed = false; // Allow movement again when the key is released
     }
 
+    /**
+     * Prevents this main character from moving out of bounds on the {@link Board}
+     */
     protected void tick() {
         // First, ensure coordinates are within the overall board bounds.
         x_coordinate = clamp(x_coordinate, 0, Board.DIMENSIONS.get_columns() - 1);

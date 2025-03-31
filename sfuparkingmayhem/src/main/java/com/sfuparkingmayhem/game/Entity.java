@@ -43,6 +43,7 @@ public abstract class Entity {
      *
      * @param x_coordinate x-coordinate of this Entity
      * @param y_coordinate y-coordinate of this Entity
+     * @param board The board that the entity is on.
      */
     protected Entity(int x_coordinate, int y_coordinate, Board board) {
         this.x_coordinate = x_coordinate;
@@ -52,6 +53,8 @@ public abstract class Entity {
     /**
      * Gets the image of this Entity and throws IOExceptions e, if any, and prints out the error.
      * Sets theImage of the Entity to the corresponding png in the resources directory.
+     * 
+     * @param path The path name of the image to load in the resources folder.
      */
     protected void getImage(String path) {
         try{

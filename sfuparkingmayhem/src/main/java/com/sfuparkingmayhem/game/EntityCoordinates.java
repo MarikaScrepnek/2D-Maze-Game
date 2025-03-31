@@ -1,5 +1,13 @@
 package com.sfuparkingmayhem.game;
 
+
+/**
+ * This EntityCoordinates class contains 2D arraylists to hold the X and Y coordinates of the StaticEntities
+ * and a constructor.
+ *
+ * @author Group25
+ * @version 1.0
+ */
 public class EntityCoordinates  {
 
     /**
