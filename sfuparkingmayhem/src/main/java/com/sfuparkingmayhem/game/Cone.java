@@ -10,6 +10,7 @@ public class Cone extends Barrier{
      *
      * @param x The x-coordinate of the Cone.
      * @param y The y-coordinate of the Cone.
+     * @param board The board that the cone is on.
      */
     public Cone (int x, int y, Board board){
         super(x, y, board);
