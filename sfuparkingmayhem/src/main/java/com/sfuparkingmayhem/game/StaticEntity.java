@@ -16,6 +16,7 @@ public abstract class StaticEntity extends Entity{
      *
      * @param x The x-coordinate of the StaticEntity.
      * @param y The y-coordinate of the StaticEntity.
+     * @param board The board that the entity is on.
      */
     public StaticEntity(int x, int y, Board board) {
         super(x, y, board);
