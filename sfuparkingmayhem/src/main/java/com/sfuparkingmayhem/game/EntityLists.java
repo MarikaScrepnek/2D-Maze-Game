@@ -3,7 +3,7 @@ package com.sfuparkingmayhem.game;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * Class holding all lists of all types of entities on the board.
  */
 public class EntityLists {
