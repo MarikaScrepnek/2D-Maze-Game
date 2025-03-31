@@ -33,7 +33,7 @@ public class MainMenu extends Screen {
         //call Screen constructor
         super(cardLayout, cardPanel);
 
-        backGroundImage = new ImageIcon(getClass().getResource("/background.png")).getImage();
+        backGroundImage = new ImageIcon(getClass().getResource("/background2.png")).getImage();
         
         //create the game name title
         JLabel titleLabel = new JLabel("SFU Parking Mayhem", SwingConstants.CENTER);
