@@ -1,10 +1,10 @@
 <h1 align="center">
   SFU Parking Mayhem
 </h1>
-
-<p align="center">
-  <img width="745" alt="Screenshot 2025-03-28 at 1 39 13 PM" src="https://media.github.sfu.ca/user/3707/files/101805c9-d102-486f-92b2-6d428fdce11a">
-  <img width="747" alt="Screenshot 2025-03-23 at 10 43 40 PM" src="https://media.github.sfu.ca/user/3707/files/2436dd54-6d90-43ec-8f5b-a6937b3f7ba0">
+  
+  ![mainMenuFINAL](https://media.github.sfu.ca/user/3737/files/242a2f4c-1d36-40cc-b8c7-3072eac61b94)
+  ![game](https://media.github.sfu.ca/user/3737/files/182aa9bf-4a22-4d37-bbd3-5a229d8786b9)
+  
 </p>
   
 ## Description
