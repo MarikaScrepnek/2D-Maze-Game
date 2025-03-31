@@ -6,9 +6,19 @@ import java.awt.Graphics;
 
 import javax.swing.Timer;
 
+/**
+ * Class for the timer in the game that counts up while the player plays
+ * and displays when they win.
+ */
 public class GameTimer {
     private int timeElapsed;
 
+    /**
+     * Initializes the game timer and starts the time.
+     * Calls repaint every second to update the game ui.
+     * 
+     * @param board The board that the timer is on.
+     */
     public GameTimer (Board board) {
         Timer gameTimer = new Timer(1000, e -> {
             timeElapsed++;
