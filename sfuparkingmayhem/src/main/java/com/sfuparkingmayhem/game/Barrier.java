@@ -18,12 +18,21 @@ public class Barrier extends StaticEntity{
      *
      * @param x The x-coordinate of the Barrier.
      * @param y The y-coordinate of the Barrier.
+     * @param board The board that the Barrier is on.
      */
     public Barrier(int x, int y, Board board) {
         super(x, y, board);
         getImage("bush.png");
     }
 
+    /**
+     * Method that draws the barriers/borders on the board.
+     * 
+     * @param ROWS
+     * @param COLUMNS
+     * @param CELL_SIZE
+     * @param g
+     */
     public void draw (int ROWS, int COLUMNS, int CELL_SIZE, Graphics g) {
         //top
         for (int col = 0; col < COLUMNS; col++) {
