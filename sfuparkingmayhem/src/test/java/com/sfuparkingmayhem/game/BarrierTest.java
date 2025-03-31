@@ -1,14 +1,13 @@
 package com.sfuparkingmayhem.game;
 
 import java.awt.CardLayout;
+import java.awt.Graphics;
 
 import javax.swing.JPanel;
-import java.awt.Graphics;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.mockito.Mockito.mock;
 
 public class BarrierTest {
@@ -34,13 +33,9 @@ public class BarrierTest {
     }
     @Test
     void testDraw() {
-        int ROWS = 10;
-        int COLUMNS = 10;
-        int CELL_SIZE = 50;
-
         // Create a mock Graphics object (you may need to use a mocking library like Mockito)
         Graphics g = mock(Graphics.class); 
 
-        barrier.draw(ROWS, COLUMNS, CELL_SIZE, g);
+        barrier.draw(g);
     }
 }
