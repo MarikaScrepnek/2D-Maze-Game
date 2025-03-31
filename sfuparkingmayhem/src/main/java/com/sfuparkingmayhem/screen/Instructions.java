@@ -33,7 +33,7 @@ public class Instructions extends Screen {
         //call Screen constructor
         super(cardLayout, cardPanel);
 
-        backGroundImage = new ImageIcon(getClass().getResource("/background.png")).getImage();
+        backGroundImage = new ImageIcon(getClass().getResource("/background3.png")).getImage();
 
         //create the instructions title
         JLabel instructionsLabel = new JLabel("Instructions", SwingConstants.CENTER);
