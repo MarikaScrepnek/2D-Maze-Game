@@ -327,6 +327,11 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         coinsCollectedCount++;
     }
 
+    /**
+     * Gets the number of coins that have been collected.
+     * 
+     * @return The number of coins that have been collected.
+     */
     public int getCoinsCollectedCount() {
         return coinsCollectedCount;
     }
