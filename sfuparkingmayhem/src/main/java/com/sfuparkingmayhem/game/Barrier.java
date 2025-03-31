@@ -28,12 +28,13 @@ public class Barrier extends StaticEntity{
     /**
      * Method that draws the barriers/borders on the board.
      * 
-     * @param ROWS
-     * @param COLUMNS
-     * @param CELL_SIZE
-     * @param g
+     * @param g The graphic object used to draw.
      */
-    public void draw (int ROWS, int COLUMNS, int CELL_SIZE, Graphics g) {
+    public void draw (Graphics g) {
+        int COLUMNS = Board.DIMENSIONS.get_columns();
+        int ROWS = Board.DIMENSIONS.get_rows();
+        int CELL_SIZE = Board.DIMENSIONS.get_cell_size();
+
         //top
         for (int col = 0; col < COLUMNS; col++) {
             g.drawImage(this.theImage, col * CELL_SIZE, 0, 50, 50, null);
