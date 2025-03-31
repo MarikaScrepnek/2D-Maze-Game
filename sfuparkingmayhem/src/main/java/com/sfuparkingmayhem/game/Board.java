@@ -323,10 +323,18 @@ public class Board extends JPanel implements ActionListener, KeyListener{
         g.drawString("COINS COLLECTED: " + coinsCollectedCount + "/10", 50, 730);
     }
 
+    /**
+     * Updates the number of coins that have been collected by one.
+     */
     protected void updateCoinsCollectedCount() {
         coinsCollectedCount++;
     }
 
+    /**
+     * Gets the number of coins that have been collected.
+     * 
+     * @return The number of coins that have been collected.
+     */
     public int getCoinsCollectedCount() {
         return coinsCollectedCount;
     }
