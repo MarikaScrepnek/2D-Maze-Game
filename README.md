@@ -54,3 +54,8 @@ To run tests using JUnit and Maven copy and paste the command below:
   - [Parking Sign](https://static.vecteezy.com/system/resources/thumbnails/022/283/619/small_2x/3d-render-blue-parking-sign-isolated-illustration-3d-render-parking-icon-on-white-background-png.png)
   - [UI Buttons and Font](https://kenney.nl/assets/ui-pack)
   - Background Image: OpenAI. (2025). Pixel-art parking lot background for a game menu [AI-generated image]. OpenAI DALL·E.
+
+## Additional References for Game Demo Video:
+  - [Music](https://www.youtube.com/watch?v=l7SwiFWOQqM&list=PLwJjxqYuirCLkq42mGw4XKGQlpZSfxsYd&index=5)
+  - [Sky](https://stockcake.com/i/peaceful-pixel-sky_1885630_1295168)
+  - [Red Cloud](https://www.iconsdb.com/red-icons/cloud-5-icon.html)
