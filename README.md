@@ -26,7 +26,13 @@ Ensure you have the following installed:
     - This will compile the project
 
 ## Running the Game
-After building the project, to run the game copy and paste the command below:
+After building the project, to run the game copy and paste the command below for Mac:
+  - `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
+
+Or copy the command below for Windows:
+  - `mvn exec:java "-Dexec.mainClass=com.sfuparkingmayhem.game.Main"`
+
+To run the .jar file directly, copy and paste the command below:
   - `java -jar target/sfuparkingmayhem-1.0-SNAPSHOT.jar`
 
 ## Testing
