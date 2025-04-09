@@ -39,6 +39,9 @@ To run the .jar file directly, copy and paste the command below:
 To run tests using JUnit and Maven copy and paste the command below:
   - `mvn clean test`
 
+## Our Video Link
+https://www.youtube.com/watch?v=gI7IDLpPFyk 
+
 ## Helpful Resources:
   - Game: [Youtube Video](https://www.youtube.com/watch?v=PJLLDpaLjds)
   - Concord officer: [Youtube Video](https://www.youtube.com/watch?v=yhx0Ew8ttP4)
