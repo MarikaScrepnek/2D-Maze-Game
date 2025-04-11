@@ -147,12 +147,23 @@ public class MainCharacter extends MovingEntity {
         x_coordinate = clamp(x_coordinate, 1, Board.DIMENSIONS.get_columns() - 2);
         y_coordinate = clamp(y_coordinate, 1, Board.DIMENSIONS.get_rows() - 2);
     }
-    
+
+    /**
+     * Checks if the current cell is an entrance or exit cell.
+     * @return true if the current cell is an entrance or exit cell, false otherwise.
+     */
     private boolean isEntranceOrExitCell() {
         return (x_coordinate == 0 && y_coordinate == 1) ||
                (x_coordinate == Board.DIMENSIONS.get_columns() - 1 && y_coordinate == Board.DIMENSIONS.get_rows() - 2);
     }
     
+    /**
+     * Clamps the value to be within the specified range [min, max].
+     * @param value
+     * @param min
+     * @param max
+     * @return the clamped value
+     */
     private int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(value, max));
     }
