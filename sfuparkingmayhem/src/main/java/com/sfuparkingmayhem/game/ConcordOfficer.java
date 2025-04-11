@@ -54,6 +54,11 @@ public class ConcordOfficer extends MovingEntity{
         officerTimer.start();
     }
 
+    /**
+     * Checks if the ConcordOfficer is colliding with a cone or parked car and Main Character.
+     * @param oldX
+     * @param oldY
+     */
     private void officerCollision(int oldX, int oldY) {
         // Check if the officer is colliding with a cone or parked car
         if (isCollidingWithCone(this.getX_coordinate(), this.getY_coordinate()) ||
