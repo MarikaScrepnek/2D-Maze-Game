@@ -22,7 +22,7 @@ Ensure you have the following installed:
     - `git clone git@github.sfu.ca:nma96/CMPT276S25_group25.git`
 2. Build the Project:
     - Using maven, copy and paste the command below in the /sfuparkingmayhem directory
-    - `mvn clean package`
+    - `mvn clean package install javadoc:javadoc`
     - This will compile the project
 
 ## Running the Game

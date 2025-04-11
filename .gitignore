@@ -1,4 +1,13 @@
-sfuparkingmayhem/target
+sfuparkingmayhem/target/classes
+sfuparkingmayhem/target/generated-sources
+sfuparkingmayhem/target/generated-test-sources
+sfuparkingmayhem/target/javadoc-bundle-options
+sfuparkingmayhem/target/maven-archiver
+sfuparkingmayhem/target/maven-status
+sfuparkingmayhem/target/surefire-reports
+sfuparkingmayhem/target/test-classes
+sfuparkingmayhem/target/maven-javadoc-plugin-stale-data.txt
+
 .idea/
 .vscode/
 .ds_store
