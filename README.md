@@ -25,6 +25,10 @@ Ensure you have the following installed:
     - `mvn clean package install javadoc:javadoc`
     - This will compile the project
 
+## Artifacts
+Jar package (sfuparkingmayhem-1.0-SNAPSHOT.jar): located in the sfuparkingmayhem/target directory
+JavaDocs (index.html): located in the sfuparkingmayhem/target/reports/apidocs directory
+
 ## Running the Game
 After building the project, to run the game copy and paste the command below for Mac:
   - `mvn exec:java -Dexec.mainClass="com.sfuparkingmayhem.game.Main"`
