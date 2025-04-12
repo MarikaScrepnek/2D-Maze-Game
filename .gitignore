@@ -7,6 +7,7 @@ sfuparkingmayhem/target/maven-status
 sfuparkingmayhem/target/surefire-reports
 sfuparkingmayhem/target/test-classes
 sfuparkingmayhem/target/maven-javadoc-plugin-stale-data.txt
+sfuparkingmayhem/target/site
 
 .idea/
 .vscode/
