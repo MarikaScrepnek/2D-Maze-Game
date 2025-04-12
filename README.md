@@ -27,6 +27,7 @@ Ensure you have the following installed:
 
 ## Artifacts
 Jar package (sfuparkingmayhem-1.0-SNAPSHOT.jar): located in the sfuparkingmayhem/target directory
+
 JavaDocs (index.html): located in the sfuparkingmayhem/target/reports/apidocs directory
 
 ## Running the Game
